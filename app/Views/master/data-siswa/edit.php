@@ -130,19 +130,36 @@
                                         <?= $validation->getError('kelas'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
-                                    <label>Jurusan</label>
-                                    <select name="jurusan" class="form-control">
-                                        <option><?= (old('jurusan')) ? old('jurusan') : $data['jurusan']; ?></option>
-                                        <option value="IPA">IPA</option>
-                                        <option value="IPS">IPS</option>
-                                        <option value="Bahasa">Bahasa</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nurusan'); ?></small>
+                            <?php if (session()->get('level') == '1') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
+                                        <label>Jurusan</label>
+                                        <select name="jurusan" class="form-control">
+                                            <option><?= (old('jurusan')) ? old('jurusan') : $data['jurusan']; ?></option>
+                                            <option value="IPA">IPA</option>
+                                            <option value="IPS">IPS</option>
+                                            <option value="Bahasa">Bahasa</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('jurusan'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('paketk')) ? 'has-error' : ''; ?>">
+                                        <select name="paketk" class="form-control">
+                                            <option><?= (old('paketk')) ? old('paketk') : $data['pkeahlian']; ?></option>
+                                            <option value="TKRO">Teknik Kendaraan Ringan Otomotif</option>
+                                            <option value="TBSM">Teknik dan Bisnis Sepeda Motor</option>
+                                            <option value="OTP">Otomatisasi dan TataKelola Perkantoran</option>
+                                            <option value="TKJ">OTeknik Komputer dan Jaringan</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('paketk'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
                                     <label>Status</label>
@@ -178,6 +195,20 @@
                                         <?= $validation->getError('thnmasuk'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('pip')) ? 'has-error' : ''; ?>">
+                                        <select name="pip" class="form-control">
+                                            <option><?= (old('pip')) ? old('pip') : $data['program_pip']; ?></option>
+                                            <option value="KPS">KPS</option>
+                                            <option value="KIP">KIP</option>
+                                            <option value="PKH">PKH</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('pip'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
                                     <label>Status Vaksinasi</label>

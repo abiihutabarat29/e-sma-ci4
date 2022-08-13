@@ -77,7 +77,6 @@
                             </div>
                             <div class="col-md-2 pr-0">
                                 <div class="form-group  <?= ($validation->hasError('umur')) ? 'has-error' : ''; ?>">
-                                    <label>Umur</label>
                                     <select name="umur" class="form-control">
                                         <option selected disabled><?= (old('umur')) ? old('umur') : ".::Pilih Umur::." ?></option>
                                         <option value="13">13</option>
@@ -96,7 +95,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                    <label>Agama</label>
                                     <select name="agama" class="form-control">
                                         <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
                                         <option value="Islam">Islam</option>
@@ -118,7 +116,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('kelas')) ? 'has-error' : ''; ?>">
-                                    <label>Kelas</label>
                                     <select name="kelas" class="form-control">
                                         <option selected disabled><?= (old('kelas')) ? old('kelas') : ".::Pilih Kelas::." ?></option>
                                         <option value="X">X</option>
@@ -129,22 +126,37 @@
                                         <?= $validation->getError('kelas'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
-                                    <label>Jurusan</label>
-                                    <select name="jurusan" class="form-control">
-                                        <option selected disabled><?= (old('jurusan')) ? old('jurusan') : ".::Pilih Jurusan::." ?></option>
-                                        <option value="IPA">IPA</option>
-                                        <option value="IPS">IPS</option>
-                                        <option value="Bahasa">Bahasa</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nurusan'); ?></small>
+                            <?php if (session()->get('level') == '1') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
+                                        <select name="jurusan" class="form-control">
+                                            <option selected disabled><?= (old('jurusan')) ? old('jurusan') : ".::Pilih Jurusan::." ?></option>
+                                            <option value="IPA">IPA</option>
+                                            <option value="IPS">IPS</option>
+                                            <option value="Bahasa">Bahasa</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('jurusan'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('paketk')) ? 'has-error' : ''; ?>">
+                                        <select name="paketk" class="form-control">
+                                            <option selected disabled><?= (old('paketk')) ? old('paketk') : ".::Pilih Paket Keahlian::." ?></option>
+                                            <option value="TKRO">Teknik Kendaraan Ringan Otomotif</option>
+                                            <option value="TBSM">Teknik dan Bisnis Sepeda Motor</option>
+                                            <option value="OTP">Otomatisasi dan TataKelola Perkantoran</option>
+                                            <option value="TKJ">OTeknik Komputer dan Jaringan</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('paketk'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status</label>
                                     <select name="status" class="form-control">
                                         <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                         <option value="Aktif">Aktif</option>
@@ -161,7 +173,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('thnmasuk')) ? 'has-error' : ''; ?>">
-                                    <label>Tahun Masuk / Tahun Pelajaran</label>
                                     <select name="thnmasuk" class="form-control">
                                         <option selected disabled><?= (old('thnmasuk')) ? old('thnmasuk') : ".::Pilih Tahun Masuk::." ?></option>
                                         <option value="2022/2023">2022/2023</option>
@@ -177,9 +188,22 @@
                                         <?= $validation->getError('thnmasuk'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('pip')) ? 'has-error' : ''; ?>">
+                                        <select name="pip" class="form-control">
+                                            <option selected disabled><?= (old('pip')) ? old('pip') : ".::Pilih Program PIP::." ?></option>
+                                            <option value="KPS">KPS</option>
+                                            <option value="KIP">KIP</option>
+                                            <option value="PKH">PKH</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('pip'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                    <label>Status Vaksinasi</label>
                                     <select name="stsvaksin" class="form-control">
                                         <option selected disabled><?= (old('stsvaksin')) ? old('stsvaksin') : ".::Pilih Status Vaksin::." ?></option>
                                         <option value="Belum">Belum</option>
