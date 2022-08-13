@@ -93,7 +93,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <select name="gol" class="js-example-language" style="width: 100%">
-                                        <option selected disabled><?= (old('gol')) ? old('gol') : $data['golruang'] ?></option>
+                                        <option><?= (old('gol')) ? old('gol') : $data['golruang'] ?></option>
                                         <?php foreach ($golongan as $r) : ?>
                                             <option value="<?= $r['golongan'] ?>"><?= $r['golongan'] ?></option>
                                         <?php endforeach ?>
@@ -103,7 +103,6 @@
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('tingkat')) ? 'has-error' : ''; ?>">
                                     <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
-                                    <label>Tingkat (Kode)</label>
                                     <select name="tingkat" class="form-control">
                                         <option><?= (old('tingkat')) ? old('tingkat') : $data['tingkat']; ?></option>
                                         <option value="D1">D1</option>
@@ -118,7 +117,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                    <label>Agama</label>
                                     <select name="agama" class="form-control">
                                         <option><?= (old('agama')) ? old('agama') : $data['agama']; ?></option>
                                         <option value="Islam">Islam</option>
@@ -140,7 +138,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status Kepegawaian</label>
                                     <select name="status" class="form-control">
                                         <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
                                         <option value="PNS">PNS</option>
@@ -181,7 +178,7 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('tmtpegawai')) ? 'has-error' : ''; ?>">
-                                    <label>TMT Guru</label>
+                                    <label>TMT Pegawai</label>
                                     <input type="date" name="tmtpegawai" class="form-control" autocomplete="off" value="<?= (old('tmtpegawai')) ? old('tmtpegawai') : $data['tmtpegawai']; ?>">
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('tmtpegawai'); ?></small>
@@ -192,6 +189,23 @@
                                     <input type="text" name="thndiklat" class="form-control" autocomplete="off" placeholder="Tahun Diklat" value="<?= (old('thndiklat')) ? old('thndiklat') : $data['thndiklat']; ?>">
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>Masa Kerja</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('mktahun')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mktahun" class="form-control" autocomplete="off" placeholder="Jumlah Tahun Masa Kerja" value="<?= (old('mktahun')) ? old('mktahun') : $data['mk_thn']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mktahun'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= (old('mkbulan')) ? old('mkbulan') : $data['mk_bln']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mkbulan'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('tmtsekolah')) ? 'has-error' : ''; ?>">
                                     <label>TMT Sekolah</label>
@@ -202,7 +216,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                    <label>Status Vaksinasi</label>
                                     <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">
                                         <option><?= (old('stsvaksin')) ? old('stsvaksin') : $data['sts_vaksin']; ?></option>
                                         <option value="Belum">Belum</option>

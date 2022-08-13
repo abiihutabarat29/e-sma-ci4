@@ -110,7 +110,6 @@
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('tingkat')) ? 'has-error' : ''; ?>">
                                     <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
-                                    <label>Tingkat (Kode)</label>
                                     <select name="tingkat" class="form-control">
                                         <option><?= (old('tingkat')) ? old('tingkat') : $data['tingkat']; ?></option>
                                         <option value="D1">D1</option>
@@ -125,7 +124,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                    <label>Agama</label>
                                     <select name="agama" class="form-control">
                                         <option><?= (old('agama')) ? old('agama') : $data['agama']; ?></option>
                                         <option value="Islam">Islam</option>
@@ -147,7 +145,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status Kepegawaian</label>
                                     <select name="status" class="form-control">
                                         <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
                                         <option value="PNS">PNS</option>
@@ -189,7 +186,6 @@
                             <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsserti')) ? 'has-error' : ''; ?>">
-                                    <label>Status Sertifikasi</label>
                                     <select name="stsserti" class="form-control" onchange=" if (this.selectedIndex==1){ document.getElementById('tahun').style.display='inline' }else { document.getElementById('tahun').style.display='none' };">
                                         <option><?= (old('stsserti')) ? old('stsserti') : $data['sts_serti']; ?></option>
                                         <option value="Sudah">Sudah</option>
@@ -312,7 +308,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                    <label>Status Vaksinasi</label>
                                     <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">
                                         <option><?= (old('stsvaksin')) ? old('stsvaksin') : $data['sts_vaksin']; ?></option>
                                         <option value="Belum">Belum</option>

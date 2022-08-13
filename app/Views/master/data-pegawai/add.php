@@ -102,7 +102,6 @@
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('tingkat')) ? 'has-error' : ''; ?>">
                                     <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
-                                    <label>Tingkat (Kode)</label>
                                     <select name="tingkat" class="form-control">
                                         <option selected disabled><?= (old('tingkat')) ? old('tingkat') : ".::Pilih Tingkat::." ?></option>
                                         <option value="D1">D1</option>
@@ -117,7 +116,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                    <label>Agama</label>
                                     <select name="agama" class="form-control">
                                         <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
                                         <option value="Islam">Islam</option>
@@ -139,7 +137,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status Kepegawaian</label>
                                     <select name="status" class="form-control">
                                         <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                         <option value="PNS">PNS</option>
@@ -199,9 +196,25 @@
                                     <input type="text" name="thndiklat" class="form-control" autocomplete="off" placeholder="Tahun Diklat" value="<?= old('thndiklat'); ?>">
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>Masa Kerja</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('mktahun')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mktahun" class="form-control" autocomplete="off" placeholder="Jumlah Tahun Masa Kerja" value="<?= old('mktahun'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mktahun'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= old('mkbulan'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mkbulan'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                    <label>Status Vaksinasi</label>
                                     <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">
                                         <option selected disabled><?= (old('stsvaksin')) ? old('stsvaksin') : ".::Pilih Status Vaksin::." ?></option>
                                         <option value="Belum">Belum</option>

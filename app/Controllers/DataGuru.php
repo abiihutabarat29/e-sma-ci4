@@ -734,8 +734,6 @@ class DataGuru extends BaseController
                 'tingkat'             => $this->request->getPost('tingkat'),
                 'jurusan'             => $this->request->getPost('jurusan'),
                 'thnijazah'           => $this->request->getPost('thnijazah'),
-                'mk_thn'              => $this->request->getPost('mktahun'),
-                'mk_bln'              => $this->request->getPost('mkbulan'),
                 'thnijazah'           => $this->request->getPost('thnijazah'),
                 'agama'               => $this->request->getPost('agama'),
                 'status'              => $this->request->getPost('status'),
