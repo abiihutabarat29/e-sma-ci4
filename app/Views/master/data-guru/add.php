@@ -108,10 +108,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('tingkat')) ? 'has-error' : ''; ?>">
-                                    <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
-                                    <label>Tingkat (Kode)</label>
                                     <select name="tingkat" class="form-control">
-                                        <option selected disabled><?= (old('tingkat')) ? old('tingkat') : ".::Pilih Tingkat::." ?></option>
+                                        <option selected disabled><?= (old('tingkat')) ? old('tingkat') : ".::Pilih Tingkat Pendidikan::." ?></option>
                                         <option value="D1">D1</option>
                                         <option value="D2">D2</option>
                                         <option value="D3">D3</option>
@@ -124,7 +122,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                    <label>Agama</label>
                                     <select name="agama" class="form-control">
                                         <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
                                         <option value="Islam">Islam</option>
@@ -146,7 +143,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status Kepegawaian</label>
                                     <select name="status" class="form-control">
                                         <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                         <option value="PNS">PNS</option>
@@ -156,7 +152,7 @@
                                         <option value="GTY">GTY</option>
                                         <option value="GTT">GTT</option>
                                         <option value="GTTY">GTTY</option>
-                                        <!-- <option value="PPPK">PPPK</option> -->
+                                        <option value="PPPK">PPPK</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('status'); ?></small>
@@ -169,9 +165,18 @@
                                         <?= $validation->getError('thnijazah'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>Masa Kerja</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('mktahun')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mktahun" class="form-control" autocomplete="off" placeholder="Jumlah Tahun Masa Kerja" value="<?= old('mktahun'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mktahun'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsserti')) ? 'has-error' : ''; ?>">
-                                    <label>Status Sertifikasi</label>
                                     <select name="stsserti" class="form-control" onchange=" if (this.selectedIndex==1){ document.getElementById('tahun').style.display='inline' }else { document.getElementById('tahun').style.display='none' };">
                                         <option selected disabled><?= (old('stsserti')) ? old('stsserti') : ".::Pilih Status Sertifikasi::." ?></option>
                                         <option value="Sudah">Sudah</option>
@@ -181,8 +186,17 @@
                                         <?= $validation->getError('stsserti'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= old('mkbulan'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mkbulan'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6">
-                                <h5><b>*Diklat yang diikuti</b></h5>
+                                <h5><b>Diklat yang diikuti</b></h5>
                                 <div class="form-group">
                                     <input type="text" name="diklat" class="form-control" autocomplete="off" placeholder="Nama Diklat" value="<?= old('diklat'); ?>">
                                 </div>
@@ -193,6 +207,25 @@
                                         <input type="text" name="thns" class="form-control" autocomplete="off" placeholder="Tahun Sertifikasi" value="<?= old('thns'); ?>">
                                     </div>
                                 </div>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <div class="col-md-12 pr-0">
+                                        <div class="form-group">
+                                            <select name="mapelserti" class="js-example-language" style="width: 100%">
+                                                <option selected disabled><?= (old('mapelserti')) ? old('mapelserti') : ".::Pilih Mata Pelajaran Sertifikasi::." ?></option>
+                                                <?php foreach ($mapel as $r) : ?>
+                                                    <option value="<?= $r['mapel'] ?>"><?= $r['mapel'] ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <small class="form-text text-danger">
+                                                <?= $validation->getError('mapelserti'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 pr-0">
+                                        <div class="form-group">
+                                            <textarea name="tgstambah" type="text" class="form-control" autocomplete="off" placeholder="Tugas Tambah"><?= old('tgstambah'); ?></textarea>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </span>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -201,7 +234,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('mapel')) ? 'has-error' : ''; ?>">
-                                    <select name="mapel" id="mapel" class="js-example-language" style="width: 100%">
+                                    <select name="mapel" class="js-example-language" style="width: 100%">
                                         <option selected disabled><?= (old('mapel')) ? old('mapel') : ".::Pilih Mata Pelajaran::." ?></option>
                                         <?php foreach ($mapel as $r) : ?>
                                             <option value="<?= $r['mapel'] ?>"><?= $r['mapel'] ?></option>
@@ -229,6 +262,35 @@
                                     <input type="text" name="thndiklat" class="form-control" autocomplete="off" placeholder="Tahun Diklat" value="<?= old('thndiklat'); ?>">
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>*Penyetaraan / Inpassing</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('jabatan')) ? 'has-error' : ''; ?>">
+                                        <select name="jabatan" class="form-control">
+                                            <option selected disabled><?= (old('jabatan')) ? old('jabatan') : ".::Pilih Jabatan::." ?></option>
+                                            <option value="Guru Dewasa">Guru Dewasa</option>
+                                            <option value="Guru Madya">Guru Madya</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('jabatan'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('nosk')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="nosk" class="form-control" autocomplete="off" placeholder="Nomor SK" value="<?= old('nosk'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nosk'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group  <?= ($validation->hasError('tglsk')) ? 'has-error' : ''; ?>">
+                                        <label>Tanggal SK</label>
+                                        <input type="date" name="tglsk" class="form-control" autocomplete="off" value="<?= old('tglsk'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('tglsk'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('tmtsekolah')) ? 'has-error' : ''; ?>">
                                     <label>TMT Sekolah</label>
@@ -246,7 +308,6 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                    <label>Status Vaksinasi</label>
                                     <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">
                                         <option selected disabled><?= (old('stsvaksin')) ? old('stsvaksin') : ".::Pilih Status Vaksin::." ?></option>
                                         <option value="Belum">Belum</option>

@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\PegawaiModel;
+use App\Models\GolonganModel;
 use CodeIgniter\Config\Config;
 
 class DataPegawai extends BaseController
 {
     protected $pegawaiModel;
+    protected $golonganModel;
     public function __construct()
     {
         $this->pegawaiModel = new PegawaiModel();
+        $this->golonganModel = new GolonganModel();
     }
 
     //funsgi api
@@ -36,10 +39,12 @@ class DataPegawai extends BaseController
     }
     public function add()
     {
+        $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Pegawai',
             'title' => 'Form Tambah Data Pegawai',
             'isi' => 'master/data-pegawai/add',
+            'golongan' => $datagol,
             'validation' => \Config\Services::validation()
         );
         return view('layout/wrapper', $data);
@@ -228,10 +233,12 @@ class DataPegawai extends BaseController
 
     public function edit($id)
     {
+        $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Pegawai',
             'title' => 'Form Edit Data Pegawai',
             'isi' => 'master/data-pegawai/edit',
+            'golongan' => $datagol,
             'validation' => \Config\Services::validation(),
             'data' => $this->pegawaiModel->where('id', $id)->first(),
         );

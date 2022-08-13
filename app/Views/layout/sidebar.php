@@ -106,7 +106,7 @@
                         </div>
                     </li>
                 <?php } ?>
-                <?php if (session()->get('level') == '1') { ?>
+                <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
                     <li class="nav-item <?= ($request->uri->getSegment(1) == 'profil-sekolah') ? 'active' : ""; ?>">
                         <a href="<?= base_url('profil-sekolah') ?>">
                             <i class="fas fa-school"></i>

@@ -145,6 +145,25 @@
                         <div class="col-sm-6">
                             <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
                                 <label>Kabupaten</label>
+                                <select class="form-control" name="kabupaten" id="kabupaten">
+                                    <option selected disabled><?= (old('kabupaten')) ? old('kabupaten') : ".::Pilih Kabupaten::." ?></option>
+                                </select>
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('kabupaten'); ?></small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group <?= ($validation->hasError('kecamatan')) ? 'has-error' : ''; ?>">
+                                <label>Kecamatan</label>
+                                <select class="form-control" name="kecamatan" id="kecamatan">
+                                </select>
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('kecamatan'); ?></small>
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-6">
+                            <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
+                                <label>Kabupaten</label>
                                 <select class="form-control" name="kabupaten">
                                     <option><?= (old('kabupaten')) ? old('kabupaten') : ".::Pilih Kabupaten::." ?></option>
                                     <?php foreach ($kabupaten as $r) : ?>
@@ -167,7 +186,7 @@
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('kecamatan'); ?></small>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
                                 <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="Alamat Lengkap Sekolah"><?= old('alamat'); ?></textarea>

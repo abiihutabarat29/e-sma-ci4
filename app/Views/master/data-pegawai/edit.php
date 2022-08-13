@@ -92,29 +92,15 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Golongan/Ruang</label>
-                                    <select name="gol" class="form-control">
-                                        <option><?= (old('gol')) ? old('gol') : $data['golruang']; ?></option>
-                                        <option value="I/A">I/A</option>
-                                        <option value="I/B">I/B</option>
-                                        <option value="I/C">I/C</option>
-                                        <option value="I/D">I/D</option>
-                                        <option value="II/A">II/A</option>
-                                        <option value="II/B">II/B</option>
-                                        <option value="II/C">II/C</option>
-                                        <option value="II/D">II/D</option>
-                                        <option value="III/A">III/A</option>
-                                        <option value="III/B">III/B</option>
-                                        <option value="III/C">III/C</option>
-                                        <option value="III/D">III/D</option>
-                                        <option value="IV/A">IV/A</option>
-                                        <option value="IV/B">IV/B</option>
-                                        <option value="IV/C">IV/C</option>
-                                        <option value="IV/D">IV/D</option>
+                                    <select name="gol" class="js-example-language" style="width: 100%">
+                                        <option selected disabled><?= (old('gol')) ? old('gol') : $data['golruang'] ?></option>
+                                        <?php foreach ($golongan as $r) : ?>
+                                            <option value="<?= $r['golongan'] ?>"><?= $r['golongan'] ?></option>
+                                        <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 pr-0">
+                            <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('tingkat')) ? 'has-error' : ''; ?>">
                                     <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
                                     <label>Tingkat (Kode)</label>

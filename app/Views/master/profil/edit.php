@@ -163,32 +163,6 @@
                                     <?= $validation->getError('kecamatan'); ?></small>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-6">
-                            <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
-                                <label>Kabupaten</label>
-                                <select class="form-control" name="kabupaten">
-                                    <option><?= (old('kabupaten')) ? old('kabupaten') : $data['kabupaten']; ?></option>
-                                    <?php foreach ($kabupaten as $r) : ?>
-                                        <option value="<?= $r['kabupaten'] ?>"><?= $r['kabupaten'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('kabupaten'); ?></small>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-sm-6">
-                            <div class="form-group <?= ($validation->hasError('kecamatan')) ? 'has-error' : ''; ?>">
-                                <label>Kecamatan</label>
-                                <select class="form-control" name="kecamatan">
-                                    <option><?= (old('kecamatan')) ? old('kecamatan') : $data['kecamatan']; ?></option>
-                                    <?php foreach ($kecamatan as $r) : ?>
-                                        <option value="<?= $r['kecamatan'] ?>"><?= $r['kecamatan'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('kecamatan'); ?></small>
-                            </div>
-                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
                                 <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="Alamat Lengkap Sekolah"><?= (old('alamat')) ? old('alamat') : $data['alamat']; ?></textarea>
