@@ -100,7 +100,7 @@
                             <div class="col-md-6 pr-0">
                                 <div class="form-group">
                                     <select name="gol" class="js-example-language" style="width: 100%">
-                                        <option selected disabled><?= (old('gol')) ? old('gol') : $data['golruang'] ?></option>
+                                        <option><?= (old('gol')) ? old('gol') : $data['golruang'] ?></option>
                                         <?php foreach ($golongan as $r) : ?>
                                             <option value="<?= $r['golongan'] ?>"><?= $r['golongan'] ?></option>
                                         <?php endforeach ?>
@@ -170,6 +170,23 @@
                                         <?= $validation->getError('thnijazah'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>Masa Kerja</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('mktahun')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mktahun" class="form-control" autocomplete="off" placeholder="Jumlah Tahun Masa Kerja" value="<?= (old('mktahun')) ? old('mktahun') : $data['mk_thn']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mktahun'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= (old('mkbulan')) ? old('mkbulan') : $data['mk_bln']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mkbulan'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsserti')) ? 'has-error' : ''; ?>">
                                     <label>Status Sertifikasi</label>
@@ -194,6 +211,25 @@
                                         <input type="text" name="thns" class="form-control" autocomplete="off" placeholder="Tahun Sertifikasi" value="<?= (old('thns')) ? old('thns') : $data['thnsertifikasi']; ?>">
                                     </div>
                                 </div>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <div class="col-md-12 pr-0">
+                                        <div class="form-group">
+                                            <select name="mapelserti" class="js-example-language" style="width: 100%">
+                                                <option><?= (old('mapelserti')) ? old('mapelserti') : $data['mapel_serti']; ?></option>
+                                                <?php foreach ($mapel as $r) : ?>
+                                                    <option value="<?= $r['mapel'] ?>"><?= $r['mapel'] ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <small class="form-text text-danger">
+                                                <?= $validation->getError('mapelserti'); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 pr-0">
+                                        <div class="form-group">
+                                            <textarea name="tgstambah" type="text" class="form-control" autocomplete="off" placeholder="Tugas Tambah"><?= (old('tgstambah')) ? old('tgstambah') : $data['tgs_tambah']; ?></textarea>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </span>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -230,6 +266,35 @@
                                     <input type="text" name="thndiklat" class="form-control" autocomplete="off" placeholder="Tahun Diklat" value="<?= (old('thndiklat')) ? old('thndiklat') : $data['thndiklat']; ?>">
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <h5><b>*Penyetaraan / Inpassing</b></h5>
+                                    <div class="form-group <?= ($validation->hasError('jabatan')) ? 'has-error' : ''; ?>">
+                                        <select name="jabatan" class="form-control">
+                                            <option><?= (old('jabatan')) ? old('jabatan') : $data['jabatan']; ?></option>
+                                            <option value="Guru Dewasa">Guru Dewasa</option>
+                                            <option value="Guru Madya">Guru Madya</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('jabatan'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('nosk')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="nosk" class="form-control" autocomplete="off" placeholder="Nomor SK" value="<?= (old('nosk')) ? old('nosk') : $data['no_sk']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nosk'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group  <?= ($validation->hasError('tglsk')) ? 'has-error' : ''; ?>">
+                                        <label>Tanggal SK</label>
+                                        <input type="date" name="tglsk" class="form-control" autocomplete="off" value="<?= (old('tglsk')) ? old('tglsk') : $data['tgl_sk']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('tglsk'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('tmtsekolah')) ? 'has-error' : ''; ?>">
                                     <label>TMT Sekolah</label>

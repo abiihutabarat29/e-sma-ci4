@@ -174,6 +174,13 @@
                                             <?= $validation->getError('mktahun'); ?></small>
                                     </div>
                                 </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
+                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= old('mkbulan'); ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('mkbulan'); ?></small>
+                                    </div>
+                                </div>
                             <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('stsserti')) ? 'has-error' : ''; ?>">
@@ -186,15 +193,6 @@
                                         <?= $validation->getError('stsserti'); ?></small>
                                 </div>
                             </div>
-                            <?php if (session()->get('level') == '2') { ?>
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group <?= ($validation->hasError('mkbulan')) ? 'has-error' : ''; ?>">
-                                        <input type="text" name="mkbulan" class="form-control" autocomplete="off" placeholder="Jumlah Bulan Masa Kerja" value="<?= old('mkbulan'); ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('mkbulan'); ?></small>
-                                    </div>
-                                </div>
-                            <?php } ?>
                             <div class="col-md-6">
                                 <h5><b>Diklat yang diikuti</b></h5>
                                 <div class="form-group">
