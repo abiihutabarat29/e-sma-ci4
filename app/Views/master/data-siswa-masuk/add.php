@@ -129,19 +129,36 @@
                                         <?= $validation->getError('kelas'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
-                                    <label>Jurusan</label>
-                                    <select name="jurusan" class="form-control">
-                                        <option selected disabled><?= (old('jurusan')) ? old('jurusan') : ".::Pilih Jurusan::." ?></option>
-                                        <option value="IPA">IPA</option>
-                                        <option value="IPS">IPS</option>
-                                        <option value="Bahasa">Bahasa</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nurusan'); ?></small>
+                            <?php if (session()->get('level') == '1') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
+                                        <label>Jurusan</label>
+                                        <select name="jurusan" class="form-control">
+                                            <option selected disabled><?= (old('jurusan')) ? old('jurusan') : ".::Pilih Jurusan::." ?></option>
+                                            <option value="IPA">IPA</option>
+                                            <option value="IPS">IPS</option>
+                                            <option value="Bahasa">Bahasa</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nurusan'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('paketk')) ? 'has-error' : ''; ?>">
+                                        <select name="paketk" class="form-control">
+                                            <option selected disabled><?= (old('paketk')) ? old('paketk') : ".::Pilih Paket Keahlian::." ?></option>
+                                            <option value="TKRO">Teknik Kendaraan Ringan Otomotif</option>
+                                            <option value="TBSM">Teknik dan Bisnis Sepeda Motor</option>
+                                            <option value="OTP">Otomatisasi dan TataKelola Perkantoran</option>
+                                            <option value="TKJ">OTeknik Komputer dan Jaringan</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('paketk'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
                                     <label>Status</label>
@@ -164,18 +181,33 @@
                                     <label>Tahun Masuk / Tahun Pelajaran</label>
                                     <select name="thnmasuk" class="form-control">
                                         <option selected disabled><?= (old('thnmasuk')) ? old('thnmasuk') : ".::Pilih Tahun Masuk::." ?></option>
-                                        <option value="2018/2019">2018/2019</option>
-                                        <option value="2019/2020">2019/2020</option>
-                                        <option value="2020/2021">2020/2021</option>
-                                        <option value="2021/2022">2021/2022</option>
                                         <option value="2022/2023">2022/2023</option>
                                         <option value="2023/2024">2023/2024</option>
                                         <option value="2024/2025">2024/2025</option>
+                                        <option value="2025/2026">2025/2026</option>
+                                        <option value="2026/2027">2026/2027</option>
+                                        <option value="2027/2028">2027/2028</option>
+                                        <option value="2028/2029">2028/2029</option>
+                                        <option value="2029/2030">2029/2030</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('thnmasuk'); ?></small>
                                 </div>
                             </div>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('pip')) ? 'has-error' : ''; ?>">
+                                        <select name="pip" class="form-control">
+                                            <option selected disabled><?= (old('pip')) ? old('pip') : ".::Pilih Program PIP::." ?></option>
+                                            <option value="KPS">KPS</option>
+                                            <option value="KIP">KIP</option>
+                                            <option value="PKH">PKH</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('pip'); ?></small>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
                                     <label>Status Vaksinasi</label>

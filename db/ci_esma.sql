@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 08, 2022 at 04:31 PM
+-- Generation Time: Aug 13, 2022 at 06:31 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -232,7 +232,7 @@ CREATE TABLE `mod_guru` (
   `tempat_lahir` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `tgl_lahir` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `jenis_kel` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `golruang` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `golruang` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tingkat` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `jurusan` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `thnijazah` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
@@ -240,26 +240,26 @@ CREATE TABLE `mod_guru` (
   `status` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `tmtguru` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `tmtsekolah` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `thnsertifikasi` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `thnsertifikasi` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mapel` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `jumlah_jam` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `mk_thn` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `mk_bln` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `tgs_tambah` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `mk_thn` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mk_bln` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tgs_tambah` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sts_serti` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `mapel_serti` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `jabatan` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `no_sk` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `tgl_sk` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `nmdiklat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `tdiklat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `lmdiklat` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `thndiklat` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
-  `kehadiran` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `mapel_serti` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `jabatan` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `no_sk` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tgl_sk` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nmdiklat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tdiklat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lmdiklat` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thndiklat` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kehadiran` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `foto` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `sts_vaksin` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `tgl_vaksin` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `lok_vaksin` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `tgl_vaksin` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lok_vaksin` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `npsn` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `nama_sekolah` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `jenjang` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
@@ -527,7 +527,63 @@ INSERT INTO `mod_mapel` (`id`, `mapel`, `jenjang`, `userentry`, `created_at`, `u
 (23, 'Teknik Informatika Komputer ( TIK )', 'SMA', '', NULL, NULL),
 (24, 'Mulok', 'SMA', '', NULL, NULL),
 (25, 'Pengembangan Diri', 'SMA', '', NULL, NULL),
-(26, 'BP / BK', 'SMA', '', NULL, NULL);
+(26, 'BP / BK', 'SMA', '', NULL, NULL),
+(30, 'Pendidikan Agama Islam', 'SMK', 'Abii Hutabarat', '2022-08-12 23:02:29', '2022-08-12 23:02:29'),
+(31, 'Pendidikan Agama Kristen Protestan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:02:43', '2022-08-12 23:02:43'),
+(32, 'Pendidikan Agama Kristen Katholik', 'SMK', 'Abii Hutabarat', '2022-08-12 23:02:53', '2022-08-12 23:02:53'),
+(33, 'Pendidikan Agama Hindu', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:02', '2022-08-12 23:03:02'),
+(34, 'Pendidikan Agama Budha', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:11', '2022-08-12 23:03:11'),
+(35, 'PPKN', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:22', '2022-08-12 23:03:22'),
+(36, 'Bahasa Indonesia', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:30', '2022-08-12 23:03:30'),
+(37, 'Matematika', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:40', '2022-08-12 23:03:40'),
+(38, 'Sejarah Indonesia', 'SMK', 'Abii Hutabarat', '2022-08-12 23:03:51', '2022-08-12 23:03:51'),
+(39, 'Bahasa Inggris', 'SMK', 'Abii Hutabarat', '2022-08-12 23:04:03', '2022-08-12 23:04:03'),
+(40, 'Seni Budaya', 'SMK', 'Abii Hutabarat', '2022-08-12 23:04:12', '2022-08-12 23:04:12'),
+(41, 'Kewirausahaan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:04:20', '2022-08-12 23:04:20'),
+(42, 'PJOK', 'SMK', 'Abii Hutabarat', '2022-08-12 23:04:29', '2022-08-12 23:04:29'),
+(43, 'Penjas Orkes', 'SMK', 'Abii Hutabarat', '2022-08-12 23:04:52', '2022-08-12 23:04:52'),
+(44, 'Biologi', 'SMK', 'Abii Hutabarat', '2022-08-12 23:05:07', '2022-08-12 23:05:07'),
+(45, 'Fisika', 'SMK', 'Abii Hutabarat', '2022-08-12 23:05:15', '2022-08-12 23:05:15'),
+(46, 'Kimia', 'SMK', 'Abii Hutabarat', '2022-08-12 23:05:31', '2022-08-12 23:05:31'),
+(47, 'Simulasi dan Komunikasi Digital', 'SMK', 'Abii Hutabarat', '2022-08-12 23:05:42', '2022-08-12 23:05:42'),
+(48, 'Muatan Lokal', 'SMK', 'Abii Hutabarat', '2022-08-12 23:05:52', '2022-08-12 23:05:52'),
+(49, 'BK', 'SMK', 'Abii Hutabarat', '2022-08-12 23:06:02', '2022-08-12 23:06:02'),
+(50, 'TPBO', 'SMK', 'Abii Hutabarat', '2022-08-12 23:06:14', '2022-08-12 23:06:14'),
+(51, 'TKRO', 'SMK', 'Abii Hutabarat', '2022-08-12 23:06:24', '2022-08-12 23:06:24'),
+(52, 'TBSM', 'SMK', 'Abii Hutabarat', '2022-08-12 23:06:35', '2022-08-12 23:06:35'),
+(53, 'TKJ', 'SMK', 'Abii Hutabarat', '2022-08-12 23:06:50', '2022-08-12 23:06:50'),
+(54, 'RPL', 'SMK', 'Abii Hutabarat', '2022-08-12 23:07:00', '2022-08-12 23:07:00'),
+(56, 'Multimedia', 'SMK', 'Abii Hutabarat', '2022-08-12 23:07:33', '2022-08-12 23:07:33'),
+(57, 'Akomodasi Perhotelan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:07:42', '2022-08-12 23:07:42'),
+(58, 'Tata Busana', 'SMK', 'Abii Hutabarat', '2022-08-12 23:07:52', '2022-08-12 23:07:52'),
+(59, 'Teknik Pemesinan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:08:22', '2022-08-12 23:08:22'),
+(60, 'Teknik Audio Video', 'SMK', 'Abii Hutabarat', '2022-08-12 23:08:32', '2022-08-12 23:08:32'),
+(61, 'Teknik Elektenika Industri', 'SMK', 'Abii Hutabarat', '2022-08-12 23:08:45', '2022-08-12 23:08:45'),
+(62, 'Agribisnis Perikanan dan Air Tawar', 'SMK', 'Abii Hutabarat', '2022-08-12 23:08:54', '2022-08-12 23:08:54'),
+(63, 'Bisnis Kontruksi Properti', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:02', '2022-08-12 23:09:02'),
+(64, 'Produktif Akuntansi', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:12', '2022-08-12 23:09:12'),
+(65, 'Produktif Administrasi Perkantoran', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:23', '2022-08-12 23:09:23'),
+(66, 'Ekonomi Bisnis', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:32', '2022-08-12 23:09:32'),
+(67, 'Akuntansi Keuangan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:42', '2022-08-12 23:09:42'),
+(68, 'Administrasi Umum', 'SMK', 'Abii Hutabarat', '2022-08-12 23:09:50', '2022-08-12 23:09:50'),
+(69, 'Desain Pemodelan Informasi dan Bangunan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:10:13', '2022-08-12 23:10:13'),
+(70, 'Kimia Industri', 'SMK', 'Abii Hutabarat', '2022-08-12 23:10:30', '2022-08-12 23:10:30'),
+(71, 'Pembiakan Tanaman', 'SMK', 'Abii Hutabarat', '2022-08-12 23:10:39', '2022-08-12 23:10:39'),
+(72, 'Agribisnis Tanaman Pangan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:10:49', '2022-08-12 23:10:49'),
+(73, 'Dasar Budidaya Tanaman', 'SMK', 'Abii Hutabarat', '2022-08-12 23:10:57', '2022-08-12 23:10:57'),
+(74, 'Teknik Pengelasan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:06', '2022-08-12 23:11:06'),
+(75, 'Tata Boga', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:15', '2022-08-12 23:11:15'),
+(76, 'IPA', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:23', '2022-08-12 23:11:23'),
+(77, 'Otomatisasi dan Tata Kelola Perkantoran', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:31', '2022-08-12 23:11:31'),
+(78, 'Bisnis dan Pemasaran', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:39', '2022-08-12 23:11:39'),
+(79, 'Agribisnis Pengolahan Hasil Pertanian', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:48', '2022-08-12 23:11:48'),
+(80, 'Budidaya Tanaman Sayuran', 'SMK', 'Abii Hutabarat', '2022-08-12 23:11:56', '2022-08-12 23:11:56'),
+(81, 'Budidaya Tanaman Buah', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:04', '2022-08-12 23:12:04'),
+(82, 'Budidaya Tanaman Hias', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:12', '2022-08-12 23:12:12'),
+(83, 'Alat dan Mesin Pertanian', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:19', '2022-08-12 23:12:19'),
+(84, 'Nautika Kapal Penangkap Ikan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:27', '2022-08-12 23:12:27'),
+(85, 'Teknika Kapal Penagkap Ikan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:36', '2022-08-12 23:12:36'),
+(86, 'Agribisnis Pengolahan Hasil Perikanan', 'SMK', 'Abii Hutabarat', '2022-08-12 23:12:44', '2022-08-12 23:12:44');
 
 -- --------------------------------------------------------
 
@@ -613,7 +669,7 @@ CREATE TABLE `mod_pegawai` (
 --
 
 INSERT INTO `mod_pegawai` (`id`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `golruang`, `tingkat`, `jurusan`, `thnijazah`, `agama`, `status`, `tmtpegawai`, `tmtsekolah`, `nmdiklat`, `tdiklat`, `lmdiklat`, `thndiklat`, `kehadiran`, `mk_thn`, `mk_bln`, `foto`, `sts_vaksin`, `tgl_vaksin`, `lok_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(14, '1', '2323232323232323', '9898989898989898', '3242344234', 'kadis', 'aek songsongan', '2022-07-28', 'L', 'III/D', 'S1', 'Teknik Informatika', '2021', 'Islam', 'PNS', '2022-07-01', '2022-07-09', 'testing', 'yogya', '3', '2021', '100', '', '', '1658855266_cf7199acc5eeb3cec634.jpeg', 'Dosis I', '2022-07-20', 'puskesmas', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 12:04:35', '2022-08-05 03:34:08');
+(14, '1', '2323232323232323', '9898989898989898', '3242344234', 'kadis', 'aek songsongan', '2022-07-28', 'L', 'IV/D', 'S1', 'Teknik Informatika', '2021', 'Islam', 'PNS', '2022-07-01', '2022-07-09', 'testing', 'yogya', '3', '2021', '100', '', '', '1658855266_cf7199acc5eeb3cec634.jpeg', 'Dosis I', '2022-07-20', 'puskesmas', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 12:04:35', '2022-08-12 22:28:17');
 
 -- --------------------------------------------------------
 
@@ -1225,7 +1281,7 @@ ALTER TABLE `mod_labul`
 -- AUTO_INCREMENT for table `mod_mapel`
 --
 ALTER TABLE `mod_mapel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `mod_mutasi`
