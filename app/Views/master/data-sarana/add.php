@@ -38,17 +38,6 @@
                                         <?= $validation->getError('sarana'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('jenjang')) ? 'has-error' : ''; ?>">
-                                    <select name="jenjang" class="form-control">
-                                        <option selected disabled><?= (old('jenjang')) ? old('jenjang') : ".::Pilih Jenjang::." ?></option>
-                                        <option value="SMA">SMA</option>
-                                        <option value="SMK">SMK</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('jenjang'); ?></small>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="card-action">

@@ -28,8 +28,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Sarana</th>
-                                <th>Jenjang</th>
+                                <th>Jenis Prasarana</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
                         </thead>
@@ -39,7 +38,6 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $r['sarana']; ?></td>
-                                    <td><?= $r['jenjang']; ?></td>
                                     <td>
                                         <div class="form-button-action">
                                             <a href="/data-sarana/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">

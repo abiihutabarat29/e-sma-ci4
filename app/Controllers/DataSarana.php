@@ -38,16 +38,10 @@ class DataSarana extends BaseController
         //Validasi input
         if (!$this->validate([
             'sarana' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required|is_unique[mod_sarana.sarana]',
                 'errors' => [
                     'required' => 'Nama Sarana tidak boleh kosong.',
-                    'alpha_space' => 'Nama Sarana harus huruf dan spasi.'
-                ]
-            ],
-            'jenjang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jenjang harus di pilih.',
+                    'is_unique' => 'Nama Sarana sudah ada.'
                 ]
             ],
         ])) {
@@ -55,7 +49,6 @@ class DataSarana extends BaseController
         }
         $data = [
             'sarana'       => $this->request->getPost('sarana'),
-            'jenjang'     => $this->request->getPost('jenjang'),
             'userentry'   => session()->get('nama'),
         ];
         $this->saranaModel->save($data);
@@ -86,16 +79,10 @@ class DataSarana extends BaseController
         //Validasi input
         if (!$this->validate([
             'sarana' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required|is_unique[mod_sarana.sarana]',
                 'errors' => [
                     'required' => 'Nama Sarana tidak boleh kosong.',
-                    'alpha_space' => 'Nama Sarana harus huruf dan spasi.'
-                ]
-            ],
-            'jenjang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jenjang harus di pilih.',
+                    'is_unique' => 'Nama Sarana sudah ada.'
                 ]
             ],
         ])) {
@@ -104,7 +91,6 @@ class DataSarana extends BaseController
         $data = [
             'id'          => $id,
             'sarana'       => $this->request->getPost('sarana'),
-            'jenjang'     => $this->request->getPost('jenjang'),
             'userentry'   => session()->get('nama'),
         ];
         $this->saranaModel->save($data);

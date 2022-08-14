@@ -29,8 +29,7 @@ class DataSarpras extends BaseController
     }
     public function add()
     {
-        $jenjang = session()->get('jenjang');
-        $datasarana = $this->saranaModel->where('jenjang =', $jenjang)->findAll();
+        $datasarana = $this->saranaModel->findAll();
         $data = array(
             'titlebar' => 'Data Sarpras',
             'title' => 'Form Tambah Data Sarpras',
@@ -91,8 +90,7 @@ class DataSarpras extends BaseController
 
     public function edit($id)
     {
-        $jenjang = session()->get('jenjang');
-        $datasarana = $this->saranaModel->where('jenjang =', $jenjang)->findAll();
+        $datasarana = $this->saranaModel->findAll();
         $data = array(
             'titlebar' => 'Data Sarpras',
             'title' => 'Form Edit Data Sarpras',

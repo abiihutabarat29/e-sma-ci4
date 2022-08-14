@@ -144,10 +144,10 @@ class SiswaMasuk extends BaseController
                     ]
                 ],
                 'asalsekolah' => [
-                    'rules' => 'required|alpha_space',
+                    'rules' => 'required|alpha_numeric_punct',
                     'errors' => [
                         'required' => 'Asal Sekolah tidak boleh kosong.',
-                        'alpha_space' => 'Asal Sekolah harus huruf dan spasi.'
+                        'alpha_numeric_punct' => 'Asal Sekolah harus huruf dan spasi.'
                     ]
                 ],
             ])) {
@@ -294,10 +294,10 @@ class SiswaMasuk extends BaseController
                     ]
                 ],
                 'asalsekolah' => [
-                    'rules' => 'required|alpha_space',
+                    'rules' => 'required|alpha_numeric_punct',
                     'errors' => [
                         'required' => 'Asal Sekolah tidak boleh kosong.',
-                        'alpha_space' => 'Asal Sekolah harus huruf dan spasi.'
+                        'alpha_numeric_punct' => 'Asal Sekolah harus huruf dan spasi.'
                     ]
                 ],
             ])) {
