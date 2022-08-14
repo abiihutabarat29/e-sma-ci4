@@ -45,7 +45,9 @@
                 </div>
             </div>
             <ul class="nav nav-primary">
+                <!-- Service uri -->
                 <?php $request = \Config\Services::request(); ?>
+                <!-- =========== -->
                 <li class="nav-item <?= ($request->uri->getSegment(1) == 'home') ? 'active' : ""; ?>">
                     <a href="<?= base_url('/home') ?>">
                         <i class="fas fa-home"></i>
@@ -59,7 +61,14 @@
                     <h4 class="text-section">Menu</h4>
                 </li>
                 <?php if (session()->get('level') == '29') { ?>
-                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'data-user' or $request->uri->getSegment(1) == 'data-sekolah') ? 'active' : ""; ?>">
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'data-user' or
+                                            $request->uri->getSegment(1) == 'data-sekolah' or
+                                            $request->uri->getSegment(1) == 'data-kabupaten' or
+                                            $request->uri->getSegment(1) == 'data-kecamatan' or
+                                            $request->uri->getSegment(1) == 'data-mapel' or
+                                            $request->uri->getSegment(1) == 'data-sarana' or
+                                            $request->uri->getSegment(1) == 'data-golongan'
+                                        ) ? 'active' : ""; ?>">
                         <a data-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
                             <p>Master Data</p>
@@ -180,11 +189,26 @@
                             <p>Inventaris</p>
                         </a>
                     </li>
-                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'laporan-bulanan') ? 'active' : ""; ?>">
-                        <a href="<?= base_url('laporan-bulanan') ?>">
-                            <i class="fas fa-calendar-alt"></i>
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'arsip-laporan') ? 'active' : ""; ?>">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
                             <p>Laporan Bulanan</p>
+                            <span class="caret"></span>
                         </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="<?= base_url('generate-laporan') ?>">
+                                        <span class="sub-item">Generate Laporan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('arsip-laporan') ?>">
+                                        <span class="sub-item">Arsip Laporan</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 <?php } ?>
                 <hr>
