@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\KeluarModel;
 use App\Models\SiswaModel;
+use App\Models\TaModel;
 use CodeIgniter\Config\Config;
 
 class SiswaKeluar extends BaseController
 {
     protected $keluarModel;
     protected $siswaModel;
+    protected $taModel;
     public function __construct()
     {
         $this->keluarModel = new KeluarModel();
         $this->siswaModel = new SiswaModel();
+        $this->taModel = new TaModel();
     }
     public function datasiswak()
     {
@@ -30,6 +33,7 @@ class SiswaKeluar extends BaseController
     }
     public function add()
     {
+        $tahun = $this->taModel->findAll();
         $npsn = session()->get('npsn');
         $datasiswa = $this->siswaModel->where('npsn =', $npsn)->findAll();
         $data = array(
@@ -37,6 +41,7 @@ class SiswaKeluar extends BaseController
             'title' => 'Form Tambah Mutasi Siswa Keluar',
             'isi' => 'master/data-siswa-keluar/add',
             'siswa' => $datasiswa,
+            'tahun' => $tahun,
             'validation' => \Config\Services::validation()
         );
         return view('layout/wrapper', $data);

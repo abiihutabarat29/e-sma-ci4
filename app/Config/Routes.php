@@ -149,13 +149,20 @@ $routes->add('/data-sarana/save', 'DataSarana::save');
 $routes->delete('/data-sarana/(:num)', 'DataSarana::delete/$1');
 $routes->get('/data-sarana/edit/(:segment)', 'DataSarana::edit/$1');
 $routes->add('/data-sarana/update/(:segment)', 'DataSarana::update/$1');
-//Routes Data Sarana
+//Routes Data Golongan
 $routes->get('/data-golongan', 'DataGolongan::datagolongan');
 $routes->get('/data-golongan/add', 'DataGolongan::add');
 $routes->add('/data-golongan/save', 'DataGolongan::save');
 $routes->delete('/data-golongan/(:num)', 'DataGolongan::delete/$1');
 $routes->get('/data-golongan/edit/(:segment)', 'DataGolongan::edit/$1');
 $routes->add('/data-golongan/update/(:segment)', 'DataGolongan::update/$1');
+//Routes Data Tahun Akademik
+$routes->get('/data-tahun-akademik', 'DataTa::datata');
+$routes->get('/data-tahun-akademik/add', 'DataTa::add');
+$routes->add('/data-tahun-akademik/save', 'DataTa::save');
+$routes->delete('/data-tahun-akademik/(:num)', 'DataTa::delete/$1');
+$routes->get('/data-tahun-akademik/edit/(:segment)', 'DataTa::edit/$1');
+$routes->add('/data-tahun-akademik/update/(:segment)', 'DataTa::update/$1');
 //Routes Login
 $routes->get('/', 'Auth::index');
 $routes->add('/auth/verify', 'Auth::cek');

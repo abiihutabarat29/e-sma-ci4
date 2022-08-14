@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 13, 2022 at 06:31 AM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 14 Agu 2022 pada 15.51
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_akun`
+-- Struktur dari tabel `mod_akun`
 --
 
 CREATE TABLE `mod_akun` (
@@ -48,7 +48,7 @@ CREATE TABLE `mod_akun` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_akun`
+-- Dumping data untuk tabel `mod_akun`
 --
 
 INSERT INTO `mod_akun` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `nik`, `nama`, `alamat`, `no_hp`, `username`, `password`, `foto`, `role`, `penerima_dispo`, `tglentry`, `waktuentry`, `userentry`) VALUES
@@ -61,7 +61,7 @@ INSERT INTO `mod_akun` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_arsip_labul`
+-- Struktur dari tabel `mod_arsip_labul`
 --
 
 CREATE TABLE `mod_arsip_labul` (
@@ -80,7 +80,7 @@ CREATE TABLE `mod_arsip_labul` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_arsip_labul`
+-- Dumping data untuk tabel `mod_arsip_labul`
 --
 
 INSERT INTO `mod_arsip_labul` (`id`, `nama_labul`, `bulan`, `tahun`, `file`, `validfile`, `npsn`, `nama_sekolah`, `jenjang`, `tglentry`, `waktuentry`, `userentry`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `mod_arsip_labul` (`id`, `nama_labul`, `bulan`, `tahun`, `file`, `va
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_bangunan`
+-- Struktur dari tabel `mod_bangunan`
 --
 
 CREATE TABLE `mod_bangunan` (
@@ -124,7 +124,7 @@ CREATE TABLE `mod_bangunan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_buku_induk`
+-- Struktur dari tabel `mod_buku_induk`
 --
 
 CREATE TABLE `mod_buku_induk` (
@@ -138,10 +138,10 @@ CREATE TABLE `mod_buku_induk` (
   `agama` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `alamat` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `kelas` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `jurusan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `pkeahlian` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `jurusan` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pkeahlian` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `nohp` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `nohp` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `masuk` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `tamat` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `npsn` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
@@ -153,16 +153,17 @@ CREATE TABLE `mod_buku_induk` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_buku_induk`
+-- Dumping data untuk tabel `mod_buku_induk`
 --
 
 INSERT INTO `mod_buku_induk` (`id`, `id_sekolah`, `nisn`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `agama`, `alamat`, `kelas`, `jurusan`, `pkeahlian`, `status`, `nohp`, `masuk`, `tamat`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(2, 1, 2147483647, 'fddg', 'fdgdfgdfgdg', '2022-08-02', 'L', 'Islam', 'dfgdfgdfgdfg', 'X', 'IPA', '', 'Non-Aktif', '08656656466', '2022/2023', '2023/2024', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-02 12:23:05', '2022-08-02 12:23:05');
+(2, 1, 2147483647, 'fddg', 'fdgdfgdfgdg', '2022-08-02', 'L', 'Islam', 'dfgdfgdfgdfg', 'X', 'IPA', '', 'Non-Aktif', '08656656466', '2022/2023', '2023/2024', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-02 12:23:05', '2022-08-02 12:23:05'),
+(3, 86, 2147483647, 'test', 'test', '2022-08-02', 'P', 'Islam', 'test', 'XII', '', 'TBSM', 'Non-Aktif', '09888344354', '2023/2024', '2024/2025', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:53:19', '2022-08-14 07:53:19');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_desa`
+-- Struktur dari tabel `mod_desa`
 --
 
 CREATE TABLE `mod_desa` (
@@ -173,7 +174,7 @@ CREATE TABLE `mod_desa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_desa`
+-- Dumping data untuk tabel `mod_desa`
 --
 
 INSERT INTO `mod_desa` (`id`, `kd_kec`, `kode_wilayah`, `desa`) VALUES
@@ -182,7 +183,7 @@ INSERT INTO `mod_desa` (`id`, `kd_kec`, `kode_wilayah`, `desa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_golongan`
+-- Struktur dari tabel `mod_golongan`
 --
 
 CREATE TABLE `mod_golongan` (
@@ -194,7 +195,7 @@ CREATE TABLE `mod_golongan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mod_golongan`
+-- Dumping data untuk tabel `mod_golongan`
 --
 
 INSERT INTO `mod_golongan` (`id`, `golongan`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -218,7 +219,7 @@ INSERT INTO `mod_golongan` (`id`, `golongan`, `userentry`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_guru`
+-- Struktur dari tabel `mod_guru`
 --
 
 CREATE TABLE `mod_guru` (
@@ -269,7 +270,7 @@ CREATE TABLE `mod_guru` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_guru`
+-- Dumping data untuk tabel `mod_guru`
 --
 
 INSERT INTO `mod_guru` (`id_guru`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nrg`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `golruang`, `tingkat`, `jurusan`, `thnijazah`, `agama`, `status`, `tmtguru`, `tmtsekolah`, `thnsertifikasi`, `mapel`, `jumlah_jam`, `mk_thn`, `mk_bln`, `tgs_tambah`, `sts_serti`, `mapel_serti`, `jabatan`, `no_sk`, `tgl_sk`, `nmdiklat`, `tdiklat`, `lmdiklat`, `thndiklat`, `kehadiran`, `foto`, `sts_vaksin`, `tgl_vaksin`, `lok_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -282,7 +283,7 @@ INSERT INTO `mod_guru` (`id_guru`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nrg`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_inventaris`
+-- Struktur dari tabel `mod_inventaris`
 --
 
 CREATE TABLE `mod_inventaris` (
@@ -302,16 +303,17 @@ CREATE TABLE `mod_inventaris` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_inventaris`
+-- Dumping data untuk tabel `mod_inventaris`
 --
 
 INSERT INTO `mod_inventaris` (`id`, `id_sekolah`, `inventaris`, `dibutuhkan`, `ada`, `kurang`, `lebih`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(4, 1, 'Meja', '1', '1', '0', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:35:15', '2022-07-30 23:39:26');
+(4, 1, 'Meja', '1', '1', '0', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:35:15', '2022-07-30 23:39:26'),
+(5, 86, 'meja', '1', '4', '1', '54', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:56:26', '2022-08-14 07:56:53');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_jenjang`
+-- Struktur dari tabel `mod_jenjang`
 --
 
 CREATE TABLE `mod_jenjang` (
@@ -320,7 +322,7 @@ CREATE TABLE `mod_jenjang` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_jenjang`
+-- Dumping data untuk tabel `mod_jenjang`
 --
 
 INSERT INTO `mod_jenjang` (`id`, `jenjang`) VALUES
@@ -335,7 +337,7 @@ INSERT INTO `mod_jenjang` (`id`, `jenjang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_kabupaten`
+-- Struktur dari tabel `mod_kabupaten`
 --
 
 CREATE TABLE `mod_kabupaten` (
@@ -348,7 +350,7 @@ CREATE TABLE `mod_kabupaten` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_kabupaten`
+-- Dumping data untuk tabel `mod_kabupaten`
 --
 
 INSERT INTO `mod_kabupaten` (`id`, `kode_wilayah`, `kabupaten`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -358,7 +360,7 @@ INSERT INTO `mod_kabupaten` (`id`, `kode_wilayah`, `kabupaten`, `userentry`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_kebutuhan`
+-- Struktur dari tabel `mod_kebutuhan`
 --
 
 CREATE TABLE `mod_kebutuhan` (
@@ -381,7 +383,7 @@ CREATE TABLE `mod_kebutuhan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_kebutuhan`
+-- Dumping data untuk tabel `mod_kebutuhan`
 --
 
 INSERT INTO `mod_kebutuhan` (`id`, `id_sekolah`, `mapel`, `dibutuhkan`, `ada`, `pns`, `nonpns`, `kurang`, `lebih`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -390,12 +392,13 @@ INSERT INTO `mod_kebutuhan` (`id`, `id_sekolah`, `mapel`, `dibutuhkan`, `ada`, `
 (16, 0, 'Pend.Jasmani, Olahraga, dan Kesehatan', '3', '', '0', '2', '1', '0', '', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', 'Abii Hutabarat', NULL, NULL),
 (17, 0, 'Teknik Informatika Komputer ( TIK )', '2', '', '0', '3', '0', '1', '', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', 'Abii Hutabarat', NULL, NULL),
 (22, 1, 'Pendidikan Agama Islam', '4', '', '4', '4', '4', '0', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 22:01:42', '2022-07-30 22:03:04'),
-(20, 1, 'Pendidikan Agama Islam', '2', '', '5', '6', '2', '2', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 21:47:52', '2022-07-30 22:00:18');
+(20, 1, 'Pendidikan Agama Islam', '2', '', '5', '6', '2', '2', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 21:47:52', '2022-07-30 22:00:18'),
+(24, 86, 'Kimia Industri', '1', '', '0', '0', '0', '0', 'asdasdd', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:55:30', '2022-08-14 07:55:30');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_kecamatan`
+-- Struktur dari tabel `mod_kecamatan`
 --
 
 CREATE TABLE `mod_kecamatan` (
@@ -409,7 +412,7 @@ CREATE TABLE `mod_kecamatan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_kecamatan`
+-- Dumping data untuk tabel `mod_kecamatan`
 --
 
 INSERT INTO `mod_kecamatan` (`id`, `kode_kab`, `kode_wilayah`, `kecamatan`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -454,7 +457,7 @@ INSERT INTO `mod_kecamatan` (`id`, `kode_kab`, `kode_wilayah`, `kecamatan`, `use
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_labul`
+-- Struktur dari tabel `mod_labul`
 --
 
 CREATE TABLE `mod_labul` (
@@ -474,7 +477,7 @@ CREATE TABLE `mod_labul` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_labul`
+-- Dumping data untuk tabel `mod_labul`
 --
 
 INSERT INTO `mod_labul` (`id`, `id_sekolah`, `nama_labul`, `bulan`, `tahun`, `file_labul`, `validfile`, `npsn`, `nama_sekolah`, `jenjang`, `tglentry`, `waktuentry`, `userentry`) VALUES
@@ -485,7 +488,7 @@ INSERT INTO `mod_labul` (`id`, `id_sekolah`, `nama_labul`, `bulan`, `tahun`, `fi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_mapel`
+-- Struktur dari tabel `mod_mapel`
 --
 
 CREATE TABLE `mod_mapel` (
@@ -498,7 +501,7 @@ CREATE TABLE `mod_mapel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_mapel`
+-- Dumping data untuk tabel `mod_mapel`
 --
 
 INSERT INTO `mod_mapel` (`id`, `mapel`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -588,7 +591,7 @@ INSERT INTO `mod_mapel` (`id`, `mapel`, `jenjang`, `userentry`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_mutasi`
+-- Struktur dari tabel `mod_mutasi`
 --
 
 CREATE TABLE `mod_mutasi` (
@@ -614,17 +617,19 @@ CREATE TABLE `mod_mutasi` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_mutasi`
+-- Dumping data untuk tabel `mod_mutasi`
 --
 
 INSERT INTO `mod_mutasi` (`id`, `id_sekolah`, `nisn`, `nama`, `jenis_kel`, `kelas`, `jurusan`, `pkeahlian`, `asal_sekolah`, `no_surat`, `mutasi`, `tahun`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
 (7, 1, '1212121212', 'Putra', 'L', 'X', 'IPA', NULL, '', 'fsdfsdfs', 'keluar', '2023/2024', 'dfsfsfdf', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-02 11:41:05', '2022-08-02 11:41:05'),
-(4, 1, '4444444444', 'Fawad', 'L', 'X', 'IPA', NULL, 'TYY', '134A/122/2022', 'pindahan', '2024/2025', 'suka cabut', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-01 10:47:50', '2022-08-01 10:47:50');
+(4, 1, '4444444444', 'Fawad', 'L', 'X', 'IPA', NULL, 'TYY', '134A/122/2022', 'pindahan', '2024/2025', 'suka cabut', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-01 10:47:50', '2022-08-01 10:47:50'),
+(10, 86, '5656565650', 'test', 'P', 'X', NULL, 'TBSM', 'SMA Negeri 2', 'dsasd/asdasdasd/2202', 'pindahan', '2023/2024', 'pindah', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:51:42', '2022-08-14 07:51:42'),
+(11, 86, '2323343434', 'test', 'L', 'X', NULL, 'TBSM', NULL, 'sdfsdf/sdfsdfs/32424', 'keluar', '2024/2025', 'berjudi', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:52:44', '2022-08-14 07:52:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_pegawai`
+-- Struktur dari tabel `mod_pegawai`
 --
 
 CREATE TABLE `mod_pegawai` (
@@ -665,7 +670,7 @@ CREATE TABLE `mod_pegawai` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_pegawai`
+-- Dumping data untuk tabel `mod_pegawai`
 --
 
 INSERT INTO `mod_pegawai` (`id`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `golruang`, `tingkat`, `jurusan`, `thnijazah`, `agama`, `status`, `tmtpegawai`, `tmtsekolah`, `nmdiklat`, `tdiklat`, `lmdiklat`, `thndiklat`, `kehadiran`, `mk_thn`, `mk_bln`, `foto`, `sts_vaksin`, `tgl_vaksin`, `lok_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -674,7 +679,7 @@ INSERT INTO `mod_pegawai` (`id`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nama`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_profil`
+-- Struktur dari tabel `mod_profil`
 --
 
 CREATE TABLE `mod_profil` (
@@ -715,60 +720,59 @@ CREATE TABLE `mod_profil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_sarana`
+-- Struktur dari tabel `mod_sarana`
 --
 
 CREATE TABLE `mod_sarana` (
   `id` int(11) NOT NULL,
   `sarana` varchar(50) NOT NULL,
-  `jenjang` varchar(10) NOT NULL,
   `userentry` varchar(50) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mod_sarana`
+-- Dumping data untuk tabel `mod_sarana`
 --
 
-INSERT INTO `mod_sarana` (`id`, `sarana`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(1, 'Ruang Kepala Sekolah', 'SMA', 'Abii Hutabarat', '2022-08-05 00:18:02', '2022-08-05 00:26:18'),
-(2, 'Ruang Wakasek', 'SMA', 'Abii Hutabarat', '2022-08-05 00:18:23', '2022-08-05 00:18:23'),
-(3, 'Ruang Guru', 'SMA', 'Abii Hutabarat', '2022-08-05 00:18:33', '2022-08-05 00:18:33'),
-(4, 'Ruang Tendik', 'SMA', 'Abii Hutabarat', '2022-08-05 00:18:45', '2022-08-05 00:18:45'),
-(5, 'Ruang Operator', 'SMA', 'Abii Hutabarat', '2022-08-05 00:18:54', '2022-08-05 00:18:54'),
-(6, 'Ruang Kelas', 'SMA', 'Abii Hutabarat', '2022-08-05 00:19:12', '2022-08-05 00:19:12'),
-(7, 'Ruang TU', 'SMA', 'Abii Hutabarat', '2022-08-05 00:19:21', '2022-08-05 00:19:21'),
-(8, 'Ruang Belajar Agama Kristen', 'SMA', 'Abii Hutabarat', '2022-08-05 00:19:39', '2022-08-05 00:19:39'),
-(9, 'Ruang BK', 'SMA', 'Abii Hutabarat', '2022-08-05 00:19:49', '2022-08-05 00:19:49'),
-(10, 'Ruang MGMP', 'SMA', 'Abii Hutabarat', '2022-08-05 00:19:58', '2022-08-05 00:19:58'),
-(11, 'Ruang Aula', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:07', '2022-08-05 00:20:07'),
-(12, 'Ruang UKS', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:16', '2022-08-05 00:20:16'),
-(13, 'Ruang OSIS', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:26', '2022-08-05 00:20:26'),
-(14, 'Ruang Pramuka', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:37', '2022-08-05 00:20:37'),
-(15, 'Ruang Komite', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:48', '2022-08-05 00:20:48'),
-(16, 'Ruang Piket', 'SMA', 'Abii Hutabarat', '2022-08-05 00:20:56', '2022-08-05 00:20:56'),
-(17, 'Gudang Sekolah', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:08', '2022-08-05 00:21:08'),
-(18, 'Gudang Sekolah', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:10', '2022-08-05 00:21:10'),
-(19, 'WC', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:18', '2022-08-05 00:21:18'),
-(20, 'Kantin', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:25', '2022-08-05 00:21:25'),
-(21, 'Parkir Guru', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:35', '2022-08-05 00:21:35'),
-(22, 'Parkir Siswa', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:42', '2022-08-05 00:21:42'),
-(23, 'Bank Sampah', 'SMA', 'Abii Hutabarat', '2022-08-05 00:21:52', '2022-08-05 00:21:52'),
-(24, 'Tempat Ibadah', 'SMA', 'Abii Hutabarat', '2022-08-05 00:22:01', '2022-08-05 00:22:01'),
-(25, 'Laboratorium Fisika', 'SMA', 'Abii Hutabarat', '2022-08-05 00:22:32', '2022-08-05 00:22:32'),
-(26, 'Laboratorium Kimia', 'SMA', 'Abii Hutabarat', '2022-08-05 00:22:59', '2022-08-05 00:22:59'),
-(27, 'Laboratorium Biologi', 'SMA', 'Abii Hutabarat', '2022-08-05 00:23:15', '2022-08-05 00:23:15'),
-(28, 'Laboratorium Bahasa', 'SMA', 'Abii Hutabarat', '2022-08-05 00:23:35', '2022-08-05 00:23:35'),
-(29, 'Laboratorium Komputer', 'SMA', 'Abii Hutabarat', '2022-08-05 00:23:49', '2022-08-05 00:23:49'),
-(30, 'Laboratorium IPS', 'SMA', 'Abii Hutabarat', '2022-08-05 00:24:03', '2022-08-05 00:24:03'),
-(31, 'Laboratorium Matematika', 'SMA', 'Abii Hutabarat', '2022-08-05 00:24:23', '2022-08-05 00:24:23'),
-(32, 'Perpustakaan', 'SMA', 'Abii Hutabarat', '2022-08-05 00:24:33', '2022-08-05 00:24:33');
+INSERT INTO `mod_sarana` (`id`, `sarana`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, 'Ruang Kepala Sekolah', 'Abii Hutabarat', '2022-08-05 00:18:02', '2022-08-14 07:43:16'),
+(2, 'Ruang Wakasek', 'Abii Hutabarat', '2022-08-05 00:18:23', '2022-08-05 00:18:23'),
+(3, 'Ruang Guru', 'Abii Hutabarat', '2022-08-05 00:18:33', '2022-08-05 00:18:33'),
+(4, 'Ruang Tendik', 'Abii Hutabarat', '2022-08-05 00:18:45', '2022-08-05 00:18:45'),
+(5, 'Ruang Operator', 'Abii Hutabarat', '2022-08-05 00:18:54', '2022-08-05 00:18:54'),
+(6, 'Ruang Kelas', 'Abii Hutabarat', '2022-08-05 00:19:12', '2022-08-05 00:19:12'),
+(7, 'Ruang TU', 'Abii Hutabarat', '2022-08-05 00:19:21', '2022-08-05 00:19:21'),
+(8, 'Ruang Belajar Agama Kristen', 'Abii Hutabarat', '2022-08-05 00:19:39', '2022-08-05 00:19:39'),
+(9, 'Ruang BK', 'Abii Hutabarat', '2022-08-05 00:19:49', '2022-08-05 00:19:49'),
+(10, 'Ruang MGMP', 'Abii Hutabarat', '2022-08-05 00:19:58', '2022-08-05 00:19:58'),
+(11, 'Ruang Aula', 'Abii Hutabarat', '2022-08-05 00:20:07', '2022-08-05 00:20:07'),
+(12, 'Ruang UKS', 'Abii Hutabarat', '2022-08-05 00:20:16', '2022-08-05 00:20:16'),
+(13, 'Ruang OSIS', 'Abii Hutabarat', '2022-08-05 00:20:26', '2022-08-05 00:20:26'),
+(14, 'Ruang Pramuka', 'Abii Hutabarat', '2022-08-05 00:20:37', '2022-08-05 00:20:37'),
+(15, 'Ruang Komite', 'Abii Hutabarat', '2022-08-05 00:20:48', '2022-08-05 00:20:48'),
+(16, 'Ruang Piket', 'Abii Hutabarat', '2022-08-05 00:20:56', '2022-08-05 00:20:56'),
+(17, 'Gudang Sekolah', 'Abii Hutabarat', '2022-08-05 00:21:08', '2022-08-05 00:21:08'),
+(18, 'Gudang Sekolah', 'Abii Hutabarat', '2022-08-05 00:21:10', '2022-08-05 00:21:10'),
+(19, 'WC', 'Abii Hutabarat', '2022-08-05 00:21:18', '2022-08-05 00:21:18'),
+(20, 'Kantin', 'Abii Hutabarat', '2022-08-05 00:21:25', '2022-08-05 00:21:25'),
+(21, 'Parkir Guru', 'Abii Hutabarat', '2022-08-05 00:21:35', '2022-08-05 00:21:35'),
+(22, 'Parkir Siswa', 'Abii Hutabarat', '2022-08-05 00:21:42', '2022-08-05 00:21:42'),
+(23, 'Bank Sampah', 'Abii Hutabarat', '2022-08-05 00:21:52', '2022-08-05 00:21:52'),
+(24, 'Tempat Ibadah', 'Abii Hutabarat', '2022-08-05 00:22:01', '2022-08-05 00:22:01'),
+(25, 'Laboratorium Fisika', 'Abii Hutabarat', '2022-08-05 00:22:32', '2022-08-05 00:22:32'),
+(26, 'Laboratorium Kimia', 'Abii Hutabarat', '2022-08-05 00:22:59', '2022-08-05 00:22:59'),
+(27, 'Laboratorium Biologi', 'Abii Hutabarat', '2022-08-05 00:23:15', '2022-08-05 00:23:15'),
+(28, 'Laboratorium Bahasa', 'Abii Hutabarat', '2022-08-05 00:23:35', '2022-08-05 00:23:35'),
+(29, 'Laboratorium Komputer', 'Abii Hutabarat', '2022-08-05 00:23:49', '2022-08-05 00:23:49'),
+(30, 'Laboratorium IPS', 'Abii Hutabarat', '2022-08-05 00:24:03', '2022-08-05 00:24:03'),
+(31, 'Laboratorium Matematika', 'Abii Hutabarat', '2022-08-05 00:24:23', '2022-08-05 00:24:23'),
+(32, 'Perpustakaan', 'Abii Hutabarat', '2022-08-05 00:24:33', '2022-08-05 00:24:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_sarpras`
+-- Struktur dari tabel `mod_sarpras`
 --
 
 CREATE TABLE `mod_sarpras` (
@@ -787,16 +791,17 @@ CREATE TABLE `mod_sarpras` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_sarpras`
+-- Dumping data untuk tabel `mod_sarpras`
 --
 
 INSERT INTO `mod_sarpras` (`id`, `id_sekolah`, `prasarana`, `kondisi`, `jumlah`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(8, 1, 'Ruang Wakasek', 'Rusak Ringan', '1', 'segera', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:07:45', '2022-08-05 00:36:29');
+(8, 1, 'Ruang Wakasek', 'Rusak Ringan', '1', 'segera', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:07:45', '2022-08-05 00:36:29'),
+(10, 86, 'Kantin', 'Baik', '1', 'sdasdas', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:54:33', '2022-08-14 07:54:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_sekolah`
+-- Struktur dari tabel `mod_sekolah`
 --
 
 CREATE TABLE `mod_sekolah` (
@@ -812,7 +817,7 @@ CREATE TABLE `mod_sekolah` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_sekolah`
+-- Dumping data untuk tabel `mod_sekolah`
 --
 
 INSERT INTO `mod_sekolah` (`id`, `npsn`, `jenjang`, `sekolah`, `kabupaten`, `status_sekolah`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -948,7 +953,7 @@ INSERT INTO `mod_sekolah` (`id`, `npsn`, `jenjang`, `sekolah`, `kabupaten`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_siswa`
+-- Struktur dari tabel `mod_siswa`
 --
 
 CREATE TABLE `mod_siswa` (
@@ -983,7 +988,7 @@ CREATE TABLE `mod_siswa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `mod_siswa`
+-- Dumping data untuk tabel `mod_siswa`
 --
 
 INSERT INTO `mod_siswa` (`id`, `id_sekolah`, `nisn`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `umur`, `agama`, `alamat`, `kelas`, `pkeahlian`, `jurusan`, `status`, `nohp`, `program_pip`, `tahun_msk`, `asal_sekolah`, `no_surat`, `sts_mutasi`, `keterangan`, `sts_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
@@ -993,7 +998,7 @@ INSERT INTO `mod_siswa` (`id`, `id_sekolah`, `nisn`, `nama`, `tempat_lahir`, `tg
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_suratmasuk`
+-- Struktur dari tabel `mod_suratmasuk`
 --
 
 CREATE TABLE `mod_suratmasuk` (
@@ -1022,7 +1027,28 @@ CREATE TABLE `mod_suratmasuk` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mod_user`
+-- Struktur dari tabel `mod_ta`
+--
+
+CREATE TABLE `mod_ta` (
+  `id` int(11) NOT NULL,
+  `tahun_akademik` varchar(255) NOT NULL,
+  `userentry` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_ta`
+--
+
+INSERT INTO `mod_ta` (`id`, `tahun_akademik`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, '2022/2023', 'Abii Hutabarat', '2022-08-14 08:29:50', '2022-08-14 08:30:22');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_user`
 --
 
 CREATE TABLE `mod_user` (
@@ -1045,7 +1071,7 @@ CREATE TABLE `mod_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `mod_user`
+-- Dumping data untuk tabel `mod_user`
 --
 
 INSERT INTO `mod_user` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `nik`, `nama`, `nohp`, `email`, `username`, `password`, `foto`, `level`, `status`, `created_at`, `updated_at`) VALUES
@@ -1058,281 +1084,293 @@ INSERT INTO `mod_user` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `
 --
 
 --
--- Indexes for table `mod_akun`
+-- Indeks untuk tabel `mod_akun`
 --
 ALTER TABLE `mod_akun`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_arsip_labul`
+-- Indeks untuk tabel `mod_arsip_labul`
 --
 ALTER TABLE `mod_arsip_labul`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_bangunan`
+-- Indeks untuk tabel `mod_bangunan`
 --
 ALTER TABLE `mod_bangunan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_buku_induk`
+-- Indeks untuk tabel `mod_buku_induk`
 --
 ALTER TABLE `mod_buku_induk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_desa`
+-- Indeks untuk tabel `mod_desa`
 --
 ALTER TABLE `mod_desa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_golongan`
+-- Indeks untuk tabel `mod_golongan`
 --
 ALTER TABLE `mod_golongan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_guru`
+-- Indeks untuk tabel `mod_guru`
 --
 ALTER TABLE `mod_guru`
   ADD PRIMARY KEY (`id_guru`);
 
 --
--- Indexes for table `mod_inventaris`
+-- Indeks untuk tabel `mod_inventaris`
 --
 ALTER TABLE `mod_inventaris`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_jenjang`
+-- Indeks untuk tabel `mod_jenjang`
 --
 ALTER TABLE `mod_jenjang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_kabupaten`
+-- Indeks untuk tabel `mod_kabupaten`
 --
 ALTER TABLE `mod_kabupaten`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_kebutuhan`
+-- Indeks untuk tabel `mod_kebutuhan`
 --
 ALTER TABLE `mod_kebutuhan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_kecamatan`
+-- Indeks untuk tabel `mod_kecamatan`
 --
 ALTER TABLE `mod_kecamatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_labul`
+-- Indeks untuk tabel `mod_labul`
 --
 ALTER TABLE `mod_labul`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_mapel`
+-- Indeks untuk tabel `mod_mapel`
 --
 ALTER TABLE `mod_mapel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_mutasi`
+-- Indeks untuk tabel `mod_mutasi`
 --
 ALTER TABLE `mod_mutasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_pegawai`
+-- Indeks untuk tabel `mod_pegawai`
 --
 ALTER TABLE `mod_pegawai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_profil`
+-- Indeks untuk tabel `mod_profil`
 --
 ALTER TABLE `mod_profil`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_sarana`
+-- Indeks untuk tabel `mod_sarana`
 --
 ALTER TABLE `mod_sarana`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_sarpras`
+-- Indeks untuk tabel `mod_sarpras`
 --
 ALTER TABLE `mod_sarpras`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_sekolah`
+-- Indeks untuk tabel `mod_sekolah`
 --
 ALTER TABLE `mod_sekolah`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_siswa`
+-- Indeks untuk tabel `mod_siswa`
 --
 ALTER TABLE `mod_siswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_suratmasuk`
+-- Indeks untuk tabel `mod_suratmasuk`
 --
 ALTER TABLE `mod_suratmasuk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mod_user`
+-- Indeks untuk tabel `mod_ta`
+--
+ALTER TABLE `mod_ta`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mod_user`
 --
 ALTER TABLE `mod_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `mod_akun`
+-- AUTO_INCREMENT untuk tabel `mod_akun`
 --
 ALTER TABLE `mod_akun`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT for table `mod_arsip_labul`
+-- AUTO_INCREMENT untuk tabel `mod_arsip_labul`
 --
 ALTER TABLE `mod_arsip_labul`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `mod_bangunan`
+-- AUTO_INCREMENT untuk tabel `mod_bangunan`
 --
 ALTER TABLE `mod_bangunan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `mod_buku_induk`
+-- AUTO_INCREMENT untuk tabel `mod_buku_induk`
 --
 ALTER TABLE `mod_buku_induk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `mod_desa`
+-- AUTO_INCREMENT untuk tabel `mod_desa`
 --
 ALTER TABLE `mod_desa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `mod_golongan`
+-- AUTO_INCREMENT untuk tabel `mod_golongan`
 --
 ALTER TABLE `mod_golongan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `mod_guru`
+-- AUTO_INCREMENT untuk tabel `mod_guru`
 --
 ALTER TABLE `mod_guru`
   MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT for table `mod_inventaris`
+-- AUTO_INCREMENT untuk tabel `mod_inventaris`
 --
 ALTER TABLE `mod_inventaris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `mod_jenjang`
+-- AUTO_INCREMENT untuk tabel `mod_jenjang`
 --
 ALTER TABLE `mod_jenjang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `mod_kabupaten`
+-- AUTO_INCREMENT untuk tabel `mod_kabupaten`
 --
 ALTER TABLE `mod_kabupaten`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `mod_kebutuhan`
+-- AUTO_INCREMENT untuk tabel `mod_kebutuhan`
 --
 ALTER TABLE `mod_kebutuhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `mod_kecamatan`
+-- AUTO_INCREMENT untuk tabel `mod_kecamatan`
 --
 ALTER TABLE `mod_kecamatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `mod_labul`
+-- AUTO_INCREMENT untuk tabel `mod_labul`
 --
 ALTER TABLE `mod_labul`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `mod_mapel`
+-- AUTO_INCREMENT untuk tabel `mod_mapel`
 --
 ALTER TABLE `mod_mapel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `mod_mutasi`
+-- AUTO_INCREMENT untuk tabel `mod_mutasi`
 --
 ALTER TABLE `mod_mutasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `mod_pegawai`
+-- AUTO_INCREMENT untuk tabel `mod_pegawai`
 --
 ALTER TABLE `mod_pegawai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `mod_profil`
+-- AUTO_INCREMENT untuk tabel `mod_profil`
 --
 ALTER TABLE `mod_profil`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `mod_sarana`
+-- AUTO_INCREMENT untuk tabel `mod_sarana`
 --
 ALTER TABLE `mod_sarana`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `mod_sarpras`
+-- AUTO_INCREMENT untuk tabel `mod_sarpras`
 --
 ALTER TABLE `mod_sarpras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `mod_sekolah`
+-- AUTO_INCREMENT untuk tabel `mod_sekolah`
 --
 ALTER TABLE `mod_sekolah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
--- AUTO_INCREMENT for table `mod_siswa`
+-- AUTO_INCREMENT untuk tabel `mod_siswa`
 --
 ALTER TABLE `mod_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
--- AUTO_INCREMENT for table `mod_suratmasuk`
+-- AUTO_INCREMENT untuk tabel `mod_suratmasuk`
 --
 ALTER TABLE `mod_suratmasuk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `mod_user`
+-- AUTO_INCREMENT untuk tabel `mod_ta`
+--
+ALTER TABLE `mod_ta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_user`
 --
 ALTER TABLE `mod_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;

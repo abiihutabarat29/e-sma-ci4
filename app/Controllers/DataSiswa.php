@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\SiswaModel;
+use App\Models\taModel;
 use CodeIgniter\Config\Config;
 
 class DataSiswa extends BaseController
 {
     protected $siswaModel;
+    protected $taModel;
     public function __construct()
     {
         $this->siswaModel = new SiswaModel();
+        $this->taModel = new TaModel();
     }
 
     //funsgi api
@@ -35,10 +38,12 @@ class DataSiswa extends BaseController
     }
     public function add()
     {
+        $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Data Siswa',
             'title' => 'Form Tambah Data Siswa',
             'isi' => 'master/data-siswa/add',
+            'tahun' => $tahun,
             'validation' => \Config\Services::validation()
         );
         return view('layout/wrapper', $data);
@@ -288,10 +293,12 @@ class DataSiswa extends BaseController
 
     public function edit($id)
     {
+        $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Data Siswa',
             'title' => 'Form Edit Data Siswa',
             'isi' => 'master/data-siswa/edit',
+            'tahun' => $tahun,
             'validation' => \Config\Services::validation(),
             'data' => $this->siswaModel->where('id', $id)->first(),
         );

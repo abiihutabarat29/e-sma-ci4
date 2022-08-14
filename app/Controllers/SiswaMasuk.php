@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\MasukModel;
 use App\Models\SiswaModel;
+use App\Models\TaModel;
 use CodeIgniter\Config\Config;
 
 class SiswaMasuk extends BaseController
 {
     protected $masukModel;
     protected $siswaModel;
+    protected $taModel;
     public function __construct()
     {
         $this->masukModel = new MasukModel();
         $this->siswaModel = new SiswaModel();
+        $this->taModel = new TaModel();
     }
 
     //funsgi api
@@ -39,10 +42,12 @@ class SiswaMasuk extends BaseController
     }
     public function add()
     {
+        $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Mutasi Siswa Masuk',
             'title' => 'Form Tambah Mutasi Siswa Masuk',
             'isi' => 'master/data-siswa-masuk/add',
+            'tahun' => $tahun,
             'validation' => \Config\Services::validation()
         );
         return view('layout/wrapper', $data);

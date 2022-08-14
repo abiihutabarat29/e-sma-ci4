@@ -111,6 +111,11 @@
                                         <span class="sub-item">Data Golongan</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?= base_url('data-tahun-akademik') ?>">
+                                        <span class="sub-item">Data Tahun Akademik</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

@@ -179,17 +179,11 @@
                             </div>
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('thnmasuk')) ? 'has-error' : ''; ?>">
-                                    <label>Tahun Masuk / Tahun Pelajaran</label>
-                                    <select name="thnmasuk" class="form-control">
+                                    <select name="thnmasuk" class="form-control" style="width: 100%">
                                         <option><?= (old('thnmasuk')) ? old('thnmasuk') : $data['tahun_msk']; ?></option>
-                                        <option value="2022/2023">2022/2023</option>
-                                        <option value="2023/2024">2023/2024</option>
-                                        <option value="2024/2025">2024/2025</option>
-                                        <option value="2025/2026">2025/2026</option>
-                                        <option value="2026/2027">2026/2027</option>
-                                        <option value="2027/2028">2027/2028</option>
-                                        <option value="2028/2029">2028/2029</option>
-                                        <option value="2029/2030">2029/2030</option>
+                                        <?php foreach ($tahun as $r) : ?>
+                                            <option value="<?= $r['tahun_akademik'] ?>"><?= $r['tahun_akademik'] ?></option>
+                                        <?php endforeach ?>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('thnmasuk'); ?></small>

@@ -57,6 +57,8 @@ class Filters extends BaseConfig
 				'data-sarana/*',
 				'data-golongan',
 				'data-golongan/*',
+				'data-tahun-akademik',
+				'data-tahun-akademik/*',
 				'api/data-sekolah',
 				'api/data-sekolah/*',
 			]],
