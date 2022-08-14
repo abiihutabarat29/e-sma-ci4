@@ -246,7 +246,7 @@
     }
 </script>
 <script>
-    // api data siswa - data siswa keluar
+    // api data siswa - data siswa keluar sma
     $('#siswa').on('change', (event) => {
         getSiswa(event.target.value).then(nmsiswa => {
             $('#nisn').val(nmsiswa.nisn);
@@ -254,6 +254,23 @@
             $('#jenkel').val(nmsiswa.jenis_kel);
             $('#kelas').val(nmsiswa.kelas);
             $('#jurusan').val(nmsiswa.jurusan);
+        });
+    });
+    async function getSiswa(id) {
+        let response = await fetch('/api/data-siswa/' + id)
+        let data = await response.json();
+        return data;
+    }
+</script>
+<script>
+    // api data siswa - data siswa keluar smk
+    $('#siswasmk').on('change', (event) => {
+        getSiswa(event.target.value).then(nmsiswa => {
+            $('#nisn').val(nmsiswa.nisn);
+            $('#nama').val(nmsiswa.nama);
+            $('#jenkel').val(nmsiswa.jenis_kel);
+            $('#kelas').val(nmsiswa.kelas);
+            $('#paketk').val(nmsiswa.pkeahlian);
         });
     });
     async function getSiswa(id) {
