@@ -223,7 +223,7 @@
     });
 </script>
 <script>
-    // api data siswa - buku induk
+    // api data siswa - buku induk sma
     $('#tamat').on('change', (event) => {
         getSiswaTamat(event.target.value).then(nmsiswa => {
             $('#nisn').val(nmsiswa.nisn);
@@ -235,6 +235,29 @@
             $('#alamat').val(nmsiswa.alamat);
             $('#kelas').val(nmsiswa.kelas);
             $('#jurusan').val(nmsiswa.jurusan);
+            $('#nohp').val(nmsiswa.nohp);
+            $('#thnmasuk').val(nmsiswa.tahun_msk);
+        });
+    });
+    async function getSiswaTamat(id) {
+        let response = await fetch('/api/data-siswa/' + id)
+        let data = await response.json();
+        return data;
+    }
+</script>
+<script>
+    // api data siswa - buku induk smk
+    $('#tamatsmk').on('change', (event) => {
+        getSiswaTamat(event.target.value).then(nmsiswa => {
+            $('#nisn').val(nmsiswa.nisn);
+            $('#nama').val(nmsiswa.nama);
+            $('#tlahir').val(nmsiswa.tempat_lahir);
+            $('#tgllhr').val(nmsiswa.tgl_lahir);
+            $('#jenkel').val(nmsiswa.jenis_kel);
+            $('#agama').val(nmsiswa.agama);
+            $('#alamat').val(nmsiswa.alamat);
+            $('#kelas').val(nmsiswa.kelas);
+            $('#paketk').val(nmsiswa.pkeahlian);
             $('#nohp').val(nmsiswa.nohp);
             $('#thnmasuk').val(nmsiswa.tahun_msk);
         });

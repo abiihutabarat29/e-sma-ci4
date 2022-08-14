@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group <?= ($validation->hasError('tamat')) ? 'has-error' : ''; ?>">
-                                    <select name="tamat" id="tamat" class="js-example-language" style="width: 40%">
+                                    <select name="tamat" id="tamatsmk" class="js-example-language" style="width: 40%">
                                         <option selected disabled><?= (old('tamat')) ? old('tamat') : ".::Pilih Siswa::." ?></option>
                                         <?php foreach ($siswa as $r) : ?>
                                             <option value="<?= $r['id'] ?>"><?= $r['nama'] ?> (<?= $r['nisn'] ?>)</option>
@@ -91,12 +91,22 @@
                                     <input type="text" name="kelas" class="form-control" id="kelas" value="<?= old('kelas'); ?>" readonly>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Jurusan</label>
-                                    <input type="text" name="jurusan" class="form-control" id="jurusan" value="<?= old('jurusan'); ?>" readonly>
+                            <?php if (session()->get('level') == '1') { ?>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Jurusan</label>
+                                        <input type="text" name="jurusan" class="form-control" id="jurusan" value="<?= old('jurusan'); ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
+                            <?php if (session()->get('level') == '2') { ?>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group">
+                                        <label>Paket Keahlian</label>
+                                        <input type="text" name="paketk" class="form-control" id="paketk" value="<?= old('paketk'); ?>" readonly>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No.HP</label>

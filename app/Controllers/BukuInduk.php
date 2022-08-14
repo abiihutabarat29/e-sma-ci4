@@ -43,48 +43,93 @@ class BukuInduk extends BaseController
     }
     public function save()
     {
-        //Validasi input
-        if (!$this->validate([
-            'tamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Siswa harus di pilih.',
-                ]
-            ],
-            'thntamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tahun Tamat harus di pilih.',
-                ]
-            ],
-        ])) {
-            return redirect()->to('/buku-induk/add')->withInput();
+        if (session()->get('level') == '1') {
+            //Validasi input
+            if (!$this->validate([
+                'tamat' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Siswa harus di pilih.',
+                    ]
+                ],
+                'thntamat' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Tahun Tamat harus di pilih.',
+                    ]
+                ],
+            ])) {
+                return redirect()->to('/buku-induk/add')->withInput();
+            }
+            $id = $this->request->getPost('tamat');
+            $data = [
+                'nisn'                => $this->request->getPost('nisn'),
+                'nama'                => $this->request->getPost('nama'),
+                'tempat_lahir'        => $this->request->getPost('tlahir'),
+                'tgl_lahir'           => $this->request->getPost('tgllhr'),
+                'jenis_kel'           => $this->request->getPost('jenkel'),
+                'agama'               => $this->request->getPost('agama'),
+                'alamat'              => $this->request->getPost('alamat'),
+                'kelas'               => $this->request->getPost('kelas'),
+                'jurusan'             => $this->request->getPost('jurusan'),
+                'status'              => 'Non-Aktif',
+                'nohp'                => $this->request->getPost('nohp'),
+                'masuk'               => $this->request->getPost('thnmasuk'),
+                'tamat'               => $this->request->getPost('thntamat'),
+                'id_sekolah'          => session()->get('id_sekolah'),
+                'npsn'                => session()->get('npsn'),
+                'nama_sekolah'        => session()->get('nama_sekolah'),
+                'jenjang'             => session()->get('jenjang'),
+                'userentry'           => session()->get('nama'),
+            ];
+            $this->bukuindukModel->save($data);
+            $this->siswaModel->delete($id);
+            session()->setFlashdata('m', 'Ditambahkan');
+            return redirect()->to(base_url('buku-induk'));
+        } elseif (session()->get('level') == '2') {
+            //Validasi input
+            if (!$this->validate([
+                'tamat' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Siswa harus di pilih.',
+                    ]
+                ],
+                'thntamat' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Tahun Tamat harus di pilih.',
+                    ]
+                ],
+            ])) {
+                return redirect()->to('/buku-induk/add')->withInput();
+            }
+            $id = $this->request->getPost('tamat');
+            $data = [
+                'nisn'                => $this->request->getPost('nisn'),
+                'nama'                => $this->request->getPost('nama'),
+                'tempat_lahir'        => $this->request->getPost('tlahir'),
+                'tgl_lahir'           => $this->request->getPost('tgllhr'),
+                'jenis_kel'           => $this->request->getPost('jenkel'),
+                'agama'               => $this->request->getPost('agama'),
+                'alamat'              => $this->request->getPost('alamat'),
+                'kelas'               => $this->request->getPost('kelas'),
+                'pkeahlian'           => $this->request->getPost('paketk'),
+                'status'              => 'Non-Aktif',
+                'nohp'                => $this->request->getPost('nohp'),
+                'masuk'               => $this->request->getPost('thnmasuk'),
+                'tamat'               => $this->request->getPost('thntamat'),
+                'id_sekolah'          => session()->get('id_sekolah'),
+                'npsn'                => session()->get('npsn'),
+                'nama_sekolah'        => session()->get('nama_sekolah'),
+                'jenjang'             => session()->get('jenjang'),
+                'userentry'           => session()->get('nama'),
+            ];
+            $this->bukuindukModel->save($data);
+            $this->siswaModel->delete($id);
+            session()->setFlashdata('m', 'Ditambahkan');
+            return redirect()->to(base_url('buku-induk'));
         }
-        $id = $this->request->getPost('tamat');
-        $data = [
-            'nisn'                => $this->request->getPost('nisn'),
-            'nama'                => $this->request->getPost('nama'),
-            'tempat_lahir'        => $this->request->getPost('tlahir'),
-            'tgl_lahir'           => $this->request->getPost('tgllhr'),
-            'jenis_kel'           => $this->request->getPost('jenkel'),
-            'agama'               => $this->request->getPost('agama'),
-            'alamat'              => $this->request->getPost('alamat'),
-            'kelas'               => $this->request->getPost('kelas'),
-            'jurusan'             => $this->request->getPost('jurusan'),
-            'status'              => 'Non-Aktif',
-            'nohp'                => $this->request->getPost('nohp'),
-            'masuk'               => $this->request->getPost('thnmasuk'),
-            'tamat'               => $this->request->getPost('thntamat'),
-            'id_sekolah'          => session()->get('id_sekolah'),
-            'npsn'                => session()->get('npsn'),
-            'nama_sekolah'        => session()->get('nama_sekolah'),
-            'jenjang'             => session()->get('jenjang'),
-            'userentry'           => session()->get('nama'),
-        ];
-        $this->bukuindukModel->save($data);
-        $this->siswaModel->delete($id);
-        session()->setFlashdata('m', 'Ditambahkan');
-        return redirect()->to(base_url('buku-induk'));
     }
 
     public function delete($id)
