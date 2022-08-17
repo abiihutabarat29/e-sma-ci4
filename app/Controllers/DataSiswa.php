@@ -558,9 +558,9 @@ class DataSiswa extends BaseController
         $npsn = session()->get('npsn');
         $datasiswa = $this->siswaModel->where('npsn =', $npsn)->findAll();
         $data = array(
-            'title' => 'Data Siswa',
+            'title' => 'Naik Kelas',
             'datasiswa' => $datasiswa,
-            'isi' => 'master/naik-kelas/data',
+            'isi' => 'master/data-siswa/up',
             'validation' => \Config\Services::validation()
         );
 
@@ -568,119 +568,21 @@ class DataSiswa extends BaseController
     }
     public function naik()
     {
-        //Validasi input
-        if (!$this->validate([
-            'nisn' => [
-                'rules' => 'required|numeric|max_length[10]|min_length[10]|is_unique[mod_siswa.nisn]',
-                'errors' => [
-                    'required' => 'NISN tidak boleh kosong.',
-                    'numeric' => 'NISN harus angka.',
-                    'max_length' => 'NISN maximal 10 digit.',
-                    'min_length' => 'NISN minimal 10 digit.',
-                    'is_unique' => 'NISN sudah ada.'
-                ]
-            ],
-            'nmsiswa' => [
-                'rules' => 'required|alpha_space',
-                'errors' => [
-                    'required' => 'Nama Siswa tidak boleh kosong.',
-                    'alpha_space' => 'Nama Siswa harus huruf dan spasi.'
-                ]
-            ],
-            'tlahir' => [
-                'rules' => 'required|alpha_numeric_punct',
-                'errors' => [
-                    'required' => 'Tempat Lahir tidak boleh kosong.',
-                    'alpha_numeric_punct' => 'Tempat Lahir berisi karakter yang tidak didukung.'
-                ]
-            ],
-            'tgllhr' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal Lahir tidak boleh kosong.',
-                ]
-            ],
-            'jenkel' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jenis Kelamin harus di pilih.',
-                ]
-            ],
-            'umur' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Umur harus di pilih.',
-                ]
-            ],
-            'agama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Agama harus di pilih.',
-                ]
-            ],
-            'alamat' => [
-                'rules' => 'required|alpha_numeric_punct',
-                'errors' => [
-                    'required' => 'Alamat tidak boleh kosong.',
-                    'alpha_numeric_punct' => 'Alamat berisi karakter yang tidak didukung.'
-                ]
-            ],
-            'kelas' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kelas harus di pilih.',
-                ]
-            ],
-            'jurusan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jurusan harus di pilih.',
-                ]
-            ],
-            'status' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Status harus di pilih.',
-                ]
-            ],
-            'thnmasuk' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tahun Masuk harus di pilih.',
-                ]
-            ],
-            'stsvaksin' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Status Vaksin harus di pilih.',
-                ]
-            ],
-        ])) {
-            return redirect()->to('/data-siswa/add')->withInput();
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getPost('id');
+            $kelas = $this->request->getPost('naikkelas');
+            $jumlah = count($id);
+            for ($i = 0; $i < $jumlah; $i++) {
+                $data = [
+                    'id'   => $id[$i],
+                    'kelas' => $kelas,
+                ];
+                $this->siswaModel->save($data);
+            }
+            $msg = [
+                'sukses' => "Berhasil naik kelas"
+            ];
+            echo json_encode($msg);
         }
-        $data = [
-            'nisn'                => $this->request->getPost('nisn'),
-            'nama'                => $this->request->getPost('nmsiswa'),
-            'tempat_lahir'        => $this->request->getPost('tlahir'),
-            'tgl_lahir'           => $this->request->getPost('tgllhr'),
-            'jenis_kel'           => $this->request->getPost('jenkel'),
-            'umur'                => $this->request->getPost('umur'),
-            'agama'               => $this->request->getPost('agama'),
-            'alamat'              => $this->request->getPost('alamat'),
-            'kelas'               => $this->request->getPost('kelas'),
-            'jurusan'             => $this->request->getPost('jurusan'),
-            'status'              => $this->request->getPost('status'),
-            'nohp'                => $this->request->getPost('nohp'),
-            'tahun_msk'           => $this->request->getPost('thnmasuk'),
-            'sts_vaksin'          => $this->request->getPost('stsvaksin'),
-            'id_sekolah'          => session()->get('id_sekolah'),
-            'npsn'                => session()->get('npsn'),
-            'nama_sekolah'        => session()->get('nama_sekolah'),
-            'jenjang'             => session()->get('jenjang'),
-            'userentry'           => session()->get('nama'),
-        ];
-        $this->siswaModel->save($data);
-        session()->setFlashdata('m', 'Ditambahkan');
-        return redirect()->to(base_url('data-siswa'));
     }
 }

@@ -22,41 +22,41 @@
                     </a>
                 </div>
             </div>
-            <form action="<?= base_url('data-siswa/naik-kelas/' . $datasiwa['id']); ?>" method="post">
+            <form class="formnaikkelas" action="/data-siswa/up" method="post">
+                <?= csrf_field(); ?>
                 <div class="card-body">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-4 mt-2">
                                 <div class="form-group<?= ($validation->hasError('naikkelas')) ? 'has-error' : ''; ?>">
-                                    <select name="naikkelas" class="form-control">
+                                    <select name="naikkelas" class="form-control upkelas">
                                         <option selected disabled><?= (old('naikkelas')) ? (old('naikkelas')) : '.::Pilih Kelas::' ?></option>
-                                        <option>X</option>
-                                        <option>XI</option>
-                                        <option>XII</option>
+                                        <option value="X">X</option>
+                                        <option value="XI">XI</option>
+                                        <option value="XII">XII</option>
                                     </select>
                                 </div>
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('naikkelas'); ?></small>
                             </div>
                             <div class="col-md-2 mt-2">
-                                <button type="submit" class="btn btn-primary mt-2 btn-sm" name="nkelas"><i class="fa fa-arrow-up"></i> Naik Kelas</button>
+                                <button type="submit" class="btn btn-primary mt-2 btn-sm btnnaikkelas"><i class="fa fa-arrow-up"></i> Naik Kelas</button>
                             </div>
-
                             <!-- <form method="post">
-                            <div class="col-md-4 mt-2">
-                                <div class="form-group">
-                                    <select name="kls" class="form-control">
-                                        <option selected disabled><?= (old('kls')) ? (old('kls')) : '.::Pilih Kelas::' ?></option>
-                                        <option value="X">X</option>
-                                        <option value="XI">XI</option>
-                                        <option value="XII">XII</option>
-                                    </select>
+                                <div class="col-md-4 mt-2">
+                                    <div class="form-group">
+                                        <select name="kls" class="form-control">
+                                            <option selected disabled><?= (old('kls')) ? (old('kls')) : '.::Pilih Kelas::' ?></option>
+                                            <option value="X">X</option>
+                                            <option value="XI">XI</option>
+                                            <option value="XII">XII</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2 mt-2">
-                                <button type="submit" class="btn btn-primary mt-2 btn-sm" name="filterkls"><i class="fa fa-search"></i> Filter Kelas</button>
-                            </div>
-                        </form> -->
+                                <div class="col-md-2 mt-2">
+                                    <button type="submit" class="btn btn-primary mt-2 btn-sm" name="filterkls"><i class="fa fa-search"></i> Filter Kelas</button>
+                                </div>
+                            </form> -->
                         </div>
                     </div>
                     <div class="card-body">
@@ -64,7 +64,7 @@
                             <table id="add-row" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" name="select_all" id="select_all" value="" /></th>
+                                        <th><input type="checkbox" id="select_all" value="" /></th>
                                         <th>No</th>
                                         <th>NISN</th>
                                         <th>Nama</th>
@@ -77,14 +77,13 @@
                                         <?php } ?>
                                         <th>Status</th>
                                         <th>Tahun Masuk</th>
-                                        <th style="width: 10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1;
                                     foreach ($datasiswa as $key => $r) : ?>
                                         <tr>
-                                            <td><input type="checkbox" name="nisn[]" class="chk-box" value="<?= $r['nisn']; ?>"></td>
+                                            <td><input type="checkbox" name="id[]" class="chk-box" value="<?= $r['id']; ?>"></td>
                                             <td><?= $i++; ?></td>
                                             <td><?= $r['nisn']; ?></td>
                                             <td><?= $r['nama']; ?></td>
@@ -97,18 +96,6 @@
                                             <?php } ?>
                                             <td><?= $r['status']; ?></td>
                                             <td><?= $r['tahun_msk']; ?></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a href="/data-siswa/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <form action="/data-siswa/<?= $r['id']; ?>" method="post">
-                                                        <?= csrf_field(); ?>
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        <button type="submit" class="btn btn-link btn-danger btn-lg"><i class="fas fa-trash"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

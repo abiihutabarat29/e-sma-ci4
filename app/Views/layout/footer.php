@@ -39,17 +39,58 @@
 <script src="<?= base_url(); ?>/vendor/selectpicker/js/bootstrap-select.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#select_all').on('click', function() {
-            if (this.checked) {
-                $('.chk-box').each(function() {
-                    this.checked = true;
-                });
+        //select all
+        $('#select_all').click(function() {
+            if ($(this).is(':checked')) {
+                $('.chk-box').prop('checked', true);
             } else {
-                $('.chk-box').each(function() {
-                    this.checked = false;
-                });
+                $('.chk-box').prop('checked', false);
             }
         });
+        //naik kelas
+        $('.formnaikkelas').submit(function(e) {
+            e.preventDefault();
+            let jumlahdata = $('.chk-box:checked');
+            let upkelas = $('.upkelas:selected');
+            if (jumlahdata.length == 0) {
+                swal({
+                    text: "Pilih Siswa terlebih dahulu",
+                    icon: "error",
+                    Button: false,
+                    timer: 3000,
+                });
+                if (upkelas.length == 0) {
+                    swal({
+                        text: "Pilih Kelas terlebih dahulu",
+                        icon: "error",
+                        Button: false,
+                        timer: 3000,
+                    });
+                }
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            swal({
+                                text: response.sukses,
+                                icon: "success",
+                                Button: false,
+                                timer: 3000,
+                            });
+                            window.location.href = ("<?= base_url('data-siswa/naik-kelas') ?>");
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                })
+            }
+            return false;
+        })
     });
 </script>
 <script>
