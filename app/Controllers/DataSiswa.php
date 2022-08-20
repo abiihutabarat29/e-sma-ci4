@@ -566,6 +566,45 @@ class DataSiswa extends BaseController
 
         return view('layout/wrapper', $data);
     }
+    public function loadsiswa()
+    {
+        $kelas = $_GET['kls'];
+        if ($kelas == 0) {
+            $npsn = session()->get('npsn');
+            $data = $this->siswaModel->where('npsn =', $npsn)->findAll();
+        } else {
+            $npsn = session()->get('npsn');
+            $data = $this->siswaModel->where('npsn =', $npsn)
+                ->where('kelas =', $kelas)->findAll();
+        }
+        if (!empty($data)) {
+            $i = 1;
+            foreach ($data as $key => $r) : ?>
+                <tr>
+                    <td><input type="checkbox" name="id[]" class="chk-box" value="<?= $r['id']; ?>"></td>
+                    <td><?= $i++; ?></td>
+                    <td><?= $r['nisn']; ?></td>
+                    <td><?= $r['nama']; ?></td>
+                    <td><?= $r['kelas']; ?></td>
+                    <?php if (session()->get('level') == '1') { ?>
+                        <td><?= $r['jurusan']; ?></td>
+                    <?php } ?>
+                    <?php if (session()->get('level') == '2') { ?>
+                        <td><?= $r['pkeahlian']; ?></td>
+                    <?php } ?>
+                    <td><?= $r['status']; ?></td>
+                    <td><?= $r['tahun_msk']; ?></td>
+                </tr>
+            <?php endforeach ?>
+        <?php
+        } else {
+        ?>
+            <tr>
+                <td align="center">Tidak ada data</td>
+            </tr>
+<?php
+        }
+    }
     public function naik()
     {
 

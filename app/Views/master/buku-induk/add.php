@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group <?= ($validation->hasError('tamat')) ? 'has-error' : ''; ?>">
-                                    <select name="tamat" id="tamatsmk" class="js-example-language" style="width: 40%">
+                                    <select name="tamat" <?php if (session()->get('level') == '1') { ?> id="tamat" <?php } ?> <?php if (session()->get('level') == '2') { ?> id="tamatsmk" <?php } ?> class="js-example-language" style="width: 40%">
                                         <option selected disabled><?= (old('tamat')) ? old('tamat') : ".::Pilih Siswa::." ?></option>
                                         <?php foreach ($siswa as $r) : ?>
                                             <option value="<?= $r['id'] ?>"><?= $r['nama'] ?> (<?= $r['nisn'] ?>)</option>

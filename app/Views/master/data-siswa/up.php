@@ -41,21 +41,19 @@
                             <div class="col-md-2 mt-2">
                                 <button type="submit" class="btn btn-primary mt-2 btn-sm btnnaikkelas"><i class="fa fa-arrow-up"></i> Naik Kelas</button>
                             </div>
-                            <!-- <form method="post">
-                                <div class="col-md-4 mt-2">
-                                    <div class="form-group">
-                                        <select name="kls" class="form-control">
-                                            <option selected disabled><?= (old('kls')) ? (old('kls')) : '.::Pilih Kelas::' ?></option>
-                                            <option value="X">X</option>
-                                            <option value="XI">XI</option>
-                                            <option value="XII">XII</option>
-                                        </select>
-                                    </div>
+                            <!-- <div class="col-md-4 mt-2">
+                                <div class="form-group">
+                                    <select name="kls" class="form-control">
+                                        <option selected disabled><?= (old('kls')) ? (old('kls')) : '.::Filter Kelas::' ?></option>
+                                        <option value="X">X</option>
+                                        <option value="XI">XI</option>
+                                        <option value="XII">XII</option>
+                                    </select>
                                 </div>
-                                <div class="col-md-2 mt-2">
-                                    <button type="submit" class="btn btn-primary mt-2 btn-sm" name="filterkls"><i class="fa fa-search"></i> Filter Kelas</button>
-                                </div>
-                            </form> -->
+                            </div>
+                            <div class="col-md-2 mt-2">
+                                <button type="submit" class="btn btn-primary mt-2 btn-sm" name="filterkls"><i class="fa fa-search"></i> Filter Kelas</button>
+                            </div> -->
                         </div>
                     </div>
                     <div class="card-body">

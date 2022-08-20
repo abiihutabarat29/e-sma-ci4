@@ -64,6 +64,7 @@ $routes->delete('/data-pegawai/(:num)', 'DataPegawai::delete/$1');
 $routes->get('/data-pegawai/edit/(:segment)', 'DataPegawai::edit/$1');
 $routes->add('/data-pegawai/update/(:segment)', 'DataPegawai::update/$1');
 //Routes Data Siswa
+$routes->get('/data-siswa/data', 'DataSiswa::loadsiswa');
 $routes->get('/data-siswa', 'DataSiswa::datasiswa');
 $routes->get('/data-siswa/naik-kelas', 'DataSiswa::datasiswanaik');
 $routes->add('/data-siswa/up', 'DataSiswa::naik');

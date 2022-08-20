@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form method="post">
+                <!-- <form method="post">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-4 mt-2">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form> -->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="add-row" class="display table table-striped table-hover">
