@@ -6,6 +6,10 @@ use App\Models\ProfilModel;
 use App\Models\BangunanModel;
 use App\Models\KabupatenModel;
 use App\Models\KecamatanModel;
+use App\Models\SiswaModel;
+use App\Models\GuruModel;
+use App\Models\PegawaiModel;
+use App\Models\BukuIndukModel;
 use CodeIgniter\Config\Config;
 use CodeIgniter\HTTP\RequestInterface;
 
@@ -14,13 +18,21 @@ class Profil extends BaseController
 {
     protected $profilModel;
     protected $bangunanlModel;
-    protected $ekcamatanlModel;
+    protected $kecamatanlModel;
+    protected $siswaModel;
+    protected $guruModel;
+    protected $pegawaiModel;
+    protected $alumniModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
         $this->bangunanModel = new BangunanModel();
         $this->kabupatenModel = new KabupatenModel();
         $this->kecamatanModel = new KecamatanModel();
+        $this->siswaModel = new SiswaModel();
+        $this->guruModel = new GuruModel();
+        $this->pegawaiModel = new PegawaiModel();
+        $this->alumniModel = new BukuIndukModel();
     }
     public function profil()
     {
@@ -30,7 +42,11 @@ class Profil extends BaseController
             'titlebar' => 'Profil Sekolah',
             'title' => 'Profil Sekolah',
             'data' => $dataprofil,
-            'isi' => 'master/profil/data'
+            'isi' => 'master/profil/data',
+            'siswa'    => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
+            'guru'    => $this->guruModel->where('npsn', $npsn)->countAllResults(),
+            'pegawai'    => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
+            'alumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
         );
         return view('layout/wrapper', $data);
     }
@@ -159,10 +175,9 @@ class Profil extends BaseController
                 ]
             ],
             'kepsek' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama Kepala Sekolah tidak boleh kosong.',
-                    'alpha_space' => 'Nama Kepala Sekolah harus huruf dan spasi.'
                 ]
             ],
             'email' => [
@@ -386,10 +401,9 @@ class Profil extends BaseController
                 ]
             ],
             'kepsek' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama Kepala Sekolah tidak boleh kosong.',
-                    'alpha_space' => 'Nama Kepala Sekolah harus huruf dan spasi.'
                 ]
             ],
             'email' => [
