@@ -10,25 +10,27 @@
 </div>
 <div class="page-inner mt--5">
     <div class="row mt--2">
-        <div class="col-sm-6 col-md-3">
-            <div class="card card-stats card-info card-round">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="icon-big text-center">
-                                <i class="fas fa-school"></i>
+        <?php if (session()->get('level') == '29') { ?>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-info card-round">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-school"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-7 col-stats">
-                            <div class="numbers">
-                                <p class="card-category">Sekolah Verifikasi</p>
-                                <h4 class="card-title">24</h4>
+                            <div class="col-7 col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">Sekolah Verifikasi</p>
+                                    <h4 class="card-title"><?= $sekolah; ?></h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
         <div class="col-sm-6 col-md-3">
             <div class="card card-stats card-info card-round">
                 <div class="card-body">
@@ -41,7 +43,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Siswa</p>
-                                <h4 class="card-title">1024</h4>
+                                <h4 class="card-title"><?= $siswa; ?></h4>
                             </div>
                         </div>
                     </div>
@@ -60,7 +62,26 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Guru</p>
-                                <h4 class="card-title">80</h4>
+                                <h4 class="card-title"><?= $guru; ?></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-info card-round">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="icon-big text-center">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="col-7 col-stats">
+                            <div class="numbers">
+                                <p class="card-category">Pegawai</p>
+                                <h4 class="card-title"><?= $pegawai; ?></h4>
                             </div>
                         </div>
                     </div>
@@ -79,7 +100,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Alumni</p>
-                                <h4 class="card-title">2024</h4>
+                                <h4 class="card-title"><?= $alumni; ?></h4>
                             </div>
                         </div>
                     </div>
