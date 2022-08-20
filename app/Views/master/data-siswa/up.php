@@ -28,16 +28,15 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-4 mt-2">
-                                <div class="form-group<?= ($validation->hasError('naikkelas')) ? 'has-error' : ''; ?>">
-                                    <select name="naikkelas" class="form-control upkelas">
+                                <div class="form-group" id="nkelas">
+                                    <select name="naikkelas" class="form-control">
                                         <option selected disabled><?= (old('naikkelas')) ? (old('naikkelas')) : '.::Pilih Kelas::' ?></option>
                                         <option value="X">X</option>
                                         <option value="XI">XI</option>
                                         <option value="XII">XII</option>
                                     </select>
+                                    <small class="form-text text-danger errorNaikkelas"></small>
                                 </div>
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('naikkelas'); ?></small>
                             </div>
                             <div class="col-md-2 mt-2">
                                 <button type="submit" class="btn btn-primary mt-2 btn-sm btnnaikkelas"><i class="fa fa-arrow-up"></i> Naik Kelas</button>
@@ -100,6 +99,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <small class="form-text text-danger errorSiswa"></small>
                         </div>
                     </div>
                 </div>

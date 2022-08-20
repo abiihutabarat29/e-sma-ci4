@@ -42,45 +42,51 @@
         //naik kelas
         $('.formnaikkelas').submit(function(e) {
             e.preventDefault();
-            let jumlahdata = $('.chk-box:checked');
-            let upkelas = $('.upkelas:selected');
-            if (jumlahdata.length == 0) {
-                swal({
-                    text: "Pilih Siswa terlebih dahulu",
-                    icon: "error",
-                    Button: false,
-                    timer: 3000,
-                });
-                if (upkelas.length == 0) {
-                    swal({
-                        text: "Pilih Kelas terlebih dahulu",
-                        icon: "error",
-                        Button: false,
-                        timer: 3000,
-                    });
-                }
-            } else {
-                $.ajax({
-                    type: "post",
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.sukses) {
-                            swal({
-                                text: response.sukses,
-                                icon: "success",
-                                Button: false,
-                                timer: 3000,
-                            });
-                            window.location.href = ("<?= base_url('data-siswa/naik-kelas') ?>");
+            $.ajax({
+                type: "post",
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: "json",
+                beforeSend: function() {
+                    $('.btnnaikkelas').attr('disable', 'disabled');
+                    $('.btnnaikkelas').html('<i class="fa fa-spin fa-spinner"></i>');
+                },
+                complete: function() {
+                    $('.btnnaikkelas').removeAttr('disable');
+                    $('.btnnaikkelas').html('<i class="fa fa-arrow-up"></i> Naik Kelas');
+                },
+                success: function(response) {
+                    if (response.error) {
+                        if (response.error.naikkelas) {
+                            $('.nkelas').addClass('has-error');
+                            $('.errorNaikkelas').html(response.error.naikkelas);
+                        } else {
+                            $('.nkelas').removeClass('has-error');
+                            $('.errorNaikkelas').html('');
                         }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                        if (response.error.id) {
+                            $('.errorSiswa').html(response.error.id);
+                        } else {
+                            $('.errorSiswa').html('');
+                        }
                     }
-                })
-            }
+                    if (response.sukses) {
+                        swal({
+                            text: response.sukses,
+                            icon: "success",
+                            buttons: {
+                                confirm: {
+                                    className: "btn btn-success",
+                                },
+                            },
+                        });
+                        window.location.href = ("<?= base_url('data-siswa/naik-kelas') ?>");
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                }
+            })
             return false;
         })
     });

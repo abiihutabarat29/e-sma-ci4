@@ -568,21 +568,48 @@ class DataSiswa extends BaseController
     }
     public function naik()
     {
+
         if ($this->request->isAJAX()) {
-            $id = $this->request->getPost('id');
-            $kelas = $this->request->getPost('naikkelas');
-            $jumlah = count($id);
-            for ($i = 0; $i < $jumlah; $i++) {
-                $data = [
-                    'id'   => $id[$i],
-                    'kelas' => $kelas,
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'naikkelas' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Pilih kelas terlebih dahulu.',
+                    ]
+                ],
+                'id' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Pilih siswa terlebih dahulu.',
+                    ]
+                ]
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'naikkelas' => $validation->getError('naikkelas'),
+                        'id' => $validation->getError('id')
+                    ]
                 ];
-                $this->siswaModel->save($data);
+            } else {
+                $id = $this->request->getPost('id');
+                $kelas = $this->request->getPost('naikkelas');
+                $jumlah = count($id);
+                for ($i = 0; $i < $jumlah; $i++) {
+                    $data = [
+                        'id'   => $id[$i],
+                        'kelas' => $kelas,
+                    ];
+                    $this->siswaModel->save($data);
+                }
+                $msg = [
+                    'sukses' => "Berhasil naik kelas"
+                ];
             }
-            $msg = [
-                'sukses' => "Berhasil naik kelas"
-            ];
             echo json_encode($msg);
+        } else {
+            exit('Permintaan tidak dapat diproses');
         }
     }
 }
