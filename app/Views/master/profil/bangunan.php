@@ -142,13 +142,6 @@
                                 <?php } ?>
                             </tbody>
                         </table>
-                    <?php else : ?>
-                        <table>
-                            <h2>
-                                <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
-                        </table>
-                        </h2>
-                        </table>
                         <div class="d-flex align-items-center">
                             <a href="#" target="blank" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-file-excel"></i> Export Excel</a>
 
@@ -161,6 +154,19 @@
                                     <i class="fa fa-plus"></i> Tambah
                                 </a>
                             <?php } ?>
+                            <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                        </div>
+                    <?php else : ?>
+                        <table>
+                            <h2>
+                                <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
+                        </table>
+                        </h2>
+                        </table>
+                        <div class="d-flex align-items-center">
+                            <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">
+                                <i class="fa fa-plus"></i> Tambah
+                            </a>
                             <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                         </div>
                     <?php endif ?>

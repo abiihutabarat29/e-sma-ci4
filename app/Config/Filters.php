@@ -86,6 +86,8 @@ class Filters extends BaseConfig
 				'api/data-siswa/*',
 				'buku-induk',
 				'buku-induk/*',
+				'data-arsip',
+				'data-arsip/*',
 			]],
 			'filterasmk' => ['except' => [
 				'home', 'home/*',
@@ -111,6 +113,8 @@ class Filters extends BaseConfig
 				'api/data-siswa/*',
 				'buku-induk',
 				'buku-induk/*',
+				'data-arsip',
+				'data-arsip/*',
 			]],
 			'filterksma' => ['except' => [
 				'home', 'home/*',

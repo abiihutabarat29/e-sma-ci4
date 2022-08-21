@@ -31,6 +31,15 @@ if (swalLogout) {
     timer: 3000,
   });
 }
+const swalValid = $(".swal-valid").data("swal");
+if (swalValid) {
+  swal({
+    text: swalValid,
+    icon: "error",
+    Button: false,
+    timer: 5000,
+  });
+}
 
 //Alert Notifikasi
 

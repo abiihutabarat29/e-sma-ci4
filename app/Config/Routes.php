@@ -165,6 +165,13 @@ $routes->add('/data-tahun-akademik/save', 'DataTa::save');
 $routes->delete('/data-tahun-akademik/(:num)', 'DataTa::delete/$1');
 $routes->get('/data-tahun-akademik/edit/(:segment)', 'DataTa::edit/$1');
 $routes->add('/data-tahun-akademik/update/(:segment)', 'DataTa::update/$1');
+//Routes Data Arsip
+$routes->get('/data-arsip', 'DataArsip::dataarsip');
+$routes->get('/data-arsip/add', 'DataArsip::add');
+$routes->add('/data-arsip/save', 'DataArsip::save');
+$routes->delete('/data-arsip/(:num)', 'DataArsip::delete/$1');
+$routes->get('/data-arsip/edit/(:segment)', 'DataArsip::edit/$1');
+$routes->add('/data-arsip/update/(:segment)', 'DataArsip::update/$1');
 //Routes Login
 $routes->get('/', 'Auth::index');
 $routes->add('/auth/verify', 'Auth::cek');

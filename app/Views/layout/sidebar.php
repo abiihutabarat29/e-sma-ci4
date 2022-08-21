@@ -208,7 +208,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url('arsip-laporan') ?>">
+                                    <a href="<?= base_url('data-arsip') ?>">
                                         <span class="sub-item">Arsip Laporan</span>
                                     </a>
                                 </li>

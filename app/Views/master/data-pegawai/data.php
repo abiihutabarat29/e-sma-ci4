@@ -46,7 +46,7 @@
                                         <td><?= $r['nik']; ?></td>
                                         <td><?= $r['nama']; ?></td>
                                         <td><?= $r['tempat_lahir']; ?></td>
-                                        <td><?= $r['tgl_lahir']; ?></td>
+                                        <td><?= format_indo($r['tgl_lahir']); ?></td>
                                         <td><?= $r['status']; ?></td>
                                         <td><img src="<?= base_url('/media/fotopegawai/' . $r['foto']) ?>" width="50px" class="img rounded">
                                         <td>
