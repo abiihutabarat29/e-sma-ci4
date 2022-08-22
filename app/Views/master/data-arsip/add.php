@@ -34,13 +34,15 @@
                         <div class="col-md-6">
                             <div class="col-md-12">
                                 <div class="form-group <?= ($validation->hasError('nmlabul')) ? 'has-error' : ''; ?>">
-                                    <input type="text" class="form-control" id="nmlabul" name="nmlabul" placeholder="Nama Labul" autocomplete="off" value="<?= old('nmlabul'); ?>" autofocus>
+                                    <label>Nama Laporan</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control" id="nmlabul" name="nmlabul" placeholder="Nama Laporan" autocomplete="off" value="<?= old('nmlabul'); ?>" autofocus>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('nmlabul'); ?></small>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group <?= ($validation->hasError('bulan')) ? 'has-error' : ''; ?>">
+                                    <label>Bulan</label><span class="text-danger">*</span>
                                     <select name="bulan" class="form-control">
                                         <option selected disabled><?= (old('bulan')) ? old('bulan') : ".::Pilih Bulan::." ?></option>
                                         <option value="<?= format_bulan(date('Y-m-d')); ?>"><?= format_bulan(date('Y-m-d')); ?></option>
@@ -51,6 +53,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group <?= ($validation->hasError('tahun')) ? 'has-error' : ''; ?>">
+                                    <label>Tahun</label><span class="text-danger">*</span>
                                     <select name="tahun" class="form-control">
                                         <option selected disabled><?= (old('tahun')) ? old('tahun') : ".::Pilih Tahun::." ?></option>
                                         <option value="<?= format_tahun(date('Y-m-d')); ?>"><?= format_tahun(date('Y-m-d')); ?></option>
@@ -61,7 +64,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group form-group-default <?= ($validation->hasError('file')) ? 'has-error' : ''; ?>">
-                                    <label>File Laporan Bulanan</label>
+                                    <label>File Laporan Bulanan <span class="text-danger">*</span></label>
                                     <input type="file" name="file" class="form-control-file">
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('file'); ?></small>

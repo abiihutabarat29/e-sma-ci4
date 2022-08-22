@@ -175,9 +175,10 @@ class Profil extends BaseController
                 ]
             ],
             'kepsek' => [
-                'rules' => 'required',
+                'rules' => 'required|alpha_numeric_punct',
                 'errors' => [
                     'required' => 'Nama Kepala Sekolah tidak boleh kosong.',
+                    'alpha_numeric_punct' => 'Nama Kepala Sekolah berisi karakter yang tidak didukung.'
                 ]
             ],
             'email' => [
@@ -401,9 +402,10 @@ class Profil extends BaseController
                 ]
             ],
             'kepsek' => [
-                'rules' => 'required',
+                'rules' => 'required|alpha_numeric_punct',
                 'errors' => [
                     'required' => 'Nama Kepala Sekolah tidak boleh kosong.',
+                    'alpha_numeric_punct' => 'Nama Kepala Sekolah berisi karakter yang tidak didukung.'
                 ]
             ],
             'email' => [

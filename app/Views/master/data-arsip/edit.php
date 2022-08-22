@@ -62,6 +62,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <label>File Sebeleumnya</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" value="<?= $data['file_labul'] ?>" readonly>
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
                                         <td><?= $r['nama_labul']; ?></td>
                                         <td><?= $r['bulan']; ?></td>
                                         <td><?= $r['tahun']; ?></td>
-                                        <td><?= $r['file_labul']; ?></td>
+                                        <td><a href="<?= base_url() ?>/media/arsip/<?= $r['file_labul']; ?>" target="blank"><button class="btn btn-primary btn-xs"><i class="fa fa-download"></i></button></ <td>
                                         <td>
                                             <div class="form-button-action">
                                                 <a href="/data-arsip/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
