@@ -35,7 +35,7 @@
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('prasarana')) ? 'has-error' : ''; ?>">
                                     <select name="prasarana" class="js-example-language" style="width: 100%">
-                                        <option selected disabled><?= (old('prasarana')) ? old('prasarana') : $data['prasarana']; ?></option>
+                                        <option><?= (old('prasarana')) ? old('prasarana') : $data['prasarana']; ?></option>
                                         <?php foreach ($sarana as $r) : ?>
                                             <option value="<?= $r['sarana'] ?>"><?= $r['sarana'] ?></option>
                                         <?php endforeach ?>

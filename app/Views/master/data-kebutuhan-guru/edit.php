@@ -35,7 +35,7 @@
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('mapel')) ? 'has-error' : ''; ?>">
                                     <select name="mapel" id="mapel" class="js-example-language" style="width: 100%">
-                                        <option selected disabled><?= (old('mapel')) ? old('mapel') : $data['mapel'] ?></option>
+                                        <option><?= (old('mapel')) ? old('mapel') : $data['mapel'] ?></option>
                                         <?php foreach ($mapel as $r) : ?>
                                             <option value="<?= $r['mapel'] ?>"><?= $r['mapel'] ?></option>
                                         <?php endforeach ?>
