@@ -58,6 +58,9 @@
                                         <?php } ?>
                                     <td>
                                         <div class="form-button-action">
+                                            <a href="#" class="btn btn-link btn-success btn-lg" title="Klik untuk Mengaktifkan atau Menonaktifkan" data-toggle='modal' data-target='#activateModal<?= $r['id'] ?>'>
+                                                <?= $r['status'] == 1 ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'; ?>
+                                            </a>
                                             <a href="data-user/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -67,8 +70,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
+                                < <?php endforeach; ?> </tbody>
                     </table>
                 </div>
             </div>
@@ -76,3 +78,28 @@
     </div>
 </div>
 </div>
+<!-- Modal aktif users -->
+<?php foreach ($datauser as $r) { ?>
+    <form action="<?= base_url('data-user/activated/' . $r['id']) ?>" method="post">
+        <div class="modal fade" id="activateModal<?= $r['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Status User</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?= $r['status'] == 1 ? 'Pilih "Ya" untuk me-nonaktifkan user' : 'Pilih "Ya" untuk meng-aktifkan User' ?>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="status" value="<?= $r['status'] ?>">
+                        <button class="btn btn-default btn-sm" type="button" data-dismiss="modal">Tidak</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Ya</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<?php } ?>

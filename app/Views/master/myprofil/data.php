@@ -112,7 +112,7 @@
                                 <div class="item-list">
                                     <div class="info-user ml-3">
                                         <h6 class="text-uppercase fw-bold mb-1">Status</h6>
-                                        <span class="text-muted"><?= $data['status']; ?></span>
+                                        <span class="text-muted"><?= $data['status'] == 1 ? 'Aktif' : 'Nonaktif' ?></span>
                                     </div>
                                     <button class="btn btn-icon btn-success btn-round btn-xs">
                                         <i class="fa fa-check"></i>
@@ -124,7 +124,7 @@
                             <a href="<?= base_url('my-profil/edit/' . $data['id']) ?>" class="btn btn-warning ml-auto btn-sm">
                                 <i class="fa fa-edit"></i> Update
                             </a>
-                            <a href="<?= base_url('/') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                            <a href="<?= base_url('/home') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <div class="card-body">
                         <table>
                             <h2>
-                                <center><i>Lengkapi profil sekolah anda . . .</i></center>
+                                <center><i>Lengkapi profil anda . . .</i></center>
                             </h2>
                         </table>
                         <div class="d-flex align-items-center">

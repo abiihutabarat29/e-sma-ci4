@@ -101,6 +101,7 @@ $routes->add('data-user/save', 'User::save');
 $routes->get('data-user/delete/(:num)', 'User::delete/$1');
 $routes->get('data-user/edit/(:segment)', 'User::edit/$1');
 $routes->add('data-user/update/(:segment)', 'User::update/$1');
+$routes->add('data-user/activated/(:num)', 'User::activated/$1');
 //Routes Data Sekolah
 $routes->get('/data-sekolah', 'DataSekolah::datasekolah');
 $routes->get('/data-sekolah/add', 'DataSekolah::add');

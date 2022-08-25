@@ -117,7 +117,6 @@ class User extends BaseController
                 ]
             ]
         ])) {
-            // $validation = \Config\Services::validation();
             return redirect()->to('add')->withInput();
         }
         $md5 = md5($this->request->getPost('password'));
@@ -135,11 +134,7 @@ class User extends BaseController
             'foto'                 => 'blank.png',
             'password'             => $password,
             'level'                => $this->request->getPost('level'),
-            'status'               => 'aktif',
-            // 'npsn'              => session()->get('npsn'),
-            // 'nama_sekolah'      => session()->get('nama_sekolah'),
-            // 'jenjang'           => session()->get('jenjang'),
-            // 'userentry'         => session()->get('userentry'),
+            'status'               => '1',
         ];
         $this->userModel->save($data);
         session()->setFlashdata('m', 'Ditambahkan');
@@ -290,7 +285,6 @@ class User extends BaseController
                 ]
             ]
         ])) {
-            // $validation = \Config\Services::validation();
             return redirect()->to(base_url('data-user/edit/' . $this->request->getPost('id')))->withInput();
         }
         $md5 = md5($this->request->getPost('password'));
@@ -308,15 +302,53 @@ class User extends BaseController
             'username'             => $this->request->getPost('username'),
             'password'             => $password,
             'level'                => $this->request->getPost('level'),
-            // 'npsn'              => session()->get('npsn'),
-            // 'nama_sekolah'      => session()->get('nama_sekolah'),
-            // 'jenjang'           => session()->get('jenjang'),
-            // 'userentry'         => session()->get('userentry'),
         ];
         $this->userModel->save($data);
         session()->setFlashdata('m', 'Diedit');
         return redirect()->to(base_url('data-user'));
     }
+    public function activated($id)
+    {
+        $data = [
+            'id'     => $id,
+            'status' => $this->request->getPost('status') == 1 ? 0 : 1,
+        ];
+        $this->userModel->save($data);
+        session()->setFlashdata('m', 'Diedit');
+        return redirect()->to(base_url('data-user'));
+    }
+    // public function change_password($id)
+    // {
+    // 	if (!$this->validate([
+    // 		'password' => [
+    // 			'label' => 'Password',
+    // 			'rules' => 'required|min_length[8]|max_length[255]',
+    // 			'errors' => [
+    // 				'required' 		=> 'Mohon isikan password',
+    // 				'min_length' 	=> 'Password harus minimal 8 karakter',
+    // 				'max_length' 	=> 'Password maksimal 255 karakter',
+    // 			]
+    // 		],
+    // 		'pass_confirm' => [
+    // 			'label' => 'Konfirmasi Password',
+    // 			'rules' => 'required|matches[password]',
+    // 			'errors' => [
+    // 				'required' 		=> 'Mohon isikan konfirmasi password',
+    // 				'matches' 		=> 'Password konfirmasi harus sama dengan password',
+    // 			]
+    // 		],
+    // 	])) {
+    // 		session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+    // 		return redirect()->back()->withInput();
+    // 	}
+    // 	$newData = [
+    // 		'password' => $this->request->getVar('password'),
+    // 	];
+
+    // 	$this->UserModel->update($id, $newData);
+    // 	session()->setFlashdata('success', 'Password Berhasil di Update');
+    // 	return redirect()->to(base_url('user/list'));
+    // }
 
     //--------------------------------------------------------------------
 }

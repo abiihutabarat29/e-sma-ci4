@@ -106,11 +106,11 @@ class MyProfil extends BaseController
                 ]
             ],
             'foto' => [
-                'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,200]',
+                'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,500]',
                 'errors' => [
                     'mime_in' => 'File extention hanya jpg, jpeg, png.',
                     'is_image' => 'Upload hanya file foto.',
-                    'max_size' => 'Ukuran gambar maksimal 200kb.'
+                    'max_size' => 'Ukuran gambar maksimal 500kb.'
                 ]
             ],
         ])) {

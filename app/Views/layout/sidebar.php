@@ -3,7 +3,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
-                <div class="avatar-sm float-left mr-2">
+                <div class="avatar <?= session()->get('status') == 1 ? 'avatar-online' : 'avatar-offline' ?>">
                     <?php if (session()->get('foto') == null) { ?>
                         <img src="<?= base_url('/media/fotouser/' . 'blank.png') ?>" alt="image profile" class="avatar-img rounded-circle">
                     <?php } else { ?>
@@ -120,7 +120,7 @@
                         </div>
                     </li>
                 <?php } ?>
-                <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
+                <?php if (session()->get('level') == '1' || session()->get('level') == '2' && session()->get('status') == '1') { ?>
                     <li class="nav-item <?= ($request->uri->getSegment(1) == 'profil-sekolah') ? 'active' : ""; ?>">
                         <a href="<?= base_url('profil-sekolah') ?>">
                             <i class="fas fa-school"></i>

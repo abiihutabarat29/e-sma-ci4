@@ -111,11 +111,10 @@
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('level')) ? 'has-error' : ''; ?>">
                                     <select name="level" class="form-control">
-                                        <option><?= (old('level')) ? old('level') : $data['level']; ?></option>
-                                        <option value="1">Admin SMA</option>
-                                        <option value="2">Admin SMK</option>
-                                        <option value="3">Kasih SMA</option>
-                                        <option value="4">Kasih SMK</option>
+                                        <option value="<?= $data['level'] ?>" <?= $data['level'] == 1 ? 'selected' : ''; ?>>Admin SMA</option>
+                                        <option value="<?= $data['level'] ?>" <?= $data['level'] == 2 ? 'selected' : ''; ?>>Admin SMK</option>
+                                        <option value="<?= $data['level'] ?>" <?= $data['level'] == 3 ? 'selected' : ''; ?>>Kasih SMA</option>
+                                        <option value="<?= $data['level'] ?>" <?= $data['level'] == 4 ? 'selected' : ''; ?>>Kasih SMK</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('level'); ?></small>
