@@ -43,7 +43,11 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Siswa</p>
-                                <h4 class="card-title"><?= $siswa; ?></h4>
+                                <?php if (session()->get('level') == '29') { ?>
+                                    <h4 class="card-title"><?= $siswatotal; ?></h4>
+                                <?php } else { ?>
+                                    <h4 class="card-title"><?= $siswa; ?></h4>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -62,7 +66,11 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Guru</p>
-                                <h4 class="card-title"><?= $guru; ?></h4>
+                                <?php if (session()->get('level') == '29') { ?>
+                                    <h4 class="card-title"><?= $gurutotal; ?></h4>
+                                <?php } else { ?>
+                                    <h4 class="card-title"><?= $guru; ?></h4>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -81,7 +89,11 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Pegawai</p>
-                                <h4 class="card-title"><?= $pegawai; ?></h4>
+                                <?php if (session()->get('level') == '29') { ?>
+                                    <h4 class="card-title"><?= $pegawaitotal; ?></h4>
+                                <?php } else { ?>
+                                    <h4 class="card-title"><?= $pegawai; ?></h4>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -100,7 +112,11 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Alumni</p>
-                                <h4 class="card-title"><?= $alumni; ?></h4>
+                                <?php if (session()->get('level') == '29') { ?>
+                                    <h4 class="card-title"><?= $alumnitotal; ?></h4>
+                                <?php } else { ?>
+                                    <h4 class="card-title"><?= $alumni; ?></h4>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

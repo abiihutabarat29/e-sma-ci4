@@ -34,6 +34,10 @@ class Home extends BaseController
 			'guru'    => $this->guruModel->where('npsn', $npsn)->countAllResults(),
 			'pegawai'    => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
 			'alumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
+			'siswatotal'    => $this->siswaModel->countAllResults(),
+			'gurutotal'    => $this->guruModel->countAllResults(),
+			'pegawaitotal'    => $this->pegawaiModel->countAllResults(),
+			'alumnitotal'    => $this->alumniModel->countAllResults(),
 		);
 		return view('layout/wrapper', $data);
 	}

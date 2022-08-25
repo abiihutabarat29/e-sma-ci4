@@ -72,18 +72,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <h4 class="card-title">Lokasi</h4>
+                            <h4 class="card-title">Lokasi Sekolah</h4>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="col-md-12">
-                            <div id="map" style='width: 1190px; height: 180px;'></div>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <div class="form-group form-group-default">
-                            </div>
-                        </div>
-                    </div>
+                    <div id="map" style='width: 100%; height: 250px;'></div>
                 </div>
             </div>
             <div class="col-md-8">
@@ -235,6 +227,27 @@
                     </div>
                 </div>
             </div>
+            <!-- Leafletjs -->
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+            <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+            <script>
+                var map = L.map('map').setView([<?= $data['latitude']; ?>, <?= $data['longitude']; ?>], 14);
+                var tiles = L.tileLayer(
+                    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        id: 'mapbox/streets-v11',
+                        tileSize: 512,
+                        zoomOffset: -1
+                    }).addTo(map);
+
+                var curLocation = [<?= $data['latitude']; ?>, <?= $data['longitude']; ?>];
+
+                var marker = L.marker(curLocation, {
+                    draggable: 'true'
+                });
+                map.addLayer(marker);
+            </script>
         <?php else : ?>
             <div class="col-md-12">
                 <div class="card">

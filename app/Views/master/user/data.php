@@ -58,7 +58,7 @@
                                         <?php } ?>
                                     <td>
                                         <div class="form-button-action">
-                                            <a href="#" class="btn btn-link btn-success btn-lg" title="Klik untuk Mengaktifkan atau Menonaktifkan" data-toggle='modal' data-target='#activateModal<?= $r['id'] ?>'>
+                                            <a href="#" class="btn btn-link  btn-lg <?= $r['status'] == 1 ? 'btn-success' : 'btn-danger' ?> " title="Klik untuk Mengaktifkan atau Menonaktifkan" data-toggle='modal' data-target='#activateModal<?= $r['id'] ?>'>
                                                 <?= $r['status'] == 1 ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'; ?>
                                             </a>
                                             <a href="data-user/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
@@ -70,7 +70,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                < <?php endforeach; ?> </tbody>
+                            <?php endforeach; ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

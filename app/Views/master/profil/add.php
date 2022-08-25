@@ -161,32 +161,6 @@
                                     <?= $validation->getError('kecamatan'); ?></small>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-6">
-                            <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
-                                <label>Kabupaten</label>
-                                <select class="form-control" name="kabupaten">
-                                    <option><?= (old('kabupaten')) ? old('kabupaten') : ".::Pilih Kabupaten::." ?></option>
-                                    <?php foreach ($kabupaten as $r) : ?>
-                                        <option value="<?= $r['kabupaten'] ?>"><?= $r['kabupaten'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('kabupaten'); ?></small>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group <?= ($validation->hasError('kecamatan')) ? 'has-error' : ''; ?>">
-                                <label>Kecamatan</label>
-                                <select class="form-control" name="kecamatan">
-                                    <option><?= (old('kecamatan')) ? old('kecamatan') : ".::Pilih Kecamatan::." ?></option>
-                                    <?php foreach ($kecamatan as $r) : ?>
-                                        <option value="<?= $r['kecamatan'] ?>"><?= $r['kecamatan'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('kecamatan'); ?></small>
-                            </div>
-                        </div> -->
                         <div class="col-md-6">
                             <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
                                 <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="Alamat Lengkap Sekolah"><?= old('alamat'); ?></textarea>
@@ -242,20 +216,6 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group <?= ($validation->hasError('lg')) ? 'has-error' : ''; ?>">
-                                <input type="text" name="lg" class="form-control" autocomplete="off" placeholder="Longitude (Google Maps)" value="<?= old('lg'); ?>">
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('lg'); ?></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group <?= ($validation->hasError('lt')) ? 'has-error' : ''; ?>">
-                                <input type="text" name="lt" class="form-control" autocomplete="off" placeholder="Latitude (Google Maps)" value="<?= old('lt'); ?>">
-                                <small class="form-text text-danger">
-                                    <?= $validation->getError('lt'); ?></small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="col-md-6">
                                 <img class="img-thumbnail rounded img-preview" src="<?= base_url('media/profil/blank.png'); ?>" width="220px" alt="Foto">
                             </div>
@@ -279,23 +239,28 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Street Map -->
-                        <!-- <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Lokasi</h4>
-                                </div>
+                    </div>
+                    <div class="card-action">
+                        <h4>Pilih Lokasi Sekolah<span class="text-danger">*</span></h4>
+                        <div id="map" style='width: 100%; height: 300px;'></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group <?= ($validation->hasError('lg')) ? 'has-error' : ''; ?>">
+                                <h4>Longitude<span class="text-danger">*</span></h4>
+                                <input type="text" name="lg" class="form-control" id="longitude" placeholder="Longitude (Google Maps)" value="<?= old('lg'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('lg'); ?></small>
                             </div>
-                            <div class="card-body">
-                                <div class="col-md-12">
-                                    <div id="map" style='width: 1190px; height: 500px;'></div>
-                                </div>
-                                <div class="col-md-12 mt-2">
-                                    <div class="form-group form-group-default">
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group <?= ($validation->hasError('lt')) ? 'has-error' : ''; ?>">
+                                <h4>Latitude<span class="text-danger">*</span></h4>
+                                <input type="text" name="lt" class="form-control" id="latitude" placeholder="Latitude (Google Maps)" value="<?= old('lt'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('lt'); ?></small>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="card-action">
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
@@ -306,3 +271,52 @@
         </div>
     </div>
 </div>
+<!-- Leafletjs-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+<script>
+    var map = L.map('map').setView([3.1728602225005167, 99.4195668109296], 10);
+
+    var tiles = L.tileLayer(
+        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+
+    // Get Coordinat Location
+    var latInput1 = document.querySelector("[name=latitude]");
+    var latInput2 = document.querySelector("[name=longitude]");
+
+    var curLocation = [3.1728602225005167, 99.4195668109296];
+
+    map.attributionControl.setPrefix(false);
+
+    var marker = L.marker(curLocation, {
+        draggable: 'true'
+    });
+
+    marker.on('dragend', function(event) {
+        var position = marker.getLatLng();
+        marker.setLatLng(position, {
+            draggable: 'true'
+        }).bindPopup(position).update();
+        $("#latitude").val(position.lat);
+        $("#longitude").val(position.lng).keyup();
+    });
+    map.addLayer(marker);
+
+    map.on("click", function(e) {
+        var lat = e.latlng.lat;
+        var lng = e.latlng.lng;
+        if (!marker) {
+            marker = L.marker(e.latlng).addTo(map);
+        } else {
+            marker.setLatLng(e.latlng);
+        }
+        latInput1.value = lat;
+        latInput2.value = lng;
+    });
+</script>

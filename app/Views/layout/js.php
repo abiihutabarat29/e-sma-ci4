@@ -389,25 +389,6 @@
                 return false;
             })
         });
-        // $('#kabupaten').change(function(e) {
-        //     $.ajax({
-        //         type: post,
-        //         url: "<?= base_url('profil-sekolah/kecamatan') ?>",
-        //         data: {
-        //             kabupaten: $(this).val()
-        //         },
-        //         dataType: 'json',
-        //         success: function(response) {
-        //             if (response.data) {
-        //                 $('#kecamatan').html(response.data);
-        //                 $('#kecamatan').select2();
-        //             }
-        //         },
-        //         error: function(xhr, thrownError) {
-        //             alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-        //         }
-        //     })
-        // });
     }
     $(document).ready(function() {
         dataKabupaten();
@@ -466,52 +447,6 @@
             img.src = e.target.result;
         }
     }
-</script>
-<script>
-    var map = L.map('map').setView([3.1728602225005167, 99.4195668109296], 14);
-
-    var tiles = L.tileLayer(
-        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(map);
-
-    // Get Coordinat Location
-    var latInput1 = document.querySelector("[name=latitude]");
-    var latInput2 = document.querySelector("[name=longitude]");
-
-    var curLocation = [3.1728602225005167, 99.4195668109296];
-
-    map.attributionControl.setPrefix(false);
-
-    var marker = L.marker(curLocation, {
-        draggable: 'true'
-    });
-
-    marker.on('dragend', function(event) {
-        var position = marker.getLatLng();
-        marker.setLatLng(position, {
-            draggable: 'true'
-        }).bindPopup(position).update();
-        $("#latitude").val(position.lat);
-        $("#longitude").val(position.lng).keyup();
-    });
-    map.addLayer(marker);
-
-    map.on("click", function(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
-        if (!marker) {
-            marker = L.marker(e.latlng).addTo(map);
-        } else {
-            marker.setLatLng(e.latlng);
-        }
-        latInput1.value = lat;
-        latInput2.value = lng;
-    });
 </script>
 <script>
     $(".js-example-language").select2({
