@@ -36,7 +36,7 @@
                     <div class="collapse in" id="collapseExample">
                         <ul class="nav">
                             <li>
-                                <a href="#profile">
+                                <a href="<?= base_url('my-profil') ?>">
                                     <span class="link-collapse">My Profile</span>
                                 </a>
                             </li>

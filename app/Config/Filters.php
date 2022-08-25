@@ -61,6 +61,8 @@ class Filters extends BaseConfig
 				'data-tahun-akademik/*',
 				'api/data-sekolah',
 				'api/data-sekolah/*',
+				'my-profil',
+				'my-profil/*',
 			]],
 			'filterasma' => ['except' => [
 				'home', 'home/*',
@@ -88,6 +90,8 @@ class Filters extends BaseConfig
 				'buku-induk/*',
 				'data-arsip',
 				'data-arsip/*',
+				'my-profil',
+				'my-profil/*',
 			]],
 			'filterasmk' => ['except' => [
 				'home', 'home/*',
@@ -115,6 +119,8 @@ class Filters extends BaseConfig
 				'buku-induk/*',
 				'data-arsip',
 				'data-arsip/*',
+				'my-profil',
+				'my-profil/*',
 			]],
 			'filterksma' => ['except' => [
 				'home', 'home/*',

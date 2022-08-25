@@ -195,9 +195,9 @@ class DataGuru extends BaseController
                     ]
                 ],
                 'foto' => [
-                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto,200]',
+                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,200]',
                     'errors' => [
-                        'mime_in' => 'File extention hanya jpg, jpeg, gif, png.',
+                        'mime_in' => 'File extention hanya jpg, jpeg, png.',
                         'is_image' => 'Upload hanya file foto.',
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
@@ -429,9 +429,9 @@ class DataGuru extends BaseController
                     ]
                 ],
                 'foto' => [
-                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto,200]',
+                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,200]',
                     'errors' => [
-                        'mime_in' => 'File extention hanya jpg, jpeg, gif, png.',
+                        'mime_in' => 'File extention hanya jpg, jpeg, png.',
                         'is_image' => 'Upload hanya file foto.',
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
@@ -693,9 +693,9 @@ class DataGuru extends BaseController
                     ]
                 ],
                 'foto' => [
-                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto,200]',
+                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,200]',
                     'errors' => [
-                        'mime_in' => 'File extention hanya jpg, jpeg, gif, png.',
+                        'mime_in' => 'File extention hanya jpg, jpeg, png.',
                         'is_image' => 'Upload hanya file foto.',
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
@@ -964,9 +964,9 @@ class DataGuru extends BaseController
                     ]
                 ],
                 'foto' => [
-                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto,200]',
+                    'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,200]',
                     'errors' => [
-                        'mime_in' => 'File extention hanya jpg, jpeg, gif, png.',
+                        'mime_in' => 'File extention hanya jpg, jpeg, png.',
                         'is_image' => 'Upload hanya file foto.',
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]

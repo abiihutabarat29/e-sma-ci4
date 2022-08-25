@@ -132,6 +132,7 @@ class User extends BaseController
             'nohp'                 => $this->request->getPost('nohp'),
             'email'                => $this->request->getPost('email'),
             'username'             => $this->request->getPost('username'),
+            'foto'                 => 'blank.png',
             'password'             => $password,
             'level'                => $this->request->getPost('level'),
             'status'               => 'aktif',
