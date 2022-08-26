@@ -58,7 +58,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="add-row" class="display table table-striped table-hover">
+                            <table id="multi-filter-select" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th><input type="checkbox" id="select_all" value="" /></th>
@@ -76,6 +76,21 @@
                                         <th>Tahun Masuk</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <th><input type="checkbox" id="select_all" value="" /></th>
+                                    <th>No</th>
+                                    <th>NISN</th>
+                                    <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <?php if (session()->get('level') == '1') { ?>
+                                        <th>Jurusan</th>
+                                    <?php } ?>
+                                    <?php if (session()->get('level') == '2') { ?>
+                                        <th>Paket keahlian</th>
+                                    <?php } ?>
+                                    <th>Status</th>
+                                    <th>Tahun Masuk</th>
+                                </tfoot>
                                 <tbody>
                                     <?php $i = 1;
                                     foreach ($datasiswa as $key => $r) : ?>
