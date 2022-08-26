@@ -7,6 +7,9 @@ use App\Models\SiswaModel;
 use App\Models\GuruModel;
 use App\Models\PegawaiModel;
 use App\Models\BukuIndukModel;
+use App\Models\UserModel;
+use App\Models\SekolahModel;
+use App\Models\ArsipModel;
 
 class Home extends BaseController
 {
@@ -15,6 +18,10 @@ class Home extends BaseController
 	protected $guruModel;
 	protected $pegawaiModel;
 	protected $alumniModel;
+	protected $userModel;
+	protected $sekolahModel;
+	protected $arsipModel;
+
 	public function __construct()
 	{
 		$this->profilModel = new ProfilModel();
@@ -22,22 +29,41 @@ class Home extends BaseController
 		$this->guruModel = new GuruModel();
 		$this->pegawaiModel = new PegawaiModel();
 		$this->alumniModel = new BukuIndukModel();
+		$this->userModel = new UserModel();
+		$this->sekolahModel = new SekolahModel();
+		$this->arsipModel = new ArsipModel();
 	}
 	public function index()
 	{
 		$npsn = session()->get('npsn');
+		$jenjang = session()->get('jenjang');
 		$data = array(
-			'title'    => 'Home',
-			'isi'      => 'home',
-			'sekolah'    => $this->profilModel->countAllResults(),
-			'siswa'    => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
-			'guru'    => $this->guruModel->where('npsn', $npsn)->countAllResults(),
-			'pegawai'    => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
-			'alumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
-			'siswatotal'    => $this->siswaModel->countAllResults(),
+			'title'        => 'Home',
+			'isi'          => 'home',
+			'sekolahv'     => $this->profilModel->countAllResults(),
+			'sekolah'      => $this->sekolahModel->countAllResults(),
+			'account'      => $this->userModel->countAllResults(),
+			'labul'        => $this->arsipModel->countAllResults(),
+			'smasiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
+			'smaguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
+			'smapegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
+			'smaalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
+			'smksiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
+			'smkguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
+			'smkpegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
+			'smkalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
+			'siswasma'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
+			'gurusma'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
+			'pegawaisma'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
+			'alumnisma'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
+			'siswasmk'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
+			'gurusmk'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
+			'pegawaismk'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
+			'alumnismk'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
+			'siswatotal'   => $this->siswaModel->countAllResults(),
 			'gurutotal'    => $this->guruModel->countAllResults(),
-			'pegawaitotal'    => $this->pegawaiModel->countAllResults(),
-			'alumnitotal'    => $this->alumniModel->countAllResults(),
+			'pegawaitotal' => $this->pegawaiModel->countAllResults(),
+			'alumnitotal'  => $this->alumniModel->countAllResults(),
 		);
 		return view('layout/wrapper', $data);
 	}

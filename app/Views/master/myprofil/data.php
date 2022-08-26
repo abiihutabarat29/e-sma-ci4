@@ -47,7 +47,7 @@
                                                 }
                                                 ?></div>
                             <div class="view-profile">
-                                <a href="#" class="btn btn-primary btn-block"><?= $data['nama_sekolah']; ?></a>
+                                <a href="#" class="btn btn-primary btn-block"><?= $data['status'] == 1 ? 'Aktif' : 'Nonaktif' ?></a>
                             </div>
                         </div>
                     </div>
@@ -104,15 +104,6 @@
                                     <div class="info-user ml-3">
                                         <h6 class="text-uppercase fw-bold mb-1">Nomor Handphone</h6>
                                         <span class="text-muted"><?= $data['nohp']; ?></span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <h6 class="text-uppercase fw-bold mb-1">Status</h6>
-                                        <span class="text-muted"><?= $data['status'] == 1 ? 'Aktif' : 'Nonaktif' ?></span>
                                     </div>
                                     <button class="btn btn-icon btn-success btn-round btn-xs">
                                         <i class="fa fa-check"></i>

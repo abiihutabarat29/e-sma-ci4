@@ -23,7 +23,64 @@
                             <div class="col-7 col-stats">
                                 <div class="numbers">
                                     <p class="card-category">Sekolah Verifikasi</p>
+                                    <h4 class="card-title"><?= $sekolahv; ?></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-info card-round">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">Sekolah</p>
                                     <h4 class="card-title"><?= $sekolah; ?></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-info card-round">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">Account</p>
+                                    <h4 class="card-title"><?= $account; ?></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-info card-round">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="icon-big text-center">
+                                    <i class="fas fa-file"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-stats">
+                                <div class="numbers">
+                                    <p class="card-category">Laporan Bulanan</p>
+                                    <h4 class="card-title"><?= $labul; ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -45,8 +102,18 @@
                                 <p class="card-category">Siswa</p>
                                 <?php if (session()->get('level') == '29') { ?>
                                     <h4 class="card-title"><?= $siswatotal; ?></h4>
-                                <?php } else { ?>
-                                    <h4 class="card-title"><?= $siswa; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '3') { ?>
+                                    <h4 class="card-title"><?= $siswasma; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '4') { ?>
+                                    <h4 class="card-title"><?= $siswasmk; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '1') { ?>
+                                    <h4 class="card-title"><?= $smasiswa; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <h4 class="card-title"><?= $smksiswa; ?></h4>
                                 <?php } ?>
                             </div>
                         </div>
@@ -68,8 +135,18 @@
                                 <p class="card-category">Guru</p>
                                 <?php if (session()->get('level') == '29') { ?>
                                     <h4 class="card-title"><?= $gurutotal; ?></h4>
-                                <?php } else { ?>
-                                    <h4 class="card-title"><?= $guru; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '3') { ?>
+                                    <h4 class="card-title"><?= $gurusma; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '4') { ?>
+                                    <h4 class="card-title"><?= $gurusmk; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '1') { ?>
+                                    <h4 class="card-title"><?= $smaguru; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <h4 class="card-title"><?= $smkguru; ?></h4>
                                 <?php } ?>
                             </div>
                         </div>
@@ -91,8 +168,18 @@
                                 <p class="card-category">Pegawai</p>
                                 <?php if (session()->get('level') == '29') { ?>
                                     <h4 class="card-title"><?= $pegawaitotal; ?></h4>
-                                <?php } else { ?>
-                                    <h4 class="card-title"><?= $pegawai; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '3') { ?>
+                                    <h4 class="card-title"><?= $pegawaisma; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '4') { ?>
+                                    <h4 class="card-title"><?= $pegawaismk; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '1') { ?>
+                                    <h4 class="card-title"><?= $smapegawai; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <h4 class="card-title"><?= $smkpegawai; ?></h4>
                                 <?php } ?>
                             </div>
                         </div>
@@ -114,8 +201,18 @@
                                 <p class="card-category">Alumni</p>
                                 <?php if (session()->get('level') == '29') { ?>
                                     <h4 class="card-title"><?= $alumnitotal; ?></h4>
-                                <?php } else { ?>
-                                    <h4 class="card-title"><?= $alumni; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '3') { ?>
+                                    <h4 class="card-title"><?= $alumnisma; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '4') { ?>
+                                    <h4 class="card-title"><?= $alumnismk; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '1') { ?>
+                                    <h4 class="card-title"><?= $smaalumni; ?></h4>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '2') { ?>
+                                    <h4 class="card-title"><?= $smkalumni; ?></h4>
                                 <?php } ?>
                             </div>
                         </div>

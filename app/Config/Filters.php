@@ -124,9 +124,13 @@ class Filters extends BaseConfig
 			]],
 			'filterksma' => ['except' => [
 				'home', 'home/*',
+				'my-profil',
+				'my-profil/*',
 			]],
 			'filterksmk' => ['except' => [
 				'home', 'home/*',
+				'my-profil',
+				'my-profil/*',
 			]],
 			'toolbar',
 			//'honeypot'
