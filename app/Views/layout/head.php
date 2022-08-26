@@ -28,7 +28,6 @@
             },
         });
     </script>
-
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/atlantis.min.css" />
