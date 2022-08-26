@@ -216,6 +216,14 @@
                         </div>
                     </li>
                 <?php } ?>
+                <?php if (session()->get('level') == '3' || session()->get('level') == '4' && session()->get('status') == '1') { ?>
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'sekolah') ? 'active' : ""; ?>">
+                        <a href="<?= base_url('sekolah') ?>">
+                            <i class="fas fa-school"></i>
+                            <p>Sekolah</p>
+                        </a>
+                    </li>
+                <?php } ?>
                 <hr>
                 <li class="nav-item">
                     <a href="/auth/logout">

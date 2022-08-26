@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\SekolahModel;
 use App\Models\KabupatenModel;
+use App\Models\ProfilModel;
 use CodeIgniter\Config\Config;
 
 class DataSekolah extends BaseController
 {
     protected $sekolahModel;
     protected $kabupatenModel;
+    protected $profilModel;
     public function __construct()
     {
         $this->sekolahModel = new SekolahModel();
         $this->kabupatenModel = new KabupatenModel();
+        $this->profilModel = new ProfilModel();
     }
     public function datasekolah()
     {
@@ -24,6 +27,19 @@ class DataSekolah extends BaseController
             'isi' => 'master/data-sekolah/data'
         );
 
+        return view('layout/wrapper', $data);
+    }
+    public function sekolah()
+    {
+        $jenjang = session()->get('jenjang');
+        $datasekolah = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
+        $profilsekolah = $this->profilModel->where('jenjang =', $jenjang)->findAll();
+        $data = array(
+            'title' => 'Daftar Sekolah',
+            'sekolah' => $datasekolah,
+            'profil' => $profilsekolah,
+            'isi' => 'master/data-sekolah/sekolah'
+        );
         return view('layout/wrapper', $data);
     }
     public function add()
