@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\ArsipModel;
+use App\Models\SekolahModel;
 use CodeIgniter\Config\Config;
 
 class DataArsip extends BaseController
 {
     protected $arsipModel;
+    protected $sekolahModel;
     public function __construct()
     {
         $this->arsipModel = new ArsipModel();
+        $this->sekolahModel = new SekolahModel();
     }
     public function dataarsip()
     {
@@ -20,6 +23,20 @@ class DataArsip extends BaseController
             'title' => 'Arsip Laporan Bulanan',
             'data' => $dataarsip,
             'isi' => 'master/data-arsip/data'
+        );
+
+        return view('layout/wrapper', $data);
+    }
+    public function labul()
+    {
+        $jenjang = session()->get('jenjang');
+        // $datasekolah = $this->arsipModel->join('mod_sekolah', 'mod_sekolah.id = mod_labul.id_sekolah', 'right')->where('jenjang', $jenjang)->findAll();
+        $datasekolah = $this->sekolahModel->where('mod_sekolah.jenjang', $jenjang)->join('mod_labul', 'mod_labul.id_sekolah = mod_sekolah.id', 'left')->findAll();
+        // dd($datasekolah);
+        $data = array(
+            'title' => 'Laporan Bulanan Sekolah',
+            'sekolah' => $datasekolah,
+            'isi' => 'master/data-arsip/labul'
         );
 
         return view('layout/wrapper', $data);

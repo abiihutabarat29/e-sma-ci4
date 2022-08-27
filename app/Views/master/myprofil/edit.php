@@ -32,21 +32,23 @@
                     <input type="hidden" name="id" value="<?= $data['id']; ?>">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="npsn" name="npsn" value="<?= $data['nama_sekolah']; ?>" readonly>
+                            <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="npsn" name="npsn" value="<?= $data['nama_sekolah']; ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 pr-0">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="npsn" name="npsn" value="<?= $data['npsn']; ?>" readonly>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="npsn" name="npsn" value="<?= $data['npsn']; ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="jenjang" name="jenjang" value="<?= $data['jenjang']; ?>" readonly>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="jenjang" name="jenjang" value="<?= $data['jenjang']; ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('nik')) ? 'has-error' : ''; ?>">
                                     <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK" autocomplete="off" value="<?= (old('nik')) ? old('nik') : $data['nik']; ?>">
@@ -75,14 +77,14 @@
                                         <?= $validation->getError('email'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6 pr-0">
+                            <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('password')) ? 'has-error' : ''; ?>">
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" value="<?= old('password'); ?>">
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('password'); ?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 pr-0">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="username" name="username" value="<?= $data['username']; ?>" readonly>
                                 </div>

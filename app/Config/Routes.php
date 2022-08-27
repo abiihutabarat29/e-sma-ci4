@@ -179,6 +179,7 @@ $routes->get('/my-profil/edit/(:segment)', 'MyProfil::edit/$1');
 $routes->add('/my-profil/update/(:segment)', 'MyProfil::update/$1');
 //Routes Kaish SMA & SMK
 $routes->get('/sekolah', 'DataSekolah::sekolah');
+$routes->get('/laporan-bulanan', 'DataArsip::labul');
 //Routes Login
 $routes->get('/', 'Auth::index');
 $routes->add('/auth/verify', 'Auth::cek');
