@@ -56,6 +56,8 @@ $routes->get('/profil-sekolah/bangunan/add', 'Profil::addbangunan');
 $routes->add('/profil-sekolah/bangunan/save', 'Profil::savebangunan');
 $routes->get('/profil-sekolah/bangunan/edit/(:segment)', 'Profil::editbangunan/$1');
 $routes->add('/profil-sekolah/bangunan/update/(:segment)', 'Profil::updatebangunan/$1');
+$routes->get('/profil-sekolah/export', 'Profil::exportprofil');
+$routes->get('/profil-sekolah/bagunan/export', 'Profil::exportbangunan');
 //Routes Data Pegawai
 $routes->get('/data-pegawai', 'DataPegawai::datapegawai');
 $routes->get('/data-pegawai/add', 'DataPegawai::add');
@@ -180,6 +182,7 @@ $routes->add('/my-profil/update/(:segment)', 'MyProfil::update/$1');
 //Routes Kaish SMA & SMK
 $routes->get('/sekolah', 'DataSekolah::sekolah');
 $routes->get('/laporan-bulanan', 'DataArsip::labul');
+$routes->post('/laporan-bulanan/filter', 'DataArsip::labul');
 //Routes Login
 $routes->get('/', 'Auth::index');
 $routes->add('/auth/verify', 'Auth::cek');

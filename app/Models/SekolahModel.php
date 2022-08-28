@@ -13,4 +13,5 @@ class SekolahModel extends Model
     protected $allowedFields = [
         'npsn', 'jenjang', 'sekolah', 'kabupaten', 'status_sekolah', 'userentry'
     ];
+
 }

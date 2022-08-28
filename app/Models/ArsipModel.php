@@ -20,4 +20,12 @@ class ArsipModel extends Model
             'validfile' => $valid
         ])->get()->getRowArray();
     }
+
+    public function filterdata($bulan, $tahun)
+    {
+        return $this->db->table('mod_labul')->where([
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        ])->get();
+    }
 }

@@ -33,18 +33,15 @@ class DataArsip extends BaseController
         $tahun = $this->request->getPost('thnfilter');
         if ($bulan || $tahun == true) {
             $jenjang = session()->get('jenjang');
-            $datasekolah = $this->sekolahModel->where('jenjang', $jenjang)->findAll();
-            $datalabul = $this->arsipModel->where('jenjang', $jenjang)->where('bulan', $bulan)->where('tahun', $tahun)->findAll();
+            $datasekolah = $this->sekolahModel->join('mod_labul', 'mod_labul.id_sekolah = mod_sekolah.id', 'left')->where('mod_sekolah.jenjang', $jenjang)->where('mod_labul.bulan', $bulan)->where('mod_labul.tahun', $tahun)->findAll();
         } else {
             $jenjang = session()->get('jenjang');
-            $datasekolah = $this->sekolahModel->where('jenjang', $jenjang)->findAll();
-            $datalabul = $this->arsipModel->where('jenjang', $jenjang)->findAll();
+            $datasekolah = $this->sekolahModel->where('mod_sekolah.jenjang', $jenjang)->join('mod_labul', 'mod_labul.id_sekolah = mod_sekolah.id', 'left')->findAll();
         }
         // dd($datasekolah);
         $data = array(
             'title' => 'Laporan Bulanan Sekolah',
             'sekolah' => $datasekolah,
-            'labul' => $datalabul,
             'isi' => 'master/data-arsip/labul'
         );
 

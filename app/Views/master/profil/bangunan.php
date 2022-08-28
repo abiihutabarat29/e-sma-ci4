@@ -147,7 +147,7 @@
 
                             <?php if ($data > 0) { ?>
                                 <a href="<?= base_url('profil-sekolah/bangunan/edit/' . $data['id']) ?>" class="btn btn-warning ml-auto btn-sm">
-                                    <i class="fa fa-edit"></i> Update
+                                    <i class="fa fa-edit"></i> Edit
                                 </a>
                             <?php } else { ?>
                                 <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">

@@ -27,6 +27,7 @@
                     <div class="card-body">
                         <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="150" height="150">
                         <form action="/auth/verify" method="post">
+                            <?= csrf_field(); ?>
                             <div class="form-group mt-5 mb-4">
                                 <label class="floating-label" for="Username">Username</label>
                                 <input type="text" name="username" class="form-control" id="Username" value="<?= old('username'); ?>">

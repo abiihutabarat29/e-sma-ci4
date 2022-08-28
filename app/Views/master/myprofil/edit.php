@@ -27,9 +27,9 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="<?= base_url('my-profil/update/' . $data['id']); ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('my-profil/update/' . $data['id']) ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
-                    <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                    <input type="hidden" name="id" value="<?= $data['id'] ?>">
                     <div class="card-body">
                         <div class="row">
                             <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
@@ -114,6 +114,7 @@
                         </div>
                     </div>
                     <div class="card-action">
+                        <!-- <input type="hidden" name="_method" value="PUT"> -->
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
                         <a href="<?= base_url('my-profil') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                     </div>
