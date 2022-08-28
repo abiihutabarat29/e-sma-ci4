@@ -514,7 +514,7 @@ class Profil extends BaseController
     public function bangunan()
     {
         $id = session()->get('id_sekolah');
-        $databangunan = $this->bangunanModel->where('id_sekolah =', $id)->first();
+        $databangunan = $this->profilModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_profil.id_sekolah', 'right')->where('mod_bangunan.id_sekolah =', $id)->first();
         $data = array(
             'titlebar' => 'Bangunan Sekolah',
             'title' => 'Bangunan Sekolah',

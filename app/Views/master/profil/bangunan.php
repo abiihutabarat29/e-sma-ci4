@@ -22,126 +22,108 @@
         </ul>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title"><?= $title ?></h4>
+        <?php if (!empty($data) && is_array($data)) : ?>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Foto Sekolah</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <img class="img-thumbnail rounded img-preview" src="<?= base_url('media/profil/' . $data['profil']); ?>" width="100%" alt="Foto">
+                        </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <?php if (!empty($data) && is_array($data)) : ?>
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>Luas Tanah Keseluruhan</p>
-                                    </td>
-                                    <td><span>: <?= $data['luas_tanah']; ?></span> m2</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Luas Bangunan</p>
-                                    </td>
-                                    <td><span>: <?= $data['luas_bangunan']; ?></span> m2</td>
-                                </tr>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title"><?= $title ?></h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="card-list">
+                                <div class="item-list">
+                                    <div class="info-user ml-3">
+                                        <h6 class="text-uppercase fw-bold mb-1">Luas Tanah Keseluruhan</h6>
+                                        <span class="text-muted"><?= $data['luas_tanah']; ?> m2</span>
+                                    </div>
+                                    <button class="btn btn-icon btn-success btn-round btn-xs">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                                <div class="item-list">
+                                    <div class="info-user ml-3">
+                                        <h6 class="text-uppercase fw-bold mb-1">Luas Bangunan</h6>
+                                        <span class="text-muted"><?= $data['luas_bangunan']; ?> m2</span>
+                                    </div>
+                                    <button class="btn btn-icon btn-success btn-round btn-xs">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                                <div class="item-list">
+                                    <div class="info-user ml-3">
+                                        <h6 class="text-uppercase fw-bold mb-1">Luas Tanah Untuk Rencana Pembangunan</h6>
+                                        <span class="text-muted"><?= $data['luas_rpembangunan']; ?> m2</span>
+                                    </div>
+                                    <button class="btn btn-icon btn-success btn-round btn-xs">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
                                 <?php if (session()->get('level') == '2') { ?>
-                                    <tr>
-                                        <td>
-                                            <p>Luas Halaman</p>
-                                        </td>
-                                        <td><span>: <?= $data['luas_halaman']; ?></span> m2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Luas Lapangan Olahraga</p>
-                                        </td>
-                                        <td><span>: <?= $data['luas_lapangan']; ?></span> m2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Luas Lahan Kosong</p>
-                                        </td>
-                                        <td><span>: <?= $data['luas_kosong']; ?></span> m2</td>
-                                    </tr>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Luas Halaman</h6>
+                                            <span class="text-muted"><?= $data['luas_halaman']; ?> m2</span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </div>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Luas Lapangan</h6>
+                                            <span class="text-muted"><?= $data['luas_lapangan']; ?> m2</span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </div>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Luas Lahan Kosong</h6>
+                                            <span class="text-muted"><?= $data['luas_kosong']; ?> m2</span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </div>
                                 <?php } ?>
-                                <tr>
-                                    <td>
-                                        <p>Luas Tanah Untuk Rencana Pembangunan</p>
-                                    </td>
-                                    <td><span>: <?= $data['luas_rpembangunan']; ?></span> m2</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Status Kepemilikan Tanah</p>
-                                    </td>
-                                    <td><span>: <?= $data['status_tanah']; ?></span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>Status Kepemilikan Gedung</p>
-                                    </td>
-                                    <td><span>: <?= $data['status_gedung']; ?></span></td>
-                                </tr>
-                                <?php if (session()->get('level') == '1') { ?>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel X MIPA</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasx_mipa']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel X IIS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasx_iis']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel X BHS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasx_bhs']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XI MIPA</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxi_mipa']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XI IIS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxi_iis']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XI BHS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxi_bhs']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XII MIPA</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxii_mipa']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XII IIS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxii_iis']; ?></span> Kelas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Jumlah Kelas/Rombel XII BHS</p>
-                                        </td>
-                                        <td><span>: <?= $data['jkelasxii_bhs']; ?></span> Kelas</td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                <div class="item-list">
+                                    <div class="info-user ml-3">
+                                        <h6 class="text-uppercase fw-bold mb-1">Status Kepemilikan Tanah</h6>
+                                        <span class="text-muted"><?= $data['status_tanah']; ?></span>
+                                    </div>
+                                    <button class="btn btn-icon btn-success btn-round btn-xs">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                                <div class="item-list">
+                                    <div class="info-user ml-3">
+                                        <h6 class="text-uppercase fw-bold mb-1">Status Kepemilikan Gedung</h6>
+                                        <span class="text-muted"><?= $data['status_gedung']; ?></span>
+                                    </div>
+                                    <button class="btn btn-icon btn-success btn-round btn-xs">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="d-flex align-items-center">
                             <?php if ($data > 0) { ?>
                                 <a href="<?= base_url('profil-sekolah/bangunan/edit/' . $data['id']) ?>" class="btn btn-warning ml-auto btn-sm">
@@ -154,23 +136,23 @@
                             <?php } ?>
                             <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                         </div>
-                    <?php else : ?>
-                        <table>
-                            <h2>
-                                <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
-                        </table>
-                        </h2>
-                        </table>
-                        <div class="d-flex align-items-center">
-                            <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">
-                                <i class="fa fa-plus"></i> Tambah
-                            </a>
-                            <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
-                        </div>
-                    <?php endif ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php else : ?>
+            <table>
+                <h2>
+                    <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
+            </table>
+            </h2>
+            </table>
+            <div class="d-flex align-items-center">
+                <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">
+                    <i class="fa fa-plus"></i> Tambah
+                </a>
+                <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+            </div>
+        <?php endif ?>
     </div>
 </div>
 </div>
