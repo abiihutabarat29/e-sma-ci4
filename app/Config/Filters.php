@@ -92,6 +92,8 @@ class Filters extends BaseConfig
 				'data-arsip/*',
 				'my-profil',
 				'my-profil/*',
+				'generate',
+				'generate/*',
 			]],
 			'filterasmk' => ['except' => [
 				'home', 'home/*',
@@ -121,6 +123,8 @@ class Filters extends BaseConfig
 				'data-arsip/*',
 				'my-profil',
 				'my-profil/*',
+				'generate',
+				'generate/*',
 			]],
 			'filterksma' => ['except' => [
 				'home', 'home/*',

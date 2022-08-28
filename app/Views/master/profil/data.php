@@ -209,7 +209,6 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="<?= base_url('profil-sekolah/export') ?>" target="_blank" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-file-excel"></i> Export Excel</a>
                             <?php if ($data > 0) { ?>
                                 <a href="<?= base_url('profil-sekolah/edit/' . $data['id']) ?>" class="btn btn-warning ml-auto btn-sm">
                                     <i class="fa fa-edit"></i> Edit

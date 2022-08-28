@@ -203,7 +203,7 @@
                         <div class="collapse" id="base">
                             <ul class="nav nav-collapse">
                                 <li>
-                                    <a href="<?= base_url('generate-laporan') ?>">
+                                    <a href="<?= base_url('generate') ?>">
                                         <span class="sub-item">Generate Laporan</span>
                                     </a>
                                 </li>
