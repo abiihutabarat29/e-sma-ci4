@@ -273,6 +273,54 @@
                 </div>
             </div>
         </div>
+        <!-- Leafletjs-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+        <script>
+            var map = L.map('map').setView([<?= $data['latitude']; ?>, <?= $data['longitude']; ?>], 14);
+
+            var tiles = L.tileLayer(
+                'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                    id: 'mapbox/streets-v11',
+                    tileSize: 512,
+                    zoomOffset: -1
+                }).addTo(map);
+
+            // Get Coordinat Location
+            var latInput1 = document.querySelector("[name=latitude]");
+            var latInput2 = document.querySelector("[name=longitude]");
+
+            var curLocation = [<?= $data['latitude']; ?>, <?= $data['longitude']; ?>];
+
+            map.attributionControl.setPrefix(false);
+
+            var marker = L.marker(curLocation, {
+                draggable: 'true'
+            });
+            marker.on('dragend', function(event) {
+                var position = marker.getLatLng();
+                marker.setLatLng(position, {
+                    draggable: 'true'
+                }).bindPopup(position).update();
+                $("#latitude").val(position.lat);
+                $("#longitude").val(position.lng).keyup();
+            });
+            map.addLayer(marker);
+
+            map.on("click", function(e) {
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+                if (!marker) {
+                    marker = L.marker(e.latlng).addTo(map);
+                } else {
+                    marker.setLatLng(e.latlng);
+                }
+                latInput1.value = lat;
+                latInput2.value = lng;
+            });
+        </script>
     <?php else : ?>
         <div class="col-md-12">
             <div class="card">
@@ -289,51 +337,4 @@
         </div>
     <?php endif ?>
 </div>
-<!-- Leafletjs-->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-<script>
-    var map = L.map('map').setView([<?= $data['latitude']; ?>, <?= $data['longitude']; ?>], 14);
-
-    var tiles = L.tileLayer(
-        'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1
-        }).addTo(map);
-
-    // Get Coordinat Location
-    var latInput1 = document.querySelector("[name=latitude]");
-    var latInput2 = document.querySelector("[name=longitude]");
-
-    var curLocation = [<?= $data['latitude']; ?>, <?= $data['longitude']; ?>];
-
-    map.attributionControl.setPrefix(false);
-
-    var marker = L.marker(curLocation, {
-        draggable: 'true'
-    });
-    marker.on('dragend', function(event) {
-        var position = marker.getLatLng();
-        marker.setLatLng(position, {
-            draggable: 'true'
-        }).bindPopup(position).update();
-        $("#latitude").val(position.lat);
-        $("#longitude").val(position.lng).keyup();
-    });
-    map.addLayer(marker);
-
-    map.on("click", function(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
-        if (!marker) {
-            marker = L.marker(e.latlng).addTo(map);
-        } else {
-            marker.setLatLng(e.latlng);
-        }
-        latInput1.value = lat;
-        latInput2.value = lng;
-    });
-</script>
+</div>
