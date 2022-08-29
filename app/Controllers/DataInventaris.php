@@ -102,12 +102,13 @@ class DataInventaris extends BaseController
 
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Data Inventaris',
             'title' => 'Form Edit Data Inventaris',
             'isi' => 'master/data-inventaris/edit',
             'validation' => \Config\Services::validation(),
-            'data' => $this->inventarisModel->where('id', $id)->first(),
+            'data' => $this->inventarisModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

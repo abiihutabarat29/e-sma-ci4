@@ -143,8 +143,8 @@
             <table>
                 <h2>
                     <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
+                </h2>
             </table>
-            </h2>
             </table>
             <div class="d-flex align-items-center">
                 <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">

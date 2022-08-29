@@ -418,6 +418,7 @@ class DataPegawai extends BaseController
 
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Pegawai',
@@ -425,7 +426,7 @@ class DataPegawai extends BaseController
             'isi' => 'master/data-pegawai/edit',
             'golongan' => $datagol,
             'validation' => \Config\Services::validation(),
-            'data' => $this->pegawaiModel->where('id', $id)->first(),
+            'data' => $this->pegawaiModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

@@ -293,6 +293,7 @@ class DataSiswa extends BaseController
 
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Data Siswa',
@@ -300,7 +301,7 @@ class DataSiswa extends BaseController
             'isi' => 'master/data-siswa/edit',
             'tahun' => $tahun,
             'validation' => \Config\Services::validation(),
-            'data' => $this->siswaModel->where('id', $id)->first(),
+            'data' => $this->siswaModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

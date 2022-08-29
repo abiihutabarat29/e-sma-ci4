@@ -125,6 +125,7 @@ class DataKebutuhan extends BaseController
 
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $jenjang = session()->get('jenjang');
         $mapel = $this->mapelModel->where('jenjang =', $jenjang)->findAll();
         $data = array(
@@ -133,7 +134,7 @@ class DataKebutuhan extends BaseController
             'isi' => 'master/data-kebutuhan-guru/edit',
             'validation' => \Config\Services::validation(),
             'mapel' => $mapel,
-            'data' => $this->kebutuhanModel->where('id', $id)->first(),
+            'data' => $this->kebutuhanModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

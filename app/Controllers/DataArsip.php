@@ -176,12 +176,13 @@ class DataArsip extends BaseController
     }
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Arsip Laporan Bulanan',
             'title' => 'Form Edit Arsip Laporan Bulanan',
             'isi' => 'master/data-arsip/edit',
             'validation' => \Config\Services::validation(),
-            'data' => $this->arsipModel->where('id', $id)->first(),
+            'data' => $this->arsipModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="card-header">
-                <form action="/laporan-bulanan/filter" method="post">
+                <form action="<?= base_url('laporan-bulanan/filter') ?>" method="post">
                     <div class="row">
                         <div class="col-md-6 mt-4">
                             <select class="form-control" name="blnfilter">

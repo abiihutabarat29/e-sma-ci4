@@ -268,6 +268,7 @@ class Profil extends BaseController
     }
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $kec = $this->kecamatanModel->findAll();
         $kab = $this->kabupatenModel->findAll();
         $data = array(
@@ -275,7 +276,7 @@ class Profil extends BaseController
             'title' => 'Form Edit Data Sekolah',
             'isi' => 'master/profil/edit',
             'validation' => \Config\Services::validation(),
-            'data' => $this->profilModel->where('id', $id)->first(),
+            'data' => $this->profilModel->where('id', $id)->where('id_sekolah', $ids)->first(),
             'kecamatan' => $kec,
             'kabupaten' => $kab
         );
@@ -667,12 +668,13 @@ class Profil extends BaseController
     }
     public function editbangunan($id)
     {
+        $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Bangunan Sekolah',
             'title' => 'Form Edit Bangunan Sekolah',
             'isi' => 'master/profil/editbangunan',
             'validation' => \Config\Services::validation(),
-            'data' => $this->bangunanModel->where('id', $id)->first(),
+            'data' => $this->bangunanModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

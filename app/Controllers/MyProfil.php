@@ -28,12 +28,13 @@ class MyProfil extends BaseController
     }
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Profil Saya',
             'title' => 'Form Edit Data Saya',
             'isi' => 'master/myprofil/edit',
             'validation' => \Config\Services::validation(),
-            'data' => $this->userModel->where('id', $id)->first(),
+            'data' => $this->userModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

@@ -514,6 +514,7 @@ class DataGuru extends BaseController
     }
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $datagol = $this->golonganModel->findAll();
         $jenjang = session()->get('jenjang');
         $mapel = $this->mapelModel->where('jenjang =', $jenjang)->findAll();
@@ -524,7 +525,7 @@ class DataGuru extends BaseController
             'validation' => \Config\Services::validation(),
             'mapel' => $mapel,
             'golongan' => $datagol,
-            'data' => $this->guruModel->where('id_guru', $id)->first(),
+            'data' => $this->guruModel->where('id_guru', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }

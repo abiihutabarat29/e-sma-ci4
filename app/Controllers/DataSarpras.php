@@ -90,6 +90,7 @@ class DataSarpras extends BaseController
 
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $datasarana = $this->saranaModel->findAll();
         $data = array(
             'titlebar' => 'Data Sarpras',
@@ -97,7 +98,7 @@ class DataSarpras extends BaseController
             'isi' => 'master/data-sarpras/edit',
             'validation' => \Config\Services::validation(),
             'sarana' => $datasarana,
-            'data' => $this->sarprasModel->where('id', $id)->first(),
+            'data' => $this->sarprasModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }
