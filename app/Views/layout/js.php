@@ -333,3 +333,63 @@
         theme: "bootstrap-5",
     });
 </script>
+<script>
+    var btnGenerate = document.getElementById('generate');
+    var btnSelesai = document.getElementById('selesai');
+    const cekdata = () => {
+        $('#generate').html('<i class="fa fa-spin fa-spinner"></i><i>sedang mengecek data . . .</i>');
+    }
+    const start = () => {
+        setTimeout(() => {
+            $('#generate').html('<i class="fa fa-spin fa-spinner"></i><i>sedang mengenerate . . .</i>');
+        }, 4000);
+    }
+    const end = () => {
+        btnGenerate.style.display = 'none';
+        btnSelesai.style.display = 'inline';
+        $('#selesai').html('<i class="fa fa-check"></i><i>selesai . . .</i>');
+    }
+    const back = () => {
+        btnGenerate.style.display = 'inline';
+        btnSelesai.style.display = 'none';
+        $('#generate').html('Generate');
+    }
+    // $(document).ready(function() {
+    //     $('.generate').click(function() {
+    //         const Url = <?= base_url('generate/export') ?>
+    //         $.ajax({
+    //             url: Url,
+    //             method: GET,
+    //             success: function() {
+    //                 // start();
+    //                 // setTimeout(function() {
+    //                 //     end();
+    //                 //     generate();
+    //                 // }, 3000);
+    //             },
+    //             error: function() {
+    //                 // swal({
+    //                 //     text: error,
+    //                 //     icon: "error",
+    //                 //     buttons: {
+    //                 //         confirm: {
+    //                 //             className: "btn btn-success",
+    //                 //         },
+    //                 //     },
+    //                 // });
+    //             }
+    //         })
+    //     })
+    // });
+
+    function proses() {
+        cekdata();
+        start();
+        setTimeout(function() {
+            end();
+        }, 8000);
+        setTimeout(function() {
+            back();
+        }, 15000);
+    }
+</script>

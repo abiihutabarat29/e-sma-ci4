@@ -136,7 +136,7 @@ class Generate extends BaseController
         ];
         $sheet->mergeCells('A1:D1');
         $sheet->getStyle('A1')->getFont()->setBold(true);
-        $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
+        // $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('A2:A15')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('D6:D10')->applyFromArray($styleNumberLeft);
         // $sheet->getStyle('A2:D15')->applyFromArray($styleBorder);
@@ -145,6 +145,147 @@ class Generate extends BaseController
         $sheet->getColumnDimension('B')->setAutoSize(true);
         $sheet->getColumnDimension('C')->setAutoSize(true);
         $sheet->getColumnDimension('D')->setAutoSize(true);
+        // ==============================================================================================
+        // Export Data Keadaan Siswa dan Agama
+        // Fetch Data Keadaan Siswa dan Agama
+        $npsn = session()->get('npsn');
+        //Fetc Rombel X,XI,XII
+        $rombel = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->first();
+        $xmipa = $rombel['jkelasx_mipa'];
+        $xiis = $rombel['jkelasx_iis'];
+        $xbhs = $rombel['jkelasx_bhs'];
+        $ximipa = $rombel['jkelasxi_mipa'];
+        $xiiis = $rombel['jkelasxi_iis'];
+        $xibhs = $rombel['jkelasxi_bhs'];
+        $xiimipa = $rombel['jkelasxii_mipa'];
+        $xiiiis = $rombel['jkelasxii_iis'];
+        $xiibhs = $rombel['jkelasxii_bhs'];
+        $rombelx = $xmipa + $xiis + $xbhs;
+        $rombelxi = $ximipa + $xiiis + $xibhs;
+        $rombelxii = $xiimipa + $xiiiis + $xiibhs;
+        //Laki-laki-X-IPA
+        $lxipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+        //Laki-laki-XI-IPA
+        $lxiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+        //Laki-laki-XII-IPA
+        $lxiiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+        //X-IPA-Islam
+        $xipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+        //X-IPA-Kristen Protestan
+        $xipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+        //X-IPA-Kristen Katholik
+        $xipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+        //X-IPA-Kristen Hindu
+        $xipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+        //X-IPA-Kristen Budha
+        $xipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+        //XI-IPA-Islam
+        $xiipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+        //XI-IPA-Kristen Protestan
+        $xiipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+        //XI-IPA-Kristen Katholik
+        $xiipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+        //XI-IPA-Kristen Hindu
+        $xiipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+        //XI-IPA-Kristen Budha
+        $xiipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+        //XII-IPA-Islam
+        $xiiipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+        //XII-IPA-Kristen Protestan
+        $xiiipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+        //XII-IPA-Kristen Katholik
+        $xiiipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+        //XII-IPA-Kristen Hindu
+        $xiiipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+        //XII-IPA-Kristen Budha
+        $xiiipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+        //==============================================
+        $sheet->setCellValue('F1', 'B. Data Keadaan Siswa dan Bangunan');
+        $sheet->setCellValue('F2', 'No');
+        $sheet->setCellValue('F4', '1.');
+        $sheet->setCellValue('F5', '2.');
+        $sheet->setCellValue('F6', '3.');
+        $sheet->setCellValue('F7', 'JUMLAH');
+        $sheet->setCellValue('G2', 'Kelas/Program');
+        $sheet->setCellValue('G4', 'X-IPA');
+        $sheet->setCellValue('G5', 'XI-IPA');
+        $sheet->setCellValue('G6', 'XII-IPA');
+        $sheet->setCellValue('H2', 'SISWA');
+        $sheet->setCellValue('H3', 'L');
+        $sheet->setCellValue('H4', $lxipa);
+        $sheet->setCellValue('H5', $lxiipa);
+        $sheet->setCellValue('H6', $lxiiipa);
+        $sheet->setCellValue('H7', '=SUM(H4:H6)');
+        $sheet->setCellValue('I3', 'P');
+        $sheet->setCellValue('I4', $lxipa);
+        $sheet->setCellValue('I5', $lxiipa);
+        $sheet->setCellValue('I6', $lxiiipa);
+        $sheet->setCellValue('I7', '=SUM(I4:I6)');
+        $sheet->setCellValue('J2', 'Jumlah Siswa');
+        $sheet->setCellValue('J4', '=H4+I4');
+        $sheet->setCellValue('J5', '=H5+I5');
+        $sheet->setCellValue('J6', '=H6+I6');
+        $sheet->setCellValue('J7', '=SUM(J4:J6)');
+        $sheet->setCellValue('K2', 'Jumlah Kelas (Rombel)');
+        $sheet->setCellValue('K4', $rombelx);
+        $sheet->setCellValue('K5', $rombelxi);
+        $sheet->setCellValue('K6', $rombelxii);
+        $sheet->setCellValue('K7', '=SUM(K4:K6)');
+        $sheet->setCellValue('L2', 'Agama');
+        $sheet->setCellValue('L3', 'Islam');
+        $sheet->setCellValue('L4', $xipai);
+        $sheet->setCellValue('L5', $xiipai);
+        $sheet->setCellValue('L6', $xiiipai);
+        $sheet->setCellValue('L7', '=SUM(L4:L6)');
+        $sheet->setCellValue('M3', 'Kristen Protestan');
+        $sheet->setCellValue('M4', $xipakp);
+        $sheet->setCellValue('M5', $xiipakp);
+        $sheet->setCellValue('M6', $xiipakp);
+        $sheet->setCellValue('M7', '=SUM(M4:M6)');
+        $sheet->setCellValue('N3', 'Kristen Katholik');
+        $sheet->setCellValue('N4', $xipakk);
+        $sheet->setCellValue('N5', $xiipakk);
+        $sheet->setCellValue('N6', $xiiipakk);
+        $sheet->setCellValue('N7', '=SUM(N4:N6)');
+        $sheet->setCellValue('O3', 'Hindu');
+        $sheet->setCellValue('O4', $xipah);
+        $sheet->setCellValue('O5', $xiipah);
+        $sheet->setCellValue('O6', $xiiipah);
+        $sheet->setCellValue('O7', '=SUM(O4:O6)');
+        $sheet->setCellValue('P3', 'Budha');
+        $sheet->setCellValue('P4', $xipab);
+        $sheet->setCellValue('P5', $xiipab);
+        $sheet->setCellValue('P6', $xiiipab);
+        $sheet->setCellValue('P7', '=SUM(P4:P6)');
+        $sheet->setCellValue('Q3', 'Jumlah');
+        $sheet->setCellValue('Q4', '=SUM(L4:P4)');
+        $sheet->setCellValue('Q5', '=SUM(L5:P5)');
+        $sheet->setCellValue('Q6', '=SUM(L6:P6)');
+        $sheet->setCellValue('Q7', '=SUM(Q4:Q6)');
+        //Marge left
+        $sheet->mergeCells('F1:Q1');
+        $sheet->mergeCells('F7:G7');
+        $sheet->mergeCells('H2:I2');
+        $sheet->mergeCells('H2:I2');
+        $sheet->mergeCells('L2:Q2');
+        //Marge down
+        $sheet->mergeCells('G2:G3');
+        $sheet->mergeCells('F2:F3');
+        $sheet->mergeCells('J2:J3');
+        $sheet->mergeCells('K2:K3');
+        //=========================
+        $sheet->getStyle('F1')->getFont()->setBold(true);
+        $sheet->getStyle('F2:Q7')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('F2:Q7')->applyFromArray($styleBorder);
+        $sheet->getStyle('G4:G6')->applyFromArray($styleNumberLeft);
+        $sheet->getColumnDimension('F')->setAutoSize(true);
+        $sheet->getColumnDimension('G')->setAutoSize(true);
+        $sheet->getColumnDimension('H')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('I')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('J')->setWidth(70, 'pt');
+        $sheet->getColumnDimension('K')->setWidth(110, 'pt');
+        $sheet->getColumnDimension('M')->setWidth(110, 'pt');
+        $sheet->getColumnDimension('N')->setWidth(110, 'pt');
         // ==============================================================================================
         // Export Data Bangunan
         // Fetch Data Bangunan
@@ -177,7 +318,7 @@ class Generate extends BaseController
         // Style Table
         $sheet->mergeCells('A1:D1');
         $sheet->getStyle('A1')->getFont()->setBold(true);
-        $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
+        // $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('A2:A6')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('D2:D4')->applyFromArray($styleNumberLeft);
         // Style Auto Size
@@ -185,7 +326,7 @@ class Generate extends BaseController
         $sheet->getColumnDimension('B')->setAutoSize(true);
         $sheet->getColumnDimension('C')->setAutoSize(true);
         $sheet->getColumnDimension('D')->setAutoSize(true);
-
+        // ==============================================================================================
         // Export Tabel
         $writer = new Xlsx($spreadsheet);
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

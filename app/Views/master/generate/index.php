@@ -22,6 +22,8 @@
                     </div>
                     <div class="card-detail">
                         <a href="<?= base_url('generate/export') ?>" class="btn btn-primary btn-rounded">Generate</a>
+                        <!-- <button type="submit" id="generate" onclick="proses()" class="btn btn-primary btn-rounded">Generate</button>
+                        <button id="selesai" class="btn btn-success btn-rounded" style="display:none;"></button> -->
                     </div>
                 </div>
             </div>
