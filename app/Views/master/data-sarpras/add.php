@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/data-sarpras/save" method="post">
+                <form action="<?= base_url('data-sarpras/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
                         <div class="row">
@@ -46,7 +46,7 @@
                             <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('kondisi')) ? 'has-error' : ''; ?>">
                                     <select name="kondisi" class="form-control">
-                                    <option selected disabled><?= (old('kondisi')) ? old('kondisi') : ".::Pilih Kondisi::." ?></option>
+                                        <option selected disabled><?= (old('kondisi')) ? old('kondisi') : ".::Pilih Kondisi::." ?></option>
                                         <option value="Baik">Baik</option>
                                         <option value="Rusak Ringan">Rusak Ringan</option>
                                         <option value="Rusak Berat">Rusak Berat</option>

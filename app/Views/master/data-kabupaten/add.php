@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/data-kabupaten/save" method="post">
+                <form action="<?= base_url('data-kabupaten/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
                         <div class="row">

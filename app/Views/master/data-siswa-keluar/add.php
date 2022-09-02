@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/data-siswa-keluar/save" method="post">
+                <form action="<?= base_url('data-siswa-keluar/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
                         <div class="row">
@@ -84,6 +84,19 @@
                                 </div>
                             <?php } ?>
                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Asal Sekolah</label>
+                                    <input type="text" name="asal" class="form-control" id="nama_sekolah" value="<?= old('asal'); ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-0">
+                                <div class="form-group <?= ($validation->hasError('nosurat')) ? 'has-error' : ''; ?>">
+                                    <input name="nosurat" type="text" class="form-control" autocomplete="off" placeholder="Nomor Surat Pindah" value="<?= old('nosurat'); ?>">
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('nosurat'); ?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('thnkeluar')) ? 'has-error' : ''; ?>">
                                     <select name="thnkeluar" class="form-control" style="width: 100%">
                                         <option selected disabled><?= (old('thnkeluar')) ? old('thnkeluar') : ".::Pilih Tahun Keluar / Tahun Pelajaran::." ?></option>
@@ -96,13 +109,6 @@
                                 </div>
                             </div>
                             <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('nosurat')) ? 'has-error' : ''; ?>">
-                                    <input name="nosurat" type="text" class="form-control" autocomplete="off" placeholder="Nomor Surat Pindah" value="<?= old('nosurat'); ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nosurat'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
                                     <textarea name="ket" type="text" class="form-control" autocomplete="off" placeholder="Keterangan"><?= old('ket'); ?></textarea>
                                     <small class="form-text text-danger">

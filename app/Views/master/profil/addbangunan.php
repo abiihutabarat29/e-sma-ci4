@@ -27,7 +27,7 @@
                 <div class="card-title"><?= $titlebar ?></div>
             </div>
             <div class="card-body">
-                <form action="/profil-sekolah/bangunan/save" method="post">
+                <form action="<?= base_url('profil-sekolah/bangunan/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="row">
                         <div class="col-sm-6">

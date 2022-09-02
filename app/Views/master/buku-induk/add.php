@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/buku-induk/save" method="post">
+                <form action="<?= base_url('buku-induk/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
                         <div class="row">

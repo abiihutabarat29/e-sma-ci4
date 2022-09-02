@@ -195,6 +195,7 @@
             $('#jenkel').val(nmsiswa.jenis_kel);
             $('#kelas').val(nmsiswa.kelas);
             $('#jurusan').val(nmsiswa.jurusan);
+            $('#nama_sekolah').val(nmsiswa.nama_sekolah);
         });
     });
     async function getSiswa(id) {
@@ -212,6 +213,7 @@
             $('#jenkel').val(nmsiswa.jenis_kel);
             $('#kelas').val(nmsiswa.kelas);
             $('#paketk').val(nmsiswa.pkeahlian);
+            $('#nama_sekolah').val(nmsiswa.nama_sekolah);
         });
     });
     async function getSiswa(id) {

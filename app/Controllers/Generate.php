@@ -327,6 +327,7 @@ class Generate extends BaseController
         endforeach;
         $sheet->mergeCells('S1:Z1');
         $sheet->getStyle('S1')->getFont()->setBold(true);
+        $sheet->getStyle('T2')->getFont()->setBold(true);
         $sheet->getStyle('S3:Z3')->applyFromArray($styleColumnCenter);
         $sheet->getColumnDimension('S')->setAutoSize(true);
         $sheet->getColumnDimension('T')->setAutoSize(true);
@@ -362,6 +363,7 @@ class Generate extends BaseController
             $no++;
             $row++;
         endforeach;
+        $sheet->getStyle('T12')->getFont()->setBold(true);
         $sheet->getStyle('S13:Z13')->applyFromArray($styleColumnCenter);
         // ==============================================================================================
         // Export Data Bangunan

@@ -27,7 +27,7 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/data-pegawai/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('data-pegawai/save') ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="card-body">
                         <div class="row">

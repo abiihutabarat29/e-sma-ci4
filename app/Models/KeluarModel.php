@@ -12,7 +12,7 @@ class KeluarModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'id_sekolah', 'nisn', 'nama',
-        'jenis_kel',  'kelas', 'jurusan', 'pkeahlian', 'no_surat', 'mutasi',
+        'jenis_kel',  'kelas', 'jurusan', 'pkeahlian', 'asal_sekolah', 'no_surat', 'mutasi',
         'tahun', 'keterangan', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
 }

@@ -28,7 +28,7 @@
                     <div class="swal-valid" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="/data-arsip/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('data-arsip/save') ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="row">
                         <div class="col-md-6">
