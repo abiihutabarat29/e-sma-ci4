@@ -67,10 +67,8 @@
                         </table>
                     </div>
                 </div>
-                <hr>
-                <a href="#" target="blank" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-file-excel"></i> Export Data Nama Guru</a>
-                <a href="#" target="blank" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-file-excel"></i> Export Data Pendidikan Guru</a>
             </div>
         </div>
     </div>
+</div>
 </div>

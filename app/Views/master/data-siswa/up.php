@@ -22,7 +22,7 @@
                     </a>
                 </div>
             </div>
-            <form class="formnaikkelas" action="/data-siswa/up" method="post">
+            <form class="formnaikkelas" action="<?= base_url('data-siswa/up') ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="card-body">
                     <div class="card-header">

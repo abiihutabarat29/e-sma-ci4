@@ -49,39 +49,47 @@
                 dataType: "json",
                 beforeSend: function() {
                     $('.btnnaikkelas').attr('disable', 'disabled');
-                    $('.btnnaikkelas').html('<i class="fa fa-spin fa-spinner"></i>');
+                    $('.btnnaikkelas').html('<i class="fa fa-spin fa-spinner"></i> <i>sedang diproses . . .</i>');
                 },
                 complete: function() {
-                    $('.btnnaikkelas').removeAttr('disable');
-                    $('.btnnaikkelas').html('<i class="fa fa-arrow-up"></i> Naik Kelas');
+                    setTimeout(() => {
+                        $('.btnnaikkelas').removeAttr('disable');
+                        $('.btnnaikkelas').html('<i class="fa fa-arrow-up"></i> Naik Kelas');
+                    }, 1500);
                 },
                 success: function(response) {
-                    if (response.error) {
-                        if (response.error.naikkelas) {
-                            $('.nkelas').addClass('has-error');
-                            $('.errorNaikkelas').html(response.error.naikkelas);
-                        } else {
-                            $('.nkelas').removeClass('has-error');
-                            $('.errorNaikkelas').html('');
+                    setTimeout(() => {
+                        if (response.error) {
+                            if (response.error.naikkelas) {
+                                $('.nkelas').addClass('has-error');
+                                $('.errorNaikkelas').html(response.error.naikkelas);
+                            } else {
+                                $('.nkelas').removeClass('has-error');
+                                $('.errorNaikkelas').html('');
+                            }
+                            if (response.error.id) {
+                                $('.errorSiswa').html(response.error.id);
+                            } else {
+                                $('.errorSiswa').html('');
+                            }
                         }
-                        if (response.error.id) {
-                            $('.errorSiswa').html(response.error.id);
-                        } else {
-                            $('.errorSiswa').html('');
-                        }
-                    }
-                    if (response.sukses) {
-                        swal({
-                            text: response.sukses,
-                            icon: "success",
-                            buttons: {
-                                confirm: {
-                                    className: "btn btn-success",
+                    }, 1500);
+                    setTimeout(() => {
+                        if (response.sukses) {
+                            swal({
+                                text: response.sukses,
+                                icon: "success",
+                                buttons: {
+                                    confirm: {
+                                        className: "btn btn-success",
+                                    },
                                 },
-                            },
-                        });
-                        window.location.href = ("<?= base_url('data-siswa/naik-kelas') ?>");
-                    }
+                            });
+                            setTimeout(() => {
+                                window.location.href = ("<?= base_url('data-siswa/naik-kelas') ?>");
+                            }, 2000);
+                        }
+                    }, 2000);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
