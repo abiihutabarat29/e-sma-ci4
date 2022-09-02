@@ -10,6 +10,8 @@ use App\Models\SiswaModel;
 use App\Models\GuruModel;
 use App\Models\PegawaiModel;
 use App\Models\BukuIndukModel;
+use App\Models\MasukModel;
+use App\Models\KeluarModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -24,6 +26,8 @@ class Generate extends BaseController
     protected $guruModel;
     protected $pegawaiModel;
     protected $alumniModel;
+    protected $masukModel;
+    protected $keluarModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -34,6 +38,8 @@ class Generate extends BaseController
         $this->guruModel = new GuruModel();
         $this->pegawaiModel = new PegawaiModel();
         $this->alumniModel = new BukuIndukModel();
+        $this->masukModel = new MasukModel();
+        $this->keluarModel = new KeluarModel();
     }
     public function index()
     {
@@ -286,6 +292,77 @@ class Generate extends BaseController
         $sheet->getColumnDimension('K')->setWidth(110, 'pt');
         $sheet->getColumnDimension('M')->setWidth(110, 'pt');
         $sheet->getColumnDimension('N')->setWidth(110, 'pt');
+        // ==============================================================================================
+        // Export Data Mutasi Siswa
+        $npsn = session()->get('npsn');
+        //Fetch Data Mutasi Siswa
+        $masuk = $this->masukModel->where('npsn =', $npsn)->where('mutasi', 'pindahan')->findAll();
+        $keluar = $this->masukModel->where('npsn =', $npsn)->where('mutasi', 'keluar')->findAll();
+        //Mutasi masuk
+        $sheet->setCellValue('S1', 'C. Mutasi Siswa');
+        $sheet->setCellValue('T2', '1. Masuk');
+        $sheet->setCellValue('S3', 'No');
+        $sheet->setCellValue('T3', 'NIS/NISN');
+        $sheet->setCellValue('U3', 'Nama Siswa');
+        $sheet->setCellValue('V3', 'L/P');
+        $sheet->setCellValue('W3', 'Kelas');
+        $sheet->setCellValue('X3', 'No & Tgl Surat Pindah');
+        $sheet->setCellValue('Y3', 'Asal Sekolah');
+        $sheet->setCellValue('Z3', 'Keterangan');
+        $no =  1;
+        $row = 4;
+        foreach ($masuk as $m) :
+            $sheet->setCellValue('S' . $row, $no);
+            $sheet->setCellValue('T' . $row, $m['nisn']);
+            $sheet->setCellValue('U' . $row, $m['nama']);
+            $sheet->setCellValue('V' . $row, $m['jenis_kel']);
+            $sheet->setCellValue('W' . $row, $m['kelas']);
+            $sheet->setCellValue('X' . $row, $m['no_surat']);
+            $sheet->setCellValue('Y' . $row, $m['asal_sekolah']);
+            $sheet->setCellValue('Z' . $row, $m['keterangan']);
+            //Style border berdasarkan foreach data
+            $sheet->getStyle('S3:Z' . $row)->applyFromArray($styleBorder);
+            $no++;
+            $row++;
+        endforeach;
+        $sheet->mergeCells('S1:Z1');
+        $sheet->getStyle('S1')->getFont()->setBold(true);
+        $sheet->getStyle('S3:Z3')->applyFromArray($styleColumnCenter);
+        $sheet->getColumnDimension('S')->setAutoSize(true);
+        $sheet->getColumnDimension('T')->setAutoSize(true);
+        $sheet->getColumnDimension('U')->setAutoSize(true);
+        $sheet->getColumnDimension('P')->setAutoSize(true);
+        $sheet->getColumnDimension('W')->setAutoSize(true);
+        $sheet->getColumnDimension('X')->setAutoSize(true);
+        $sheet->getColumnDimension('Y')->setAutoSize(true);
+        $sheet->getColumnDimension('Z')->setAutoSize(true);
+        //Mutasi keluar
+        $sheet->setCellValue('T12', '2. Keluar');
+        $sheet->setCellValue('S13', 'No');
+        $sheet->setCellValue('T13', 'NIS/NISN');
+        $sheet->setCellValue('U13', 'Nama Siswa');
+        $sheet->setCellValue('V13', 'L/P');
+        $sheet->setCellValue('W13', 'Kelas');
+        $sheet->setCellValue('X13', 'No & Tgl Surat Pindah');
+        $sheet->setCellValue('Y13', 'Asal Sekolah');
+        $sheet->setCellValue('Z13', 'Keterangan');
+        $no =  1;
+        $row = 14;
+        foreach ($keluar as $k) :
+            $sheet->setCellValue('S' . $row, $no);
+            $sheet->setCellValue('T' . $row, $k['nisn']);
+            $sheet->setCellValue('U' . $row, $k['nama']);
+            $sheet->setCellValue('V' . $row, $k['jenis_kel']);
+            $sheet->setCellValue('W' . $row, $k['kelas']);
+            $sheet->setCellValue('X' . $row, $k['no_surat']);
+            $sheet->setCellValue('Y' . $row, $k['asal_sekolah']);
+            $sheet->setCellValue('Z' . $row, $k['keterangan']);
+            //Style border berdasarkan foreach data
+            $sheet->getStyle('S13:Z' . $row)->applyFromArray($styleBorder);
+            $no++;
+            $row++;
+        endforeach;
+        $sheet->getStyle('S13:Z13')->applyFromArray($styleColumnCenter);
         // ==============================================================================================
         // Export Data Bangunan
         // Fetch Data Bangunan
