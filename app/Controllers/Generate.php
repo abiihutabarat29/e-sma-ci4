@@ -329,6 +329,7 @@ class Generate extends BaseController
         $sheet->getStyle('S1')->getFont()->setBold(true);
         $sheet->getStyle('T2')->getFont()->setBold(true);
         $sheet->getStyle('S3:Z3')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('V:W')->applyFromArray($styleColumnCenter);
         $sheet->getColumnDimension('S')->setAutoSize(true);
         $sheet->getColumnDimension('T')->setAutoSize(true);
         $sheet->getColumnDimension('U')->setAutoSize(true);
