@@ -82,7 +82,7 @@
                                         <label>Umur</label>
                                         <select name="umur" class="form-control">
                                             <option><?= (old('umur')) ? old('umur') : $data['umur']; ?></option>
-                                            <option value="13">13</option>
+                                            <!-- <option value="13">13</option> -->
                                             <option value="14">14</option>
                                             <option value="15">15</option>
                                             <option value="16">16</option>

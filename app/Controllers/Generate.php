@@ -12,6 +12,7 @@ use App\Models\PegawaiModel;
 use App\Models\BukuIndukModel;
 use App\Models\MasukModel;
 use App\Models\KeluarModel;
+use App\Models\MapelModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -28,6 +29,7 @@ class Generate extends BaseController
     protected $alumniModel;
     protected $masukModel;
     protected $keluarModel;
+    protected $mapelModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -40,11 +42,13 @@ class Generate extends BaseController
         $this->alumniModel = new BukuIndukModel();
         $this->masukModel = new MasukModel();
         $this->keluarModel = new KeluarModel();
+        $this->mapelModel = new MapelModel();
     }
     public function index()
     {
         $data = array(
             'titlebar' => 'Generate Laporan Bulanan',
+            'subtitlebar' => 'Fitur Generate Laporan Bulanan untuk meng-generate data sesuai inputan anda dalam aplikasi e-sekolah.',
             'title' => 'Syarat & Ketentuan',
             'isi' => 'master/generate/index',
         );
@@ -175,6 +179,12 @@ class Generate extends BaseController
         $lxiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
         //Laki-laki-XII-IPA
         $lxiiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+        //Perempuan-X-IPA
+        $pxipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+        //Perempuan-XI-IPA
+        $pxiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+        //Perempuan-XII-IPA
+        $pxiiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
         //X-IPA-Islam
         $xipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
         //X-IPA-Kristen Protestan
@@ -223,9 +233,9 @@ class Generate extends BaseController
         $sheet->setCellValue('H6', $lxiiipa);
         $sheet->setCellValue('H7', '=SUM(H4:H6)');
         $sheet->setCellValue('I3', 'P');
-        $sheet->setCellValue('I4', $lxipa);
-        $sheet->setCellValue('I5', $lxiipa);
-        $sheet->setCellValue('I6', $lxiiipa);
+        $sheet->setCellValue('I4', $pxipa);
+        $sheet->setCellValue('I5', $pxiipa);
+        $sheet->setCellValue('I6', $pxiiipa);
         $sheet->setCellValue('I7', '=SUM(I4:I6)');
         $sheet->setCellValue('J2', 'Jumlah Siswa');
         $sheet->setCellValue('J4', '=H4+I4');
@@ -367,50 +377,250 @@ class Generate extends BaseController
         $sheet->getStyle('T12')->getFont()->setBold(true);
         $sheet->getStyle('S13:Z13')->applyFromArray($styleColumnCenter);
         // ==============================================================================================
-        // Export Data Bangunan
-        // Fetch Data Bangunan
+        // Export Data Umur siswa/i
+        // Fetch Data Umur siswa/i
         $npsn = session()->get('npsn');
-        $b = $this->bangunanModel->where('npsn =', $npsn)->first();
-        // Design Table Keadaan Tanah dan Bangunan
+        //Data siswa Laki-laki-X-14
+        $lx14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 14)->countAllResults();
+        //Data siswa Laki-laki-XI-14
+        $lxi14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 14)->countAllResults();
+        //Data siswa Laki-laki-XII-14
+        $lxii14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 14)->countAllResults();
+        //Data siswa Perempuan-X-14
+        $px14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 14)->countAllResults();
+        //Data siswa Perempuan-XI-14
+        $pxi14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 14)->countAllResults();
+        //Data siswa Perempuan-XII-14
+        $pxii14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 14)->countAllResults();
+        //Data siswa Laki-laki-X-15
+        $lx15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 15)->countAllResults();
+        //Data siswa Laki-laki-XI-15
+        $lxi15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 15)->countAllResults();
+        //Data siswa Laki-laki-XII-15
+        $lxii15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 15)->countAllResults();
+        //Data siswa Perempuan-X-15
+        $px15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 15)->countAllResults();
+        //Data siswa Perempuan-XI-15
+        $pxi15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 15)->countAllResults();
+        //Data siswa Perempuan-XII-15
+        $pxii15 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 15)->countAllResults();
+        //Data siswa Laki-laki-X-16
+        $lx16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 16)->countAllResults();
+        //Data siswa Laki-laki-XI-16
+        $lxi16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 16)->countAllResults();
+        //Data siswa Laki-laki-XII-16
+        $lxii16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 16)->countAllResults();
+        //Data siswa Perempuan-X-16
+        $px16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 16)->countAllResults();
+        //Data siswa Perempuan-XI-16
+        $pxi16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 16)->countAllResults();
+        //Data siswa Perempuan-XII-16
+        $pxii16 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 16)->countAllResults();
+        //Data siswa Laki-laki-X-17
+        $lx17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 17)->countAllResults();
+        //Data siswa Laki-laki-XI-17
+        $lxi17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 17)->countAllResults();
+        //Data siswa Laki-laki-XII-17
+        $lxii17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 17)->countAllResults();
+        //Data siswa Perempuan-X-17
+        $px17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 17)->countAllResults();
+        //Data siswa Perempuan-XI-17
+        $pxi17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 17)->countAllResults();
+        //Data siswa Perempuan-XII-17
+        $pxii17 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 17)->countAllResults();
+        //Data siswa Laki-laki-X-18
+        $lx18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 18)->countAllResults();
+        //Data siswa Laki-laki-XI-18
+        $lxi18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 18)->countAllResults();
+        //Data siswa Laki-laki-XII-18
+        $lxii18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 18)->countAllResults();
+        //Data siswa Perempuan-X-18
+        $px18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 18)->countAllResults();
+        //Data siswa Perempuan-XI-18
+        $pxi18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 18)->countAllResults();
+        //Data siswa Perempuan-XII-18
+        $pxii18 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 18)->countAllResults();
+        //Data siswa Laki-laki-X-19
+        $lx19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 19)->countAllResults();
+        //Data siswa Laki-laki-XI-19
+        $lxi19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 19)->countAllResults();
+        //Data siswa Laki-laki-XII-19
+        $lxii19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 19)->countAllResults();
+        //Data siswa Perempuan-X-19
+        $px19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 19)->countAllResults();
+        //Data siswa Perempuan-XI-19
+        $pxi19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 19)->countAllResults();
+        //Data siswa Perempuan-XII-19
+        $pxii19 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 19)->countAllResults();
+        //Data siswa Laki-laki-X-20
+        $lx20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 20)->countAllResults();
+        //Data siswa Laki-laki-XI-20
+        $lxi20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 20)->countAllResults();
+        //Data siswa Laki-laki-XII-20
+        $lxii20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 20)->countAllResults();
+        //Data siswa Perempuan-X-20
+        $px20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 20)->countAllResults();
+        //Data siswa Perempuan-XI-20
+        $pxi20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 20)->countAllResults();
+        //Data siswa Perempuan-XII-20
+        $pxii20 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 20)->countAllResults();
+        //Data siswa Laki-laki-X-21
+        $lx21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 21)->countAllResults();
+        //Data siswa Laki-laki-XI-21
+        $lxi21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'L')->where('umur', 21)->countAllResults();
+        //Data siswa Laki-laki-XII-21
+        $lxii21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'L')->where('umur', 21)->countAllResults();
+        //Data siswa Perempuan-X-21
+        $px21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'P')->where('umur', 21)->countAllResults();
+        //Data siswa Perempuan-XI-21
+        $pxi21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jenis_kel', 'P')->where('umur', 21)->countAllResults();
+        //Data siswa Perempuan-XII-21
+        $pxii21 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jenis_kel', 'P')->where('umur', 21)->countAllResults();
+        // Design Table Data Umur siswa/i
         $spreadsheet->createSheet();
-        $spreadsheet->setActiveSheetIndex(1)->setCellValue('A1', 'G. Keadaan Tanah dan Bangunan');
+        $spreadsheet->setActiveSheetIndex(1)->setCellValue('A1', 'D. Umur Siswa / I');
         $sheet = $spreadsheet->getActiveSheet()->setTitle('D, E, F, G');
-        $sheet->setCellValue('A2', '1.');
-        $sheet->setCellValue('A3', '2.');
-        $sheet->setCellValue('A4', '3.');
-        $sheet->setCellValue('A5', '4.');
-        $sheet->setCellValue('A6', '5.');
-        $sheet->setCellValue('B2', 'Luas Tanah Keseluruhan');
-        $sheet->setCellValue('B3', 'Luas Bangunan');
-        $sheet->setCellValue('B4', 'Luas Tanah Untuk Rencana Pembangunan');
-        $sheet->setCellValue('B5', 'Status Kepemilikan Tanah');
-        $sheet->setCellValue('B6', 'Status Kepemilikan Gedung');
-        $sheet->setCellValue('C2', ':');
-        $sheet->setCellValue('C3', ':');
-        $sheet->setCellValue('C4', ':');
-        $sheet->setCellValue('C5', ':');
-        $sheet->setCellValue('C6', ':');
-        $sheet->setCellValue('D2', "$b[luas_tanah] m2");
-        $sheet->setCellValue('D3', "$b[luas_bangunan] m2");
-        $sheet->setCellValue('D4', "$b[luas_rpembangunan] m2");
-        $sheet->setCellValue('D5', $b['status_tanah']);
-        $sheet->setCellValue('D6', $b['status_gedung']);
+        $sheet->setCellValue('A2', 'Umur');
+        $sheet->setCellValue('A5', '14 Tahun');
+        $sheet->setCellValue('A6', '15 Tahun');
+        $sheet->setCellValue('A7', '16 Tahun');
+        $sheet->setCellValue('A8', '17 Tahun');
+        $sheet->setCellValue('A9', '18 Tahun');
+        $sheet->setCellValue('A10', '19 Tahun');
+        $sheet->setCellValue('A11', '20 Tahun');
+        $sheet->setCellValue('A12', '21 Tahun');
+        $sheet->setCellValue('A13', 'Jumlah');
+        $sheet->setCellValue('B2', 'Kelas');
+        $sheet->setCellValue('B3', 'X');
+        $sheet->setCellValue('D3', 'XI');
+        $sheet->setCellValue('F3', 'XII');
+        $sheet->setCellValue('H3', 'Jumlah');
+        $sheet->setCellValue('J2', 'Jumlah Siswa');
+        $sheet->setCellValue('B4', 'L');
+        $sheet->setCellValue('C4', 'P');
+        $sheet->setCellValue('D4', 'L');
+        $sheet->setCellValue('E4', 'P');
+        $sheet->setCellValue('F4', 'L');
+        $sheet->setCellValue('G4', 'P');
+        $sheet->setCellValue('H4', 'L');
+        $sheet->setCellValue('I4', 'P');
+        $sheet->setCellValue('B5', $lx14);
+        $sheet->setCellValue('C5', $px14);
+        $sheet->setCellValue('D5', $lxi14);
+        $sheet->setCellValue('E5', $pxi14);
+        $sheet->setCellValue('F5', $lxii14);
+        $sheet->setCellValue('G5', $pxii14);
+        $sheet->setCellValue('H5', '=SUM(B5+D5+F5)');
+        $sheet->setCellValue('I5', '=SUM(C5+E5+G5)');
+        $sheet->setCellValue('J5', '=SUM(H5:I5)');
+        $sheet->setCellValue('B6', $lx15);
+        $sheet->setCellValue('C6', $px15);
+        $sheet->setCellValue('D6', $lxi15);
+        $sheet->setCellValue('E6', $pxi15);
+        $sheet->setCellValue('F6', $lxii15);
+        $sheet->setCellValue('G6', $pxii15);
+        $sheet->setCellValue('H6', '=SUM(B6+D6+F6)');
+        $sheet->setCellValue('I6', '=SUM(C6+E6+G6)');
+        $sheet->setCellValue('J6', '=SUM(H6:I6)');
+        $sheet->setCellValue('B7', $lx16);
+        $sheet->setCellValue('C7', $px16);
+        $sheet->setCellValue('D7', $lxi16);
+        $sheet->setCellValue('E7', $pxi16);
+        $sheet->setCellValue('F7', $lxii16);
+        $sheet->setCellValue('G7', $pxii16);
+        $sheet->setCellValue('H7', '=SUM(B7+D7+F7)');
+        $sheet->setCellValue('I7', '=SUM(C7+E7+G7)');
+        $sheet->setCellValue('J7', '=SUM(H7:I7)');
+        $sheet->setCellValue('B8', $lx17);
+        $sheet->setCellValue('C8', $px17);
+        $sheet->setCellValue('D8', $lxi17);
+        $sheet->setCellValue('E8', $pxi17);
+        $sheet->setCellValue('F8', $lxii17);
+        $sheet->setCellValue('G8', $pxii17);
+        $sheet->setCellValue('H8', '=SUM(B8+D8+F8)');
+        $sheet->setCellValue('I8', '=SUM(C8+E8+G8)');
+        $sheet->setCellValue('J8', '=SUM(H8:I8)');
+        $sheet->setCellValue('B9', $lx18);
+        $sheet->setCellValue('C9', $px18);
+        $sheet->setCellValue('D9', $lxi18);
+        $sheet->setCellValue('E9', $pxi18);
+        $sheet->setCellValue('F9', $lxii18);
+        $sheet->setCellValue('G9', $pxii18);
+        $sheet->setCellValue('H9', '=SUM(B9+D9+F9)');
+        $sheet->setCellValue('I9', '=SUM(C9+E9+G9)');
+        $sheet->setCellValue('J9', '=SUM(H9:I9)');
+        $sheet->setCellValue('B10', $lx19);
+        $sheet->setCellValue('C10', $px19);
+        $sheet->setCellValue('D10', $lxi19);
+        $sheet->setCellValue('E10', $pxi19);
+        $sheet->setCellValue('F10', $lxii19);
+        $sheet->setCellValue('G10', $pxii19);
+        $sheet->setCellValue('H10', '=SUM(B10+D10+F10)');
+        $sheet->setCellValue('I10', '=SUM(C10+E10+G10)');
+        $sheet->setCellValue('J10', '=SUM(H10:I10)');
+        $sheet->setCellValue('B11', $lx20);
+        $sheet->setCellValue('C11', $px20);
+        $sheet->setCellValue('D11', $lxi20);
+        $sheet->setCellValue('E11', $pxi19);
+        $sheet->setCellValue('F11', $lxii20);
+        $sheet->setCellValue('G11', $pxii20);
+        $sheet->setCellValue('H11', '=SUM(B11+D11+F11)');
+        $sheet->setCellValue('I11', '=SUM(C11+E11+G11)');
+        $sheet->setCellValue('J11', '=SUM(H11:I11)');
+        $sheet->setCellValue('B12', $lx21);
+        $sheet->setCellValue('C12', $px21);
+        $sheet->setCellValue('D12', $lxi21);
+        $sheet->setCellValue('E12', $pxi21);
+        $sheet->setCellValue('F12', $lxii21);
+        $sheet->setCellValue('G12', $pxii21);
+        $sheet->setCellValue('H12', '=SUM(B12+D12+F12)');
+        $sheet->setCellValue('I12', '=SUM(C12+E12+G12)');
+        $sheet->setCellValue('J12', '=SUM(H12:I12)');
+        $sheet->setCellValue('B13', '=SUM(B5:B12)');
+        $sheet->setCellValue('C13', '=SUM(C5:C12)');
+        $sheet->setCellValue('D13', '=SUM(D5:D12)');
+        $sheet->setCellValue('E13', '=SUM(E5:E12)');
+        $sheet->setCellValue('F13', '=SUM(F5:F12)');
+        $sheet->setCellValue('G13', '=SUM(G5:G12)');
+        $sheet->setCellValue('H13', '=SUM(H5:H12)');
+        $sheet->setCellValue('I13', '=SUM(I5:I12)');
+        $sheet->setCellValue('J13', '=SUM(H13:I13)');
         // Style Table
-        $sheet->mergeCells('A1:D1');
+        //Marge left
+        $sheet->mergeCells('A1:J1');
+        $sheet->mergeCells('B2:I2');
+        $sheet->mergeCells('B3:C3');
+        $sheet->mergeCells('D3:E3');
+        $sheet->mergeCells('F3:G3');
+        $sheet->mergeCells('F3:G3');
+        $sheet->mergeCells('H3:I3');
+        //Marge down
+        $sheet->mergeCells('A2:A4');
+        $sheet->mergeCells('J2:J4');
         $sheet->getStyle('A1')->getFont()->setBold(true);
-        // $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
-        $sheet->getStyle('A2:A6')->applyFromArray($styleColumnCenter);
-        $sheet->getStyle('D2:D4')->applyFromArray($styleNumberLeft);
+        $sheet->getStyle('A13')->getFont()->setBold(true);
+        $sheet->getStyle('A2:J13')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('A2:J13')->applyFromArray($styleBorder);
+        $sheet->getColumnDimension('B')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('C')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('D')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('E')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('F')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('G')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('H')->setWidth(25, 'pt');
+        $sheet->getColumnDimension('I')->setWidth(25, 'pt');
         // Style Auto Size
         $sheet->getColumnDimension('A')->setAutoSize(true);
-        $sheet->getColumnDimension('B')->setAutoSize(true);
-        $sheet->getColumnDimension('C')->setAutoSize(true);
-        $sheet->getColumnDimension('D')->setAutoSize(true);
+        $sheet->getColumnDimension('J')->setAutoSize(true);
         // ==============================================================================================
         // Export Tabel
         $writer = new Xlsx($spreadsheet);
+        $sekolah = session()->get('nama_sekolah');
+        $bulan = format_bulan(date('Y-m-d'));
+        $tahun = format_tahun(date('Y-m-d'));
+        $waktu = date('H:i:s');
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename=labul.xlsx');
+        header('Content-Disposition: attachment;filename=Laporan Bulanan_' . $bulan . '_' . $tahun . '_' . $sekolah . '_' . $waktu . '.xlsx');
         header('Cache-Control: max-age=0');
         $writer->save('php://output');
         exit();
