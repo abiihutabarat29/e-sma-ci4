@@ -44,22 +44,31 @@ class DataSarpras extends BaseController
         //Validasi input
         if (!$this->validate([
             'prasarana' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[mod_sarpras.prasarana]',
                 'errors' => [
                     'required' => 'Jenis Prasarana harus di pilih.',
+                    'is_unique' => 'Prasarana sudah ada.'
                 ]
             ],
-            'kondisi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kondisi harus di pilih.',
-                ]
-            ],
-            'jumlah' => [
+            'baik' => [
                 'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => 'Jumlah tidak boleh kosong. Jika kosong isi angka 0',
-                    'numeric' => 'Jumlah harus angka.',
+                    'required' => 'Jumlah Kondisi Baik tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Baik harus angka.',
+                ]
+            ],
+            'rusakr' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Jumlah Kondisi Rusak Ringan tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Rusak Ringan harus angka.',
+                ]
+            ],
+            'rusakb' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Jumlah Kondisi Rusak Berat tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Rusak Berat harus angka.',
                 ]
             ],
         ])) {
@@ -67,8 +76,9 @@ class DataSarpras extends BaseController
         }
         $data = [
             'prasarana'           => $this->request->getPost('prasarana'),
-            'kondisi'             => $this->request->getPost('kondisi'),
-            'jumlah'              => $this->request->getPost('jumlah'),
+            'baik'                => $this->request->getPost('baik'),
+            'rusak_ringan'        => $this->request->getPost('rusakr'),
+            'rusak_berat'        => $this->request->getPost('rusakb'),
             'keterangan'          => $this->request->getPost('ket'),
             'id_sekolah'          => session()->get('id_sekolah'),
             'npsn'                => session()->get('npsn'),
@@ -104,25 +114,40 @@ class DataSarpras extends BaseController
     }
     public function update($id)
     {
+        $prasaranaLama = $this->sarprasModel->where(['id' => $id])->first();
+        if ($prasaranaLama['prasarana'] == $this->request->getPost('prasarana')) {
+            $rule_prasarana = 'required';
+        } else {
+            $rule_prasarana = 'required|numeric|is_unique[mod_sarpras.prasarana]';
+        }
         //Validasi input
         if (!$this->validate([
             'prasarana' => [
-                'rules' => 'required',
+                'rules' => $rule_prasarana,
                 'errors' => [
                     'required' => 'Jenis Prasarana harus di pilih.',
+                    'is_unique' => 'Prasarana sudah ada.'
                 ]
             ],
-            'kondisi' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kondisi harus di pilih.',
-                ]
-            ],
-            'jumlah' => [
+            'baik' => [
                 'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => 'Jumlah tidak boleh kosong. Jika kosong isi angka 0',
-                    'numeric' => 'Jumlah harus angka.',
+                    'required' => 'Jumlah Kondisi Baik tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Baik harus angka.',
+                ]
+            ],
+            'rusakr' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Jumlah Kondisi Rusak Ringan tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Rusak Ringan harus angka.',
+                ]
+            ],
+            'rusakb' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Jumlah Kondisi Rusak Berat tidak boleh kosong. Jika kosong isi angka 0',
+                    'numeric' => 'Jumlah Kondisi Rusak Berat harus angka.',
                 ]
             ],
         ])) {
@@ -131,14 +156,10 @@ class DataSarpras extends BaseController
         $data = [
             'id'                  => $id,
             'prasarana'           => $this->request->getPost('prasarana'),
-            'kondisi'             => $this->request->getPost('kondisi'),
-            'jumlah'              => $this->request->getPost('jumlah'),
+            'baik'                => $this->request->getPost('baik'),
+            'rusak_ringan'        => $this->request->getPost('rusakr'),
+            'rusak_berat'        => $this->request->getPost('rusakb'),
             'keterangan'          => $this->request->getPost('ket'),
-            'id_sekolah'          => session()->get('id_sekolah'),
-            'npsn'                => session()->get('npsn'),
-            'nama_sekolah'        => session()->get('nama_sekolah'),
-            'jenjang'             => session()->get('jenjang'),
-            'userentry'           => session()->get('nama'),
         ];
         $this->sarprasModel->save($data);
         session()->setFlashdata('m', 'Ditedit');

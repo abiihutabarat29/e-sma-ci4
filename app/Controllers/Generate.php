@@ -13,6 +13,8 @@ use App\Models\BukuIndukModel;
 use App\Models\MasukModel;
 use App\Models\KeluarModel;
 use App\Models\MapelModel;
+use App\Models\SaranaModel;
+use App\Models\SarprasModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -30,6 +32,8 @@ class Generate extends BaseController
     protected $masukModel;
     protected $keluarModel;
     protected $mapelModel;
+    protected $saranaModel;
+    protected $sarprasModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -43,6 +47,8 @@ class Generate extends BaseController
         $this->masukModel = new MasukModel();
         $this->keluarModel = new KeluarModel();
         $this->mapelModel = new MapelModel();
+        $this->saranaModel = new SaranaModel();
+        $this->sarprasModel = new SarprasModel();
     }
     public function index()
     {
@@ -613,6 +619,92 @@ class Generate extends BaseController
         $sheet->getColumnDimension('A')->setAutoSize(true);
         $sheet->getColumnDimension('J')->setAutoSize(true);
         // ==============================================================================================
+        // Export Data Ruang Belajar, Lab & Perpustakaan
+        $npsn = session()->get('npsn');
+        //Fetch Data Ruang Belajar, Lab & Perpustakaan
+        $sarana = $this->saranaModel->findAll();
+        $sarpras = $this->sarprasModel->where('npsn =', $npsn)->findAll();
+        $sheet->setCellValue('L1', 'E. Ruang Belajar, Lab & Perpustakaan');
+        $sheet->setCellValue('L2', 'No');
+        $sheet->setCellValue('M2', 'Jenis');
+        $sheet->setCellValue('N2', 'Kondisi');
+        $sheet->setCellValue('R2', 'Keterangan');
+        $sheet->setCellValue('N3', 'Baik');
+        $sheet->setCellValue('O3', 'Rusak Ringan');
+        $sheet->setCellValue('P3', 'Rusak Berat');
+        $sheet->setCellValue('Q3', 'Jumlah');
+        $no =  1;
+        $row = 4;
+        foreach ($sarpras as $s) :
+            $sheet->setCellValue('L' . $row, $no);
+            $sheet->setCellValue('M' . $row, $s['prasarana']);
+            $sheet->setCellValue('N' . $row, $s['baik']);
+            $sheet->setCellValue('O' . $row, $s['rusak_ringan']);
+            $sheet->setCellValue('P' . $row, $s['rusak_berat']);
+            $sheet->setCellValue('Q' . $row, '=SUM(N' . $row . ':P' . $row . ')');
+            $sheet->setCellValue('R' . $row, $s['keterangan']);
+            //Style border berdasarkan foreach data
+            $sheet->getStyle('L2:R' . $row)->applyFromArray($styleBorder);
+            $sheet->getStyle('L2:L' . $row)->applyFromArray($styleColumnCenter);
+            $sheet->getStyle('N4:Q' . $row)->applyFromArray($styleColumnCenter);
+            $no++;
+            $row++;
+        endforeach;
+        $sheet->mergeCells('L1:R1');
+        $sheet->mergeCells('L2:L3');
+        $sheet->mergeCells('M2:M3');
+        $sheet->mergeCells('R2:R3');
+        $sheet->mergeCells('N2:Q2');
+        $sheet->getStyle('L1')->getFont()->setBold(true);
+        $sheet->getStyle('L2:R3')->applyFromArray($styleColumnCenter);
+        $sheet->getColumnDimension('L')->setAutoSize(true);
+        $sheet->getColumnDimension('M')->setAutoSize(true);
+        $sheet->getColumnDimension('N')->setWidth(70, 'pt');
+        $sheet->getColumnDimension('O')->setWidth(70, 'pt');
+        $sheet->getColumnDimension('P')->setWidth(70, 'pt');
+        $sheet->getColumnDimension('Q')->setWidth(70, 'pt');
+        $sheet->getColumnDimension('R')->setWidth(140, 'pt');
+        // ==============================================================================================
+        //         // Export Data Bangunan
+        // // Fetch Data Bangunan
+        // $npsn = session()->get('npsn');
+        // $b = $this->bangunanModel->where('npsn =', $npsn)->first();
+        // // Design Table Keadaan Tanah dan Bangunan
+        // $spreadsheet->createSheet();
+        // $spreadsheet->setActiveSheetIndex(1)->setCellValue('A1', 'G. Keadaan Tanah dan Bangunan');
+        // $sheet = $spreadsheet->getActiveSheet()->setTitle('D, E, F, G');
+        // $sheet->setCellValue('A2', '1.');
+        // $sheet->setCellValue('A3', '2.');
+        // $sheet->setCellValue('A4', '3.');
+        // $sheet->setCellValue('A5', '4.');
+        // $sheet->setCellValue('A6', '5.');
+        // $sheet->setCellValue('B2', 'Luas Tanah Keseluruhan');
+        // $sheet->setCellValue('B3', 'Luas Bangunan');
+        // $sheet->setCellValue('B4', 'Luas Tanah Untuk Rencana Pembangunan');
+        // $sheet->setCellValue('B5', 'Status Kepemilikan Tanah');
+        // $sheet->setCellValue('B6', 'Status Kepemilikan Gedung');
+        // $sheet->setCellValue('C2', ':');
+        // $sheet->setCellValue('C3', ':');
+        // $sheet->setCellValue('C4', ':');
+        // $sheet->setCellValue('C5', ':');
+        // $sheet->setCellValue('C6', ':');
+        // $sheet->setCellValue('D2', "$b[luas_tanah] m2");
+        // $sheet->setCellValue('D3', "$b[luas_bangunan] m2");
+        // $sheet->setCellValue('D4', "$b[luas_rpembangunan] m2");
+        // $sheet->setCellValue('D5', $b['status_tanah']);
+        // $sheet->setCellValue('D6', $b['status_gedung']);
+        // // Style Table
+        // $sheet->mergeCells('A1:D1');
+        // $sheet->getStyle('A1')->getFont()->setBold(true);
+        // // $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
+        // $sheet->getStyle('A2:A6')->applyFromArray($styleColumnCenter);
+        // $sheet->getStyle('D2:D4')->applyFromArray($styleNumberLeft);
+        // // Style Auto Size
+        // $sheet->getColumnDimension('A')->setAutoSize(true);
+        // $sheet->getColumnDimension('B')->setAutoSize(true);
+        // $sheet->getColumnDimension('C')->setAutoSize(true);
+        // $sheet->getColumnDimension('D')->setAutoSize(true);
+        // // ==============================================================================================
         // Export Tabel
         $writer = new Xlsx($spreadsheet);
         $sekolah = session()->get('nama_sekolah');

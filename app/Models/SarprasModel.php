@@ -11,6 +11,6 @@ class SarprasModel extends Model
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'id_sekolah', 'prasarana', 'kondisi', 'jumlah', 'keterangan', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
+        'id_sekolah', 'prasarana', 'baik', 'rusak_ringan', 'rusak_berat', 'keterangan', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
 }

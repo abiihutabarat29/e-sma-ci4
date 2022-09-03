@@ -22,7 +22,7 @@
         </ul>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
@@ -30,44 +30,48 @@
                 <form action="<?= base_url('data-sarpras/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('prasarana')) ? 'has-error' : ''; ?>">
-                                    <select name="prasarana" class="js-example-language" style="width: 100%">
-                                        <option selected disabled><?= (old('prasarana')) ? old('prasarana') : ".::Pilih Sarana::." ?></option>
-                                        <?php foreach ($sarana as $r) : ?>
-                                            <option value="<?= $r['sarana'] ?>"><?= $r['sarana'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('prasarana'); ?></small>
-                                </div>
+                        <div class="col-md-8 pr-0">
+                            <div class="form-group <?= ($validation->hasError('prasarana')) ? 'has-error' : ''; ?>">
+                                <label>Sarana</label><span class="text-danger">*</span>
+                                <select name="prasarana" class="js-example-language" style="width: 100%">
+                                    <option selected disabled><?= (old('prasarana')) ? old('prasarana') : ".::Pilih Sarana::." ?></option>
+                                    <?php foreach ($sarana as $r) : ?>
+                                        <option value="<?= $r['sarana'] ?>"><?= $r['sarana'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('prasarana'); ?></small>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('kondisi')) ? 'has-error' : ''; ?>">
-                                    <select name="kondisi" class="form-control">
-                                        <option selected disabled><?= (old('kondisi')) ? old('kondisi') : ".::Pilih Kondisi::." ?></option>
-                                        <option value="Baik">Baik</option>
-                                        <option value="Rusak Ringan">Rusak Ringan</option>
-                                        <option value="Rusak Berat">Rusak Berat</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('kondisi'); ?></small>
-                                </div>
+                        </div>
+                        <div class="col-md-8 pr-0">
+                            <div class="form-group <?= ($validation->hasError('baik')) ? 'has-error' : ''; ?>">
+                                <label>Baik</label><span class="text-danger">*</span>
+                                <input name="baik" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kondisi Baik" value="<?= old('baik'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('baik'); ?></small>
                             </div>
-                            <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('jumlah')) ? 'has-error' : ''; ?>">
-                                    <input name="jumlah" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= old('jumlah'); ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('jumlah'); ?></small>
-                                </div>
+                        </div>
+                        <div class="col-md-8 pr-0">
+                            <div class="form-group <?= ($validation->hasError('rusakr')) ? 'has-error' : ''; ?>">
+                                <label>Rusak Ringan</label><span class="text-danger">*</span>
+                                <input name="rusakr" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kondisi Rusak Ringan" value="<?= old('rusakr'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('rusakr'); ?></small>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
-                                    <textarea type="text" name="ket" class="form-control" autocomplete="off" placeholder="Keterangan"><?= old('ket'); ?></textarea>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('ket'); ?></small>
-                                </div>
+                        </div>
+                        <div class="col-md-8 pr-0">
+                            <div class="form-group <?= ($validation->hasError('rusakb')) ? 'has-error' : ''; ?>">
+                                <label>Rusak Berat</label><span class="text-danger">*</span>
+                                <input name="rusakb" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kondisi Rusak Berat" value="<?= old('rusakb'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('rusakb'); ?></small>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
+                                <textarea type="text" name="ket" class="form-control" autocomplete="off" placeholder="Keterangan"><?= old('ket'); ?></textarea>
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('ket'); ?></small>
                             </div>
                         </div>
                     </div>

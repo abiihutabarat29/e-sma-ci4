@@ -29,8 +29,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Jenis Prasarana</th>
-                                <th>Kondisi</th>
-                                <th>Jumlah</th>
+                                <th>Baik</th>
+                                <th>Rusak Ringan</th>
+                                <th>Rusak Berat</th>
                                 <th>Keterangan</th>
                                 <th style="width: 10%">Action</th>
                             </tr>
@@ -41,8 +42,9 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $r['prasarana']; ?></td>
-                                    <td><?= $r['kondisi']; ?></td>
-                                    <td><?= $r['jumlah']; ?></td>
+                                    <td><?= $r['baik']; ?></td>
+                                    <td><?= $r['rusak_ringan']; ?></td>
+                                    <td><?= $r['rusak_berat']; ?></td>
                                     <td><?= $r['keterangan']; ?></td>
                                     <td>
                                         <div class="form-button-action">
