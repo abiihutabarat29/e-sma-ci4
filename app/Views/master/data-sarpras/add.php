@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <div class="col-md-8 pr-0">
                             <div class="form-group <?= ($validation->hasError('prasarana')) ? 'has-error' : ''; ?>">
-                                <label>Sarana</label><span class="text-danger">*</span>
+                                <label>Nama Sarana</label><span class="text-danger">*</span>
                                 <select name="prasarana" class="js-example-language" style="width: 100%">
                                     <option selected disabled><?= (old('prasarana')) ? old('prasarana') : ".::Pilih Sarana::." ?></option>
                                     <?php foreach ($sarana as $r) : ?>

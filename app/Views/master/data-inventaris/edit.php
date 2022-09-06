@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <?php if (!empty($data) && is_array($data)) : ?>
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title"><?= $title ?></div>
@@ -32,41 +32,49 @@
                         <?= csrf_field(); ?>
                         <input type="hidden" name="id" value="<?= $data['id']; ?>">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
-                                        <input name="inventaris" type="text" class="form-control" autocomplete="off" placeholder="Jenis Inventaris" value="<?= (old('inventaris')) ? old('inventaris') : $data['inventaris']; ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('inventaris'); ?></small>
-                                    </div>
+                            <div class="col-md-8">
+                                <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
+                                    <label>Nama Inventaris</label><span class="text-danger">*</span>
+                                    <select name="inventaris" class="js-example-language" style="width: 100%">
+                                        <option><?= (old('inventaris')) ? old('inventaris') : $data['inventaris']; ?></option>
+                                        <?php foreach ($inventaris as $r) : ?>
+                                            <option value="<?= $r['inventaris'] ?>"><?= $r['inventaris'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('inventaris'); ?></small>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <?= ($validation->hasError('dibutuhkan')) ? 'has-error' : ''; ?>">
-                                        <input name="dibutuhkan" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Dibutuhkan" value="<?= (old('dibutuhkan')) ? old('dibutuhkan') : $data['dibutuhkan']; ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('dibutuhkan'); ?></small>
-                                    </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group <?= ($validation->hasError('dibutuhkan')) ? 'has-error' : ''; ?>">
+                                    <label>Jumlah Dibutuhkan</label><span class="text-danger">*</span>
+                                    <input name="dibutuhkan" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('dibutuhkan')) ? old('dibutuhkan') : $data['dibutuhkan']; ?>">
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('dibutuhkan'); ?></small>
                                 </div>
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group <?= ($validation->hasError('ada')) ? 'has-error' : ''; ?>">
-                                        <input name="ada" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Ada" value="<?= (old('ada')) ? old('ada') : $data['ada']; ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('ada'); ?></small>
-                                    </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group <?= ($validation->hasError('ada')) ? 'has-error' : ''; ?>">
+                                    <label>Jumlah Ada</label><span class="text-danger">*</span>
+                                    <input name="ada" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('ada')) ? old('ada') : $data['ada']; ?>">
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('ada'); ?></small>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group <?= ($validation->hasError('kurang')) ? 'has-error' : ''; ?>">
-                                        <input name="kurang" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kurang" value="<?= (old('kurang')) ? old('kurang') : $data['kurang']; ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('kurang'); ?></small>
-                                    </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group <?= ($validation->hasError('kurang')) ? 'has-error' : ''; ?>">
+                                    <label>Jumlah Kurang</label><span class="text-danger">*</span>
+                                    <input name="kurang" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('kurang')) ? old('kurang') : $data['kurang']; ?>">
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('kurang'); ?></small>
                                 </div>
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group <?= ($validation->hasError('lebih')) ? 'has-error' : ''; ?>">
-                                        <input name="lebih" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Lebih" value="<?= (old('lebih')) ? old('lebih') : $data['lebih']; ?>">
-                                        <small class="form-text text-danger">
-                                            <?= $validation->getError('lebih'); ?></small>
-                                    </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group <?= ($validation->hasError('lebih')) ? 'has-error' : ''; ?>">
+                                    <label>Jumlah Lebih</label><span class="text-danger">*</span>
+                                    <input name="lebih" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('lebih')) ? old('lebih') : $data['lebih']; ?>">
+                                    <small class="form-text text-danger">
+                                        <?= $validation->getError('lebih'); ?></small>
                                 </div>
                             </div>
                         </div>

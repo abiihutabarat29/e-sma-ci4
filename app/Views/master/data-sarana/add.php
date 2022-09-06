@@ -33,6 +33,7 @@
                         <div class="row">
                             <div class="col-md-6 pr-0">
                                 <div class="form-group <?= ($validation->hasError('sarana')) ? 'has-error' : ''; ?>">
+                                    <label>Nama Sarana</label><span class="text-danger">*</span>
                                     <input name="sarana" type="text" class="form-control" autocomplete="off" placeholder="Sarana" value="<?= old('sarana'); ?>">
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('sarana'); ?></small>

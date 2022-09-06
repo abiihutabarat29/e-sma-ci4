@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\InventarisModel;
+use App\Models\InventarisBarangModel;
 use CodeIgniter\Config\Config;
 
 class DataInventaris extends BaseController
@@ -11,6 +12,7 @@ class DataInventaris extends BaseController
     public function __construct()
     {
         $this->inventarisModel = new InventarisModel();
+        $this->barangModel = new InventarisBarangModel();
     }
     public function datainventaris()
     {
@@ -26,10 +28,12 @@ class DataInventaris extends BaseController
     }
     public function add()
     {
+        $data = $this->barangModel->findAll();
         $data = array(
             'titlebar' => 'Data Inventaris',
             'title' => 'Form Tambah Data Inventaris',
             'isi' => 'master/data-inventaris/add',
+            'inventaris' => $data,
             'validation' => \Config\Services::validation()
         );
         return view('layout/wrapper', $data);
@@ -102,11 +106,13 @@ class DataInventaris extends BaseController
 
     public function edit($id)
     {
+        $data = $this->barangModel->findAll();
         $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Data Inventaris',
             'title' => 'Form Edit Data Inventaris',
             'isi' => 'master/data-inventaris/edit',
+            'inventaris' => $data,
             'validation' => \Config\Services::validation(),
             'data' => $this->inventarisModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );

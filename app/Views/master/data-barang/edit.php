@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= base_url('data-sarana') ?>"><?= $titlebar ?></a>
+                <a href="<?= base_url('data-inventaris-barang') ?>"><?= $titlebar ?></a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
@@ -27,24 +27,24 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="<?= base_url('data-sarana/update/' . $data['id']); ?>" method="post">
+                <form action="<?= base_url('data-inventaris-barang/update/' . $data['id']); ?>" method="post">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $data['id']; ?>">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('sarana')) ? 'has-error' : ''; ?>">
-                                    <label>Nama Sarana</label><span class="text-danger">*</span>
-                                    <input name="sarana" type="text" class="form-control" autocomplete="off" placeholder="Sarana" value="<?= (old('sarana')) ? old('sarana') : $data['sarana']; ?>">
+                                <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
+                                    <label>Nama Inventaris</label><span class="text-danger">*</span>
+                                    <input name="inventaris" type="text" class="form-control" autocomplete="off" placeholder="Nama Inventaris" value="<?= (old('inventaris')) ? old('inventaris') : $data['inventaris']; ?>">
                                     <small class="form-text text-danger">
-                                        <?= $validation->getError('sarana'); ?></small>
+                                        <?= $validation->getError('inventaris'); ?></small>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                        <a href="<?= base_url('/data-sarana') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+                        <a href="<?= base_url('/data-inventaris-barang') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                     </div>
                 </form>
             </div>

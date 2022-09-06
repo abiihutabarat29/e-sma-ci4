@@ -55,6 +55,8 @@ class Filters extends BaseConfig
 				'data-mapel/*',
 				'data-sarana',
 				'data-sarana/*',
+				'data-inventaris-barang',
+				'data-inventaris-barang/*',
 				'data-golongan',
 				'data-golongan/*',
 				'data-tahun-akademik',

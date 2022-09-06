@@ -152,6 +152,13 @@ $routes->add('/data-sarana/save', 'DataSarana::save');
 $routes->delete('/data-sarana/(:num)', 'DataSarana::delete/$1');
 $routes->get('/data-sarana/edit/(:segment)', 'DataSarana::edit/$1');
 $routes->add('/data-sarana/update/(:segment)', 'DataSarana::update/$1');
+//Routes Data Inventaris
+$routes->get('/data-inventaris-barang', 'DataBarang::databarang');
+$routes->get('/data-inventaris-barang/add', 'DataBarang::add');
+$routes->add('/data-inventaris-barang/save', 'DataBarang::save');
+$routes->delete('/data-inventaris-barang/(:num)', 'DataBarang::delete/$1');
+$routes->get('/data-inventaris-barang/edit/(:segment)', 'DataBarang::edit/$1');
+$routes->add('/data-inventaris-barang/update/(:segment)', 'DataBarang::update/$1');
 //Routes Data Golongan
 $routes->get('/data-golongan', 'DataGolongan::datagolongan');
 $routes->get('/data-golongan/add', 'DataGolongan::add');

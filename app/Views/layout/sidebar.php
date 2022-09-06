@@ -107,6 +107,11 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="<?= base_url('data-inventaris-barang') ?>">
+                                        <span class="sub-item">Data Inventaris</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="<?= base_url('data-golongan') ?>">
                                         <span class="sub-item">Data Golongan</span>
                                     </a>
