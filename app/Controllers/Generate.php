@@ -15,6 +15,7 @@ use App\Models\KeluarModel;
 use App\Models\MapelModel;
 use App\Models\SaranaModel;
 use App\Models\SarprasModel;
+use App\Models\InventarisModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -34,6 +35,7 @@ class Generate extends BaseController
     protected $mapelModel;
     protected $saranaModel;
     protected $sarprasModel;
+    protected $inventarisModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -49,6 +51,7 @@ class Generate extends BaseController
         $this->mapelModel = new MapelModel();
         $this->saranaModel = new SaranaModel();
         $this->sarprasModel = new SarprasModel();
+        $this->inventarisModel = new InventarisModel();
     }
     public function index()
     {
@@ -622,7 +625,6 @@ class Generate extends BaseController
         // Export Data Ruang Belajar, Lab & Perpustakaan
         $npsn = session()->get('npsn');
         //Fetch Data Ruang Belajar, Lab & Perpustakaan
-        $sarana = $this->saranaModel->findAll();
         $sarpras = $this->sarprasModel->where('npsn =', $npsn)->findAll();
         $sheet->setCellValue('L1', 'E. Ruang Belajar, Lab & Perpustakaan');
         $sheet->setCellValue('L2', 'No');
@@ -665,45 +667,86 @@ class Generate extends BaseController
         $sheet->getColumnDimension('Q')->setWidth(70, 'pt');
         $sheet->getColumnDimension('R')->setWidth(140, 'pt');
         // ==============================================================================================
-        //         // Export Data Bangunan
-        // // Fetch Data Bangunan
-        // $npsn = session()->get('npsn');
-        // $b = $this->bangunanModel->where('npsn =', $npsn)->first();
-        // // Design Table Keadaan Tanah dan Bangunan
-        // $spreadsheet->createSheet();
-        // $spreadsheet->setActiveSheetIndex(1)->setCellValue('A1', 'G. Keadaan Tanah dan Bangunan');
-        // $sheet = $spreadsheet->getActiveSheet()->setTitle('D, E, F, G');
-        // $sheet->setCellValue('A2', '1.');
-        // $sheet->setCellValue('A3', '2.');
-        // $sheet->setCellValue('A4', '3.');
-        // $sheet->setCellValue('A5', '4.');
-        // $sheet->setCellValue('A6', '5.');
-        // $sheet->setCellValue('B2', 'Luas Tanah Keseluruhan');
-        // $sheet->setCellValue('B3', 'Luas Bangunan');
-        // $sheet->setCellValue('B4', 'Luas Tanah Untuk Rencana Pembangunan');
-        // $sheet->setCellValue('B5', 'Status Kepemilikan Tanah');
-        // $sheet->setCellValue('B6', 'Status Kepemilikan Gedung');
-        // $sheet->setCellValue('C2', ':');
-        // $sheet->setCellValue('C3', ':');
-        // $sheet->setCellValue('C4', ':');
-        // $sheet->setCellValue('C5', ':');
-        // $sheet->setCellValue('C6', ':');
-        // $sheet->setCellValue('D2', "$b[luas_tanah] m2");
-        // $sheet->setCellValue('D3', "$b[luas_bangunan] m2");
-        // $sheet->setCellValue('D4', "$b[luas_rpembangunan] m2");
-        // $sheet->setCellValue('D5', $b['status_tanah']);
-        // $sheet->setCellValue('D6', $b['status_gedung']);
-        // // Style Table
-        // $sheet->mergeCells('A1:D1');
-        // $sheet->getStyle('A1')->getFont()->setBold(true);
-        // // $sheet->getStyle('A1')->applyFromArray($styleColumnCenter);
-        // $sheet->getStyle('A2:A6')->applyFromArray($styleColumnCenter);
-        // $sheet->getStyle('D2:D4')->applyFromArray($styleNumberLeft);
-        // // Style Auto Size
-        // $sheet->getColumnDimension('A')->setAutoSize(true);
-        // $sheet->getColumnDimension('B')->setAutoSize(true);
-        // $sheet->getColumnDimension('C')->setAutoSize(true);
-        // $sheet->getColumnDimension('D')->setAutoSize(true);
+        // ==============================================================================================
+        // Export Data Inventaris
+        $npsn = session()->get('npsn');
+        //Fetch Data Inventaris
+        $inventaris = $this->inventarisModel->where('npsn =', $npsn)->findAll();
+        $sheet->setCellValue('T1', 'F. Data Inventaris (Keadaan Meja, Kursi & Peralatan Kantor)');
+        $sheet->setCellValue('T2', 'No');
+        $sheet->setCellValue('U2', 'Jenis');
+        $sheet->setCellValue('V2', 'D');
+        $sheet->setCellValue('W2', 'A');
+        $sheet->setCellValue('X2', 'K');
+        $sheet->setCellValue('Y2', 'L');
+        $no =  1;
+        $row = 4;
+        foreach ($inventaris as $i) :
+            $sheet->setCellValue('T' . $row, $no);
+            $sheet->setCellValue('U' . $row, $i['inventaris']);
+            $sheet->setCellValue('V' . $row, $i['dibutuhkan']);
+            $sheet->setCellValue('W' . $row, $i['ada']);
+            $sheet->setCellValue('X' . $row, $i['kurang']);
+            $sheet->setCellValue('Y' . $row, $i['lebih']);
+            //Style border berdasarkan foreach data
+            $sheet->getStyle('T2:Y' . $row)->applyFromArray($styleBorder);
+            $sheet->getStyle('V3:Y' . $row)->applyFromArray($styleColumnCenter);
+            $sheet->getStyle('T2:T' . $row)->applyFromArray($styleColumnCenter);
+            $no++;
+            $row++;
+        endforeach;
+        $sheet->mergeCells('T2:T3');
+        $sheet->mergeCells('U2:U3');
+        $sheet->mergeCells('V2:V3');
+        $sheet->mergeCells('W2:W3');
+        $sheet->mergeCells('X2:X3');
+        $sheet->mergeCells('Y2:Y3');
+        $sheet->mergeCells('T1:Y1');
+        $sheet->getStyle('T1')->getFont()->setBold(true);
+        $sheet->getStyle('T2:Y2')->applyFromArray($styleColumnCenter);
+        $sheet->getColumnDimension('T')->setAutoSize(true);
+        $sheet->getColumnDimension('U')->setWidth(200, 'pt');
+        $sheet->getColumnDimension('V')->setWidth(35, 'pt');
+        $sheet->getColumnDimension('W')->setWidth(35, 'pt');
+        $sheet->getColumnDimension('X')->setWidth(35, 'pt');
+        $sheet->getColumnDimension('Y')->setWidth(35, 'pt');
+        // ==============================================================================================
+        // Export Data Bangunan
+        // Fetch Data Bangunan
+        $npsn = session()->get('npsn');
+        $b = $this->bangunanModel->where('npsn =', $npsn)->first();
+        // Design Table Keadaan Tanah dan Bangunan
+        $sheet->setCellValue('AA1', 'G. Keadaan Tanah dan Bangunan');
+        $sheet->setCellValue('AA2', '1.');
+        $sheet->setCellValue('AA3', '2.');
+        $sheet->setCellValue('AA4', '3.');
+        $sheet->setCellValue('AA5', '4.');
+        $sheet->setCellValue('AA6', '5.');
+        $sheet->setCellValue('AB2', 'Luas Tanah Keseluruhan');
+        $sheet->setCellValue('AB3', 'Luas Bangunan');
+        $sheet->setCellValue('AB4', 'Luas Tanah Untuk Rencana Pembangunan');
+        $sheet->setCellValue('AB5', 'Status Kepemilikan Tanah');
+        $sheet->setCellValue('AB6', 'Status Kepemilikan Gedung');
+        $sheet->setCellValue('AC2', ':');
+        $sheet->setCellValue('AC3', ':');
+        $sheet->setCellValue('AC4', ':');
+        $sheet->setCellValue('AC5', ':');
+        $sheet->setCellValue('AC6', ':');
+        $sheet->setCellValue('AD2', "$b[luas_tanah] m2");
+        $sheet->setCellValue('AD3', "$b[luas_bangunan] m2");
+        $sheet->setCellValue('AD4', "$b[luas_rpembangunan] m2");
+        $sheet->setCellValue('AD5', $b['status_tanah']);
+        $sheet->setCellValue('AD6', $b['status_gedung']);
+        // Style Table
+        $sheet->mergeCells('AA1:AD1');
+        $sheet->getStyle('AA1')->getFont()->setBold(true);
+        $sheet->getStyle('AA2:AA6')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('AD2:AD4')->applyFromArray($styleNumberLeft);
+        // Style Auto Size
+        $sheet->getColumnDimension('AA')->setWidth(20, 'pt');
+        $sheet->getColumnDimension('AB')->setAutoSize(true);
+        $sheet->getColumnDimension('AC')->setAutoSize(true);
+        $sheet->getColumnDimension('AD')->setAutoSize(true);
         // // ==============================================================================================
         // Export Tabel
         $writer = new Xlsx($spreadsheet);
