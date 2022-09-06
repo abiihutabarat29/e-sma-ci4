@@ -11,6 +11,6 @@ class InventarisBarangModel extends Model
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'inventaris', 'jenjang', 'userentry'
+        'inventaris', 'userentry'
     ];
 }

@@ -76,10 +76,16 @@ class DataSarana extends BaseController
     }
     public function update($id)
     {
+        $saranaLama = $this->saranaModel->where(['id' => $id])->first();
+        if ($saranaLama['sarana'] == $this->request->getPost('sarana')) {
+            $rule_sarana = 'required';
+        } else {
+            $rule_sarana = 'required|is_unique[mod_sarana.sarana]';
+        }
         //Validasi input
         if (!$this->validate([
             'sarana' => [
-                'rules' => 'required|is_unique[mod_sarana.sarana]',
+                'rules' => $rule_sarana,
                 'errors' => [
                     'required' => 'Nama Sarana tidak boleh kosong.',
                     'is_unique' => 'Nama Sarana sudah ada.'

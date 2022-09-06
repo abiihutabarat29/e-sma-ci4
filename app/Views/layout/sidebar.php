@@ -67,6 +67,7 @@
                                             $request->uri->getSegment(1) == 'data-kecamatan' or
                                             $request->uri->getSegment(1) == 'data-mapel' or
                                             $request->uri->getSegment(1) == 'data-sarana' or
+                                            $request->uri->getSegment(1) == 'data-inventaris-barang' or
                                             $request->uri->getSegment(1) == 'data-golongan'
                                         ) ? 'active' : ""; ?>">
                         <a data-toggle="collapse" href="#base">
@@ -199,7 +200,7 @@
                             <p>Inventaris</p>
                         </a>
                     </li>
-                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'arsip-laporan') ? 'active' : ""; ?>">
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate' or $request->uri->getSegment(1) == 'data-arsip') ? 'active' : ""; ?>">
                         <a data-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
                             <p>Laporan Bulanan</p>

@@ -113,8 +113,6 @@
                                         <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
                                         <select name="tingkat" class="form-control">
                                             <option><?= (old('tingkat')) ? old('tingkat') : $data['tingkat']; ?></option>
-                                            <option value="D1">D1</option>
-                                            <option value="D2">D2</option>
                                             <option value="D3">D3</option>
                                             <option value="S1">S1</option>
                                             <option value="S2">S2</option>

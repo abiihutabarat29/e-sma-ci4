@@ -104,6 +104,7 @@
                                     <h5><b>*Pendidikan/Ijazah Tertinggi</b></h5>
                                     <select name="tingkat" class="form-control">
                                         <option selected disabled><?= (old('tingkat')) ? old('tingkat') : ".::Pilih Tingkat::." ?></option>
+                                        <option value="SLTA">SLTA</option>
                                         <option value="D1">D1</option>
                                         <option value="D2">D2</option>
                                         <option value="D3">D3</option>

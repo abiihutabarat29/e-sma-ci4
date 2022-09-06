@@ -43,10 +43,11 @@ class DataInventaris extends BaseController
         //Validasi input
         if (!$this->validate([
             'inventaris' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required|alpha_space|is_unique[mod_inventaris.inventaris]',
                 'errors' => [
                     'required' => 'Jenis Inventaris tidak boleh kosong.',
-                    'alpha_space' => 'Jenis Inventaris harus huruf dan spasi.'
+                    'alpha_space' => 'Jenis Inventaris harus huruf dan spasi.',
+                    'is_unique' => 'Inventaris sudah ada.'
                 ]
             ],
             'dibutuhkan' => [
@@ -120,10 +121,16 @@ class DataInventaris extends BaseController
     }
     public function update($id)
     {
+        $inventarisLama = $this->inventarisModel->where(['id' => $id])->first();
+        if ($inventarisLama['inventaris'] == $this->request->getPost('inventaris')) {
+            $rule_inventaris = 'required';
+        } else {
+            $rule_inventaris = 'required|numeric|is_unique[mod_inventaris.inventaris]';
+        }
         //Validasi input
         if (!$this->validate([
             'inventaris' => [
-                'rules' => 'required|alpha_space',
+                'rules' => $rule_inventaris,
                 'errors' => [
                     'required' => 'Jenis Inventaris tidak boleh kosong.',
                     'alpha_space' => 'Jenis Inventaris harus huruf dan spasi.'

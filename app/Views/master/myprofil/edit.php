@@ -34,7 +34,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 pr-0">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="npsn" name="npsn" value="<?= $data['nama_sekolah']; ?>" readonly>
                                         </div>

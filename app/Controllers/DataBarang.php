@@ -48,7 +48,7 @@ class DataBarang extends BaseController
             return redirect()->to('/data-inventaris-barang/add')->withInput();
         }
         $data = [
-            'inventaris'       => $this->request->getPost('inventaris'),
+            'inventaris'  => $this->request->getPost('inventaris'),
             'userentry'   => session()->get('nama'),
         ];
         $this->barangModel->save($data);
@@ -76,10 +76,16 @@ class DataBarang extends BaseController
     }
     public function update($id)
     {
+        $inventarisLama = $this->barangModel->where(['id' => $id])->first();
+        if ($inventarisLama['inventaris'] == $this->request->getPost('inventaris')) {
+            $rule_inventaris = 'required';
+        } else {
+            $rule_inventaris = 'required|is_unique[mod_barang.inventaris]';
+        }
         //Validasi input
         if (!$this->validate([
             'inventaris' => [
-                'rules' => 'required|is_unique[mod_barang.inventaris]',
+                'rules' => $rule_inventaris,
                 'errors' => [
                     'required' => 'Nama Inventaris tidak boleh kosong.',
                     'is_unique' => 'Nama Inventaris sudah ada.'

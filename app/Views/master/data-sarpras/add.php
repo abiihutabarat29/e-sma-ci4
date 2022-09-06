@@ -69,6 +69,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
+                                <label>Keterangan</label>
                                 <textarea type="text" name="ket" class="form-control" autocomplete="off" placeholder="Keterangan"><?= old('ket'); ?></textarea>
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('ket'); ?></small>

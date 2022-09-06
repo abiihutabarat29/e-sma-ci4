@@ -54,9 +54,10 @@ class DataKebutuhan extends BaseController
         //Validasi input
         if (!$this->validate([
             'mapel' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[mod_kebutuhan.mapel]',
                 'errors' => [
                     'required' => 'Mata Pelajaran harus di pilih.',
+                    'is_unique' => 'Kebutuhan di Mata Melajaran ini sudah ada.'
                 ]
             ],
             'butuh' => [
@@ -140,10 +141,16 @@ class DataKebutuhan extends BaseController
     }
     public function update($id)
     {
+        $mapelLama = $this->kebutuhanModel->where(['id' => $id])->first();
+        if ($mapelLama['mapel'] == $this->request->getPost('mapel')) {
+            $rule_mapel = 'required';
+        } else {
+            $rule_mapel = 'required|numeric|is_unique[mod_kebutuhan.mapel]';
+        }
         //Validasi input
         if (!$this->validate([
             'mapel' => [
-                'rules' => 'required',
+                'rules' => $rule_mapel,
                 'errors' => [
                     'required' => 'Mata Pelajaran harus di pilih.',
                 ]

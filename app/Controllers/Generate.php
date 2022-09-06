@@ -16,6 +16,7 @@ use App\Models\MapelModel;
 use App\Models\SaranaModel;
 use App\Models\SarprasModel;
 use App\Models\InventarisModel;
+use App\Models\KebutuhanModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -36,6 +37,7 @@ class Generate extends BaseController
     protected $saranaModel;
     protected $sarprasModel;
     protected $inventarisModel;
+    protected $kebutuhanModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -52,6 +54,7 @@ class Generate extends BaseController
         $this->saranaModel = new SaranaModel();
         $this->sarprasModel = new SarprasModel();
         $this->inventarisModel = new InventarisModel();
+        $this->kebutuhanModel = new KebutuhanModel();
     }
     public function index()
     {
@@ -166,8 +169,6 @@ class Generate extends BaseController
         $sheet->getColumnDimension('D')->setAutoSize(true);
         // ==============================================================================================
         // Export Data Keadaan Siswa dan Agama
-        // Fetch Data Keadaan Siswa dan Agama
-        $npsn = session()->get('npsn');
         //Fetc Rombel X,XI,XII
         $rombel = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->first();
         $xmipa = $rombel['jkelasx_mipa'];
@@ -313,8 +314,6 @@ class Generate extends BaseController
         $sheet->getColumnDimension('N')->setWidth(110, 'pt');
         // ==============================================================================================
         // Export Data Mutasi Siswa
-        $npsn = session()->get('npsn');
-        //Fetch Data Mutasi Siswa
         $masuk = $this->masukModel->where('npsn =', $npsn)->where('mutasi', 'pindahan')->findAll();
         $keluar = $this->masukModel->where('npsn =', $npsn)->where('mutasi', 'keluar')->findAll();
         //Mutasi masuk
@@ -387,8 +386,6 @@ class Generate extends BaseController
         $sheet->getStyle('S13:Z13')->applyFromArray($styleColumnCenter);
         // ==============================================================================================
         // Export Data Umur siswa/i
-        // Fetch Data Umur siswa/i
-        $npsn = session()->get('npsn');
         //Data siswa Laki-laki-X-14
         $lx14 = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jenis_kel', 'L')->where('umur', 14)->countAllResults();
         //Data siswa Laki-laki-XI-14
@@ -623,7 +620,6 @@ class Generate extends BaseController
         $sheet->getColumnDimension('J')->setAutoSize(true);
         // ==============================================================================================
         // Export Data Ruang Belajar, Lab & Perpustakaan
-        $npsn = session()->get('npsn');
         //Fetch Data Ruang Belajar, Lab & Perpustakaan
         $sarpras = $this->sarprasModel->where('npsn =', $npsn)->findAll();
         $sheet->setCellValue('L1', 'E. Ruang Belajar, Lab & Perpustakaan');
@@ -667,10 +663,7 @@ class Generate extends BaseController
         $sheet->getColumnDimension('Q')->setWidth(70, 'pt');
         $sheet->getColumnDimension('R')->setWidth(140, 'pt');
         // ==============================================================================================
-        // ==============================================================================================
         // Export Data Inventaris
-        $npsn = session()->get('npsn');
-        //Fetch Data Inventaris
         $inventaris = $this->inventarisModel->where('npsn =', $npsn)->findAll();
         $sheet->setCellValue('T1', 'F. Data Inventaris (Keadaan Meja, Kursi & Peralatan Kantor)');
         $sheet->setCellValue('T2', 'No');
@@ -712,8 +705,6 @@ class Generate extends BaseController
         $sheet->getColumnDimension('Y')->setWidth(35, 'pt');
         // ==============================================================================================
         // Export Data Bangunan
-        // Fetch Data Bangunan
-        $npsn = session()->get('npsn');
         $b = $this->bangunanModel->where('npsn =', $npsn)->first();
         // Design Table Keadaan Tanah dan Bangunan
         $sheet->setCellValue('AA1', 'G. Keadaan Tanah dan Bangunan');
@@ -747,7 +738,141 @@ class Generate extends BaseController
         $sheet->getColumnDimension('AB')->setAutoSize(true);
         $sheet->getColumnDimension('AC')->setAutoSize(true);
         $sheet->getColumnDimension('AD')->setAutoSize(true);
-        // // ==============================================================================================
+        // ==============================================================================================
+        $kebutuhan = $this->kebutuhanModel->where('npsn =', $npsn)->findAll();
+        $spreadsheet->createSheet();
+        $spreadsheet->setActiveSheetIndex(2)->setCellValue('A1', 'H. Keadaan Kebutuhan Guru');
+        $sheet = $spreadsheet->getActiveSheet()->setTitle('H, I, J');
+        $sheet->setCellValue('A2', 'NO');
+        $sheet->setCellValue('B2', 'MATA PELAJARAN');
+        $sheet->setCellValue('C2', 'DIBUTUHKAN');
+        $sheet->setCellValue('D2', 'ADA');
+        $sheet->setCellValue('D3', 'PNS');
+        $sheet->setCellValue('E3', 'NON PNS');
+        $sheet->setCellValue('F2', 'KURANG');
+        $sheet->setCellValue('G2', 'LEBIH');
+        $sheet->setCellValue('H2', 'KETERANGAN');
+        $sheet->setCellValue('B4', 'JUMLAH');
+        $no =  1;
+        $row = 4;
+        foreach ($kebutuhan as $k) :
+            $sheet->setCellValue('A' . $row, $no);
+            $sheet->setCellValue('B' . $row, $k['mapel']);
+            $sheet->setCellValue('C' . $row, $k['dibutuhkan']);
+            $sheet->setCellValue('D' . $row, $k['pns']);
+            $sheet->setCellValue('E' . $row, $k['nonpns']);
+            $sheet->setCellValue('F' . $row, $k['kurang']);
+            $sheet->setCellValue('G' . $row, $k['lebih']);
+            $sheet->setCellValue('H' . $row, $k['keterangan']);
+            //Style border berdasarkan foreach data
+            $sheet->getStyle('A2:H' . $row)->applyFromArray($styleBorder);
+            $sheet->getStyle('A2:A' . $row)->applyFromArray($styleColumnCenter);
+            $sheet->getStyle('C4:G' . $row)->applyFromArray($styleColumnCenter);
+            $no++;
+            $row++;
+        endforeach;
+        $sheet->mergeCells('A1:H1');
+        $sheet->mergeCells('A2:A3');
+        $sheet->mergeCells('B2:B3');
+        $sheet->mergeCells('C2:C3');
+        $sheet->mergeCells('D2:E2');
+        $sheet->mergeCells('F2:F3');
+        $sheet->mergeCells('G2:G3');
+        $sheet->mergeCells('H2:H3');
+        $sheet->getStyle('A1')->getFont()->setBold(true);
+        $sheet->getStyle('B2:H3')->applyFromArray($styleColumnCenter);
+        $sheet->getColumnDimension('A')->setAutoSize(true);
+        $sheet->getColumnDimension('B')->setAutoSize(true);
+        $sheet->getColumnDimension('C')->setAutoSize(true);
+        $sheet->getColumnDimension('D')->setAutoSize(true);
+        $sheet->getColumnDimension('E')->setAutoSize(true);
+        $sheet->getColumnDimension('F')->setAutoSize(true);
+        $sheet->getColumnDimension('G')->setAutoSize(true);
+        $sheet->getColumnDimension('H')->setAutoSize(true);
+        // ==============================================================================================
+        // Export Pendidikan Terakhir Guru & Sertifikasi Guru
+        $guru = $this->guruModel->where('npsn =', $npsn)->findAll();
+        $sheet->setCellValue('J1', 'I. Pendidikan Terakhir Guru & Sertifikasi Guru');
+        $sheet->setCellValue('J2', 'NO');
+        $sheet->setCellValue('J4', '1.');
+        $sheet->setCellValue('J5', '2.');
+        $sheet->setCellValue('J6', '3.');
+        $sheet->setCellValue('J7', 'JUMLAH');
+        $sheet->setCellValue('J8', 'GURU YANG SUDAH SERTIFIKASI');
+        $sheet->setCellValue('J9', 'GURU YANG BELUM SERTIFIKASI');
+        $sheet->setCellValue('K2', 'JENJANG');
+        $sheet->setCellValue('K4', 'D.3');
+        $sheet->setCellValue('K5', 'S.1 / A. IV');
+        $sheet->setCellValue('K6', 'S.2');
+        $sheet->setCellValue('L2', 'PNS');
+        $sheet->setCellValue('L3', 'L');
+        $sheet->setCellValue('M3', 'P');
+        $sheet->setCellValue('N2', 'JUMLAH');
+        $sheet->setCellValue('O2', 'NON PNS');
+        $sheet->setCellValue('O3', 'L');
+        $sheet->setCellValue('P3', 'P');
+        $sheet->setCellValue('Q2', 'JUMLAH');
+        $sheet->setCellValue('R2', 'JUMLAH PENDIDIK');
+
+        $sheet->mergeCells('J1:R1');
+        $sheet->mergeCells('J2:J3');
+        $sheet->mergeCells('K2:K3');
+        $sheet->mergeCells('L2:M2');
+        $sheet->mergeCells('N2:N3');
+        $sheet->mergeCells('O2:P2');
+        $sheet->mergeCells('Q2:Q3');
+        $sheet->mergeCells('R2:R3');
+        $sheet->mergeCells('J7:K7');
+        $sheet->mergeCells('J8:K8');
+        $sheet->mergeCells('J9:K9');
+        $sheet->getStyle('J1')->getFont()->setBold(true);
+        $sheet->getStyle('J2:R3')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('J2:J6')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('J2:R9')->applyFromArray($styleBorder);
+        $sheet->getColumnDimension('J')->setAutoSize(true);
+        $sheet->getColumnDimension('K')->setAutoSize(true);
+        $sheet->getColumnDimension('R')->setAutoSize(true);
+        // ==============================================================================================
+        // Export Pendidikan Terakhir Pegawai & Tenaga Administrasi Sekolah
+        $guru = $this->guruModel->where('npsn =', $npsn)->findAll();
+        $sheet->setCellValue('J12', 'J. ikan Terakhir Pegawai & Tenaga Administrasi Sekolah');
+        $sheet->setCellValue('J13', 'NO');
+        $sheet->setCellValue('J15', '1.');
+        $sheet->setCellValue('J16', '2.');
+        $sheet->setCellValue('J17', '3.');
+        $sheet->setCellValue('J18', '4.');
+        $sheet->setCellValue('J19', '5.');
+        $sheet->setCellValue('J20', 'JUMLAH');
+        $sheet->setCellValue('K13', 'JENJANG');
+        $sheet->setCellValue('K15', 'SLTA ( SMA / SMK / MA )');
+        $sheet->setCellValue('K16', 'D.1');
+        $sheet->setCellValue('K17', 'D.2');
+        $sheet->setCellValue('K18', 'D.3');
+        $sheet->setCellValue('K19', 'S.1');
+        $sheet->setCellValue('L13', 'PNS');
+        $sheet->setCellValue('L14', 'L');
+        $sheet->setCellValue('M14', 'P');
+        $sheet->setCellValue('N13', 'JUMLAH');
+        $sheet->setCellValue('O13', 'NON PNS');
+        $sheet->setCellValue('O14', 'L');
+        $sheet->setCellValue('P14', 'P');
+        $sheet->setCellValue('Q13', 'JUMLAH');
+        $sheet->setCellValue('R13', 'JUMLAH PEGAWAI');
+
+        $sheet->mergeCells('J12:R12');
+        $sheet->mergeCells('J13:J14');
+        $sheet->mergeCells('K13:K14');
+        $sheet->mergeCells('L13:M13');
+        $sheet->mergeCells('N13:N14');
+        $sheet->mergeCells('O13:P13');
+        $sheet->mergeCells('Q13:Q14');
+        $sheet->mergeCells('R13:R14');
+        $sheet->mergeCells('J20:K20');
+        $sheet->getStyle('J12')->getFont()->setBold(true);
+        $sheet->getStyle('J13:R14')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('J13:J20')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('J13:R20')->applyFromArray($styleBorder);
+        // ==============================================================================================
         // Export Tabel
         $writer = new Xlsx($spreadsheet);
         $sekolah = session()->get('nama_sekolah');

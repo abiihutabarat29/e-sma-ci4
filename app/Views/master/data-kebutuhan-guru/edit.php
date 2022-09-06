@@ -35,6 +35,7 @@
                             <div class="row">
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('mapel')) ? 'has-error' : ''; ?>">
+                                        <label>Mata Pelajaran</label><span class="text-danger">*</span>
                                         <select name="mapel" id="mapel" class="js-example-language" style="width: 100%">
                                             <option><?= (old('mapel')) ? old('mapel') : $data['mapel'] ?></option>
                                             <?php foreach ($mapel as $r) : ?>
@@ -47,41 +48,47 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('butuh')) ? 'has-error' : ''; ?>">
-                                        <input name="butuh" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Dibutuhkan" value="<?= (old('butuh')) ? old('butuh') : $data['dibutuhkan']; ?>">
+                                        <label>Jumlah Dibutuhkan</label><span class="text-danger">*</span>
+                                        <input name="butuh" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('butuh')) ? old('butuh') : $data['dibutuhkan']; ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('butuh'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('pns')) ? 'has-error' : ''; ?>">
-                                        <input name="pns" type="text" class="form-control" autocomplete="off" placeholder="Jumlah PNS" value="<?= (old('pns')) ? old('pns') : $data['pns']; ?>">
+                                        <label>Jumlah PNS</label><span class="text-danger">*</span>
+                                        <input name="pns" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('pns')) ? old('pns') : $data['pns']; ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('pns'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('kurang')) ? 'has-error' : ''; ?>">
-                                        <input name="kurang" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kekurangan Guru" value="<?= (old('kurang')) ? old('kurang') : $data['kurang']; ?>">
+                                        <label>Jumlah Kurang</label><span class="text-danger">*</span>
+                                        <input name="kurang" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('kurang')) ? old('kurang') : $data['kurang']; ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('kurang'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('nonpns')) ? 'has-error' : ''; ?>">
-                                        <input name="nonpns" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Non-PNS" value="<?= (old('nonpns')) ? old('nonpns') : $data['nonpns']; ?>">
+                                        <label>Jumlah Non-PNS</label><span class="text-danger">*</span>
+                                        <input name="nonpns" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('nonpns')) ? old('nonpns') : $data['nonpns']; ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('nonpns'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('lebih')) ? 'has-error' : ''; ?>">
-                                        <input name="lebih" type="text" class="form-control" autocomplete="off" placeholder="Jumlah Kelebihan Guru" value="<?= (old('lebih')) ? old('lebih') : $data['lebih']; ?>">
+                                        <label>Jumlah Lebih</label><span class="text-danger">*</span>
+                                        <input name="lebih" type="text" class="form-control" autocomplete="off" placeholder="Jumlah" value="<?= (old('lebih')) ? old('lebih') : $data['lebih']; ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('lebih'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
+                                        <label>Keterangan</label>
                                         <textarea type="text" name="ket" class="form-control" autocomplete="off" placeholder="Keterangan"><?= (old('ket')) ? old('ket') : $data['keterangan']; ?></textarea>
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('ket'); ?></small>
