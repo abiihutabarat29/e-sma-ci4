@@ -142,7 +142,7 @@
                                         <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                         <option value="PNS">PNS</option>
                                         <option value="CPNS">CPNS</option>
-                                        <option value="Non-PNS">Non PNS</option>
+                                        <option value="Non PNS">Non PNS</option>
                                         <option value="Honda">Honda</option>
                                         <option value="GTY">GTY</option>
                                         <option value="GTT">GTT</option>

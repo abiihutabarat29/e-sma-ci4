@@ -148,7 +148,7 @@
                                             <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
                                             <option value="PNS">PNS</option>
                                             <option value="CPNS">CPNS</option>
-                                            <option value="Non-PNS">Non PNS</option>
+                                            <option value="Non PNS">Non PNS</option>
                                             <option value="Honda">Honda</option>
                                             <option value="GTY">GTY</option>
                                             <option value="GTT">GTT</option>

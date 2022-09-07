@@ -791,7 +791,31 @@ class Generate extends BaseController
         $sheet->getColumnDimension('H')->setAutoSize(true);
         // ==============================================================================================
         // Export Pendidikan Terakhir Guru & Sertifikasi Guru
-        $guru = $this->guruModel->where('npsn =', $npsn)->findAll();
+        // Guru D3
+        $ld3p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $pd3p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $ld3np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $pd3np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Guru DS1
+        $ls1p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $ps1p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $ls1np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $ps1np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Guru DS2
+        $ls2p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S2')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $ps2p = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S2')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $ls2np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S2')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $ps2np = $this->guruModel->where('npsn =', $npsn)->where('tingkat', 'S2')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Guru Sudah Sertifikasi
+        $lsp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Sudah')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $psp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Sudah')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $lsnp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Sudah')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $psnp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Sudah')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Guru Belum Sertifikasi
+        $lbsp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Belum')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $pbsp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Belum')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $lbsnp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Belum')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $pbsnp = $this->guruModel->where('npsn =', $npsn)->where('sts_serti', 'Belum')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
         $sheet->setCellValue('J1', 'I. Pendidikan Terakhir Guru & Sertifikasi Guru');
         $sheet->setCellValue('J2', 'NO');
         $sheet->setCellValue('J4', '1.');
@@ -806,14 +830,55 @@ class Generate extends BaseController
         $sheet->setCellValue('K6', 'S.2');
         $sheet->setCellValue('L2', 'PNS');
         $sheet->setCellValue('L3', 'L');
+        $sheet->setCellValue('L4', $ld3p);
+        $sheet->setCellValue('L5', $ls1p);
+        $sheet->setCellValue('L6', $ls2p);
         $sheet->setCellValue('M3', 'P');
+        $sheet->setCellValue('M4', $pd3p);
+        $sheet->setCellValue('M5', $ps1p);
+        $sheet->setCellValue('M6', $ps2p);
         $sheet->setCellValue('N2', 'JUMLAH');
+        $sheet->setCellValue('N4', '=SUM(L4:M4)');
+        $sheet->setCellValue('N5', '=SUM(L5:M5)');
+        $sheet->setCellValue('N6', '=SUM(L6:M6)');
         $sheet->setCellValue('O2', 'NON PNS');
         $sheet->setCellValue('O3', 'L');
+        $sheet->setCellValue('O4', $ld3np);
+        $sheet->setCellValue('O5', $ls1np);
+        $sheet->setCellValue('O6', $ls2np);
         $sheet->setCellValue('P3', 'P');
+        $sheet->setCellValue('P4', $pd3np);
+        $sheet->setCellValue('P5', $ps1np);
+        $sheet->setCellValue('P6', $ps2np);
         $sheet->setCellValue('Q2', 'JUMLAH');
+        $sheet->setCellValue('Q4', '=SUM(O4:P4)');
+        $sheet->setCellValue('Q5', '=SUM(O5:P5)');
+        $sheet->setCellValue('Q6', '=SUM(O6:P6)');
         $sheet->setCellValue('R2', 'JUMLAH PENDIDIK');
-
+        $sheet->setCellValue('R4', '=SUM(N4+Q4)');
+        $sheet->setCellValue('R5', '=SUM(N5+Q5)');
+        $sheet->setCellValue('R6', '=SUM(N6+Q6)');
+        $sheet->setCellValue('L7', '=SUM(L4:L6)');
+        $sheet->setCellValue('M7', '=SUM(M4:M6)');
+        $sheet->setCellValue('N7', '=SUM(L7:M7)');
+        $sheet->setCellValue('O7', '=SUM(O4:O6)');
+        $sheet->setCellValue('P7', '=SUM(P4:P6)');
+        $sheet->setCellValue('Q7', '=SUM(O7:P7)');
+        $sheet->setCellValue('R7', '=SUM(N7+Q7)');
+        $sheet->setCellValue('L8', $lsp);
+        $sheet->setCellValue('M8', $psp);
+        $sheet->setCellValue('N8', '=SUM(L8:M8)');
+        $sheet->setCellValue('O8', $lsnp);
+        $sheet->setCellValue('P8', $psnp);
+        $sheet->setCellValue('Q8', '=SUM(O8:P8)');
+        $sheet->setCellValue('R8', '=SUM(N8+Q8)');
+        $sheet->setCellValue('L9', $lbsp);
+        $sheet->setCellValue('M9', $pbsp);
+        $sheet->setCellValue('N9', '=SUM(L9:M9)');
+        $sheet->setCellValue('O9', $lbsnp);
+        $sheet->setCellValue('P9', $pbsnp);
+        $sheet->setCellValue('Q9', '=SUM(O9:P9)');
+        $sheet->setCellValue('R9', '=SUM(N9+Q9)');
         $sheet->mergeCells('J1:R1');
         $sheet->mergeCells('J2:J3');
         $sheet->mergeCells('K2:K3');
@@ -828,6 +893,7 @@ class Generate extends BaseController
         $sheet->getStyle('J1')->getFont()->setBold(true);
         $sheet->getStyle('J2:R3')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('J2:J6')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('L4:R9')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('J2:R9')->applyFromArray($styleBorder);
         $sheet->getColumnDimension('J')->setAutoSize(true);
         $sheet->getColumnDimension('K')->setAutoSize(true);
