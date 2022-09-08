@@ -60,12 +60,11 @@ class DataGuru extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|min_length[16]|is_unique[mod_guru.nip]',
+                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_guru.nip]',
                     'errors' => [
-                        'required' => 'NIP tidak boleh kosong.',
+                        'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
                         'max_length' => 'NIP maximal 16 digit.',
-                        'min_length' => 'NIP minimal 16 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -259,12 +258,11 @@ class DataGuru extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|min_length[16]|is_unique[mod_guru.nip]',
+                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_guru.nip]',
                     'errors' => [
-                        'required' => 'NIP tidak boleh kosong.',
+                        'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
                         'max_length' => 'NIP maximal 16 digit.',
-                        'min_length' => 'NIP minimal 16 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -536,7 +534,7 @@ class DataGuru extends BaseController
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
                 $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]|is_unique[mod_guru.nip]';
+                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_guru.nip]';
             }
             $nikLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -561,10 +559,9 @@ class DataGuru extends BaseController
                 'nip' => [
                     'rules' => $rule_nip,
                     'errors' => [
-                        'required' => 'NIP tidak boleh kosong.',
+                        'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
                         'max_length' => 'NIP maximal 16 digit.',
-                        'min_length' => 'NIP minimal 16 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -772,7 +769,7 @@ class DataGuru extends BaseController
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
                 $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]|is_unique[mod_guru.nip]';
+                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_guru.nip]';
             }
             $nikLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -797,10 +794,9 @@ class DataGuru extends BaseController
                 'nip' => [
                     'rules' => $rule_nip,
                     'errors' => [
-                        'required' => 'NIP tidak boleh kosong.',
+                        'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
                         'max_length' => 'NIP maximal 16 digit.',
-                        'min_length' => 'NIP minimal 16 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
