@@ -109,7 +109,6 @@
                                         <option value="D2">D2</option>
                                         <option value="D3">D3</option>
                                         <option value="S1">S1</option>
-                                        <option value="S2">S2</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('tingkat'); ?></small>
@@ -147,7 +146,7 @@
                                         <option value="GTY">GTY</option>
                                         <option value="GTT">GTT</option>
                                         <option value="GTTY">GTTY</option>
-                                        <!-- <option value="PPPK">PPPK</option> -->
+                                        <option value="PPPK">PPPK</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('status'); ?></small>

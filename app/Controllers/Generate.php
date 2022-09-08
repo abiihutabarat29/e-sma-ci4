@@ -900,8 +900,32 @@ class Generate extends BaseController
         $sheet->getColumnDimension('R')->setAutoSize(true);
         // ==============================================================================================
         // Export Pendidikan Terakhir Pegawai & Tenaga Administrasi Sekolah
-        $guru = $this->guruModel->where('npsn =', $npsn)->findAll();
-        $sheet->setCellValue('J12', 'J. ikan Terakhir Pegawai & Tenaga Administrasi Sekolah');
+        // Pegawai SLTA
+        $lsltap = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'SLTA')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $psltap = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'SLTA')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $lsltanp = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'SLTA')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $psltanp = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'SLTA')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Pegawai D1
+        $ld1p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D1')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $pd1p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D1')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $ld1np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D1')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $pd1np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D1')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Pegawai D2
+        $ld2p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D2')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $pd2p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D2')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $ld2np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D2')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $pd2np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D2')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Pegawai D3
+        $pld3p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $ppd3p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $pld3np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $ppd3np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'D3')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        // Pegawai S1
+        $pls1p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'L')->where('status', 'PNS')->countAllResults();
+        $pps1p = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'P')->where('status', 'PNS')->countAllResults();
+        $pls1np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'L')->where('status', 'Non PNS')->countAllResults();
+        $pps1np = $this->pegawaiModel->where('npsn =', $npsn)->where('tingkat', 'S1')->where('jenis_kel', 'P')->where('status', 'Non PNS')->countAllResults();
+        $sheet->setCellValue('J12', 'J. Penddiikan Terakhir Pegawai & Tenaga Administrasi Sekolah');
         $sheet->setCellValue('J13', 'NO');
         $sheet->setCellValue('J15', '1.');
         $sheet->setCellValue('J16', '2.');
@@ -917,13 +941,55 @@ class Generate extends BaseController
         $sheet->setCellValue('K19', 'S.1');
         $sheet->setCellValue('L13', 'PNS');
         $sheet->setCellValue('L14', 'L');
+        $sheet->setCellValue('L15', $lsltap);
+        $sheet->setCellValue('L16', $ld1p);
+        $sheet->setCellValue('L17', $ld2p);
+        $sheet->setCellValue('L18', $pld3p);
+        $sheet->setCellValue('L19', $pls1p);
         $sheet->setCellValue('M14', 'P');
+        $sheet->setCellValue('M15', $psltap);
+        $sheet->setCellValue('M16', $pd1p);
+        $sheet->setCellValue('M17', $pd2p);
+        $sheet->setCellValue('M18', $ppd3p);
+        $sheet->setCellValue('M19', $pps1p);
         $sheet->setCellValue('N13', 'JUMLAH');
+        $sheet->setCellValue('N15', '=SUM(L15:M15)');
+        $sheet->setCellValue('N16', '=SUM(L16:M16)');
+        $sheet->setCellValue('N17', '=SUM(L17:M17)');
+        $sheet->setCellValue('N18', '=SUM(L18:M18)');
+        $sheet->setCellValue('N19', '=SUM(L19:M19)');
         $sheet->setCellValue('O13', 'NON PNS');
         $sheet->setCellValue('O14', 'L');
+        $sheet->setCellValue('O15', $lsltanp);
+        $sheet->setCellValue('O16', $ld1np);
+        $sheet->setCellValue('O17', $ld2np);
+        $sheet->setCellValue('O18', $pld3np);
+        $sheet->setCellValue('O19', $pls1np);
         $sheet->setCellValue('P14', 'P');
+        $sheet->setCellValue('P15', $psltanp);
+        $sheet->setCellValue('P16', $pd1np);
+        $sheet->setCellValue('P17', $pd2np);
+        $sheet->setCellValue('P18', $ppd3np);
+        $sheet->setCellValue('P19', $pps1np);
         $sheet->setCellValue('Q13', 'JUMLAH');
+        $sheet->setCellValue('Q15', '=SUM(O15:P15)');
+        $sheet->setCellValue('Q16', '=SUM(O16:P16)');
+        $sheet->setCellValue('Q17', '=SUM(O17:P17)');
+        $sheet->setCellValue('Q18', '=SUM(O18:P18)');
+        $sheet->setCellValue('Q19', '=SUM(O19:P19)');
         $sheet->setCellValue('R13', 'JUMLAH PEGAWAI');
+        $sheet->setCellValue('R15', '=SUM(N15+Q15)');
+        $sheet->setCellValue('R16', '=SUM(N16+Q16)');
+        $sheet->setCellValue('R17', '=SUM(N17+Q17)');
+        $sheet->setCellValue('R18', '=SUM(N18+Q18)');
+        $sheet->setCellValue('R19', '=SUM(N19+Q19)');
+        $sheet->setCellValue('L20', '=SUM(L15:L19)');
+        $sheet->setCellValue('M20', '=SUM(M15:M19)');
+        $sheet->setCellValue('N20', '=SUM(L20+M20)');
+        $sheet->setCellValue('O20', '=SUM(O15:O19)');
+        $sheet->setCellValue('P20', '=SUM(P15:P19)');
+        $sheet->setCellValue('Q20', '=SUM(O20+P20)');
+        $sheet->setCellValue('R20', '=SUM(N20+Q20)');
 
         $sheet->mergeCells('J12:R12');
         $sheet->mergeCells('J13:J14');
@@ -937,6 +1003,7 @@ class Generate extends BaseController
         $sheet->getStyle('J12')->getFont()->setBold(true);
         $sheet->getStyle('J13:R14')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('J13:J20')->applyFromArray($styleColumnCenter);
+        $sheet->getStyle('L15:R20')->applyFromArray($styleColumnCenter);
         $sheet->getStyle('J13:R20')->applyFromArray($styleBorder);
         // ==============================================================================================
         // Export Tabel
