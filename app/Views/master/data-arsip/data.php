@@ -32,7 +32,9 @@
                                     <th>Nama Labul</th>
                                     <th>Bulan</th>
                                     <th>Tahun</th>
-                                    <th>File</th>
+                                    <th>
+                                        <center>File</center>
+                                    </th>
                                     <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
@@ -44,12 +46,16 @@
                                         <td><?= $r['nama_labul']; ?></td>
                                         <td><?= $r['bulan']; ?></td>
                                         <td><?= $r['tahun']; ?></td>
-                                        <td><a href="<?= base_url() ?>/media/arsip/<?= $r['file_labul']; ?>" target="blank"><button class="btn btn-primary btn-xs"><i class="fa fa-download"></i></button></ <td>
+                                        <td>
+                                            <center><a href="<?= base_url() ?>/media/arsip/<?= $r['file_labul']; ?>" target="blank"><button class="btn btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></a></center>
+                                        </td>
                                         <td>
                                             <div class="form-button-action">
-                                                <a href="/data-arsip/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
+                                                <?php if ($r['bulan'] == format_bulan(date('Y-m-d'))) { ?>
+                                                    <a href="/data-arsip/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                <?php  } ?>
                                                 <form action="/data-arsip/<?= $r['id']; ?>" method="post">
                                                     <?= csrf_field(); ?>
                                                     <input type="hidden" name="_method" value="DELETE">

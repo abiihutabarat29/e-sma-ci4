@@ -40,6 +40,15 @@ if (swalValid) {
     timer: 5000,
   });
 }
+const swalCek = $(".swal-cek").data("swal");
+if (swalCek) {
+  swal({
+    text: swalCek,
+    icon: "error",
+    Button: false,
+    timer: 5000,
+  });
+}
 
 //Alert Notifikasi
 

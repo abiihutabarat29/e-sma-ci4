@@ -346,6 +346,7 @@
 <script>
     var btnGenerate = document.getElementById('generate');
     var btnSelesai = document.getElementById('selesai');
+
     const cekdata = () => {
         $('#generate').html('<i class="fa fa-spin fa-spinner"></i><i>sedang mengecek data . . .</i>');
     }
@@ -364,39 +365,46 @@
         btnSelesai.style.display = 'none';
         $('#generate').html('Generate');
     }
-    // $(document).ready(function() {
-    //     $('.generate').click(function() {
-    //         const Url = <?= base_url('generate/export') ?>
-    //         $.ajax({
-    //             url: Url,
-    //             method: GET,
-    //             success: function() {
-    //                 // start();
-    //                 // setTimeout(function() {
-    //                 //     end();
-    //                 //     generate();
-    //                 // }, 3000);
-    //             },
-    //             error: function() {
-    //                 // swal({
-    //                 //     text: error,
-    //                 //     icon: "error",
-    //                 //     buttons: {
-    //                 //         confirm: {
-    //                 //             className: "btn btn-success",
-    //                 //         },
-    //                 //     },
-    //                 // });
-    //             }
-    //         })
-    //     })
-    // });
+
+    // const generate = () => {
+    //     $(document).ready(function() {
+    //         var url = "<?= base_url('generate/export') ?>";
+    //         $.get(url);
+    //     });
+    // }
+
+    const generate = () => {
+        const Url = "<?= base_url('generate/export') ?>";
+        $.ajax({
+            url: Url,
+            method: GET,
+            success: function() {
+                // start();
+                // setTimeout(function() {
+                //     end();
+                //     generate();
+                // }, 3000);
+            },
+            error: function() {
+                // swal({
+                //     text: error,
+                //     icon: "error",
+                //     buttons: {
+                //         confirm: {
+                //             className: "btn btn-success",
+                //         },
+                //     },
+                // });
+            }
+        })
+    }
 
     function proses() {
         cekdata();
         start();
         setTimeout(function() {
             end();
+            generate();
         }, 8000);
         setTimeout(function() {
             back();

@@ -17,4 +17,9 @@ class ProfilModel extends Model
         'alamat', 'kodepos', 'telepon', 'nama_kepsek', 'email', 'jenjang', 'website', 'namayys', 'alamatyys',
         'longitude', 'latitude', 'profil', 'foto', 'userentry'
     ];
+
+    public function cek_data()
+    {
+        return $this->db->table('mod_profil')->get()->getRowArray();
+    }
 }

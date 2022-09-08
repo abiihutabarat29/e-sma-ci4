@@ -15,6 +15,7 @@
 <div class="page-inner">
     <div class="row">
         <div class="col-md-4">
+            <div class="swal-cek" data-swal="<?= session()->getFlashdata('msg'); ?>"></div>
             <div class="card card-info card-annoucement card-round">
                 <div class="card-body text-center">
                     <div class="card-opening">Selamat Datang <?= session()->get('nama'); ?></div>
