@@ -12,7 +12,7 @@ function format_indo($date)
     $tgl = substr($date, 8, 2);
     $waktu = substr($date, 11, 5);
     $hari = date("w", strtotime($date));
-    $result = $Hari[$hari] . ", " . $tgl . " " . $Bulan[(int)$bulan - 1] . " " . $tahun . " " . $waktu;
+    $result = $Hari[$hari] . " " . $tgl . " " . $Bulan[(int)$bulan - 1] . " " . $tahun . " " . $waktu;
 
     return $result;
 }

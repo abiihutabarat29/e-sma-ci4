@@ -67,7 +67,7 @@
                             </div>
                             <div class="item-list">
                                 <div class="info-user ml-3">
-                                    <span class="text-muted">4. Jika masih ada data yangbelum lengkap maka hasil export tidak akan sesuai dengan permintaan.</span>
+                                    <span class="text-muted">4. Jika masih ada data yang belum lengkap maka hasil export tidak akan sesuai dengan permintaan.</span>
                                 </div>
                                 <button class="btn btn-icon btn-success btn-round btn-xs">
                                     <i class="fa fa-check"></i>

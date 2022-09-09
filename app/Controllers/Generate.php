@@ -70,6 +70,7 @@ class Generate extends BaseController
     public function generate()
     {
         $npsn = session()->get('npsn');
+        //Validasi Ketersediaan Data
         $data_profil = $this->profilModel->where('npsn =', $npsn)->first();
         $data_bangunan = $this->bangunanModel->where('npsn =', $npsn)->first();
         $data_guru = $this->guruModel->where('npsn =', $npsn)->first();
@@ -84,6 +85,7 @@ class Generate extends BaseController
                         if ($data_kebutuhan_guru > 0) {
                             if ($data_sarpras > 0) {
                                 if ($data_inventaris > 0) {
+                                    // Jika Data Tersedia
                                     // Export Data Profil
                                     // Fetch Data Profil
                                     $npsn = session()->get('npsn');
@@ -167,6 +169,13 @@ class Generate extends BaseController
                                     $styleBorder = [
                                         'borders' => [
                                             'allBorders' => [
+                                                'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                                            ],
+                                        ],
+                                    ];
+                                    $styleBorderBottom = [
+                                        'borders' => [
+                                            'bottom' => [
                                                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
                                             ],
                                         ],
@@ -768,7 +777,6 @@ class Generate extends BaseController
                                     $sheet->setCellValue('F2', 'KURANG');
                                     $sheet->setCellValue('G2', 'LEBIH');
                                     $sheet->setCellValue('H2', 'KETERANGAN');
-                                    $sheet->setCellValue('B4', 'JUMLAH');
                                     $no =  1;
                                     $row = 4;
                                     foreach ($kebutuhan as $k) :
@@ -787,6 +795,17 @@ class Generate extends BaseController
                                         $no++;
                                         $row++;
                                     endforeach;
+                                    //Jumlah
+                                    $sheet->getStyle('A' . $row . ':H' . $row)->applyFromArray($styleBorder);
+                                    $sheet->getStyle('A' . $row . ':G' . $row)->applyFromArray($styleColumnCenter);
+                                    $sheet->setCellValue('A' . $row, 'JUMLAH');
+                                    $sheet->setCellValue('C' . $row, '=SUM(C4:C' . $row . ')');
+                                    $sheet->setCellValue('D' . $row, '=SUM(D4:D' . $row . ')');
+                                    $sheet->setCellValue('E' . $row, '=SUM(E4:E' . $row . ')');
+                                    $sheet->setCellValue('F' . $row, '=SUM(F4:F' . $row . ')');
+                                    $sheet->setCellValue('G' . $row, '=SUM(G4:G' . $row . ')');
+                                    //Style
+                                    $sheet->mergeCells('A' . $row . ':B' . $row);
                                     $sheet->mergeCells('A1:H1');
                                     $sheet->mergeCells('A2:A3');
                                     $sheet->mergeCells('B2:B3');
@@ -1085,6 +1104,19 @@ class Generate extends BaseController
                                         $no++;
                                         $row++;
                                     endforeach;
+                                    //Tanda Tangan Kepala Sekolah
+                                    $p = $this->profilModel->where('npsn =', $npsn)->first();
+                                    $sheet->setCellValue('Q' . ($row + 2), "$p[kecamatan], " . format_indo(date('Y-m-d')));
+                                    $sheet->setCellValue('Q' . ($row + 3), "Kepala $p[nama_sekolah]");
+                                    $sheet->setCellValue('Q' . ($row + 6),  $p['nama_kepsek']);
+                                    $sheet->setCellValue('Q' . ($row + 7), 'NIP -');
+                                    //Style
+                                    $sheet->getStyle('Q' . ($row + 6))->getFont()->setBold(true);
+                                    $sheet->getStyle('Q' . ($row + 6))->getFont()->setUnderline(true);
+                                    $sheet->mergeCells('Q' . ($row + 2) . ':S' . ($row + 2));
+                                    $sheet->mergeCells('Q' . ($row + 3) . ':S' . ($row + 3));
+                                    $sheet->mergeCells('Q' . ($row + 6) . ':S' . ($row + 6));
+                                    $sheet->mergeCells('Q' . ($row + 7) . ':S' . ($row + 7));
                                     $sheet->mergeCells('A1:S1');
                                     $sheet->mergeCells('A2:A3');
                                     $sheet->mergeCells('B2:B3');
@@ -1181,6 +1213,19 @@ class Generate extends BaseController
                                         $no++;
                                         $row++;
                                     endforeach;
+                                    //Tanda Tangan Kepala Sekolah
+                                    $p = $this->profilModel->where('npsn =', $npsn)->first();
+                                    $sheet->setCellValue('L' . ($row + 2), "$p[kecamatan], " . format_indo(date('Y-m-d')));
+                                    $sheet->setCellValue('L' . ($row + 3), "Kepala $p[nama_sekolah]");
+                                    $sheet->setCellValue('L' . ($row + 6),  $p['nama_kepsek']);
+                                    $sheet->setCellValue('L' . ($row + 7), 'NIP -');
+                                    //Style
+                                    $sheet->getStyle('L' . ($row + 6))->getFont()->setBold(true);
+                                    $sheet->getStyle('L' . ($row + 6))->getFont()->setUnderline(true);
+                                    $sheet->mergeCells('L' . ($row + 2) . ':N' . ($row + 2));
+                                    $sheet->mergeCells('L' . ($row + 3) . ':N' . ($row + 3));
+                                    $sheet->mergeCells('L' . ($row + 6) . ':N' . ($row + 6));
+                                    $sheet->mergeCells('L' . ($row + 7) . ':N' . ($row + 7));
                                     $sheet->mergeCells('A1:Q1');
                                     $sheet->mergeCells('A2:A3');
                                     $sheet->mergeCells('B2:B3');
@@ -1226,31 +1271,31 @@ class Generate extends BaseController
                                     $writer->save('php://output');
                                     exit();
                                 } else {
-                                    session()->setFlashdata('msg', 'Data Inventaris anda masih kosong. Mohon isi data terlebih dahulu');
+                                    session()->setFlashdata('msg', 'Data Inventaris tidak tersedia. Mohon isi data terlebih dahulu');
                                     return redirect()->to(base_url('generate'));
                                 }
                             } else {
-                                session()->setFlashdata('msg', 'Data Sarpras anda masih kosong. Mohon isi data terlebih dahulu');
+                                session()->setFlashdata('msg', 'Data Sarpras tidak tersedia. Mohon isi data terlebih dahulu');
                                 return redirect()->to(base_url('generate'));
                             }
                         } else {
-                            session()->setFlashdata('msg', 'Data Kebutuhan Guru anda masih kosong. Mohon isi data terlebih dahulu');
+                            session()->setFlashdata('msg', 'Data Kebutuhan Guru tidak tersedia. Mohon isi data terlebih dahulu');
                             return redirect()->to(base_url('generate'));
                         }
                     } else {
-                        session()->setFlashdata('msg', 'Data Siswa anda masih kosong. Mohon isi data terlebih dahulu');
+                        session()->setFlashdata('msg', 'Data Siswa tidak tersedia. Mohon isi data terlebih dahulu');
                         return redirect()->to(base_url('generate'));
                     }
                 } else {
-                    session()->setFlashdata('msg', 'Data Guru anda masih kosong. Mohon isi data terlebih dahulu');
+                    session()->setFlashdata('msg', 'Data Guru tidak tersedia. Mohon isi data terlebih dahulu');
                     return redirect()->to(base_url('generate'));
                 }
             } else {
-                session()->setFlashdata('msg', 'Data Keadaan Bangunan Sekolah anda masih kosong. Mohon isi data terlebih dahulu');
+                session()->setFlashdata('msg', 'Data Keadaan Bangunan Sekolah tidak tersedia. Mohon isi data terlebih dahulu');
                 return redirect()->to(base_url('generate'));
             }
         } else {
-            session()->setFlashdata('msg', 'Data Profil anda masih kosong. Mohon isi data terlebih dahulu');
+            session()->setFlashdata('msg', 'Data Profil tidak tersedia. Mohon isi data terlebih dahulu');
             return redirect()->to(base_url('generate'));
         }
     }
