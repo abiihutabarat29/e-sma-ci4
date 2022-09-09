@@ -84,8 +84,30 @@
                                         <div class="item-list">
                                             <div class="info-user ml-3">
                                                 <span class="text-muted">1. File harus ektensi *excel, *xls, *xlsx dan dengan ukuran maksimal 2MB.</span>
-                                                <p>
-                                                    <span class="text-muted">2. Dalam sebulan hanya bisa upload 1 kali file arsip laporan bulanan.</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-round btn-xs">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="info-user ml-3">
+                                                <span class="text-muted">2. Data yang di arsipkan harus dari fitur <b>Generate Laporan</b>.</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-round btn-xs">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="info-user ml-3">
+                                                <span class="text-muted">3. Dalam sebulan hanya bisa upload 1 kali file arsip laporan bulanan.</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-round btn-xs">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="info-user ml-3">
+                                                <span class="text-muted">4. Data yang sudah ter-arsip hanya bisa di edit kembali jika tidak lewat dari bulan saat upload laporan bulanan.</span>
                                             </div>
                                             <button class="btn btn-icon btn-success btn-round btn-xs">
                                                 <i class="fa fa-check"></i>
