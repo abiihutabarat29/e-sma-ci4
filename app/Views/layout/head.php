@@ -31,6 +31,8 @@
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/atlantis.min.css" />
+    <!-- Preloader -->
+    <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/custom.css" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/demo.css" />
     <!-- Select 2 -->
@@ -64,3 +66,15 @@
                 </div>
             </div>
             <!-- End Logo Header -->
+            <!--  Preloader Start -->
+            <div id="preloader-active">
+                <div class="preloader d-flex align-items-center justify-content-center">
+                    <div class="preloader-inner relative">
+                        <div class="preloader-circle"></div>
+                        <div class="preloader-img pere-text">
+                            <img src="<?= base_url("/template/assets/login/images/logo-sekolah.svg") ?>" width="80px" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Preloader End -->

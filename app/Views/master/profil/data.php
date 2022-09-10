@@ -249,7 +249,6 @@
         <?php else : ?>
             <div class="col-md-12">
                 <div class="card">
-                    <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title"><?= $title ?></h4>

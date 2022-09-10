@@ -30,6 +30,18 @@
 <!-- Select Picker -->
 <script src="<?= base_url(); ?>/vendor/selectpicker/js/bootstrap-select.min.js"></script>
 <script>
+    (function($) {
+        "use strict"
+        //Proloader
+        $(window).on('load', function() {
+            $('#preloader-active').delay(450).fadeOut('slow');
+            $('body').delay(450).css({
+                'overflow': 'visible'
+            });
+        });
+    })(jQuery);
+</script>
+<script>
     $(document).ready(function() {
         //select all
         $('#select_all').click(function() {

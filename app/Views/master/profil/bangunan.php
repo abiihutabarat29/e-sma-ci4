@@ -140,17 +140,27 @@
                 </div>
             </div>
         <?php else : ?>
-            <table>
-                <h2>
-                    <center><i>Lengkapi data bangunan sekolah anda . . .</i></center>
-                </h2>
-            </table>
-            </table>
-            <div class="d-flex align-items-center">
-                <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">
-                    <i class="fa fa-plus"></i> Tambah
-                </a>
-                <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title"><?= $title ?></h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <h2>
+                                <center><i>Lengkapi data bangunan anda . . .</i></center>
+                            </h2>
+                        </table>
+                        <div class="d-flex align-items-center">
+                            <a href="<?= base_url('profil-sekolah/bangunan/add') ?>" class="btn btn-primary ml-auto btn-sm">
+                                <i class="fa fa-plus"></i> Tambah
+                            </a>
+                            <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         <?php endif ?>
     </div>
