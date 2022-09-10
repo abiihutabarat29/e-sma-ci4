@@ -68,6 +68,9 @@
                                             $request->uri->getSegment(1) == 'data-mapel' or
                                             $request->uri->getSegment(1) == 'data-sarana' or
                                             $request->uri->getSegment(1) == 'data-inventaris-barang' or
+                                            $request->uri->getSegment(1) == 'data-bidang-keahlian' or
+                                            $request->uri->getSegment(1) == 'data-program-keahlian' or
+                                            $request->uri->getSegment(1) == 'data-paket-keahlian' or
                                             $request->uri->getSegment(1) == 'data-golongan'
                                         ) ? 'active' : ""; ?>">
                         <a data-toggle="collapse" href="#base">
@@ -120,6 +123,21 @@
                                 <li>
                                     <a href="<?= base_url('data-tahun-akademik') ?>">
                                         <span class="sub-item">Data Tahun Akademik</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('data-bidang-keahlian') ?>">
+                                        <span class="sub-item">Data Bidang Keahlian</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('data-program-keahlian') ?>">
+                                        <span class="sub-item">Data Program Keahlian</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('data-paket-keahlian') ?>">
+                                        <span class="sub-item">Data Paket Keahlian</span>
                                     </a>
                                 </li>
                             </ul>

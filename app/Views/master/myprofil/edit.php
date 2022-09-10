@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= base_url('data-user') ?>"><?= $titlebar ?></a>
+                <a href="<?= base_url('my-profil') ?>"><?= $titlebar ?></a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>

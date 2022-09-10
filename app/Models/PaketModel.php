@@ -4,13 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SaranaModel extends Model
+class PaketModel extends Model
 {
-    protected $table      = 'mod_sarana';
+    protected $table      = 'mod_paket_keahlian';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'sarana', 'userentry'
+        'kode', 'paket_keahlian', 'userentry'
     ];
 }

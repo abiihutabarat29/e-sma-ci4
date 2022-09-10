@@ -30,14 +30,12 @@
                 <form action="<?= base_url('data-inventaris-barang/save') ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
-                                    <label>Nama Inventaris</label><span class="text-danger">*</span>
-                                    <input name="inventaris" type="text" class="form-control" autocomplete="off" placeholder="Nama Inventaris" value="<?= old('inventaris'); ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('inventaris'); ?></small>
-                                </div>
+                        <div class="col-md-6 pr-0">
+                            <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
+                                <label>Nama Inventaris</label><span class="text-danger">*</span>
+                                <input name="inventaris" type="text" class="form-control" autocomplete="off" value="<?= old('inventaris'); ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('inventaris'); ?></small>
                             </div>
                         </div>
                     </div>

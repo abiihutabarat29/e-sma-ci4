@@ -11,7 +11,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="<?= base_url('data-inventaris-barang') ?>"><?= $titlebar ?></a>
+                <a href="<?= base_url('data-paket-keahlian') ?>"><?= $titlebar ?></a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
@@ -27,22 +27,30 @@
                 <div class="card-header">
                     <div class="card-title"><?= $title ?></div>
                 </div>
-                <form action="<?= base_url('data-inventaris-barang/update/' . $data['id']); ?>" method="post">
+                <form action="<?= base_url('data-paket-keahlian/update/' . $data['id']); ?>" method="post">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $data['id']; ?>">
                     <div class="card-body">
-                        <div class="col-md-6 pr-0">
-                            <div class="form-group <?= ($validation->hasError('inventaris')) ? 'has-error' : ''; ?>">
-                                <label>Nama Inventaris</label><span class="text-danger">*</span>
-                                <input name="inventaris" type="text" class="form-control" autocomplete="off" value="<?= (old('inventaris')) ? old('inventaris') : $data['inventaris']; ?>">
+                        <div class="col-md-4">
+                            <div class="form-group  <?= ($validation->hasError('kode')) ? 'has-error' : ''; ?>">
+                                <label>Kode<span class="text-danger">*</span></label>
+                                <input type="text" name="kode" class="form-control" autocomplete="off" value="<?= (old('kode')) ? old('kode') : $data['kode']; ?>">
                                 <small class="form-text text-danger">
-                                    <?= $validation->getError('inventaris'); ?></small>
+                                    <?= $validation->getError('kode'); ?></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pr-0">
+                            <div class="form-group <?= ($validation->hasError('paket')) ? 'has-error' : ''; ?>">
+                                <label>Nama Paket Keahlian</label><span class="text-danger">*</span>
+                                <input name="paket" type="text" class="form-control" autocomplete="off" value="<?= (old('paket')) ? old('paket') : $data['paket_keahlian']; ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('paket'); ?></small>
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                        <a href="<?= base_url('/data-inventaris-barang') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+                        <a href="<?= base_url('/data-paket-keahlian') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                     </div>
                 </form>
             </div>

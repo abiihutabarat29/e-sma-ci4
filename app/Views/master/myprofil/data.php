@@ -3,7 +3,7 @@
         <h4 class="page-title"><?= $titlebar ?></h4>
         <ul class="breadcrumbs">
             <li class="nav-home">
-                <a href="?m=beranda">
+                <a href="<?= base_url('home') ?>">
                     <i class="flaticon-home"></i>
                 </a>
             </li>
@@ -131,14 +131,10 @@
                     <div class="card-body">
                         <table>
                             <h2>
-                                <center><i>Lengkapi profil anda . . .</i></center>
+                                <center><i>Data tidak ditemukan . . .</i></center>
                             </h2>
                         </table>
-                        <div class="d-flex align-items-center">
-                            <a href="<?= base_url('profil-sekolah/add') ?>" class="btn btn-primary ml-auto btn-sm">
-                                <i class="fa fa-plus"></i> Tambah
-                            </a>
-                        </div>
+                        <a href="<?= base_url('my-profil') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                     </div>
                 </div>
             </div>

@@ -173,6 +173,27 @@ $routes->add('/data-tahun-akademik/save', 'DataTa::save');
 $routes->delete('/data-tahun-akademik/(:num)', 'DataTa::delete/$1');
 $routes->get('/data-tahun-akademik/edit/(:segment)', 'DataTa::edit/$1');
 $routes->add('/data-tahun-akademik/update/(:segment)', 'DataTa::update/$1');
+//Routes Data Bidang Keahlian
+$routes->get('/data-bidang-keahlian', 'DataBidang::databidang');
+$routes->get('/data-bidang-keahlian/add', 'DataBidang::add');
+$routes->add('/data-bidang-keahlian/save', 'DataBidang::save');
+$routes->delete('/data-bidang-keahlian/(:num)', 'DataBidang::delete/$1');
+$routes->get('/data-bidang-keahlian/edit/(:segment)', 'DataBidang::edit/$1');
+$routes->add('/data-bidang-keahlian/update/(:segment)', 'DataBidang::update/$1');
+//Routes Data Program Keahlian
+$routes->get('/data-program-keahlian', 'DataProgram::dataprogram');
+$routes->get('/data-program-keahlian/add', 'DataProgram::add');
+$routes->add('/data-program-keahlian/save', 'DataProgram::save');
+$routes->delete('/data-program-keahlian/(:num)', 'DataProgram::delete/$1');
+$routes->get('/data-program-keahlian/edit/(:segment)', 'DataProgram::edit/$1');
+$routes->add('/data-program-keahlian/update/(:segment)', 'DataProgram::update/$1');
+//Routes Data Paket Keahlian
+$routes->get('/data-paket-keahlian', 'DataPaket::datapaket');
+$routes->get('/data-paket-keahlian/add', 'DataPaket::add');
+$routes->add('/data-paket-keahlian/save', 'DataPaket::save');
+$routes->delete('/data-paket-keahlian/(:num)', 'DataPaket::delete/$1');
+$routes->get('/data-paket-keahlian/edit/(:segment)', 'DataPaket::edit/$1');
+$routes->add('/data-paket-keahlian/update/(:segment)', 'DataPaket::update/$1');
 //Routes Data Arsip
 $routes->get('/data-arsip', 'DataArsip::dataarsip');
 $routes->get('/data-arsip/add', 'DataArsip::add');

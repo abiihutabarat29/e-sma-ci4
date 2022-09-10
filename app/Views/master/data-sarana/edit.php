@@ -31,14 +31,12 @@
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id" value="<?= $data['id']; ?>">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 pr-0">
-                                <div class="form-group <?= ($validation->hasError('sarana')) ? 'has-error' : ''; ?>">
-                                    <label>Nama Sarana</label><span class="text-danger">*</span>
-                                    <input name="sarana" type="text" class="form-control" autocomplete="off" placeholder="Sarana" value="<?= (old('sarana')) ? old('sarana') : $data['sarana']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('sarana'); ?></small>
-                                </div>
+                        <div class="col-md-6 pr-0">
+                            <div class="form-group <?= ($validation->hasError('sarana')) ? 'has-error' : ''; ?>">
+                                <label>Nama Sarana</label><span class="text-danger">*</span>
+                                <input name="sarana" type="text" class="form-control" autocomplete="off" value="<?= (old('sarana')) ? old('sarana') : $data['sarana']; ?>">
+                                <small class="form-text text-danger">
+                                    <?= $validation->getError('sarana'); ?></small>
                             </div>
                         </div>
                     </div>
