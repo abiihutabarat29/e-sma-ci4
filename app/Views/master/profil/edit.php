@@ -1,350 +1,362 @@
-<div class="page-inner">
-    <div class="page-header">
-        <h4 class="page-title"><?= $titlebar ?></h4>
-        <ul class="breadcrumbs">
-            <li class="nav-home">
-                <a href="<?= base_url('home') ?>">
-                    <i class="flaticon-home"></i>
-                </a>
-            </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-            <li class="nav-item">
-                <a href="<?= base_url('profil-sekolah') ?>"><?= $titlebar ?></a>
-            </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-            <li class="nav-item">
-                <a href="#"><?= $title ?></a>
-            </li>
-        </ul>
-    </div>
-    <?php if (!empty($data) && is_array($data)) : ?>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title"><?= $titlebar ?></div>
-                </div>
-                <div class="card-body">
-                    <form action="<?= base_url('profil-sekolah/update/' . $data['id']); ?>" method="post" enctype="multipart/form-data">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="id" value="<?= $data['id']; ?>">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Nama Sekolah<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?= session()->get('nama_sekolah'); ?>" readonly>
+<?php if (session()->get('status') == 1) : ?>
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title"><?= $titlebar ?></h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?= base_url('home') ?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('profil-sekolah') ?>"><?= $titlebar ?></a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><?= $title ?></a>
+                </li>
+            </ul>
+        </div>
+        <?php if (!empty($data) && is_array($data)) : ?>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><?= $titlebar ?></div>
+                    </div>
+                    <div class="card-body">
+                        <form action="<?= base_url('profil-sekolah/update/' . $data['id']); ?>" method="post" enctype="multipart/form-data">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nama Sekolah<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" value="<?= session()->get('nama_sekolah'); ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label>NPSN<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?= session()->get('npsn'); ?>" readonly>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>NPSN<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" value="<?= session()->get('npsn'); ?>" readonly>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group  <?= ($validation->hasError('nss')) ? 'has-error' : ''; ?>">
-                                    <label>NSS<span class="text-danger">*</span></label>
-                                    <input type="text" name="nss" class="form-control" autocomplete="off" value="<?= (old('nss')) ? old('nss') : $data['nss']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nss'); ?></small>
+                                <div class="col-md-2">
+                                    <div class="form-group  <?= ($validation->hasError('nss')) ? 'has-error' : ''; ?>">
+                                        <label>NSS<span class="text-danger">*</span></label>
+                                        <input type="text" name="nss" class="form-control" autocomplete="off" value="<?= (old('nss')) ? old('nss') : $data['nss']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nss'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group <?= ($validation->hasError('nds')) ? 'has-error' : ''; ?>">
-                                    <label>NDS<span class="text-danger">*</span></label>
-                                    <input type="text" name="nds" class="form-control" autocomplete="off" value="<?= (old('nds')) ? old('nds') : $data['nds']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nds'); ?></small>
+                                <div class="col-md-2">
+                                    <div class="form-group <?= ($validation->hasError('nds')) ? 'has-error' : ''; ?>">
+                                        <label>NDS<span class="text-danger">*</span></label>
+                                        <input type="text" name="nds" class="form-control" autocomplete="off" value="<?= (old('nds')) ? old('nds') : $data['nds']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nds'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('nosiop')) ? 'has-error' : ''; ?>">
-                                    <label>Nomor SIOP<span class="text-danger">*</span></label>
-                                    <input type="text" name="nosiop" class="form-control" autocomplete="off" value="<?= (old('nosiop')) ? old('nosiop') : $data['nosiop']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nosiop'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('nosiop')) ? 'has-error' : ''; ?>">
+                                        <label>Nomor SIOP<span class="text-danger">*</span></label>
+                                        <input type="text" name="nosiop" class="form-control" autocomplete="off" value="<?= (old('nosiop')) ? old('nosiop') : $data['nosiop']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nosiop'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group <?= ($validation->hasError('akreditas')) ? 'has-error' : ''; ?>">
-                                    <label>Akreditas<span class="text-danger">*</span></label>
-                                    <select name="akreditas" class="form-control">
-                                        <option><?= (old('akreditas')) ? old('akreditas') : $data['akreditas']; ?></option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('akreditas'); ?></small>
+                                <div class="col-sm-4">
+                                    <div class="form-group <?= ($validation->hasError('akreditas')) ? 'has-error' : ''; ?>">
+                                        <label>Akreditas<span class="text-danger">*</span></label>
+                                        <select name="akreditas" class="form-control">
+                                            <option><?= (old('akreditas')) ? old('akreditas') : $data['akreditas']; ?></option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('akreditas'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('thnberdiri')) ? 'has-error' : ''; ?>">
-                                    <label>Tahun Berdiri<span class="text-danger">*</span></label>
-                                    <input type="text" name="thnberdiri" class="form-control" autocomplete="off" value="<?= (old('thnberdiri')) ? old('thnberdiri') : $data['thnberdiri']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('thnberdiri'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('thnberdiri')) ? 'has-error' : ''; ?>">
+                                        <label>Tahun Berdiri<span class="text-danger">*</span></label>
+                                        <input type="text" name="thnberdiri" class="form-control" autocomplete="off" value="<?= (old('thnberdiri')) ? old('thnberdiri') : $data['thnberdiri']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('thnberdiri'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('nosk')) ? 'has-error' : ''; ?>">
-                                    <label>Nomor SK Pendirian<span class="text-danger">*</span></label>
-                                    <input type="text" name="nosk" class="form-control" autocomplete="off" value="<?= (old('nosk')) ? old('nosk') : $data['nosk']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('nosk'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('nosk')) ? 'has-error' : ''; ?>">
+                                        <label>Nomor SK Pendirian<span class="text-danger">*</span></label>
+                                        <input type="text" name="nosk" class="form-control" autocomplete="off" value="<?= (old('nosk')) ? old('nosk') : $data['nosk']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('nosk'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('tglsk')) ? 'has-error' : ''; ?>">
-                                    <label>Tanggal SK<span class="text-danger">*</span></label>
-                                    <input type="date" name="tglsk" class="form-control" autocomplete="off" value="<?= (old('tglsk')) ? old('tglsk') : $data['tglsk']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('tglsk'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('tglsk')) ? 'has-error' : ''; ?>">
+                                        <label>Tanggal SK<span class="text-danger">*</span></label>
+                                        <input type="date" name="tglsk" class="form-control" autocomplete="off" value="<?= (old('tglsk')) ? old('tglsk') : $data['tglsk']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('tglsk'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('kdpos')) ? 'has-error' : ''; ?>">
-                                    <label>Kode Pos<span class="text-danger">*</span></label>
-                                    <input type="text" name="kdpos" class="form-control" autocomplete="off" value="<?= (old('kdpos')) ? old('kdpos') : $data['kodepos']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('kdpos'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('kdpos')) ? 'has-error' : ''; ?>">
+                                        <label>Kode Pos<span class="text-danger">*</span></label>
+                                        <input type="text" name="kdpos" class="form-control" autocomplete="off" value="<?= (old('kdpos')) ? old('kdpos') : $data['kodepos']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('kdpos'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group <?= ($validation->hasError('standar')) ? 'has-error' : ''; ?>">
-                                    <label>Standar Sekolah Bertaraf<span class="text-danger">*</span></label>
-                                    <select name="standar" class="form-control">
-                                        <option><?= (old('standar')) ? old('standar') : $data['standar']; ?></option>
-                                        <option value="SSN">SSN</option>
-                                        <option value="SBI">SBI</option>
-                                        <option value="SPM">SPM</option>
-                                        <option value="SNS">SNS</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('standar'); ?></small>
+                                <div class="col-md-4">
+                                    <div class="form-group <?= ($validation->hasError('standar')) ? 'has-error' : ''; ?>">
+                                        <label>Standar Sekolah Bertaraf<span class="text-danger">*</span></label>
+                                        <select name="standar" class="form-control">
+                                            <option><?= (old('standar')) ? old('standar') : $data['standar']; ?></option>
+                                            <option value="SSN">SSN</option>
+                                            <option value="SBI">SBI</option>
+                                            <option value="SPM">SPM</option>
+                                            <option value="SNS">SNS</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('standar'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group <?= ($validation->hasError('waktub')) ? 'has-error' : ''; ?>">
-                                    <label>Waktu Belajar<span class="text-danger">*</span></label>
-                                    <select name="waktub" class="form-control">
-                                        <option><?= (old('waktub')) ? old('waktub') : $data['waktub']; ?></option>
-                                        <option value="Pagi">Pagi</option>
-                                        <option value="Siang">Siang</option>
-                                        <option value="Sore">Sore</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('waktub'); ?></small>
+                                <div class="col-sm-4">
+                                    <div class="form-group <?= ($validation->hasError('waktub')) ? 'has-error' : ''; ?>">
+                                        <label>Waktu Belajar<span class="text-danger">*</span></label>
+                                        <select name="waktub" class="form-control">
+                                            <option><?= (old('waktub')) ? old('waktub') : $data['waktub']; ?></option>
+                                            <option value="Pagi">Pagi</option>
+                                            <option value="Siang">Siang</option>
+                                            <option value="Sore">Sore</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('waktub'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                    <label>Status Sekolah<span class="text-danger">*</span></label>
-                                    <select name="status" class="form-control">
-                                        <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
-                                        <option value="Negeri">Negeri</option>
-                                        <option value="Swasta">Swasta</option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('status'); ?></small>
+                                <div class="col-sm-4">
+                                    <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
+                                        <label>Status Sekolah<span class="text-danger">*</span></label>
+                                        <select name="status" class="form-control">
+                                            <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
+                                            <option value="Negeri">Negeri</option>
+                                            <option value="Swasta">Swasta</option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('status'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
-                                    <label>Kabupaten<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="kabupaten" id="kabupaten">
-                                        <option><?= $data['kabupaten']; ?></option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('kabupaten'); ?></small>
+                                <div class="col-sm-6">
+                                    <div class="form-group <?= ($validation->hasError('kabupaten')) ? 'has-error' : ''; ?>">
+                                        <label>Kabupaten<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="kabupaten" id="kabupaten">
+                                            <option><?= $data['kabupaten']; ?></option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('kabupaten'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group <?= ($validation->hasError('kecamatan')) ? 'has-error' : ''; ?>">
-                                    <label>Kecamatan<span class="text-danger">*</span></label>
-                                    <select class="form-control" name="kecamatan" id="kecamatan">
-                                        <option><?= $data['kecamatan']; ?></option>
-                                    </select>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('kecamatan'); ?></small>
+                                <div class="col-sm-6">
+                                    <div class="form-group <?= ($validation->hasError('kecamatan')) ? 'has-error' : ''; ?>">
+                                        <label>Kecamatan<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="kecamatan" id="kecamatan">
+                                            <option><?= $data['kecamatan']; ?></option>
+                                        </select>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('kecamatan'); ?></small>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
-                                    <label>Alamat Lengkap Sekolah<span class="text-danger">*</span></label>
-                                    <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= (old('alamat')) ? old('alamat') : $data['alamat']; ?></textarea>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('alamat'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('telp')) ? 'has-error' : ''; ?>">
-                                    <label>Telepon/HP<span class="text-danger">*</span></label>
-                                    <input type="text" name="telp" class="form-control" autocomplete="off" value="<?= (old('telp')) ? old('telp') : $data['telepon']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('telp'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('kepsek')) ? 'has-error' : ''; ?>">
-                                    <label>Nama Kepala Sekolah<span class="text-danger">*</span></label>
-                                    <input type="text" name="kepsek" class="form-control" autocomplete="off" value="<?= (old('kepsek')) ? old('kepsek') : $data['nama_kepsek']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('kepsek'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('email')) ? 'has-error' : ''; ?>">
-                                    <label>Email<span class="text-danger">*</span></label>
-                                    <input type="text" name="email" class="form-control" placeholder="example@gmail.com" autocomplete="off" value="<?= (old('email')) ? old('email') : $data['email']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('email'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('web')) ? 'has-error' : ''; ?>">
-                                    <label>Alamat Web<span class="text-danger">*</span></label>
-                                    <input type="text" name="web" class="form-control" autocomplete="off" placeholder="https://example.ac.id" value="<?= (old('web')) ? old('web') : $data['website']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('web'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group <<?= ($validation->hasError('namayys')) ? 'has-error' : ''; ?>">
-                                    <label>Nama Yayasan Perguruan</label>
-                                    <input type="text" name="namayys" class="form-control" autocomplete="off" value="<?= (old('namayys')) ? old('namayys') : $data['namayys']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('namayys'); ?></small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="col-md-6">
-                                    <img class="img-thumbnail rounded img-preview" src="<?= base_url('media/profil/' . $data['profil']); ?>" width="220px" alt="Foto">
+                                    <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
+                                        <label>Alamat Lengkap Sekolah<span class="text-danger">*</span></label>
+                                        <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= (old('alamat')) ? old('alamat') : $data['alamat']; ?></textarea>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('alamat'); ?></small>
+                                    </div>
                                 </div>
-                                <div class="col-md-12 mt-2">
-                                    <label>Pilih Foto Sekolah<span class="text-danger">*</span></label>
-                                    <div class="form-group form-group-default">
-                                        <input type="file" name="foto" class="form-control-file" id="foto" onchange="previewImg();" accept=".png, .jpg, .jpeg">
-                                        <small class="form-text text-danger"></small>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('telp')) ? 'has-error' : ''; ?>">
+                                        <label>Telepon/HP<span class="text-danger">*</span></label>
+                                        <input type="text" name="telp" class="form-control" autocomplete="off" value="<?= (old('telp')) ? old('telp') : $data['telepon']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('telp'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('kepsek')) ? 'has-error' : ''; ?>">
+                                        <label>Nama Kepala Sekolah<span class="text-danger">*</span></label>
+                                        <input type="text" name="kepsek" class="form-control" autocomplete="off" value="<?= (old('kepsek')) ? old('kepsek') : $data['nama_kepsek']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('kepsek'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('email')) ? 'has-error' : ''; ?>">
+                                        <label>Email<span class="text-danger">*</span></label>
+                                        <input type="text" name="email" class="form-control" placeholder="example@gmail.com" autocomplete="off" value="<?= (old('email')) ? old('email') : $data['email']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('email'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('web')) ? 'has-error' : ''; ?>">
+                                        <label>Alamat Web<span class="text-danger">*</span></label>
+                                        <input type="text" name="web" class="form-control" autocomplete="off" placeholder="https://example.ac.id" value="<?= (old('web')) ? old('web') : $data['website']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('web'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <<?= ($validation->hasError('namayys')) ? 'has-error' : ''; ?>">
+                                        <label>Nama Yayasan Perguruan</label>
+                                        <input type="text" name="namayys" class="form-control" autocomplete="off" value="<?= (old('namayys')) ? old('namayys') : $data['namayys']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('namayys'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <img class="img-thumbnail rounded img-preview" src="<?= base_url('media/profil/' . $data['profil']); ?>" width="220px" alt="Foto">
+                                    </div>
+                                    <div class="col-md-12 mt-2">
+                                        <label>Pilih Foto Sekolah<span class="text-danger">*</span></label>
+                                        <div class="form-group form-group-default">
+                                            <input type="file" name="foto" class="form-control-file" id="foto" onchange="previewImg();" accept=".png, .jpg, .jpeg">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('alamatyys')) ? 'has-error' : ''; ?>">
+                                        <label>Alamat Yayasan</label>
+                                        <textarea type="text" name="alamatyys" class="form-control" autocomplete="off"><?= (old('alamatyys')) ? old('alamatyys') : $data['alamatyys']; ?></textarea>
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('alamatyys'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <img class="img-thumbnail rounded img-preview-kep" src="<?= base_url('media/kepsek/' . $data['foto']); ?>" width="150px" alt="Foto">
+                                    </div>
+                                    <div class="col-md-12 mt-2">
+                                        <label>Pilih Foto Kepala Sekolah<span class="text-danger">*</span></label>
+                                        <div class="form-group form-group-default">
+                                            <input type="file" name="fotoks" class="form-control-file" id="foto-kep" onchange="previewImg2();" accept=".png, .jpg, .jpeg">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('alamatyys')) ? 'has-error' : ''; ?>">
-                                    <label>Alamat Yayasan</label>
-                                    <textarea type="text" name="alamatyys" class="form-control" autocomplete="off"><?= (old('alamatyys')) ? old('alamatyys') : $data['alamatyys']; ?></textarea>
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('alamatyys'); ?></small>
-                                </div>
+                            <div class="card-action">
+                                <label>Pilih Lokasi Sekolah<span class="text-danger">*</span></label>
+                                <div id="map" style='width: 100%; height: 300px;'></div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <img class="img-thumbnail rounded img-preview-kep" src="<?= base_url('media/kepsek/' . $data['foto']); ?>" width="150px" alt="Foto">
+                                    <div class="form-group <?= ($validation->hasError('lg')) ? 'has-error' : ''; ?>">
+                                        <label>Longitude<span class="text-danger">*</span></label>
+                                        <input type="text" name="lg" class="form-control" id="longitude" placeholder="Longitude (Google Maps)" value="<?= (old('lg')) ? old('lg') : $data['longitude']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('lg'); ?></small>
+                                    </div>
                                 </div>
-                                <div class="col-md-12 mt-2">
-                                    <label>Pilih Foto Kepala Sekolah<span class="text-danger">*</span></label>
-                                    <div class="form-group form-group-default">
-                                        <input type="file" name="fotoks" class="form-control-file" id="foto-kep" onchange="previewImg2();" accept=".png, .jpg, .jpeg">
-                                        <small class="form-text text-danger"></small>
+                                <div class="col-md-6">
+                                    <div class="form-group <?= ($validation->hasError('lt')) ? 'has-error' : ''; ?>">
+                                        <label>Latitude<span class="text-danger">*</span></label>
+                                        <input type="text" name="lt" class="form-control" id="latitude" placeholder="Latitude (Google Maps)" value="<?= (old('lt')) ? old('lt') : $data['latitude']; ?>">
+                                        <small class="form-text text-danger">
+                                            <?= $validation->getError('lt'); ?></small>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-action">
-                            <label>Pilih Lokasi Sekolah<span class="text-danger">*</span></label>
-                            <div id="map" style='width: 100%; height: 300px;'></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('lg')) ? 'has-error' : ''; ?>">
-                                    <label>Longitude<span class="text-danger">*</span></label>
-                                    <input type="text" name="lg" class="form-control" id="longitude" placeholder="Longitude (Google Maps)" value="<?= (old('lg')) ? old('lg') : $data['longitude']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('lg'); ?></small>
-                                </div>
+                            <div class="card-action">
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
+                                <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default  btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group <?= ($validation->hasError('lt')) ? 'has-error' : ''; ?>">
-                                    <label>Latitude<span class="text-danger">*</span></label>
-                                    <input type="text" name="lt" class="form-control" id="latitude" placeholder="Latitude (Google Maps)" value="<?= (old('lt')) ? old('lt') : $data['latitude']; ?>">
-                                    <small class="form-text text-danger">
-                                        <?= $validation->getError('lt'); ?></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-action">
-                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
-                            <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default  btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Leafletjs-->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-        <script>
-            var map = L.map('map').setView([<?= $data['latitude']; ?>, <?= $data['longitude']; ?>], 14);
+            <!-- Leafletjs-->
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+            <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+            <script>
+                var map = L.map('map').setView([<?= $data['latitude']; ?>, <?= $data['longitude']; ?>], 14);
 
-            var tiles = L.tileLayer(
-                'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: 'mapbox/streets-v11',
-                    tileSize: 512,
-                    zoomOffset: -1
-                }).addTo(map);
+                var tiles = L.tileLayer(
+                    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        id: 'mapbox/streets-v11',
+                        tileSize: 512,
+                        zoomOffset: -1
+                    }).addTo(map);
 
-            // Get Coordinat Location
-            var latInput1 = document.querySelector("[name=latitude]");
-            var latInput2 = document.querySelector("[name=longitude]");
+                // Get Coordinat Location
+                var latInput1 = document.querySelector("[name=latitude]");
+                var latInput2 = document.querySelector("[name=longitude]");
 
-            var curLocation = [<?= $data['latitude']; ?>, <?= $data['longitude']; ?>];
+                var curLocation = [<?= $data['latitude']; ?>, <?= $data['longitude']; ?>];
 
-            map.attributionControl.setPrefix(false);
+                map.attributionControl.setPrefix(false);
 
-            var marker = L.marker(curLocation, {
-                draggable: 'true'
-            });
-            marker.on('dragend', function(event) {
-                var position = marker.getLatLng();
-                marker.setLatLng(position, {
+                var marker = L.marker(curLocation, {
                     draggable: 'true'
-                }).bindPopup(position).update();
-                $("#latitude").val(position.lat);
-                $("#longitude").val(position.lng).keyup();
-            });
-            map.addLayer(marker);
+                });
+                marker.on('dragend', function(event) {
+                    var position = marker.getLatLng();
+                    marker.setLatLng(position, {
+                        draggable: 'true'
+                    }).bindPopup(position).update();
+                    $("#latitude").val(position.lat);
+                    $("#longitude").val(position.lng).keyup();
+                });
+                map.addLayer(marker);
 
-            map.on("click", function(e) {
-                var lat = e.latlng.lat;
-                var lng = e.latlng.lng;
-                if (!marker) {
-                    marker = L.marker(e.latlng).addTo(map);
-                } else {
-                    marker.setLatLng(e.latlng);
-                }
-                latInput1.value = lat;
-                latInput2.value = lng;
-            });
-        </script>
-    <?php else : ?>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title"><?= $title ?></div>
-                </div>
-                <div class="card-body">
-                    <h2>
-                        <center><i>Maaf, data ini tidak dapat ditampilkan . . .</i></center>
-                    </h2>
-                    <a href="<?= base_url('profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                map.on("click", function(e) {
+                    var lat = e.latlng.lat;
+                    var lng = e.latlng.lng;
+                    if (!marker) {
+                        marker = L.marker(e.latlng).addTo(map);
+                    } else {
+                        marker.setLatLng(e.latlng);
+                    }
+                    latInput1.value = lat;
+                    latInput2.value = lng;
+                });
+            </script>
+        <?php else : ?>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title"><?= $title ?></div>
+                    </div>
+                    <div class="card-body">
+                        <h2>
+                            <center><i>Maaf, data ini tidak dapat ditampilkan . . .</i></center>
+                        </h2>
+                        <a href="<?= base_url('profil-sekolah') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                    </div>
                 </div>
             </div>
+        <?php endif ?>
+    </div>
+<?php else : ?>
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>
+                    <center>Maaf, akun anda sudah tidak aktif . . .</center>
+                </h2>
+            </div>
         </div>
-    <?php endif ?>
-</div>
+    </div>
+<?php endif ?>
 </div>

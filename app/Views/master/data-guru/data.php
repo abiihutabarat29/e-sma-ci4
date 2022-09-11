@@ -73,6 +73,14 @@
         </div>
     </div>
 <?php else : ?>
-    Maaf, akun anda tidak aktif . . .
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2>
+                    <center>Maaf, akun anda sudah tidak aktif . . .</center>
+                </h2>
+            </div>
+        </div>
+    </div>
 <?php endif ?>
 </div>
