@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use App\Models\AuthModel;
+use App\Models\LogModel;
 use CodeIgniter\Config\Config;
 
 class Auth extends BaseController
 {
     protected $authModel;
+    protected $logModel;
     public function __construct()
     {
         $this->authModel = new AuthModel();
+        $this->logModel = new LogModel();
     }
 
     public function index()
@@ -63,19 +66,71 @@ class Auth extends BaseController
                     session()->set('foto', $cek['foto']);
                     session()->set('level', $cek['level']);
                     session()->set('status', $cek['status']);
+                    //simpan status log
+                    $username =  session()->get('username');
+                    $nama =  session()->get('nama');
+                    $foto =  session()->get('foto');
+                    $timestamp = date("Y-m-d H:i:s");
+                    $ip = $this->request->getIPAddress();
+                    $useragent = $this->request->getUserAgent();
+                    $data = [
+                        'username'   => $username,
+                        'nama'       => $nama,
+                        'foto'       => $foto,
+                        'timestamp'  => $timestamp,
+                        'ip'         => $ip,
+                        'useragent'  => $useragent,
+                    ];
+                    $this->logModel->save($data);
                     //login sukses
                     return redirect()->to(base_url('/home'));
                 } else {
+                    //simpan status log
+                    $username = $this->request->getPost('username');
+                    $timestamp = date("Y-m-d H:i:s");
+                    $ip = $this->request->getIPAddress();
+                    $useragent = $this->request->getUserAgent();
+                    $data = [
+                        'username'   => $username,
+                        'timestamp'  => $timestamp,
+                        'ip'         => $ip,
+                        'useragent'  => $useragent,
+                    ];
+                    $this->logModel->save($data);
                     //jika tidak data cocok
                     session()->setFlashdata('m', 'LOGIN GAGAL! PASSWORD SALAH.');
                     return redirect()->to(base_url('/'));
                 }
             } else {
+                //simpan status log
+                $username = $this->request->getPost('username');
+                $timestamp = date("Y-m-d H:i:s");
+                $ip = $this->request->getIPAddress();
+                $useragent = $this->request->getUserAgent();
+                $data = [
+                    'username'   => $username,
+                    'timestamp'  => $timestamp,
+                    'ip'         => $ip,
+                    'useragent'  => $useragent,
+                ];
+                $this->logModel->save($data);
                 //jika tidak data cocok
                 session()->setFlashdata('m', 'LOGIN GAGAL ! Mohon periksa username & password.');
                 return redirect()->to(base_url('/'));
             }
         } else {
+            //simpan status log
+            $username = $this->request->getPost('username');
+            $timestamp = date("Y-m-d H:i:s");
+            $ip = $this->request->getIPAddress();
+            $useragent = $this->request->getUserAgent();
+            $data = [
+                'username'   => $username,
+                'timestamp'  => $timestamp,
+                'ip'         => $ip,
+                'useragent'  => $useragent,
+            ];
+            $this->logModel->save($data);
             //Jika tidak valid
             $validation = \Config\Services::validation();
             return redirect()->to('/')->withInput()->with('validation', $validation);

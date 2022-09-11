@@ -92,7 +92,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?= $r['status'] == 1 ? 'Pilih "Ya" untuk me-nonaktifkan user' : 'Pilih "Ya" untuk meng-aktifkan User' ?>
+                        <?= $r['status'] == 1 ? 'Pilih "Ya" untuk me-nonaktifkan user' : 'Pilih "Ya" untuk meng-aktifkan user' ?>
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="status" value="<?= $r['status'] ?>">

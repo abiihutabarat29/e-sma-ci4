@@ -16,12 +16,4 @@ class BangunanModel extends Model
         'jkelasx_mipa', 'jkelasx_iis', 'jkelasx_bhs', 'jkelasxi_mipa', 'jkelasxi_iis', 'jkelasxi_bhs',
         'jkelasxii_mipa', 'jkelasxii_iis', 'jkelasxii_bhs', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
-
-    // public function getJoin()
-    // {
-    //     $query =  $this->db->table('mod_bangunan')
-    //         ->join('mod_profil', 'mod_bangunan.id_sekolah = mod_profil.id_sekolah')
-    //         ->get();
-    //     return $query->getResult();
-    // }
 }
