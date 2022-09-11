@@ -256,7 +256,7 @@
                 <?php } ?>
                 <hr>
                 <li class="nav-item">
-                    <a href="/auth/logout">
+                    <a href="<?= base_url('auth/logout') ?>">
                         <i class="fas fa-sign-out-alt"></i>
                         <p>Logout</p>
                     </a>

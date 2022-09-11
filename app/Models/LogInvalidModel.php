@@ -12,6 +12,6 @@ class LogInvalidModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'id', 'username', 'password', 'timestamp',
-        'ip', 'useragent'
+        'ip', 'useragent', 'status_log'
     ];
 }

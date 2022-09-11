@@ -46,7 +46,16 @@ class Auth extends BaseController
                 ],
             ],
         ])) {
-            // Jika Valid
+            // Jika Valid Form
+            //Mencegah brute force
+            $ip = $this->request->getIPAddress();
+            $cek_ip = $this->authModel->cek_error($ip, 0);
+            $limit = 9;
+            if ($cek_ip >= $limit) {
+                session()->setFlashdata('m', 'Maaf anda telah diblockir dari sistem . . .');
+                return redirect()->to(base_url('/'));
+                return false;
+            }
             $username = $this->request->getPost('username');
             $passwordFill = $this->request->getPost('password');
             $password = md5($passwordFill);
@@ -79,6 +88,7 @@ class Auth extends BaseController
                         'username'   => $username,
                         'nama'       => $nama,
                         'foto'       => $foto,
+                        'status_log' => 1,
                         'timestamp'  => $timestamp,
                         'ip'         => $ip,
                         'useragent'  => $useragent,
@@ -93,16 +103,20 @@ class Auth extends BaseController
                     $timestamp = date("Y-m-d H:i:s");
                     $ip = $this->request->getIPAddress();
                     $useragent = $this->request->getUserAgent();
+                    $cek_ip = $this->authModel->cek_error($ip, 0);
+                    $limit = 9;
+                    $opportunity = $limit - $cek_ip;
                     $data = [
                         'username'   => $username,
                         'password'   => $password,
+                        'status_log' => 0,
                         'timestamp'  => $timestamp,
                         'ip'         => $ip,
                         'useragent'  => $useragent,
                     ];
                     $this->loginvalidModel->save($data);
                     //jika tidak data cocok
-                    session()->setFlashdata('m', 'LOGIN GAGAL! PASSWORD SALAH.');
+                    session()->setFlashdata('m', 'LOGIN GAGAL! PASSWORD SALAH.' . "\n" . ' Kesempatan Mencoba ' . $opportunity . ' Kali Lagi');
                     return redirect()->to(base_url('/'));
                 }
             } else {
@@ -112,33 +126,23 @@ class Auth extends BaseController
                 $timestamp = date("Y-m-d H:i:s");
                 $ip = $this->request->getIPAddress();
                 $useragent = $this->request->getUserAgent();
+                $cek_ip = $this->authModel->cek_error($ip, 0);
+                $limit = 9;
+                $opportunity = $limit - $cek_ip;
                 $data = [
                     'username'   => $username,
                     'password'   => $password,
+                    'status_log' => 0,
                     'timestamp'  => $timestamp,
                     'ip'         => $ip,
                     'useragent'  => $useragent,
                 ];
                 $this->loginvalidModel->save($data);
                 //jika tidak data cocok
-                session()->setFlashdata('m', 'LOGIN GAGAL ! Mohon periksa username & password.');
+                session()->setFlashdata('m', 'PASSWORD & USERNAME SALAH.' . "\n" . ' Kesempatan Mencoba ' . $opportunity . ' Kali Lagi');
                 return redirect()->to(base_url('/'));
             }
         } else {
-            //simpan status log
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
-            $timestamp = date("Y-m-d H:i:s");
-            $ip = $this->request->getIPAddress();
-            $useragent = $this->request->getUserAgent();
-            $data = [
-                'username'   => $username,
-                'password'   => $password,
-                'timestamp'  => $timestamp,
-                'ip'         => $ip,
-                'useragent'  => $useragent,
-            ];
-            $this->loginvalidModel->save($data);
             //Jika tidak valid
             $validation = \Config\Services::validation();
             return redirect()->to('/')->withInput()->with('validation', $validation);

@@ -12,6 +12,6 @@ class LogValidModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'id', 'username', 'nama', 'foto', 'timestamp',
-        'ip', 'useragent'
+        'ip', 'useragent', 'status_log'
     ];
 }
