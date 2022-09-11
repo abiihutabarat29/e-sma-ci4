@@ -4,14 +4,14 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LogModel extends Model
+class LogInvalidModel extends Model
 {
-    protected $table      = 'mod_log';
+    protected $table      = 'mod_log_invalid';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'id', 'username', 'nama', 'foto', 'timestamp',
+        'id', 'username', 'password', 'timestamp',
         'ip', 'useragent'
     ];
 }

@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\AuthModel;
-use App\Models\LogModel;
+use App\Models\LogValidModel;
+use App\Models\LogInvalidModel;
 use CodeIgniter\Config\Config;
 
 class Auth extends BaseController
@@ -13,7 +14,8 @@ class Auth extends BaseController
     public function __construct()
     {
         $this->authModel = new AuthModel();
-        $this->logModel = new LogModel();
+        $this->logvalidModel = new LogValidModel();
+        $this->loginvalidModel = new LogInvalidModel();
     }
 
     public function index()
@@ -81,22 +83,24 @@ class Auth extends BaseController
                         'ip'         => $ip,
                         'useragent'  => $useragent,
                     ];
-                    $this->logModel->save($data);
+                    $this->logvalidModel->save($data);
                     //login sukses
                     return redirect()->to(base_url('/home'));
                 } else {
                     //simpan status log
                     $username = $this->request->getPost('username');
+                    $password = $this->request->getPost('password');
                     $timestamp = date("Y-m-d H:i:s");
                     $ip = $this->request->getIPAddress();
                     $useragent = $this->request->getUserAgent();
                     $data = [
                         'username'   => $username,
+                        'password'   => $password,
                         'timestamp'  => $timestamp,
                         'ip'         => $ip,
                         'useragent'  => $useragent,
                     ];
-                    $this->logModel->save($data);
+                    $this->loginvalidModel->save($data);
                     //jika tidak data cocok
                     session()->setFlashdata('m', 'LOGIN GAGAL! PASSWORD SALAH.');
                     return redirect()->to(base_url('/'));
@@ -104,16 +108,18 @@ class Auth extends BaseController
             } else {
                 //simpan status log
                 $username = $this->request->getPost('username');
+                $password = $this->request->getPost('password');
                 $timestamp = date("Y-m-d H:i:s");
                 $ip = $this->request->getIPAddress();
                 $useragent = $this->request->getUserAgent();
                 $data = [
                     'username'   => $username,
+                    'password'   => $password,
                     'timestamp'  => $timestamp,
                     'ip'         => $ip,
                     'useragent'  => $useragent,
                 ];
-                $this->logModel->save($data);
+                $this->loginvalidModel->save($data);
                 //jika tidak data cocok
                 session()->setFlashdata('m', 'LOGIN GAGAL ! Mohon periksa username & password.');
                 return redirect()->to(base_url('/'));
@@ -121,16 +127,18 @@ class Auth extends BaseController
         } else {
             //simpan status log
             $username = $this->request->getPost('username');
+            $password = $this->request->getPost('password');
             $timestamp = date("Y-m-d H:i:s");
             $ip = $this->request->getIPAddress();
             $useragent = $this->request->getUserAgent();
             $data = [
                 'username'   => $username,
+                'password'   => $password,
                 'timestamp'  => $timestamp,
                 'ip'         => $ip,
                 'useragent'  => $useragent,
             ];
-            $this->logModel->save($data);
+            $this->loginvalidModel->save($data);
             //Jika tidak valid
             $validation = \Config\Services::validation();
             return redirect()->to('/')->withInput()->with('validation', $validation);
