@@ -12,11 +12,13 @@ class AuthModel extends Model
             'username' => $username
         ])->get()->getRowArray();
     }
-    public function cek_error($ip, $status)
+
+    public function cek_error($ip, $status, $timestamp)
     {
         return $this->db->table('mod_log_invalid')->where([
             'ip' => $ip,
-            'status_log' => $status
+            'status_log' => $status,
+            'timestamp' => $timestamp
         ])->countAllResults();
     }
 }

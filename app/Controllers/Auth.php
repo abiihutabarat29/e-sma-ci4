@@ -10,7 +10,8 @@ use CodeIgniter\Config\Config;
 class Auth extends BaseController
 {
     protected $authModel;
-    protected $logModel;
+    protected $logvalidModel;
+    protected $loginvalidModel;
     public function __construct()
     {
         $this->authModel = new AuthModel();
@@ -47,12 +48,20 @@ class Auth extends BaseController
             ],
         ])) {
             // Jika Valid Form
+            // ======================
             //Mencegah brute force
             $ip = $this->request->getIPAddress();
-            $cek_ip = $this->authModel->cek_error($ip, 0);
-            $limit = 9;
-            if ($cek_ip >= $limit) {
-                session()->setFlashdata('m', 'Maaf anda telah diblockir dari sistem . . .');
+            $timestamp = date("Y-m-d ");
+            $cek_ip = $this->authModel->cek_error($ip, 0, $timestamp);
+            //fecth data timestamp
+            $data = $this->loginvalidModel->findAll();
+            foreach ($data as $r) :
+                $expired = $r['timestamp'];
+            endforeach;
+            $limit = 4;
+            //validasi ip dan timestamp
+            if ($cek_ip > $limit && $expired == date('Y-m-d')) {
+                session()->setFlashdata('m', 'Maaf anda tidak bisa login hari ini' . "\n" . 'Silahkan coba lagi besok . . .');
                 return redirect()->to(base_url('/'));
                 return false;
             }
@@ -100,11 +109,11 @@ class Auth extends BaseController
                     //simpan status log
                     $username = $this->request->getPost('username');
                     $password = $this->request->getPost('password');
-                    $timestamp = date("Y-m-d H:i:s");
+                    $timestamp = date("Y-m-d");
                     $ip = $this->request->getIPAddress();
                     $useragent = $this->request->getUserAgent();
-                    $cek_ip = $this->authModel->cek_error($ip, 0);
-                    $limit = 9;
+                    $cek_ip = $this->authModel->cek_error($ip, 0, $timestamp);
+                    $limit = 4;
                     $opportunity = $limit - $cek_ip;
                     $data = [
                         'username'   => $username,
@@ -123,11 +132,11 @@ class Auth extends BaseController
                 //simpan status log
                 $username = $this->request->getPost('username');
                 $password = $this->request->getPost('password');
-                $timestamp = date("Y-m-d H:i:s");
+                $timestamp = date("Y-m-d");
                 $ip = $this->request->getIPAddress();
                 $useragent = $this->request->getUserAgent();
-                $cek_ip = $this->authModel->cek_error($ip, 0);
-                $limit = 9;
+                $cek_ip = $this->authModel->cek_error($ip, 0, $timestamp);
+                $limit = 4;
                 $opportunity = $limit - $cek_ip;
                 $data = [
                     'username'   => $username,
