@@ -13,7 +13,7 @@ class SiswaModel extends Model
     protected $allowedFields = [
         'id_sekolah', 'nisn', 'nama', 'tempat_lahir', 'tgl_lahir',
         'jenis_kel', 'umur', 'agama', 'alamat',
-        'kelas', 'pkeahlian', 'jurusan', 'status', 'nohp', 'program_pip',
+        'kelas', 'pkeahlian', 'jurusan', 'status', 'nohp', 'email', 'program_pip',
         'tahun_msk', 'asal_sekolah', 'no_surat', 'sts_mutasi', 'keterangan', 'sts_vaksin', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
 }

@@ -40,6 +40,9 @@
                                 <a class="nav-link" id="pills-status-tab" data-toggle="pill" href="#pills-status" role="tab" aria-controls="pills-status" aria-selected="false">Status Pendidikan</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" id="pills-kontak-tab" data-toggle="pill" href="#pills-kontak" role="tab" aria-controls="pills-kontak" aria-selected="false">Kontak</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" id="pills-vaksin-tab" data-toggle="pill" href="#pills-vaksin" role="tab" aria-controls="pills-vaksin" aria-selected="false">Vaksinasi</a>
                             </li>
                         </ul>
@@ -101,6 +104,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6 pr-0">
+                                                <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
+                                                    <label>Alamat<span class="text-danger">*</span></label>
+                                                    <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= old('alamat'); ?></textarea>
+                                                    <small class="form-text text-danger">
+                                                        <?= $validation->getError('alamat'); ?></small>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 pr-0">
                                                 <div class="form-group <?= ($validation->hasError('tlahir')) ? 'has-error' : ''; ?>">
                                                     <label>Tempat Lahir<span class="text-danger">*</span></label>
                                                     <textarea name="tlahir" type="text" class="form-control" autocomplete="off"><?= old('tlahir'); ?></textarea>
@@ -108,7 +119,7 @@
                                                         <?= $validation->getError('tlahir'); ?></small>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 pr-0">
                                                 <div class="form-group <?= ($validation->hasError('tgllhr')) ? 'has-error' : ''; ?>">
                                                     <label>Tanggal Lahir<span class="text-danger">*</span></label>
                                                     <input name="tgllhr" type="date" class="form-control" autocomplete="off" value="<?= old('tgllhr'); ?>">
@@ -131,6 +142,22 @@
                                                         <?= $validation->getError('jenkel'); ?></small>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 pr-0">
+                                                <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
+                                                    <label>Agama<span class="text-danger">*</span></label>
+                                                    <select name="agama" class="form-control">
+                                                        <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
+                                                        <option value="Islam">Islam</option>
+                                                        <option value="Kristen Protestan">Kristen Protestan</option>
+                                                        <option value="Kristen Katholik">Kristen Katholik</option>
+                                                        <option value="Hindu">Hindu</option>
+                                                        <option value="Budha">Budha</option>
+                                                    </select>
+                                                    <small class="form-text text-danger">
+                                                        <?= $validation->getError('agama'); ?></small>
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-2 pr-0">
                                                 <div class="form-group  <?= ($validation->hasError('umur')) ? 'has-error' : ''; ?>">
                                                     <label>Umur<span class="text-danger">*</span></label>
@@ -148,35 +175,6 @@
                                                     </select>
                                                     <small class="form-text text-danger">
                                                         <?= $validation->getError('umur'); ?></small>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 pr-0">
-                                                <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                                    <label>Agama<span class="text-danger">*</span></label>
-                                                    <select name="agama" class="form-control">
-                                                        <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
-                                                        <option value="Islam">Islam</option>
-                                                        <option value="Kristen Protestan">Kristen Protestan</option>
-                                                        <option value="Kristen Katholik">Kristen Katholik</option>
-                                                        <option value="Hindu">Hindu</option>
-                                                        <option value="Budha">Budha</option>
-                                                    </select>
-                                                    <small class="form-text text-danger">
-                                                        <?= $validation->getError('agama'); ?></small>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
-                                                    <label>Alamat<span class="text-danger">*</span></label>
-                                                    <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= old('alamat'); ?></textarea>
-                                                    <small class="form-text text-danger">
-                                                        <?= $validation->getError('alamat'); ?></small>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 pr-0">
-                                                <div class="form-group">
-                                                    <label>Nomor Handphone</label>
-                                                    <input type="text" name="nohp" class="form-control" autocomplete="off" value="<?= old('nohp'); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -268,6 +266,26 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-kontak" role="tabpanel" aria-labelledby="pills-kontak-tab">
+                                    <div class="card-body">
+                                        <div class="col-md-6 pr-0">
+                                            <div class="form-group <?= ($validation->hasError('nohp')) ? 'has-error' : ''; ?>">
+                                                <label>Nomor Handphone Aktif<span class="text-danger">*</span></label>
+                                                <input type="text" name="nohp" class="form-control" autocomplete="off" value="<?= old('nohp'); ?>">
+                                                <small class="form-text text-danger">
+                                                    <?= $validation->getError('nohp'); ?></small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pr-0">
+                                            <div class="form-group <?= ($validation->hasError('email')) ? 'has-error' : ''; ?>">
+                                                <label>Email Aktif<span class="text-danger">*</span></label>
+                                                <input type="text" name="email" class="form-control" placeholder="example@gmail.com" autocomplete="off" value="<?= old('email'); ?>">
+                                                <small class="form-text text-danger">
+                                                    <?= $validation->getError('email'); ?></small>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-vaksin" role="tabpanel" aria-labelledby="pills-vaksin-tab">

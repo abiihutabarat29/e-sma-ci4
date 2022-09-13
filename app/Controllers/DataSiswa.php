@@ -138,6 +138,23 @@ class DataSiswa extends BaseController
                         'required' => 'Status Vaksin harus di pilih.',
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 return redirect()->to('/data-siswa/add')->withInput();
             }
@@ -154,6 +171,7 @@ class DataSiswa extends BaseController
                 'jurusan'             => $this->request->getPost('jurusan'),
                 'status'              => $this->request->getPost('status'),
                 'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'tahun_msk'           => $this->request->getPost('thnmasuk'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'id_sekolah'          => session()->get('id_sekolah'),
@@ -253,6 +271,23 @@ class DataSiswa extends BaseController
                         'required' => 'Status Vaksin harus di pilih.',
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 return redirect()->to('/data-siswa/add')->withInput();
             }
@@ -269,8 +304,9 @@ class DataSiswa extends BaseController
                 'pkeahlian'           => $this->request->getPost('paketk'),
                 'status'              => $this->request->getPost('status'),
                 'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'tahun_msk'           => $this->request->getPost('thnmasuk'),
-                'program_pip'           => $this->request->getPost('pip'),
+                'program_pip'         => $this->request->getPost('pip'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'id_sekolah'          => session()->get('id_sekolah'),
                 'npsn'                => session()->get('npsn'),
@@ -401,6 +437,23 @@ class DataSiswa extends BaseController
                         'required' => 'Status Vaksin harus di pilih.',
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 return redirect()->to(base_url('data-siswa/edit/' . $this->request->getPost('id')))->withInput();
             }
@@ -418,6 +471,7 @@ class DataSiswa extends BaseController
                 'jurusan'             => $this->request->getPost('jurusan'),
                 'status'              => $this->request->getPost('status'),
                 'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'tahun_msk'           => $this->request->getPost('thnmasuk'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'id_sekolah'          => session()->get('id_sekolah'),
@@ -523,6 +577,23 @@ class DataSiswa extends BaseController
                         'required' => 'Status Vaksin harus di pilih.',
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 return redirect()->to(base_url('data-siswa/edit/' . $this->request->getPost('id')))->withInput();
             }
@@ -540,6 +611,7 @@ class DataSiswa extends BaseController
                 'pkeahlian'           => $this->request->getPost('paketk'),
                 'status'              => $this->request->getPost('status'),
                 'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'tahun_msk'           => $this->request->getPost('thnmasuk'),
                 'program_pip'         => $this->request->getPost('pip'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
