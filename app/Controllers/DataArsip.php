@@ -118,7 +118,7 @@ class DataArsip extends BaseController
         if (!empty($cek) && is_array($cek)) {
             if ($valid == $cek['validfile']) {
                 //jika data valid cocok
-                session()->setFlashdata('m', 'Maaf, Bulan ini sudah menginput arsip laporan bulanan, input kembali bulan depan, atau hapus file sebelumnya.');
+                session()->setFlashdata('m', 'Maaf, Bulan ini sudah menginput arsip laporan bulanan' . "\n" . ' Mohon input kembali bulan depan atau hapus/edit laporan sebelumnya.');
                 return redirect()->to(base_url('data-arsip/add'));
             } else {
                 $arsip   = $this->request->getFile('file');

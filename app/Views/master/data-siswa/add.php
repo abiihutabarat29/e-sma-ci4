@@ -34,28 +34,31 @@
                             <div class="row">
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('nisn')) ? 'has-error' : ''; ?>">
-                                        <input name="nisn" type="text" class="form-control" autocomplete="off" placeholder="NISN" value="<?= old('nisn'); ?>" autofocus>
+                                        <label>NISN<span class="text-danger">*</span></label>
+                                        <input name="nisn" type="text" class="form-control" autocomplete="off" value="<?= old('nisn'); ?>" autofocus>
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('nisn'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('nmsiswa')) ? 'has-error' : ''; ?>">
-                                        <input name="nmsiswa" type="text" class="form-control" autocomplete="off" placeholder="Nama Siswa" value="<?= old('nmsiswa'); ?>">
+                                        <label>Nama<span class="text-danger">*</span></label>
+                                        <input name="nmsiswa" type="text" class="form-control" autocomplete="off" value="<?= old('nmsiswa'); ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('nmsiswa'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('tlahir')) ? 'has-error' : ''; ?>">
-                                        <textarea name="tlahir" type="text" class="form-control" autocomplete="off" placeholder="Tempat Lahir"><?= old('tlahir'); ?></textarea>
+                                        <label>Tempat Lahir<span class="text-danger">*</span></label>
+                                        <textarea name="tlahir" type="text" class="form-control" autocomplete="off"><?= old('tlahir'); ?></textarea>
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('tlahir'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('tgllhr')) ? 'has-error' : ''; ?>">
-                                        <label>Tanggal Lahir</label>
+                                        <label>Tanggal Lahir<span class="text-danger">*</span></label>
                                         <input name="tgllhr" type="date" class="form-control" autocomplete="off" value="<?= old('tgllhr'); ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('tgllhr'); ?></small>
@@ -63,7 +66,7 @@
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-check <?= ($validation->hasError('jenkel')) ? 'has-error' : ''; ?>">
-                                        <label>Jenis Kelamin</label><br />
+                                        <label>Jenis Kelamin<span class="text-danger">*</span></label></br>
                                         <label class="form-radio-label">
                                             <input class="form-radio-input" type="radio" name="jenkel" value="L" <?= old('jenkel') == 'L' ? 'checked' : ''; ?>>
                                             <span class="form-radio-sign">Laki-laki</span>
@@ -78,6 +81,7 @@
                                 </div>
                                 <div class="col-md-2 pr-0">
                                     <div class="form-group  <?= ($validation->hasError('umur')) ? 'has-error' : ''; ?>">
+                                        <label>Umur<span class="text-danger">*</span></label>
                                         <select name="umur" class="form-control">
                                             <option selected disabled><?= (old('umur')) ? old('umur') : ".::Pilih Umur::." ?></option>
                                             <!-- <option value="13">13</option> -->
@@ -94,8 +98,9 @@
                                             <?= $validation->getError('umur'); ?></small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
+                                        <label>Agama<span class="text-danger">*</span></label>
                                         <select name="agama" class="form-control">
                                             <option selected disabled><?= (old('agama')) ? old('agama') : ".::Pilih Agama::." ?></option>
                                             <option value="Islam">Islam</option>
@@ -110,13 +115,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
-                                        <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="Alamat"><?= old('alamat'); ?></textarea>
+                                        <label>Alamat<span class="text-danger">*</span></label>
+                                        <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= old('alamat'); ?></textarea>
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('alamat'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('kelas')) ? 'has-error' : ''; ?>">
+                                        <label>Kelas<span class="text-danger">*</span></label>
                                         <select name="kelas" class="form-control">
                                             <option selected disabled><?= (old('kelas')) ? old('kelas') : ".::Pilih Kelas::." ?></option>
                                             <option value="X">X</option>
@@ -130,6 +137,7 @@
                                 <?php if (session()->get('level') == '1') { ?>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
+                                            <label>Jurusan<span class="text-danger">*</span></label>
                                             <select name="jurusan" class="form-control">
                                                 <option selected disabled><?= (old('jurusan')) ? old('jurusan') : ".::Pilih Jurusan::." ?></option>
                                                 <option value="IPA">IPA</option>
@@ -144,6 +152,7 @@
                                 <?php if (session()->get('level') == '2') { ?>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('paketk')) ? 'has-error' : ''; ?>">
+                                            <label>Paket Keahlian<span class="text-danger">*</span></label>
                                             <select name="paketk" class="form-control">
                                                 <option selected disabled><?= (old('paketk')) ? old('paketk') : ".::Pilih Paket Keahlian::." ?></option>
                                                 <option value="TKRO">Teknik Kendaraan Ringan Otomotif</option>
@@ -158,6 +167,7 @@
                                 <?php } ?>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
+                                        <label>Status<span class="text-danger">*</span></label>
                                         <select name="status" class="form-control">
                                             <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                             <option value="Aktif">Aktif</option>
@@ -169,11 +179,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" name="nohp" class="form-control" autocomplete="off" placeholder="Nomor Handphone" value="<?= old('nohp'); ?>">
+                                        <label>Nomor Handphone</label>
+                                        <input type="text" name="nohp" class="form-control" autocomplete="off" value="<?= old('nohp'); ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('thnmasuk')) ? 'has-error' : ''; ?>">
+                                        <label>Tahun Masuk / Tahun Pelajaran<span class="text-danger">*</span></label>
                                         <select name="thnmasuk" class="form-control" style="width: 100%">
                                             <option selected disabled><?= (old('thnmasuk')) ? old('thnmasuk') : ".::Pilih Tahun Masuk / Tahun Pelajaran::." ?></option>
                                             <?php foreach ($tahun as $r) : ?>
@@ -187,6 +199,7 @@
                                 <?php if (session()->get('level') == '2') { ?>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('pip')) ? 'has-error' : ''; ?>">
+                                            <label>Program PIP<span class="text-danger">*</span></label>
                                             <select name="pip" class="form-control">
                                                 <option selected disabled><?= (old('pip')) ? old('pip') : ".::Pilih Program PIP::." ?></option>
                                                 <option value="KPS">KPS</option>
@@ -200,6 +213,7 @@
                                 <?php } ?>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
+                                        <label>Status Vaksin<span class="text-danger">*</span></label>
                                         <select name="stsvaksin" class="form-control">
                                             <option selected disabled><?= (old('stsvaksin')) ? old('stsvaksin') : ".::Pilih Status Vaksin::." ?></option>
                                             <option value="Belum">Belum</option>

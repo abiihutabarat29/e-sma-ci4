@@ -34,6 +34,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group <?= ($validation->hasError('siswa')) ? 'has-error' : ''; ?>">
+                                        <label>Pilih Siswa<span class="text-danger">*</span></label>
                                         <select name="siswa" <?php if (session()->get('level') == '1') { ?> id="siswa" <?php } ?> <?php if (session()->get('level') == '2') { ?> id="siswasmk" <?php } ?> class="js-example-language" style="width: 40%">
                                             <option selected disabled><?= (old('siswa')) ? old('siswa') : ".::Pilih Siswa::." ?></option>
                                             <?php foreach ($siswa as $r) : ?>
@@ -92,13 +93,15 @@
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('nosurat')) ? 'has-error' : ''; ?>">
-                                        <input name="nosurat" type="text" class="form-control" autocomplete="off" placeholder="Nomor Surat Pindah" value="<?= old('nosurat'); ?>">
+                                        <label>Nomor Surat Pindah<span class="text-danger">*</span></label>
+                                        <input name="nosurat" type="text" class="form-control" autocomplete="off" value="<?= old('nosurat'); ?>">
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('nosurat'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group <?= ($validation->hasError('thnkeluar')) ? 'has-error' : ''; ?>">
+                                        <label>Pilih Tahun Keluar / Tahun Pelajaran<span class="text-danger">*</span></label>
                                         <select name="thnkeluar" class="form-control" style="width: 100%">
                                             <option selected disabled><?= (old('thnkeluar')) ? old('thnkeluar') : ".::Pilih Tahun Keluar / Tahun Pelajaran::." ?></option>
                                             <?php foreach ($tahun as $r) : ?>
@@ -111,6 +114,7 @@
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group <?= ($validation->hasError('ket')) ? 'has-error' : ''; ?>">
+                                        <label>Keterangan</label>
                                         <textarea name="ket" type="text" class="form-control" autocomplete="off" placeholder="Keterangan"><?= old('ket'); ?></textarea>
                                         <small class="form-text text-danger">
                                             <?= $validation->getError('ket'); ?></small>

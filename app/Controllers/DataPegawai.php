@@ -55,11 +55,11 @@ class DataPegawai extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_pegawai.nip]',
+                    'rules' => 'required|numeric|max_length[18]|is_unique[mod_pegawai.nip]',
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -219,11 +219,11 @@ class DataPegawai extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_pegawai.nip]',
+                    'rules' => 'required|numeric|max_length[18]|is_unique[mod_pegawai.nip]',
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -433,9 +433,9 @@ class DataPegawai extends BaseController
         if (session()->get('level') == '1') {
             $nipLama = $this->pegawaiModel->where(['id' => $id])->first();
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
+                $rule_nip = 'required|numeric|max_length[18]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_pegawai.nip]';
+                $rule_nip = 'required|numeric|max_length[18]|is_unique[mod_pegawai.nip]';
             }
             $nikLama = $this->pegawaiModel->where(['id' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -456,7 +456,7 @@ class DataPegawai extends BaseController
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -623,9 +623,9 @@ class DataPegawai extends BaseController
         } elseif (session()->get('level') == '2') {
             $nipLama = $this->pegawaiModel->where(['id' => $id])->first();
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
+                $rule_nip = 'required|numeric|max_length[18]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_pegawai.nip]';
+                $rule_nip = 'required|numeric|max_length[18]|is_unique[mod_pegawai.nip]';
             }
             $nikLama = $this->pegawaiModel->where(['id' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -646,7 +646,7 @@ class DataPegawai extends BaseController
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],

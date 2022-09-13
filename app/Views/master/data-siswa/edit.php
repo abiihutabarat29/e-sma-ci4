@@ -36,20 +36,23 @@
                                 <div class="row">
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('nisn')) ? 'has-error' : ''; ?>">
-                                            <input name="nisn" type="text" class="form-control" autocomplete="off" placeholder="NISN" value="<?= (old('nisn')) ? old('nisn') : $data['nisn']; ?>" autofocus>
+                                            <label>NISN<span class="text-danger">*</span></label>
+                                            <input name="nisn" type="text" class="form-control" autocomplete="off" value="<?= (old('nisn')) ? old('nisn') : $data['nisn']; ?>" autofocus>
                                             <small class="form-text text-danger">
                                                 <?= $validation->getError('nisn'); ?></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('nmsiswa')) ? 'has-error' : ''; ?>">
-                                            <input name="nmsiswa" type="text" class="form-control" autocomplete="off" placeholder="Nama Siswa" value="<?= (old('nmsiswa')) ? old('nmsiswa') : $data['nama']; ?>">
+                                            <label>Nama<span class="text-danger">*</span></label>
+                                            <input name="nmsiswa" type="text" class="form-control" autocomplete="off" value="<?= (old('nmsiswa')) ? old('nmsiswa') : $data['nama']; ?>">
                                             <small class="form-text text-danger">
                                                 <?= $validation->getError('nmsiswa'); ?></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('tlahir')) ? 'has-error' : ''; ?>">
+                                            <label>Tempat Lahir<span class="text-danger">*</span></label>
                                             <textarea name="tlahir" type="text" class="form-control" autocomplete="off" placeholder="Tempat Lahir"><?= (old('tlahir')) ? old('tlahir') : $data['tempat_lahir']; ?></textarea>
                                             <small class="form-text text-danger">
                                                 <?= $validation->getError('tlahir'); ?></small>
@@ -57,7 +60,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('tgllhr')) ? 'has-error' : ''; ?>">
-                                            <label>Tanggal Lahir</label>
+                                            <label>Tanggal Lahir<span class="text-danger">*</span></label>
                                             <input name="tgllhr" type="date" class="form-control" autocomplete="off" value="<?= (old('tgllhr')) ? old('tgllhr') : $data['tgl_lahir']; ?>">
                                             <small class="form-text text-danger">
                                                 <?= $validation->getError('tgllhr'); ?></small>
@@ -65,7 +68,7 @@
                                     </div>
                                     <div class="col-md-6 pr-0">
                                         <div class="form-check <?= ($validation->hasError('jenkel')) ? 'has-error' : ''; ?>">
-                                            <label>Jenis Kelamin</label><br />
+                                            <label>Jenis Kelamin<span class="text-danger">*</span></label></br>
                                             <label class="form-radio-label">
                                                 <input class="form-radio-input" type="radio" name="jenkel" value="L" <?= $data['jenis_kel'] == 'L' ? 'checked' : ''; ?>>
                                                 <span class="form-radio-sign">Laki-laki</span>
@@ -80,7 +83,7 @@
                                     </div>
                                     <div class="col-md-2 pr-0">
                                         <div class="form-group  <?= ($validation->hasError('umur')) ? 'has-error' : ''; ?>">
-                                            <label>Umur</label>
+                                            <label>Umur<span class="text-danger">*</span></label>
                                             <select name="umur" class="form-control">
                                                 <option><?= (old('umur')) ? old('umur') : $data['umur']; ?></option>
                                                 <!-- <option value="13">13</option> -->
@@ -97,9 +100,9 @@
                                                 <?= $validation->getError('umur'); ?></small>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('agama')) ? 'has-error' : ''; ?>">
-                                            <label>Agama</label>
+                                            <label>Agama<span class="text-danger">*</span></label>
                                             <select name="agama" class="form-control">
                                                 <option><?= (old('agama')) ? old('agama') : $data['agama']; ?></option>
                                                 <option value="Islam">Islam</option>
@@ -114,14 +117,15 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('alamat')) ? 'has-error' : ''; ?>">
-                                            <textarea type="text" name="alamat" class="form-control" autocomplete="off" placeholder="Alamat"><?= (old('alamat')) ? old('alamat') : $data['alamat']; ?></textarea>
+                                            <label>Alamat<span class="text-danger">*</span></label>
+                                            <textarea type="text" name="alamat" class="form-control" autocomplete="off"><?= (old('alamat')) ? old('alamat') : $data['alamat']; ?></textarea>
                                             <small class="form-text text-danger">
                                                 <?= $validation->getError('alamat'); ?></small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('kelas')) ? 'has-error' : ''; ?>">
-                                            <label>Kelas</label>
+                                            <label>Kelas<span class="text-danger">*</span></label>
                                             <select name="kelas" class="form-control">
                                                 <option><?= (old('kelas')) ? old('kelas') : $data['kelas']; ?></option>
                                                 <option value="X">X</option>
@@ -135,7 +139,7 @@
                                     <?php if (session()->get('level') == '1') { ?>
                                         <div class="col-md-6">
                                             <div class="form-group <?= ($validation->hasError('jurusan')) ? 'has-error' : ''; ?>">
-                                                <label>Jurusan</label>
+                                                <label>Jurusan<span class="text-danger">*</span></label>
                                                 <select name="jurusan" class="form-control">
                                                     <option><?= (old('jurusan')) ? old('jurusan') : $data['jurusan']; ?></option>
                                                     <option value="IPA">IPA</option>
@@ -150,6 +154,7 @@
                                     <?php if (session()->get('level') == '2') { ?>
                                         <div class="col-md-6">
                                             <div class="form-group <?= ($validation->hasError('paketk')) ? 'has-error' : ''; ?>">
+                                                <label>Paket Keahlian<span class="text-danger">*</span></label>
                                                 <select name="paketk" class="form-control">
                                                     <option><?= (old('paketk')) ? old('paketk') : $data['pkeahlian']; ?></option>
                                                     <option value="TKRO">Teknik Kendaraan Ringan Otomotif</option>
@@ -164,7 +169,7 @@
                                     <?php } ?>
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                            <label>Status</label>
+                                            <label>Status<span class="text-danger">*</span></label>
                                             <select name="status" class="form-control">
                                                 <option><?= (old('status')) ? old('status') : $data['status']; ?></option>
                                                 <option value="Aktif">Aktif</option>
@@ -176,11 +181,13 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Nomor Handphone</label>
                                             <input type="text" name="nohp" class="form-control" autocomplete="off" placeholder="Nomor Handphone" value="<?= (old('nohp')) ? old('nohp') : $data['nohp']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group <?= ($validation->hasError('thnmasuk')) ? 'has-error' : ''; ?>">
+                                            <label>Tahun Masuk / Tahun Pelajaran<span class="text-danger">*</span></label>
                                             <select name="thnmasuk" class="form-control" style="width: 100%">
                                                 <option><?= (old('thnmasuk')) ? old('thnmasuk') : $data['tahun_msk']; ?></option>
                                                 <?php foreach ($tahun as $r) : ?>
@@ -194,6 +201,7 @@
                                     <?php if (session()->get('level') == '2') { ?>
                                         <div class="col-md-6">
                                             <div class="form-group <?= ($validation->hasError('pip')) ? 'has-error' : ''; ?>">
+                                                <label>Program PIP<span class="text-danger">*</span></label>
                                                 <select name="pip" class="form-control">
                                                     <option><?= (old('pip')) ? old('pip') : $data['program_pip']; ?></option>
                                                     <option value="KPS">KPS</option>
@@ -207,7 +215,7 @@
                                     <?php } ?>
                                     <div class="col-md-6">
                                         <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
-                                            <label>Status Vaksinasi</label>
+                                            <label>Status Vaksin<span class="text-danger">*</span></label>
                                             <select name="stsvaksin" class="form-control">
                                                 <option><?= (old('stsvaksin')) ? old('stsvaksin') : $data['sts_vaksin']; ?></option>
                                                 <option value="Belum">Belum</option>

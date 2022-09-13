@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Agu 2022 pada 15.51
+-- Waktu pembuatan: 12 Sep 2022 pada 06.51
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -20,72 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ci_esma`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mod_akun`
---
-
-CREATE TABLE `mod_akun` (
-  `id` int(11) NOT NULL,
-  `id_sekolah` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `npsn` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `jenjang` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `nama_sekolah` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `nik` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `nama` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `alamat` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `no_hp` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `foto` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `role` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `penerima_dispo` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `tglentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `waktuentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `userentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data untuk tabel `mod_akun`
---
-
-INSERT INTO `mod_akun` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `nik`, `nama`, `alamat`, `no_hp`, `username`, `password`, `foto`, `role`, `penerima_dispo`, `tglentry`, `waktuentry`, `userentry`) VALUES
-(2, '28282828', '291197', 'AHDEV', 'Pemilik Aplikasi', '1234567891234568', 'Developers', 'Kisaran', '082274884828', 'abiihtb_', '$2y$10$RxT62SvdewEtvARrCs/78ekza/N81OTYN1wnTF6K1g0lQrVAaKGRi', '', 'owner', '', '2022-01-09-update', '17:55:45-update', 'Developers'),
-(1, '12211221', '12344321', 'SMA', 'Kasih SMA Cabang Dinas Kisaran', '1212123232324343', 'Kasih SMA Cabang Dinas Kisaran', 'Kisaran', '082121212121', 'kasihsma_', '$2y$10$R1Bdt/ENVjZ.hao4.e8B..J5wfdT6IDPqCJ0vzAqd1FG1dqU/dW2a', '', 'kshsma', '', '2022-01-09-update', '17:55:51-update', 'Cabdis Pendidikan Kisaran'),
-(47, '1', '10204064', 'SMA', 'SMA Negeri 1 Kisaran', '1234545454450001', 'Abii Hutabarat', 'Kisaran', '082222222222', 'sman1', '$2y$10$HypTVMtRade8w/ItIT7d2ebepxfkVQEw8ner3RjWJKR5xhgte/Cp.', '', 'admsma', '', '2022-01-06-update', '00:40:12-update', 'Cabdis Pendidikan Kisaran'),
-(48, '86', '10204029', 'SMK', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', '1232343455340002', 'Faisal', 'Aek Songsongan', '082343434343', 'smktyy', '$2y$10$1hpAmrnoWTXb9he6YWsr0ejW4GuouDcfEvWarQ.h5AMFNQbb3ask.', '', 'admsmk', '', '2022-01-06-update', '00:40:45-update', 'Cabdis Pendidikan Kisaran'),
-(3, '11335500', '43211234', 'SMK', 'Kasih SMK Cabang Dinas Kisaran', '1212312314343456', 'Kasih SMK Cabang Dinas Kisaran', 'Kisaran', '082121212121', 'kasihsmk_', '$2y$10$SULqGmR5Dp7KAxN1OrIhJuNasAvdmvHxUbRRlzfVDWZ7QdZkbo9rG', '', 'kshsmk', '', '2022-01-07', '11:51:24', 'Cabdis Pendidikan Kisaran');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mod_arsip_labul`
---
-
-CREATE TABLE `mod_arsip_labul` (
-  `id` int(11) NOT NULL,
-  `nama_labul` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `bulan` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `tahun` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `file` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
-  `validfile` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `npsn` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `nama_sekolah` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `jenjang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `tglentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `waktuentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `userentry` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data untuk tabel `mod_arsip_labul`
---
-
-INSERT INTO `mod_arsip_labul` (`id`, `nama_labul`, `bulan`, `tahun`, `file`, `validfile`, `npsn`, `nama_sekolah`, `jenjang`, `tglentry`, `waktuentry`, `userentry`) VALUES
-(4, 'Laporan SMK', 'Januari', '2022', '12-01-2022-122228-LapBul NOVEMBER 2021 SMKS Triyadikayasa.xlsx', '43211234012022', '43211234', 'Kasih SMK Cabang Dinas Kisaran', 'SMK', '2022-01-12-update', '12:22:15-update', 'Kasih SMK Cabang Dinas Kisaran'),
-(5, 'Labul SMA', 'Januari', '2022', '12-01-2022-122128-FORMAT PENGISIAN DATA VAKSIN SMA-SMK-SLB NEGERI-SWASTA.xlsx', '12344321012022', '12344321', 'Kasih SMA Cabang Dinas Kisaran', 'SMA', '2022-01-12-update', '12:21:12-update', 'Kasih SMA Cabang Dinas Kisaran');
 
 -- --------------------------------------------------------
 
@@ -120,6 +54,71 @@ CREATE TABLE `mod_bangunan` (
   `updated_at` datetime DEFAULT NULL,
   `userentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data untuk tabel `mod_bangunan`
+--
+
+INSERT INTO `mod_bangunan` (`id`, `id_sekolah`, `luas_tanah`, `luas_bangunan`, `luas_rpembangunan`, `luas_halaman`, `luas_lapangan`, `luas_kosong`, `status_tanah`, `status_gedung`, `jkelasx_mipa`, `jkelasx_iis`, `jkelasx_bhs`, `jkelasxi_mipa`, `jkelasxi_iis`, `jkelasxi_bhs`, `jkelasxii_mipa`, `jkelasxii_iis`, `jkelasxii_bhs`, `npsn`, `nama_sekolah`, `jenjang`, `created_at`, `updated_at`, `userentry`) VALUES
+(12, 1, '343', '343', '3433', NULL, NULL, NULL, 'Pemerintah', 'Pemerintah', '2', '2', '2', '2', '2', '2', '2', '2', '2', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', '2022-09-09 22:42:29', '2022-09-09 22:42:29', 'DWI AHMAD');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_barang`
+--
+
+CREATE TABLE `mod_barang` (
+  `id` int(11) NOT NULL,
+  `inventaris` varchar(255) NOT NULL,
+  `userentry` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_barang`
+--
+
+INSERT INTO `mod_barang` (`id`, `inventaris`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, 'Meja Siswa', 'Abii Hutabarat', '2022-09-06 00:46:04', '2022-09-06 04:30:11'),
+(2, 'Kursi Siswa', '0', '2022-09-06 00:47:21', '2022-09-06 00:47:21'),
+(3, 'Meja Guru', '0', '2022-09-06 00:47:34', '2022-09-06 00:47:34'),
+(4, 'Kursi Guru', '0', '2022-09-06 00:47:40', '2022-09-06 00:47:40'),
+(5, 'Meja Tamu', '0', '2022-09-06 00:47:54', '2022-09-06 00:47:54'),
+(6, 'Kursi Tamu', '0', '2022-09-06 00:48:02', '2022-09-06 00:48:02'),
+(7, 'Mesin TIK', '0', '2022-09-06 00:48:14', '2022-09-06 00:48:14'),
+(8, 'Komputer', '0', '2022-09-06 00:48:22', '2022-09-06 00:48:22'),
+(9, 'Laptop', '0', '2022-09-06 00:48:33', '2022-09-06 00:48:33'),
+(10, 'Infocus', '0', '2022-09-06 00:48:41', '2022-09-06 00:48:41'),
+(11, 'Mesin Cetak', '0', '2022-09-06 00:48:49', '2022-09-06 00:48:49'),
+(12, 'UHF', '0', '2022-09-06 00:49:01', '2022-09-06 00:49:01'),
+(13, 'PARABOLA', '0', '2022-09-06 00:49:10', '2022-09-06 00:49:10'),
+(14, 'TV', '0', '2022-09-06 00:49:20', '2022-09-06 00:49:20'),
+(15, 'VCD', '0', '2022-09-06 00:49:31', '2022-09-06 00:49:31'),
+(16, 'CCTV', '0', '2022-09-06 00:49:37', '2022-09-06 00:49:37');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_bidang_keahlian`
+--
+
+CREATE TABLE `mod_bidang_keahlian` (
+  `id` int(11) NOT NULL,
+  `bidang` varchar(255) NOT NULL,
+  `userentry` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_bidang_keahlian`
+--
+
+INSERT INTO `mod_bidang_keahlian` (`id`, `bidang`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, 'Teknologi dan Rekayasa', 'Abii Hutabarat', '2022-09-10 06:10:58', '2022-09-10 06:15:00'),
+(2, 'Teknologi Informasi dan Komunikasi', 'Abii Hutabarat', '2022-09-10 06:11:32', '2022-09-10 06:11:32');
 
 -- --------------------------------------------------------
 
@@ -159,26 +158,6 @@ CREATE TABLE `mod_buku_induk` (
 INSERT INTO `mod_buku_induk` (`id`, `id_sekolah`, `nisn`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `agama`, `alamat`, `kelas`, `jurusan`, `pkeahlian`, `status`, `nohp`, `masuk`, `tamat`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
 (2, 1, 2147483647, 'fddg', 'fdgdfgdfgdg', '2022-08-02', 'L', 'Islam', 'dfgdfgdfgdfg', 'X', 'IPA', '', 'Non-Aktif', '08656656466', '2022/2023', '2023/2024', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-02 12:23:05', '2022-08-02 12:23:05'),
 (3, 86, 2147483647, 'test', 'test', '2022-08-02', 'P', 'Islam', 'test', 'XII', '', 'TBSM', 'Non-Aktif', '09888344354', '2023/2024', '2024/2025', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:53:19', '2022-08-14 07:53:19');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mod_desa`
---
-
-CREATE TABLE `mod_desa` (
-  `id` int(11) NOT NULL,
-  `kd_kec` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
-  `kode_wilayah` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `desa` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data untuk tabel `mod_desa`
---
-
-INSERT INTO `mod_desa` (`id`, `kd_kec`, `kode_wilayah`, `desa`) VALUES
-(1, '', '1219012003', 'Aek Nauli');
 
 -- --------------------------------------------------------
 
@@ -274,11 +253,10 @@ CREATE TABLE `mod_guru` (
 --
 
 INSERT INTO `mod_guru` (`id_guru`, `id_sekolah`, `nip`, `nik`, `nuptk`, `nrg`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `golruang`, `tingkat`, `jurusan`, `thnijazah`, `agama`, `status`, `tmtguru`, `tmtsekolah`, `thnsertifikasi`, `mapel`, `jumlah_jam`, `mk_thn`, `mk_bln`, `tgs_tambah`, `sts_serti`, `mapel_serti`, `jabatan`, `no_sk`, `tgl_sk`, `nmdiklat`, `tdiklat`, `lmdiklat`, `thndiklat`, `kehadiran`, `foto`, `sts_vaksin`, `tgl_vaksin`, `lok_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(86, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'II/B', 'D1', 'Guru', '2018', 'Islam', 'Honda', '2022-07-06', '2022-07-07', '', 'Biologi', '5', '', '', '', 'Belum', '', '', '', '', '', '', '', '', '', '1658826566_15d0892e42ca7c18dd12.jpg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 00:28:31', '2022-08-05 03:51:57'),
-(87, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'I/C', 'D1', 'Akuntansi', '2018', 'Islam', 'Honda', '2022-07-06', '2022-07-07', '', 'Mulok', '5', '', '', '', 'Belum', '', '', '', '', '', '', '', '', '', '1658823844_71674ac3de534f213370.jpeg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 03:24:04', '2022-08-05 03:51:01'),
-(83, '1', '3333333333333333', '3333333333333633', '234234234', '787979', 'Sari', 'Lima Puluh', '2022-07-08', 'P', 'II/A', 'S1', 'Magister', '2017', 'Islam', 'PNS', '2022-07-02', '2022-07-22', '2019', 'Matematika', '8', '', '', '', 'Sudah', '', '', '', '', '', 'Testing tempat', '24', '', '100', '1658826668_bf62d0cdf720b024ef05.jpg', 'Dosis II', '2022-07-15', 'lima puluh', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-23 13:21:24', '2022-08-05 03:51:06'),
-(88, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'I/D', 'D1', 'Programming', '2018', 'Islam', 'Honda', '2022-07-06', '2022-07-07', '', 'Bahasa dan Sastra Asing lainnya', '5', '', '', '', 'Belum', '', '', '', '', '', '', '', '2017', '', 'blank.png', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 03:26:34', '2022-08-05 03:51:17'),
-(92, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'III/D', 'D1', 'Programming Baru', '2018', 'Islam', 'Honda', '2022-07-06', '2022-07-07', '', 'Mulok', '5', '', '', '', 'Belum', '', '', '', '', '', '', '', '', '', '1658826908_534003a81dbb6846a1d1.jpeg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-26 04:13:06', '2022-08-05 03:51:32');
+(86, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'III/C', 'D3', 'Guru', '2018', 'Islam', 'PNS', '2022-07-06', '2022-07-07', '2016', 'Biologi', '5', '', '', NULL, 'Sudah', NULL, NULL, NULL, NULL, '', '', '', '', '', '1658826566_15d0892e42ca7c18dd12.jpg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-07-26 00:28:31', '2022-09-07 05:13:40'),
+(87, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'I/C', 'S1', 'Akuntansi', '2018', 'Islam', 'Non PNS', '2022-07-06', '2022-07-07', '2015', 'Mulok', '5', '', '', NULL, 'Sudah', NULL, NULL, NULL, NULL, '', '', '', '', '', '1658823844_71674ac3de534f213370.jpeg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-07-26 03:24:04', '2022-09-07 05:03:04'),
+(83, '1', '3333333333333333', '3333333333333633', '234234234', '787979', 'Sari', 'Lima Puluh', '2022-07-08', 'L', 'II/A', 'S1', 'Magister', '2017', 'Islam', 'PNS', '2022-07-02', '2022-07-22', '2017', 'Matematika', '8', '', '', NULL, 'Sudah', NULL, NULL, NULL, NULL, 'Teknologi', 'Testing tempat', '24', '2019', '100', '1658826668_bf62d0cdf720b024ef05.jpg', 'Dosis II', '2022-07-15', 'lima puluh', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-07-23 13:21:24', '2022-09-08 00:04:28'),
+(92, '1', '3333033393333633', '3333333393333633', '454545', '3455345', 'Putra', 'dfdgf', '2022-07-06', 'L', 'III/D', 'S2', 'Programming Baru', '2018', 'Islam', 'PNS', '2022-07-06', '2022-07-07', '2018', 'Mulok', '5', '', '', NULL, 'Sudah', NULL, NULL, NULL, NULL, '', '', '', '', '', '1658826908_534003a81dbb6846a1d1.jpeg', 'Belum', '', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-07-26 04:13:06', '2022-09-07 05:14:04');
 
 -- --------------------------------------------------------
 
@@ -307,8 +285,13 @@ CREATE TABLE `mod_inventaris` (
 --
 
 INSERT INTO `mod_inventaris` (`id`, `id_sekolah`, `inventaris`, `dibutuhkan`, `ada`, `kurang`, `lebih`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(4, 1, 'Meja', '1', '1', '0', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:35:15', '2022-07-30 23:39:26'),
-(5, 86, 'meja', '1', '4', '1', '54', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:56:26', '2022-08-14 07:56:53');
+(4, 1, 'Meja Siswa', '1', '1', '0', '6', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:35:15', '2022-09-06 09:32:03'),
+(5, 86, 'meja', '1', '4', '1', '54', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:56:26', '2022-08-14 07:56:53'),
+(6, 1, 'Kursi Siswa', '4', '29', '29', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-06 00:11:14', '2022-09-06 01:02:24'),
+(7, 1, 'Meja Guru', '2', '10', '10', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-06 00:58:25', '2022-09-06 01:02:43'),
+(8, 1, 'Mesin TIK', '3', '3', '3', '3', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-09-10 00:53:38', '2022-09-10 00:53:38'),
+(9, 1, 'PARABOLA', '1', '0', '1', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-09-10 00:53:59', '2022-09-10 00:53:59'),
+(10, 1, 'TV', '2', '1', '2', '0', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-09-10 00:54:19', '2022-09-10 00:54:19');
 
 -- --------------------------------------------------------
 
@@ -368,7 +351,6 @@ CREATE TABLE `mod_kebutuhan` (
   `id_sekolah` int(11) NOT NULL,
   `mapel` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `dibutuhkan` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `ada` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `pns` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `nonpns` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `kurang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
@@ -386,14 +368,13 @@ CREATE TABLE `mod_kebutuhan` (
 -- Dumping data untuk tabel `mod_kebutuhan`
 --
 
-INSERT INTO `mod_kebutuhan` (`id`, `id_sekolah`, `mapel`, `dibutuhkan`, `ada`, `pns`, `nonpns`, `kurang`, `lebih`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(14, 1, 'Pendidikan Agama Islam', '3', '', '0', '2', '1', '0', 'dsfsdfsf', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', NULL, '2022-07-30 22:07:08'),
-(13, 0, 'Islam', '3', '', '0', '4', '0', '1', '', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Faisal', NULL, NULL),
-(16, 0, 'Pend.Jasmani, Olahraga, dan Kesehatan', '3', '', '0', '2', '1', '0', '', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', 'Abii Hutabarat', NULL, NULL),
-(17, 0, 'Teknik Informatika Komputer ( TIK )', '2', '', '0', '3', '0', '1', '', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', 'Abii Hutabarat', NULL, NULL),
-(22, 1, 'Pendidikan Agama Islam', '4', '', '4', '4', '4', '0', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 22:01:42', '2022-07-30 22:03:04'),
-(20, 1, 'Pendidikan Agama Islam', '2', '', '5', '6', '2', '2', '', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 21:47:52', '2022-07-30 22:00:18'),
-(24, 86, 'Kimia Industri', '1', '', '0', '0', '0', '0', 'asdasdd', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:55:30', '2022-08-14 07:55:30');
+INSERT INTO `mod_kebutuhan` (`id`, `id_sekolah`, `mapel`, `dibutuhkan`, `pns`, `nonpns`, `kurang`, `lebih`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
+(14, 1, 'Pendidikan Agama Islam', '3', '0', '2', '3', '0', 'ada', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', NULL, '2022-09-10 00:44:37'),
+(13, 0, 'Islam', '3', '0', '4', '0', '1', '', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Faisal', NULL, NULL),
+(16, 1, 'Pend.Jasmani, Olahraga, dan Kesehatan', '3', '0', '2', '1', '0', 'wewrw', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', NULL, '2022-08-24 23:24:54'),
+(17, 1, 'Teknik Informatika Komputer ( TIK )', '2', '0', '3', '0', '1', 'drgdgdfg', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', NULL, '2022-08-24 23:20:06'),
+(25, 1, 'Seni Budaya ', '2', '1', '2', '2', '0', 'kurang ', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-09-08 23:16:31', '2022-09-08 23:16:31'),
+(24, 86, 'Kimia Industri', '1', '0', '0', '0', '0', 'asdasdd', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:55:30', '2022-08-14 07:55:30');
 
 -- --------------------------------------------------------
 
@@ -467,23 +448,68 @@ CREATE TABLE `mod_labul` (
   `bulan` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `tahun` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `file_labul` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `validfile` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `validfile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `npsn` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `nama_sekolah` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_sekolah` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `jenjang` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `tglentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `waktuentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `userentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL
+  `userentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `mod_labul`
 --
 
-INSERT INTO `mod_labul` (`id`, `id_sekolah`, `nama_labul`, `bulan`, `tahun`, `file_labul`, `validfile`, `npsn`, `nama_sekolah`, `jenjang`, `tglentry`, `waktuentry`, `userentry`) VALUES
-(14, '1', 'Laporan Ferbruari', 'Februari', '2022', '06-02-2022-104437-Data-Pendidikan-Guru.xls', '10204064022022', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', '2022-02-06-update', '10:44:37-update', 'Abii Hutabarat'),
-(10, '86', 'Laporan', 'Januari', '2022', '08-01-2022-001016-LapBul NOVEMBER 2021 SMKS Triyadikayasa.xlsx', '10204029012022', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', '2022-01-07', '00:10:05', 'Faisal'),
-(13, '1', 'Laporan Bulan Januari 2022', 'Januari', '2022', '10-01-2022-145927-Laporan Bulanan November 2021 SMA S SEPAKAT.xls', '10204064012022', '10204064', 'SMA Negeri 1 Kisaran', 'SMA', '2022-01-10', '14:59:11', 'Abii Hutabarat');
+INSERT INTO `mod_labul` (`id`, `id_sekolah`, `nama_labul`, `bulan`, `tahun`, `file_labul`, `validfile`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
+(29, '86', 'Laporan Bulanan Agustus', 'Agustus', '2022', '1661073585_f962d09ad3047261873d.xlsx', '10204029082022', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-21 04:19:13', '2022-08-21 04:19:45'),
+(31, '86', 'Laporan Bulan September', 'September', '2022', '1662788438_23e12683abf7c7a80d2d.xlsx', '10204029092022', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-09-10 00:40:38', '2022-09-10 00:40:38'),
+(30, '1', 'Laporan Bulanan September', 'September', '2022', '1662699685_ea40641ed057be145fe0.xlsx', '10204064092022', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'DWI AHMAD', '2022-09-08 00:40:06', '2022-09-09 00:01:25');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_log_invalid`
+--
+
+CREATE TABLE `mod_log_invalid` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  `useragent` varchar(255) NOT NULL,
+  `timestamp` date NOT NULL,
+  `status_log` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_log_valid`
+--
+
+CREATE TABLE `mod_log_valid` (
+  `id` int(11) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ip` varchar(255) NOT NULL,
+  `useragent` varchar(555) NOT NULL,
+  `status_log` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_log_valid`
+--
+
+INSERT INTO `mod_log_valid` (`id`, `username`, `nama`, `foto`, `timestamp`, `ip`, `useragent`, `status_log`, `created_at`, `updated_at`) VALUES
+(1, 'putra333', 'Putra', 'blank.png', '2022-09-11 16:09:07', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 1, '2022-09-11 23:09:07', '2022-09-11 23:09:07'),
+(2, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-09-11 16:29:38', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 1, '2022-09-11 23:29:38', '2022-09-11 23:29:38');
 
 -- --------------------------------------------------------
 
@@ -603,7 +629,7 @@ CREATE TABLE `mod_mutasi` (
   `kelas` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `jurusan` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   `pkeahlian` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `asal_sekolah` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `asal_sekolah` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `no_surat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `mutasi` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `tahun` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
@@ -624,7 +650,33 @@ INSERT INTO `mod_mutasi` (`id`, `id_sekolah`, `nisn`, `nama`, `jenis_kel`, `kela
 (7, 1, '1212121212', 'Putra', 'L', 'X', 'IPA', NULL, '', 'fsdfsdfs', 'keluar', '2023/2024', 'dfsfsfdf', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-02 11:41:05', '2022-08-02 11:41:05'),
 (4, 1, '4444444444', 'Fawad', 'L', 'X', 'IPA', NULL, 'TYY', '134A/122/2022', 'pindahan', '2024/2025', 'suka cabut', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-01 10:47:50', '2022-08-01 10:47:50'),
 (10, 86, '5656565650', 'test', 'P', 'X', NULL, 'TBSM', 'SMA Negeri 2', 'dsasd/asdasdasd/2202', 'pindahan', '2023/2024', 'pindah', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:51:42', '2022-08-14 07:51:42'),
-(11, 86, '2323343434', 'test', 'L', 'X', NULL, 'TBSM', NULL, 'sdfsdf/sdfsdfs/32424', 'keluar', '2024/2025', 'berjudi', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:52:44', '2022-08-14 07:52:44');
+(11, 86, '2323343434', 'test', 'L', 'X', NULL, 'TBSM', '', 'sdfsdf/sdfsdfs/32424', 'keluar', '2024/2025', 'berjudi', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:52:44', '2022-08-14 07:52:44'),
+(13, 1, '2344234233', 'dika', 'L', 'X', 'IPA', NULL, '', '23/fhdddfgg', 'keluar', '2022/2023', 'dfgdgdfgdg', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-01 23:31:12', '2022-09-01 23:31:12'),
+(14, 1, '3553453535', 'sonia', 'L', 'X', 'IPA', NULL, '', '34534/fghfhfhfd', 'keluar', '2022/2023', 'hddfdgdfg', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-01 23:48:24', '2022-09-01 23:48:24'),
+(15, 1, '3454535357', 'kita', 'L', 'X', 'IPA', NULL, 'SMA Negeri  1  Kisaran', 'sdfs/56546/fh', 'keluar', '2022/2023', 'dgsfsdfsdfsd', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-01 23:50:14', '2022-09-01 23:50:14');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_paket_keahlian`
+--
+
+CREATE TABLE `mod_paket_keahlian` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(25) NOT NULL,
+  `paket_keahlian` varchar(255) NOT NULL,
+  `userentry` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_paket_keahlian`
+--
+
+INSERT INTO `mod_paket_keahlian` (`id`, `kode`, `paket_keahlian`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, '1291', 'Teknik Kendaraan Ringan Otomotif (K13)', 'Abii Hutabarat', '2022-09-10 06:43:44', '2022-09-10 06:50:53'),
+(2, '2143', 'Teknik Komputer dan Jaringan (K13)', 'Abii Hutabarat', '2022-09-10 06:44:04', '2022-09-10 06:44:04');
 
 -- --------------------------------------------------------
 
@@ -717,6 +769,35 @@ CREATE TABLE `mod_profil` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data untuk tabel `mod_profil`
+--
+
+INSERT INTO `mod_profil` (`id`, `id_sekolah`, `nama_sekolah`, `npsn`, `nss`, `nds`, `nosiop`, `akreditas`, `thnberdiri`, `nosk`, `tglsk`, `status`, `standar`, `waktub`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`, `telepon`, `nama_kepsek`, `email`, `jenjang`, `website`, `namayys`, `alamatyys`, `longitude`, `latitude`, `userentry`, `profil`, `foto`, `created_at`, `updated_at`) VALUES
+(6, '1', 'SMA Negeri  1  Kisaran', '10204064', '23233', '0', '4555', 'A', '2001', 'dfgdgg', '2022-08-11', 'Negeri', 'SSN', 'Pagi', '1209', 'Aek Songsongan', 'sdfsfsf.asdasd', '34535', '08224567876', 'Tommy S.Kom', 'abii@gmail.com', 'SMA', 'https://sma.com', '', '', '99.61981818096318', '2.9708987430050864', 'DWI AHMAD', '1660984541_33fa36c941a197112a09.png', '1661185340_f910ec6ad1b17dde579a.png', '2022-08-20 03:33:17', '2022-09-07 22:12:30');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_program_keahlian`
+--
+
+CREATE TABLE `mod_program_keahlian` (
+  `id` int(11) NOT NULL,
+  `program` varchar(255) NOT NULL,
+  `userentry` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `mod_program_keahlian`
+--
+
+INSERT INTO `mod_program_keahlian` (`id`, `program`, `userentry`, `created_at`, `updated_at`) VALUES
+(1, 'Teknik Otomotif', 'Abii Hutabarat', '2022-09-10 06:23:33', '2022-09-10 06:24:06'),
+(2, 'Teknik Komputer dan Jaringan', 'Abii Hutabarat', '2022-09-10 06:23:46', '2022-09-10 06:23:46');
+
 -- --------------------------------------------------------
 
 --
@@ -736,7 +817,7 @@ CREATE TABLE `mod_sarana` (
 --
 
 INSERT INTO `mod_sarana` (`id`, `sarana`, `userentry`, `created_at`, `updated_at`) VALUES
-(1, 'Ruang Kepala Sekolah', 'Abii Hutabarat', '2022-08-05 00:18:02', '2022-08-14 07:43:16'),
+(1, 'Ruang Kepala Sekolah', 'Abii Hutabarat', '2022-08-05 00:18:02', '2022-09-06 04:31:22'),
 (2, 'Ruang Wakasek', 'Abii Hutabarat', '2022-08-05 00:18:23', '2022-08-05 00:18:23'),
 (3, 'Ruang Guru', 'Abii Hutabarat', '2022-08-05 00:18:33', '2022-08-05 00:18:33'),
 (4, 'Ruang Tendik', 'Abii Hutabarat', '2022-08-05 00:18:45', '2022-08-05 00:18:45'),
@@ -779,8 +860,9 @@ CREATE TABLE `mod_sarpras` (
   `id` int(11) NOT NULL,
   `id_sekolah` int(11) NOT NULL,
   `prasarana` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `kondisi` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `jumlah` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `baik` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `rusak_ringan` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `rusak_berat` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `keterangan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `npsn` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
   `nama_sekolah` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -794,9 +876,11 @@ CREATE TABLE `mod_sarpras` (
 -- Dumping data untuk tabel `mod_sarpras`
 --
 
-INSERT INTO `mod_sarpras` (`id`, `id_sekolah`, `prasarana`, `kondisi`, `jumlah`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(8, 1, 'Ruang Wakasek', 'Rusak Ringan', '1', 'segera', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 23:07:45', '2022-08-05 00:36:29'),
-(10, 86, 'Kantin', 'Baik', '1', 'sdasdas', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-14 07:54:33', '2022-08-14 07:54:33');
+INSERT INTO `mod_sarpras` (`id`, `id_sekolah`, `prasarana`, `baik`, `rusak_ringan`, `rusak_berat`, `keterangan`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
+(14, 1, 'Ruang Guru', '0', '2', '0', 'Rusak ringan', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 05:56:59', '2022-09-03 05:59:55'),
+(12, 1, 'Ruang Kepala Sekolah', '1', '0', '0', 'Masih Baik', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 05:56:24', '2022-09-03 06:00:00'),
+(13, 1, 'Ruang Wakasek', '2', '0', '0', 'Masih Baik', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 05:56:35', '2022-09-03 06:00:04'),
+(15, 1, 'Ruang Tendik', '3', '0', '0', 'Masih Baik', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 05:57:17', '2022-09-03 06:00:09');
 
 -- --------------------------------------------------------
 
@@ -885,7 +969,7 @@ INSERT INTO `mod_sekolah` (`id`, `npsn`, `jenjang`, `sekolah`, `kabupaten`, `sta
 (63, '10204254', 'SMA', 'SMA Swasta  Nusantara Labuhan Ruku', 'BATU BARA', 'Swasta', '', NULL, NULL),
 (64, '10261247', 'SMA', 'SMA Swasta Taman Siswa Sidomulyo', 'BATU BARA', 'Swasta', '', NULL, NULL),
 (65, '69991482', 'SMA', 'SMA Swasta IT Al Izzah', 'BATU BARA', 'Swasta', '', NULL, NULL),
-(66, '71717171', 'SMA', 'SMA Swasta Daarul Ilmi', '', '', '', NULL, NULL),
+(66, '71717171', 'SMA', 'SMA Swasta Daarul Ilmi', 'ASAHAN', 'Swasta', 'Abii Hutabarat', NULL, '2022-08-26 09:44:15'),
 (67, '10204075', 'SMK', 'SMK NEGERI 1 KISARAN', 'ASAHAN', 'Negeri', '', NULL, NULL),
 (68, '10204073', 'SMK', 'SMK NEGERI 2 KISARAN', 'ASAHAN', 'Negeri', '', NULL, NULL),
 (69, '10204076', 'SMK', 'SMK NEGERI 1 SETIA JANJI', 'ASAHAN', 'Negeri', '', NULL, NULL),
@@ -992,37 +1076,11 @@ CREATE TABLE `mod_siswa` (
 --
 
 INSERT INTO `mod_siswa` (`id`, `id_sekolah`, `nisn`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kel`, `umur`, `agama`, `alamat`, `kelas`, `pkeahlian`, `jurusan`, `status`, `nohp`, `program_pip`, `tahun_msk`, `asal_sekolah`, `no_surat`, `sts_mutasi`, `keterangan`, `sts_vaksin`, `npsn`, `nama_sekolah`, `jenjang`, `userentry`, `created_at`, `updated_at`) VALUES
-(75, '1', '5656565656', 'Abii Hutabarat', 'Aek Songsongan', '2022-07-08', 'L', '20', 'Islam', 'Lima Puluh', 'X', NULL, 'IPA', 'Aktif', '082274884828', NULL, '2022/2023', NULL, NULL, NULL, NULL, 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 20:55:34', '2022-07-30 20:55:34'),
-(77, '1', '4444444444', 'Fawad Azmi', 'aek songsongan', '2022-08-10', 'L', '18', 'Islam', 'aek songsongan', 'X', NULL, 'IPA', 'Aktif', '082274566778', NULL, '2024/2025', 'TYY', '134A/122/2022', 'pindahan', 'suka cabut', 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-01 10:47:50', '2022-08-01 11:09:16');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mod_suratmasuk`
---
-
-CREATE TABLE `mod_suratmasuk` (
-  `id` int(11) NOT NULL,
-  `no_surat` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `asal_surat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `sifat_surat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `kategori_surat` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `isi` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `no_agenda` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `tgl_terima` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `tgl_acara` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `hari` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `waktu` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `tempat` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `keterangan` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `file_surat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `npsn` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `nama_sekolah` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `jenjang` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `tglentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `waktuentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `userentry` varchar(25) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(75, '1', '5656565656', 'Abii Hutabarat', 'Aek Songsongan', '2022-07-08', 'L', '14', 'Islam', 'Lima Puluh', 'XI', NULL, 'IPA', 'Aktif', '082274884828', NULL, '2022/2023', NULL, NULL, NULL, NULL, 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-07-30 20:55:34', '2022-09-06 04:57:32'),
+(77, '1', '4444444444', 'Fawad Azmi', 'aek songsongan', '2022-08-10', 'L', '15', 'Kristen Katholik', 'aek songsongan', 'XI', NULL, 'IPA', 'Aktif', '082274566778', NULL, '2024/2025', 'TYY', '134A/122/2022', 'pindahan', 'suka cabut', 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-08-01 10:47:50', '2022-09-06 04:57:32'),
+(105, '1', '3423423423', 'santi', 'asdasdad', '2022-09-02', 'P', '17', 'Islam', 'asdasd', 'XI', NULL, 'IPA', 'Aktif', '085675757', NULL, '2022/2023', NULL, NULL, NULL, NULL, 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 01:45:09', '2022-09-06 04:57:32'),
+(106, '1', '3533534538', 'fira', 'asdad', '2022-09-01', 'P', '14', 'Islam', 'asdasdasd', 'XI', NULL, 'IPA', 'Aktif', '084546646', NULL, '2022/2023', NULL, NULL, NULL, NULL, 'Dosis I', '10204064', 'SMA Negeri  1  Kisaran', 'SMA', 'Andika Pratama', '2022-09-03 01:49:05', '2022-09-06 04:57:32'),
+(100, '86', '1212121234', 'test', 'test', '2022-08-13', 'L', '16', 'Islam', 'test', 'XII', 'TKRO', NULL, 'Aktif', '082274883434', 'KIP', '2022/2023', NULL, NULL, NULL, NULL, 'Dosis I', '10204029', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', 'SMK', 'Putra', '2022-08-19 23:04:11', '2022-08-25 06:14:51');
 
 -- --------------------------------------------------------
 
@@ -1075,25 +1133,34 @@ CREATE TABLE `mod_user` (
 --
 
 INSERT INTO `mod_user` (`id`, `id_sekolah`, `npsn`, `jenjang`, `nama_sekolah`, `nik`, `nama`, `nohp`, `email`, `username`, `password`, `foto`, `level`, `status`, `created_at`, `updated_at`) VALUES
-(1, 29, '29', 'nothing', 'Developer', '1209152911970001', 'Abii Hutabarat', '082274884828', 'abiihutabarat29@gmail.com', 'abiihtb29', '$2y$10$HRW2MmfXRFaugxStCHUxjunN5HeV.TrwRbG/6UypJ0k6JTjL0/VaO', NULL, 29, 'aktif', '2022-07-25 10:07:25', '2022-07-25 10:07:25'),
-(30, 1, '10204064', 'SMA', 'SMA Negeri  1  Kisaran', '8989898989898944', 'Andika Pratama', '08232323399', 'dinda@gmail.com', 'andika22', '$2y$10$pHWeBTF5gldOh1HeBaJ67OuvYzt/frwzu6NTyNNfgOLtoMAChlt6m', NULL, 1, 'aktif', '2022-07-25 09:42:21', '2022-08-01 04:20:36'),
-(34, 86, '10204029', 'SMK', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', '1212121212121212', 'Putra', '082234343456', 'ani@gmail.com', 'putra333', '$2y$10$Od7ReNcd4hS/QMl4nSDAPebcadno0j4eNd1xR7B0qWMPmt3AE2sv.', NULL, 2, 'aktif', '2022-08-01 07:04:55', '2022-08-01 07:04:55');
+(1, 29, '29', 'nothing', 'Developer', '1209152911970001', 'Abii Hutabarat', '082274884828', 'abiihutabarat29@gmail.com', 'abiihtb29', '$2y$10$hXL3AvZz1zqVDhX/CJjzx.oxwxCSeH6/mQEKkvMiCzdrGkh6FhIWe', '1661421861_67c02a8dde7f163cd55e.jpeg', 29, '1', '2022-07-25 10:07:25', '2022-08-25 05:04:21'),
+(2, 1, '10204064', 'SMA', 'SMA Negeri  1  Kisaran', '1209159099098932', 'Abii Hutabarat', '08232323399', 'andika@gmail.com', 'andika22', '$2y$10$nigTrK5qSW.yuM0nHdC4uu0zmVtK9vWMmbQpHY.uMdVz/rcF.uw5a', '1662534676_ba0d36cb88cbf0ec9549.jpeg', 1, '1', '2022-07-25 09:42:21', '2022-09-10 01:25:45'),
+(3, 86, '10204029', 'SMK', 'SMK SWASTA TRIYADIKAYASA AEK SONGSONGAN', '1212121212121212', 'Putra', '082234343456', 'putra@gmail.com', 'putra333', '$2y$10$/.ELihkDhqmnY5h8GCjD4.nswOZeqHJ4truSAUBzGZ/bRihDnJZKG', 'blank.png', 2, '1', '2022-08-01 07:04:55', '2022-09-10 23:19:59'),
+(4, 0, '0', 'SMA', 'Kasih SMA', '1223234553453344', 'Azmi', '08229892344', 'azmi@gmail.com', 'azmi2022', '$2y$10$tnEf47ho0WKxIiHJmmBT1O1ZYeD5eqAq9m1qAcsTV1naRvA8c4roG', '1661516305_f17fdd4b9fa50fba6c1d.jpeg', 3, '1', '2022-08-26 07:11:44', '2022-09-10 10:16:49'),
+(5, 0, '1', 'SMK', 'Kasih SMK', '1234234335435430', 'Azhar', '082131313120', 'azhar@gmail.com', 'azhar2022', '$2y$10$V4OgCqAuOwyu2JGd5waydesxXK8pxevLAEQnuwnAJKHsk/Hv1U8sO', '1661516521_080a5021fdff00969151.jpeg', 4, '1', '2022-08-26 07:14:45', '2022-08-26 07:22:01');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mod_valid_generate`
+--
+
+CREATE TABLE `mod_valid_generate` (
+  `id` int(11) NOT NULL,
+  `id_sekolah` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `npsn` varchar(25) NOT NULL,
+  `nama_sekolah` varchar(255) NOT NULL,
+  `jenjang` varchar(25) NOT NULL,
+  `userentry` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `mod_akun`
---
-ALTER TABLE `mod_akun`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `mod_arsip_labul`
---
-ALTER TABLE `mod_arsip_labul`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `mod_bangunan`
@@ -1102,15 +1169,21 @@ ALTER TABLE `mod_bangunan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mod_buku_induk`
+-- Indeks untuk tabel `mod_barang`
 --
-ALTER TABLE `mod_buku_induk`
+ALTER TABLE `mod_barang`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mod_desa`
+-- Indeks untuk tabel `mod_bidang_keahlian`
 --
-ALTER TABLE `mod_desa`
+ALTER TABLE `mod_bidang_keahlian`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mod_buku_induk`
+--
+ALTER TABLE `mod_buku_induk`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1162,6 +1235,18 @@ ALTER TABLE `mod_labul`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `mod_log_invalid`
+--
+ALTER TABLE `mod_log_invalid`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mod_log_valid`
+--
+ALTER TABLE `mod_log_valid`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `mod_mapel`
 --
 ALTER TABLE `mod_mapel`
@@ -1174,6 +1259,12 @@ ALTER TABLE `mod_mutasi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `mod_paket_keahlian`
+--
+ALTER TABLE `mod_paket_keahlian`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `mod_pegawai`
 --
 ALTER TABLE `mod_pegawai`
@@ -1183,6 +1274,12 @@ ALTER TABLE `mod_pegawai`
 -- Indeks untuk tabel `mod_profil`
 --
 ALTER TABLE `mod_profil`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mod_program_keahlian`
+--
+ALTER TABLE `mod_program_keahlian`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1210,12 +1307,6 @@ ALTER TABLE `mod_siswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `mod_suratmasuk`
---
-ALTER TABLE `mod_suratmasuk`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `mod_ta`
 --
 ALTER TABLE `mod_ta`
@@ -1228,38 +1319,38 @@ ALTER TABLE `mod_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `mod_valid_generate`
+--
+ALTER TABLE `mod_valid_generate`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `mod_akun`
---
-ALTER TABLE `mod_akun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
---
--- AUTO_INCREMENT untuk tabel `mod_arsip_labul`
---
-ALTER TABLE `mod_arsip_labul`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_bangunan`
 --
 ALTER TABLE `mod_bangunan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_barang`
+--
+ALTER TABLE `mod_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_bidang_keahlian`
+--
+ALTER TABLE `mod_bidang_keahlian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_buku_induk`
 --
 ALTER TABLE `mod_buku_induk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `mod_desa`
---
-ALTER TABLE `mod_desa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_golongan`
@@ -1271,13 +1362,13 @@ ALTER TABLE `mod_golongan`
 -- AUTO_INCREMENT untuk tabel `mod_guru`
 --
 ALTER TABLE `mod_guru`
-  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_guru` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_inventaris`
 --
 ALTER TABLE `mod_inventaris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_jenjang`
@@ -1295,7 +1386,7 @@ ALTER TABLE `mod_kabupaten`
 -- AUTO_INCREMENT untuk tabel `mod_kebutuhan`
 --
 ALTER TABLE `mod_kebutuhan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_kecamatan`
@@ -1307,7 +1398,19 @@ ALTER TABLE `mod_kecamatan`
 -- AUTO_INCREMENT untuk tabel `mod_labul`
 --
 ALTER TABLE `mod_labul`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_log_invalid`
+--
+ALTER TABLE `mod_log_invalid`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_log_valid`
+--
+ALTER TABLE `mod_log_valid`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_mapel`
@@ -1319,7 +1422,13 @@ ALTER TABLE `mod_mapel`
 -- AUTO_INCREMENT untuk tabel `mod_mutasi`
 --
 ALTER TABLE `mod_mutasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_paket_keahlian`
+--
+ALTER TABLE `mod_paket_keahlian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_pegawai`
@@ -1331,7 +1440,13 @@ ALTER TABLE `mod_pegawai`
 -- AUTO_INCREMENT untuk tabel `mod_profil`
 --
 ALTER TABLE `mod_profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_program_keahlian`
+--
+ALTER TABLE `mod_program_keahlian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_sarana`
@@ -1343,7 +1458,7 @@ ALTER TABLE `mod_sarana`
 -- AUTO_INCREMENT untuk tabel `mod_sarpras`
 --
 ALTER TABLE `mod_sarpras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_sekolah`
@@ -1355,13 +1470,7 @@ ALTER TABLE `mod_sekolah`
 -- AUTO_INCREMENT untuk tabel `mod_siswa`
 --
 ALTER TABLE `mod_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
-
---
--- AUTO_INCREMENT untuk tabel `mod_suratmasuk`
---
-ALTER TABLE `mod_suratmasuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_ta`
@@ -1373,7 +1482,13 @@ ALTER TABLE `mod_ta`
 -- AUTO_INCREMENT untuk tabel `mod_user`
 --
 ALTER TABLE `mod_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `mod_valid_generate`
+--
+ALTER TABLE `mod_valid_generate`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,48 +40,46 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="card-body">
-                            <div class="card-list">
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <span class="text-muted">1. Pastikan Internet Anda Terkoneksi dengan baik.</span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
+                        <div class="card-list">
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">1. Pastikan Internet Anda Terkoneksi dengan baik.</span>
                                 </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <span class="text-muted">2. Gunakan Browser Google Chrome dan Mozilla Firefox terbaru.</span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">2. Gunakan Browser Google Chrome dan Mozilla Firefox terbaru.</span>
                                 </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <span class="text-muted">3. Seluruh data yang dibutuhkan sudah ter-input dengan benar.</span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">3. Seluruh data yang dibutuhkan sudah ter-input dengan benar.</span>
                                 </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <span class="text-muted">4. Jika masih ada data yang belum lengkap maka hasil export tidak akan sesuai dengan permintaan.</span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">4. Jika masih ada data yang belum lengkap maka hasil export tidak akan sesuai dengan permintaan.</span>
                                 </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <span class="text-muted">5. Jika data yang ter-generate tidak sesuai dengan inputan data maka <b>Contact Developer</b>.</span>
-                                    </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">5. Jika data yang ter-generate tidak sesuai dengan inputan data maka <b>Contact Developer</b>.</span>
                                 </div>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
