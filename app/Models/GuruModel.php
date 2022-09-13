@@ -11,12 +11,12 @@ class GuruModel extends Model
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'id_sekolah', 'nip', 'nik', 'nuptk', 'nrg', 'nama',
+        'id_sekolah', 'nip', 'nik', 'nuptk', 'nrg', 'nama', 'alamat',
         'tempat_lahir', 'tgl_lahir', 'jenis_kel', 'golruang',
         'tingkat', 'jurusan', 'thnijazah', 'agama', 'status', 'tmtguru',
         'tmtsekolah', 'thnsertifikasi', 'mapel', 'jumlah_jam', 'mk_thn', 'mk_bln',
         'tgs_tambah', 'sts_serti', 'mapel_serti', 'jabatan', 'no_sk', 'tgl_sk',
-        'nmdiklat', 'tdiklat', 'lmdiklat', 'thndiklat', 'kehadiran', 'foto', 'sts_vaksin',
+        'nmdiklat', 'tdiklat', 'lmdiklat', 'thndiklat', 'kehadiran', 'foto', 'nohp', 'email', 'sts_vaksin',
         'tgl_vaksin', 'lok_vaksin', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
 }

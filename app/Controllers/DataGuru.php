@@ -60,11 +60,11 @@ class DataGuru extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_guru.nip]',
+                    'rules' => 'required|numeric|max_length[18]|is_unique[mod_guru.nip]',
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -101,6 +101,13 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'Nama Guru tidak boleh kosong.',
                         'alpha_space' => 'Nama Guru harus huruf dan spasi.'
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|alpha_numeric_punct',
+                    'errors' => [
+                        'required' => 'Alamat tidak boleh kosong.',
+                        'alpha_numeric_punct' => 'Alamat berisi karakter yang tidak didukung.'
                     ]
                 ],
                 'tlahir' => [
@@ -201,6 +208,23 @@ class DataGuru extends BaseController
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 //     $validation = \Config\Services::validation();
                 //     return redirect()->to('/data-guru/add')->withInput()->with('validation', $validation);
@@ -221,6 +245,7 @@ class DataGuru extends BaseController
                 'nuptk'               => $this->request->getPost('nuptk'),
                 'nrg'                 => $this->request->getPost('nrg'),
                 'nama'                => $this->request->getPost('nmguru'),
+                'alamat'              => $this->request->getPost('alamat'),
                 'tempat_lahir'        => $this->request->getPost('tlahir'),
                 'tgl_lahir'           => $this->request->getPost('tgllhr'),
                 'jenis_kel'           => $this->request->getPost('jenkel'),
@@ -242,6 +267,8 @@ class DataGuru extends BaseController
                 'thndiklat'           => $this->request->getPost('thndiklat'),
                 'kehadiran'           => $this->request->getPost('kehadiran'),
                 'foto'                => $fileName,
+                'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'tgl_vaksin'          => $this->request->getPost('tglvaksin'),
                 'lok_vaksin'          => $this->request->getPost('lokvaksin'),
@@ -258,11 +285,11 @@ class DataGuru extends BaseController
             //Validasi input
             if (!$this->validate([
                 'nip' => [
-                    'rules' => 'required|numeric|max_length[16]|is_unique[mod_guru.nip]',
+                    'rules' => 'required|numeric|max_length[18]|is_unique[mod_guru.nip]',
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -299,6 +326,13 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'Nama Guru tidak boleh kosong.',
                         'alpha_space' => 'Nama Guru harus huruf dan spasi.'
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|alpha_numeric_punct',
+                    'errors' => [
+                        'required' => 'Alamat tidak boleh kosong.',
+                        'alpha_numeric_punct' => 'Alamat berisi karakter yang tidak didukung.'
                     ]
                 ],
                 'tlahir' => [
@@ -434,6 +468,23 @@ class DataGuru extends BaseController
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 //     $validation = \Config\Services::validation();
                 //     return redirect()->to('/data-guru/add')->withInput()->with('validation', $validation);
@@ -454,6 +505,7 @@ class DataGuru extends BaseController
                 'nuptk'               => $this->request->getPost('nuptk'),
                 'nrg'                 => $this->request->getPost('nrg'),
                 'nama'                => $this->request->getPost('nmguru'),
+                'alamat'              => $this->request->getPost('alamat'),
                 'tempat_lahir'        => $this->request->getPost('tlahir'),
                 'tgl_lahir'           => $this->request->getPost('tgllhr'),
                 'jenis_kel'           => $this->request->getPost('jenkel'),
@@ -483,6 +535,8 @@ class DataGuru extends BaseController
                 'tgl_sk'              => $this->request->getPost('tglsk'),
                 'kehadiran'           => $this->request->getPost('kehadiran'),
                 'foto'                => $fileName,
+                'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'tgl_vaksin'          => $this->request->getPost('tglvaksin'),
                 'lok_vaksin'          => $this->request->getPost('lokvaksin'),
@@ -532,9 +586,9 @@ class DataGuru extends BaseController
         if (session()->get('level') == '1') {
             $nipLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
+                $rule_nip = 'required|numeric|max_length[18]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_guru.nip]';
+                $rule_nip = 'required|numeric|max_length[18]|is_unique[mod_guru.nip]';
             }
             $nikLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -561,7 +615,7 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -598,6 +652,13 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'Nama Guru tidak boleh kosong.',
                         'alpha_space' => 'Nama Guru harus huruf dan spasi.'
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|alpha_numeric_punct',
+                    'errors' => [
+                        'required' => 'Alamat tidak boleh kosong.',
+                        'alpha_numeric_punct' => 'Alamat berisi karakter yang tidak didukung.'
                     ]
                 ],
                 'tlahir' => [
@@ -698,6 +759,23 @@ class DataGuru extends BaseController
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 //     return redirect()->to('/data-guru/add')->withInput()->with('validation', $validation);
                 return redirect()->to(base_url('/data-guru/edit/' . $this->request->getPost('id')))->withInput();
@@ -725,6 +803,7 @@ class DataGuru extends BaseController
                 'nuptk'               => $this->request->getPost('nuptk'),
                 'nrg'                 => $this->request->getPost('nrg'),
                 'nama'                => $this->request->getPost('nmguru'),
+                'alamat'              => $this->request->getPost('alamat'),
                 'tempat_lahir'        => $this->request->getPost('tlahir'),
                 'tgl_lahir'           => $this->request->getPost('tgllhr'),
                 'jenis_kel'           => $this->request->getPost('jenkel'),
@@ -752,6 +831,8 @@ class DataGuru extends BaseController
                 'tgl_sk'              => $this->request->getPost('tglsk'),
                 'kehadiran'           => $this->request->getPost('kehadiran'),
                 'foto'                => $fileName,
+                'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'tgl_vaksin'          => $this->request->getPost('tglvaksin'),
                 'lok_vaksin'          => $this->request->getPost('lokvaksin'),
@@ -767,9 +848,9 @@ class DataGuru extends BaseController
         } elseif (session()->get('level') == '2') {
             $nipLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nipLama['nip'] == $this->request->getPost('nip')) {
-                $rule_nip = 'required|numeric|max_length[16]|min_length[16]';
+                $rule_nip = 'required|numeric|max_length[18]';
             } else {
-                $rule_nip = 'required|numeric|max_length[16]|is_unique[mod_guru.nip]';
+                $rule_nip = 'required|numeric|max_length[18]|is_unique[mod_guru.nip]';
             }
             $nikLama = $this->guruModel->where(['id_guru' => $id])->first();
             if ($nikLama['nik'] == $this->request->getPost('nik')) {
@@ -796,7 +877,7 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                         'numeric' => 'NIP harus angka.',
-                        'max_length' => 'NIP maximal 16 digit.',
+                        'max_length' => 'NIP maximal 18 digit.',
                         'is_unique' => 'NIP sudah ada.'
                     ]
                 ],
@@ -833,6 +914,13 @@ class DataGuru extends BaseController
                     'errors' => [
                         'required' => 'Nama Guru tidak boleh kosong.',
                         'alpha_space' => 'Nama Guru harus huruf dan spasi.'
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|alpha_numeric_punct',
+                    'errors' => [
+                        'required' => 'Alamat tidak boleh kosong.',
+                        'alpha_numeric_punct' => 'Alamat berisi karakter yang tidak didukung.'
                     ]
                 ],
                 'tlahir' => [
@@ -968,6 +1056,23 @@ class DataGuru extends BaseController
                         'max_size' => 'Ukuran gambar maksimal 200kb.'
                     ]
                 ],
+                'email' => [
+                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'errors' => [
+                        'required' => 'Email tidak boleh kosong.',
+                        'valid_email' => 'Email tidak valid.',
+                        'is_unique' => 'Email sudah terdaftar.',
+                    ]
+                ],
+                'nohp' => [
+                    'rules' => 'required|numeric|max_length[12]|min_length[11]',
+                    'errors' => [
+                        'required' => 'Nomor Handphone tidak boleh kosong.',
+                        'numeric' => 'Nomor Handphone harus angka.',
+                        'max_length' => 'Nomor Handphone maximal 12 digit.',
+                        'min_length' => 'Nomor Handphone minimal 11 digit.',
+                    ]
+                ]
             ])) {
                 //     return redirect()->to('/data-guru/add')->withInput()->with('validation', $validation);
                 return redirect()->to(base_url('/data-guru/edit/' . $this->request->getPost('id')))->withInput();
@@ -995,6 +1100,7 @@ class DataGuru extends BaseController
                 'nuptk'               => $this->request->getPost('nuptk'),
                 'nrg'                 => $this->request->getPost('nrg'),
                 'nama'                => $this->request->getPost('nmguru'),
+                'alamat'              => $this->request->getPost('alamat'),
                 'tempat_lahir'        => $this->request->getPost('tlahir'),
                 'tgl_lahir'           => $this->request->getPost('tgllhr'),
                 'jenis_kel'           => $this->request->getPost('jenkel'),
@@ -1024,6 +1130,8 @@ class DataGuru extends BaseController
                 'tgl_sk'              => $this->request->getPost('tglsk'),
                 'kehadiran'           => $this->request->getPost('kehadiran'),
                 'foto'                => $fileName,
+                'nohp'                => $this->request->getPost('nohp'),
+                'email'               => $this->request->getPost('email'),
                 'sts_vaksin'          => $this->request->getPost('stsvaksin'),
                 'tgl_vaksin'          => $this->request->getPost('tglvaksin'),
                 'lok_vaksin'          => $this->request->getPost('lokvaksin'),

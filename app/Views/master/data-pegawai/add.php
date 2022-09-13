@@ -207,7 +207,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group <?= ($validation->hasError('status')) ? 'has-error' : ''; ?>">
-                                                    <label>Status<span class="text-danger">*</span></label>
+                                                    <label>Status Kepegawaian<span class="text-danger">*</span></label>
                                                     <select name="status" class="form-control">
                                                         <option selected disabled><?= (old('status')) ? old('status') : ".::Pilih Status::." ?></option>
                                                         <option value="PNS">PNS</option>

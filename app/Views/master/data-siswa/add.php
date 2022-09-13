@@ -157,7 +157,6 @@
                                                         <?= $validation->getError('agama'); ?></small>
                                                 </div>
                                             </div>
-
                                             <div class="col-md-2 pr-0">
                                                 <div class="form-group  <?= ($validation->hasError('umur')) ? 'has-error' : ''; ?>">
                                                     <label>Umur<span class="text-danger">*</span></label>
