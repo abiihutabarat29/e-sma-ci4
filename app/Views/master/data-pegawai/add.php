@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <ul class="nav nav-pills nav-primary" id="pills-tab" role="tablist">
                             <li class="nav-item submenu">
-                                <a class="nav-link active show" id="pills-panduan-tab" data-toggle="pill" href="#pills-panduan" role="tab" aria-controls="pills-panduan" aria-selected="false">Panduan Penginputan</a>
+                                <a class="nav-link active" id="pills-panduan-tab" data-toggle="pill" href="#pills-panduan" role="tab" aria-controls="pills-panduan" aria-selected="false">Panduan Penginputan</a>
                             </li>
                             <li class="nav-item submenu">
                                 <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Identitas</a>
@@ -52,7 +52,7 @@
                         <form action="<?= base_url('data-pegawai/save') ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <div class="tab-content mt-2 mb-3" id="pills-tabContent">
-                                <div class="tab-pane fade active show" id="pills-panduan" role="tabpanel" aria-labelledby="pills-panduan-tab">
+                                <div class="tab-pane fade show active" id="pills-panduan" role="tabpanel" aria-labelledby="pills-panduan-tab">
                                     <div class="card-header">
                                         <div class="d-flex align-items-center">
                                             <h4 class="card-title">Mohon Baca Terlebih Dahulu</h4>
@@ -258,20 +258,20 @@
                                                         <?= $validation->getError('tmtpegawai'); ?></small>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 pr-0">
+                                                <div class="form-group <?= ($validation->hasError('kehadiran')) ? 'has-error' : ''; ?>">
+                                                    <label>Kehadiran</label>
+                                                    <input type="text" name="kehadiran" class="form-control" autocomplete="off" placeholder="% Kehadiran" value="<?= old('kehadiran'); ?>">
+                                                    <small class="form-text text-danger">
+                                                        <?= $validation->getError('kehadiran'); ?></small>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-group <?= ($validation->hasError('tmtsekolah')) ? 'has-error' : ''; ?>">
                                                     <label>TMT Sekolah<span class="text-danger">*</span></label>
                                                     <input type="date" name="tmtsekolah" class="form-control" autocomplete="off" value="<?= old('tmtsekolah'); ?>">
                                                     <small class="form-text text-danger">
                                                         <?= $validation->getError('tmtsekolah'); ?></small>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group <?= ($validation->hasError('kehadiran')) ? 'has-error' : ''; ?>">
-                                                    <label>Kehadiran</label>
-                                                    <input type="text" name="kehadiran" class="form-control" autocomplete="off" placeholder="% Kehadiran" value="<?= old('kehadiran'); ?>">
-                                                    <small class="form-text text-danger">
-                                                        <?= $validation->getError('kehadiran'); ?></small>
                                                 </div>
                                             </div>
                                             <?php if (session()->get('level') == '2') { ?>
@@ -324,7 +324,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="pills-vaksin" role="tabpanel" aria-labelledby="pills-vaksin-tab">
                                     <div class="card-body">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 pr-0">
                                             <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
                                                 <label>Status Vaksin<span class="text-danger">*</span></label>
                                                 <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">

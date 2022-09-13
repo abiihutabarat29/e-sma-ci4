@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <ul class="nav nav-pills nav-primary" id="pills-tab" role="tablist">
                                 <li class="nav-item submenu">
-                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Identitas</a>
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Identitas</a>
                                 </li>
                                 <li class="nav-item submenu">
                                     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pendidikan & Pekerjaan</a>
@@ -51,7 +51,7 @@
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="id" value="<?= $data['id']; ?>">
                                 <div class="tab-content mt-2 mb-3" id="pills-tabContent">
-                                    <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-6 pr-0">
@@ -206,20 +206,20 @@
                                                             <?= $validation->getError('tmtpegawai'); ?></small>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 pr-0">
+                                                    <div class="form-group <?= ($validation->hasError('kehadiran')) ? 'has-error' : ''; ?>">
+                                                        <label>Kehadiran</label>
+                                                        <input type="text" name="kehadiran" class="form-control" autocomplete="off" placeholder="% Kehadiran" value="<?= (old('kehadiran')) ? old('kehadiran') : $data['kehadiran']; ?>">
+                                                        <small class="form-text text-danger">
+                                                            <?= $validation->getError('kehadiran'); ?></small>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group <?= ($validation->hasError('tmtsekolah')) ? 'has-error' : ''; ?>">
                                                         <label>TMT Sekolah<span class="text-danger">*</span></label>
                                                         <input type="date" name="tmtsekolah" class="form-control" autocomplete="off" value="<?= (old('tmtsekolah')) ? old('tmtsekolah') : $data['tmtsekolah']; ?>">
                                                         <small class="form-text text-danger">
                                                             <?= $validation->getError('tmtsekolah'); ?></small>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group <?= ($validation->hasError('kehadiran')) ? 'has-error' : ''; ?>">
-                                                        <label>Kehadiran</label>
-                                                        <input type="text" name="kehadiran" class="form-control" autocomplete="off" placeholder="% Kehadiran" value="<?= (old('kehadiran')) ? old('kehadiran') : $data['kehadiran']; ?>">
-                                                        <small class="form-text text-danger">
-                                                            <?= $validation->getError('kehadiran'); ?></small>
                                                     </div>
                                                 </div>
                                                 <?php if (session()->get('level') == '2') { ?>
@@ -271,7 +271,7 @@
                                     </div>
                                     <div class="tab-pane fade" id="pills-vaksin" role="tabpanel" aria-labelledby="pills-vaksin-tab">
                                         <div class="card-body">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 pr-0">
                                                 <div class="form-group <?= ($validation->hasError('stsvaksin')) ? 'has-error' : ''; ?>">
                                                     <label>Status Vaksin<span class="text-danger">*</span></label>
                                                     <select name="stsvaksin" class="form-control" onchange=" if (this.selectedIndex==2 || this.selectedIndex==3){ document.getElementById('view').style.display='inline' }else { document.getElementById('view').style.display='none' };">
@@ -308,8 +308,8 @@
                                                         <img src="<?= base_url('media/fotopegawai/' . $data['foto']); ?>" width="200px" class="img-thumbnail rounded img-preview">
                                                     </div>
                                                     <div class="col-md-10">
+                                                        <label>Pilih Foto</label>
                                                         <div class="form-group form-group-default <?= ($validation->hasError('foto')) ? 'has-error' : ''; ?>">
-                                                            <label>Pilih Foto</label>
                                                             <input type="file" name="foto" class="form-control-file" id="foto" onchange="previewImg();" accept=".png, .jpg, .jpeg">
                                                             <small class="form-text text-danger">
                                                                 <?= $validation->getError('foto'); ?></small>
