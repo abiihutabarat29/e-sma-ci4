@@ -65,7 +65,7 @@
                                         <div class="card-list">
                                             <div class="item-list">
                                                 <div class="info-user ml-3">
-                                                    <span class="text-muted">1. Isilah data pegawai dengan benar.</span>
+                                                    <span class="text-muted">1. Isilah data guru dengan benar.</span>
                                                 </div>
                                                 <button class="btn btn-icon btn-success btn-round btn-xs">
                                                     <i class="fa fa-check"></i>
