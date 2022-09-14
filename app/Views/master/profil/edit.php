@@ -319,7 +319,7 @@
                                         </div>
                                     </div>
                                     <div class="card-action">
-                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Simpan</button>
+                                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-save"></i> Update</button>
                                         <a href="<?= base_url('/profil-sekolah') ?>" class="btn btn-default  btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                                     </div>
                                 </div>
