@@ -37,8 +37,9 @@
                                 <a class="nav-link" id="pills-kelas-tab" data-toggle="pill" href="#pills-kelas" role="tab" aria-controls="pills-kelas" aria-selected="false">Kelas / Rombel</a>
                             </li>
                         </ul>
-                        <form action="<?= base_url('profil-sekolah/bangunan/save') ?>" method="post">
+                        <form action="<?= base_url('profil-sekolah/bangunan/update/' . $data['id']); ?>" method="post">
                             <?= csrf_field(); ?>
+                            <input type="hidden" name="id" value="<?= $data['id']; ?>">
                             <div class="tab-content mt-2 mb-3" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-keadaan" role="tabpanel" aria-labelledby="pills-keadaan-tab">
                                     <div class="card-body">

@@ -194,7 +194,7 @@ class Generate extends BaseController
                                     // ==============================================================================================
                                     // Export Data Keadaan Siswa dan Agama
                                     //Fetc Rombel X,XI,XII
-                                    $rombel = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->first();
+                                    $rombel = $this->bangunanModel->where('npsn =', $npsn)->first();
                                     $xmipa = $rombel['jkelasx_mipa'];
                                     $xiis = $rombel['jkelasx_iis'];
                                     $xbhs = $rombel['jkelasx_bhs'];
@@ -204,130 +204,282 @@ class Generate extends BaseController
                                     $xiimipa = $rombel['jkelasxii_mipa'];
                                     $xiiiis = $rombel['jkelasxii_iis'];
                                     $xiibhs = $rombel['jkelasxii_bhs'];
-                                    $rombelx = $xmipa + $xiis + $xbhs;
-                                    $rombelxi = $ximipa + $xiiis + $xibhs;
-                                    $rombelxii = $xiimipa + $xiiiis + $xiibhs;
                                     //Laki-laki-X-IPA
-                                    $lxipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+                                    $lxipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
                                     //Laki-laki-XI-IPA
-                                    $lxiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+                                    $lxiipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
                                     //Laki-laki-XII-IPA
-                                    $lxiiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+                                    $lxiiipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-X-IPS
+                                    $lxips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-XI-IPS
+                                    $lxiips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-XII-IPS
+                                    $lxiiips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-X-Bhs
+                                    $lxbhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-XI-Bhs
+                                    $lxibhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('jenis_kel', 'L')->countAllResults();
+                                    //Laki-laki-XII-Bhs
+                                    $lxiibhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('jenis_kel', 'L')->countAllResults();
                                     //Perempuan-X-IPA
-                                    $pxipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+                                    $pxipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
                                     //Perempuan-XI-IPA
-                                    $pxiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+                                    $pxiipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
                                     //Perempuan-XII-IPA
-                                    $pxiiipa = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+                                    $pxiiipa = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-X-IPA
+                                    $pxips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-XI-IPS
+                                    $pxiips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-XII-IPS
+                                    $pxiiips = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-X-Bhs
+                                    $pxbhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-XI-Bhs
+                                    $pxibhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('jenis_kel', 'P')->countAllResults();
+                                    //Perempuan-XII-Bhs
+                                    $pxiibhs = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('jenis_kel', 'P')->countAllResults();
                                     //X-IPA-Islam
-                                    $xipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    $xipai = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    //X-IPS-Islam
+                                    $xipsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('agama', 'Islam')->countAllResults();
+                                    //X-Bhs-Islam
+                                    $xbhsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('agama', 'Islam')->countAllResults();
                                     //X-IPA-Kristen Protestan
-                                    $xipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    $xipakp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //X-IPS-Kristen Protestan
+                                    $xipskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //X-Bhs-Kristen Protestan
+                                    $xbhskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('agama', 'Kristen Protestan')->countAllResults();
                                     //X-IPA-Kristen Katholik
-                                    $xipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    $xipakk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //X-IPS-Kristen Katholik
+                                    $xipskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //X-Bhs-Kristen Katholik
+                                    $xbhskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bhs')->where('agama', 'Kristen Katholik')->countAllResults();
                                     //X-IPA-Kristen Hindu
-                                    $xipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
-                                    //X-IPA-Kristen Budha
-                                    $xipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    $xipah = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+                                    //X-IPS-Hindu
+                                    $xipsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('agama', 'Hindu')->countAllResults();
+                                    //X-Bahasa-Hindu
+                                    $xbhsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('agama', 'Hindu')->countAllResults();
+                                    //X-IPA-Budha
+                                    $xipab = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    //X-IPS-Budha
+                                    $xipsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'IPS')->where('agama', 'Budha')->countAllResults();
+                                    //X-Bhs-Budha
+                                    $xbhsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'X')->where('jurusan', 'Bahasa')->where('agama', 'Budha')->countAllResults();
                                     //XI-IPA-Islam
-                                    $xiipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    $xiipai = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    //XI-IPS-Islam
+                                    $xiipsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('agama', 'Islam')->countAllResults();
+                                    //XI-Bhs-Islam
+                                    $xibhsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('agama', 'Islam')->countAllResults();
                                     //XI-IPA-Kristen Protestan
-                                    $xiipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    $xiipakp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //XI-IPS-Kristen Protestan
+                                    $xiipskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //XI-Bhs-Kristen Protestan
+                                    $xibhskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('agama', 'Kristen Protestan')->countAllResults();
                                     //XI-IPA-Kristen Katholik
-                                    $xiipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
-                                    //XI-IPA-Kristen Hindu
-                                    $xiipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
-                                    //XI-IPA-Kristen Budha
-                                    $xiipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    $xiipakk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XI-IPS-Kristen Katholik
+                                    $xiipskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XI-Bhs-Kristen Katholik
+                                    $xibhskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XI-IPA-Hindu
+                                    $xiipah = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+                                    //XI-IPS-Hindu
+                                    $xiipsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('agama', 'Hindu')->countAllResults();
+                                    //XI-Bhs-Hindu
+                                    $xibhsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('agama', 'Hindu')->countAllResults();
+                                    //XI-IPA-Budha
+                                    $xiipab = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    //XI-IPS-Budha
+                                    $xiipsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'IPS')->where('agama', 'Budha')->countAllResults();
+                                    //XI-Bhs-Budha
+                                    $xibhsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XI')->where('jurusan', 'Bahasa')->where('agama', 'Budha')->countAllResults();
                                     //XII-IPA-Islam
-                                    $xiiipai = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    $xiiipai = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Islam')->countAllResults();
+                                    //XII-IPS-Islam
+                                    $xiiipsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('agama', 'Islam')->countAllResults();
+                                    //XII-Bhs-Islam
+                                    $xiibhsi = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('agama', 'Islam')->countAllResults();
                                     //XII-IPA-Kristen Protestan
-                                    $xiiipakp = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    $xiiipakp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //XII-IPS-Kristen Protestan
+                                    $xiiipskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('agama', 'Kristen Protestan')->countAllResults();
+                                    //XII-Bhs-Kristen Protestan
+                                    $xiibhskp = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('agama', 'Kristen Protestan')->countAllResults();
                                     //XII-IPA-Kristen Katholik
-                                    $xiiipakk = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
-                                    //XII-IPA-Kristen Hindu
-                                    $xiiipah = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
-                                    //XII-IPA-Kristen Budha
-                                    $xiiipab = $this->siswaModel->join('mod_bangunan', 'mod_bangunan.id_sekolah = mod_siswa.id_sekolah', 'left')->where('mod_siswa.npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    $xiiipakk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XII-IPS-Kristen Katholik
+                                    $xiiipskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XII-Bhs-Kristen Katholik
+                                    $xiibhskk = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('agama', 'Kristen Katholik')->countAllResults();
+                                    //XII-IPA-Hindu
+                                    $xiiipah = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Hindu')->countAllResults();
+                                    //XII-IPS-Hindu
+                                    $xiiipsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('agama', 'Hindu')->countAllResults();
+                                    //XII-Bhs-Hindu
+                                    $xiibhsh = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('agama', 'Hindu')->countAllResults();
+                                    //XII-IPA-Budha
+                                    $xiiipab = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPA')->where('agama', 'Budha')->countAllResults();
+                                    //XII-IPS-Budha
+                                    $xiiipsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'IPS')->where('agama', 'Budha')->countAllResults();
+                                    //XII-Bhs-Budha
+                                    $xiibhsb = $this->siswaModel->where('npsn =', $npsn)->where('kelas', 'XII')->where('jurusan', 'Bahasa')->where('agama', 'Budha')->countAllResults();
                                     //==============================================
                                     $sheet->setCellValue('F1', 'B. Data Keadaan Siswa dan Bangunan');
                                     $sheet->setCellValue('F2', 'No');
                                     $sheet->setCellValue('F4', '1.');
                                     $sheet->setCellValue('F5', '2.');
                                     $sheet->setCellValue('F6', '3.');
-                                    $sheet->setCellValue('F7', 'JUMLAH');
+                                    $sheet->setCellValue('F7', '4.');
+                                    $sheet->setCellValue('F8', '5.');
+                                    $sheet->setCellValue('F9', '6.');
+                                    $sheet->setCellValue('F10', '7.');
+                                    $sheet->setCellValue('F11', '8.');
+                                    $sheet->setCellValue('F12', '9.');
+                                    $sheet->setCellValue('F13', 'JUMLAH');
                                     $sheet->setCellValue('G2', 'Kelas/Program');
                                     $sheet->setCellValue('G4', 'X-IPA');
                                     $sheet->setCellValue('G5', 'XI-IPA');
                                     $sheet->setCellValue('G6', 'XII-IPA');
+                                    $sheet->setCellValue('G7', 'X-IPS');
+                                    $sheet->setCellValue('G8', 'XI-IPS');
+                                    $sheet->setCellValue('G9', 'XII-IPS');
+                                    $sheet->setCellValue('G10', 'X-Bahasa');
+                                    $sheet->setCellValue('G11', 'XI-Bahasa');
+                                    $sheet->setCellValue('G12', 'XII-Bahasa');
                                     $sheet->setCellValue('H2', 'SISWA');
                                     $sheet->setCellValue('H3', 'L');
                                     $sheet->setCellValue('H4', $lxipa);
                                     $sheet->setCellValue('H5', $lxiipa);
                                     $sheet->setCellValue('H6', $lxiiipa);
-                                    $sheet->setCellValue('H7', '=SUM(H4:H6)');
+                                    $sheet->setCellValue('H7', $lxips);
+                                    $sheet->setCellValue('H8', $lxiips);
+                                    $sheet->setCellValue('H9', $lxiiips);
+                                    $sheet->setCellValue('H10', $lxbhs);
+                                    $sheet->setCellValue('H11', $lxibhs);
+                                    $sheet->setCellValue('H12', $lxiibhs);
+                                    $sheet->setCellValue('H13', '=SUM(H4:H12)');
                                     $sheet->setCellValue('I3', 'P');
                                     $sheet->setCellValue('I4', $pxipa);
                                     $sheet->setCellValue('I5', $pxiipa);
                                     $sheet->setCellValue('I6', $pxiiipa);
-                                    $sheet->setCellValue('I7', '=SUM(I4:I6)');
+                                    $sheet->setCellValue('I7', $pxips);
+                                    $sheet->setCellValue('I8', $pxiips);
+                                    $sheet->setCellValue('I9', $pxiiips);
+                                    $sheet->setCellValue('I10', $pxbhs);
+                                    $sheet->setCellValue('I11', $pxibhs);
+                                    $sheet->setCellValue('I12', $pxiibhs);
+                                    $sheet->setCellValue('I13', '=SUM(I4:I6)');
                                     $sheet->setCellValue('J2', 'Jumlah Siswa');
                                     $sheet->setCellValue('J4', '=H4+I4');
                                     $sheet->setCellValue('J5', '=H5+I5');
                                     $sheet->setCellValue('J6', '=H6+I6');
-                                    $sheet->setCellValue('J7', '=SUM(J4:J6)');
+                                    $sheet->setCellValue('J7', '=H7+I7');
+                                    $sheet->setCellValue('J8', '=H8+I8');
+                                    $sheet->setCellValue('J9', '=H9+I9');
+                                    $sheet->setCellValue('J10', '=H10+I10');
+                                    $sheet->setCellValue('J11', '=H11+I11');
+                                    $sheet->setCellValue('J12', '=H12+I12');
+                                    $sheet->setCellValue('J13', '=SUM(J4:J12)');
                                     $sheet->setCellValue('K2', 'Jumlah Kelas (Rombel)');
-                                    $sheet->setCellValue('K4', $rombelx);
-                                    $sheet->setCellValue('K5', $rombelxi);
-                                    $sheet->setCellValue('K6', $rombelxii);
-                                    $sheet->setCellValue('K7', '=SUM(K4:K6)');
+                                    $sheet->setCellValue('K4', $xmipa);
+                                    $sheet->setCellValue('K5', $xiis);
+                                    $sheet->setCellValue('K6', $xbhs);
+                                    $sheet->setCellValue('K7', $ximipa);
+                                    $sheet->setCellValue('K8', $xiiis);
+                                    $sheet->setCellValue('K9', $xibhs);
+                                    $sheet->setCellValue('K10', $xiimipa);
+                                    $sheet->setCellValue('K11', $xiiiis);
+                                    $sheet->setCellValue('K12', $xiibhs);
+                                    $sheet->setCellValue('K13', '=SUM(K4:K12)');
                                     $sheet->setCellValue('L2', 'Agama');
                                     $sheet->setCellValue('L3', 'Islam');
                                     $sheet->setCellValue('L4', $xipai);
                                     $sheet->setCellValue('L5', $xiipai);
                                     $sheet->setCellValue('L6', $xiiipai);
-                                    $sheet->setCellValue('L7', '=SUM(L4:L6)');
+                                    $sheet->setCellValue('L7', $xipsi);
+                                    $sheet->setCellValue('L8', $xiipsi);
+                                    $sheet->setCellValue('L9', $xiiipsi);
+                                    $sheet->setCellValue('L10', $xbhsi);
+                                    $sheet->setCellValue('L11', $xibhsi);
+                                    $sheet->setCellValue('L12', $xiibhsi);
+                                    $sheet->setCellValue('L13', '=SUM(L4:L12)');
                                     $sheet->setCellValue('M3', 'Kristen Protestan');
                                     $sheet->setCellValue('M4', $xipakp);
                                     $sheet->setCellValue('M5', $xiipakp);
-                                    $sheet->setCellValue('M6', $xiipakp);
-                                    $sheet->setCellValue('M7', '=SUM(M4:M6)');
+                                    $sheet->setCellValue('M6', $xiiipakp);
+                                    $sheet->setCellValue('M7', $xipskp);
+                                    $sheet->setCellValue('M8', $xiipskp);
+                                    $sheet->setCellValue('M9', $xiiipskp);
+                                    $sheet->setCellValue('M10', $xbhskp);
+                                    $sheet->setCellValue('M11', $xiibhskp);
+                                    $sheet->setCellValue('M12', $xiibhskp);
+                                    $sheet->setCellValue('M13', '=SUM(M4:M12)');
                                     $sheet->setCellValue('N3', 'Kristen Katholik');
                                     $sheet->setCellValue('N4', $xipakk);
                                     $sheet->setCellValue('N5', $xiipakk);
                                     $sheet->setCellValue('N6', $xiiipakk);
-                                    $sheet->setCellValue('N7', '=SUM(N4:N6)');
+                                    $sheet->setCellValue('N7', $xipskk);
+                                    $sheet->setCellValue('N8', $xiipskk);
+                                    $sheet->setCellValue('N9', $xiiipskk);
+                                    $sheet->setCellValue('N10', $xbhskk);
+                                    $sheet->setCellValue('N11', $xibhskk);
+                                    $sheet->setCellValue('N12', $xiibhskk);
+                                    $sheet->setCellValue('N13', '=SUM(N4:N12)');
                                     $sheet->setCellValue('O3', 'Hindu');
                                     $sheet->setCellValue('O4', $xipah);
                                     $sheet->setCellValue('O5', $xiipah);
                                     $sheet->setCellValue('O6', $xiiipah);
-                                    $sheet->setCellValue('O7', '=SUM(O4:O6)');
+                                    $sheet->setCellValue('O7', $xipsh);
+                                    $sheet->setCellValue('O8', $xiipsh);
+                                    $sheet->setCellValue('O9', $xiiipsh);
+                                    $sheet->setCellValue('O10', $xbhsh);
+                                    $sheet->setCellValue('O11', $xibhsh);
+                                    $sheet->setCellValue('O12', $xiibhsh);
+                                    $sheet->setCellValue('O13', '=SUM(O4:O12)');
                                     $sheet->setCellValue('P3', 'Budha');
                                     $sheet->setCellValue('P4', $xipab);
                                     $sheet->setCellValue('P5', $xiipab);
                                     $sheet->setCellValue('P6', $xiiipab);
-                                    $sheet->setCellValue('P7', '=SUM(P4:P6)');
+                                    $sheet->setCellValue('P7', $xipsb);
+                                    $sheet->setCellValue('P8', $xiipsb);
+                                    $sheet->setCellValue('P9', $xiiipsb);
+                                    $sheet->setCellValue('P10', $xbhsb);
+                                    $sheet->setCellValue('P11', $xibhsb);
+                                    $sheet->setCellValue('P12', $xiibhsb);
+                                    $sheet->setCellValue('P13', '=SUM(P4:P12)');
                                     $sheet->setCellValue('Q3', 'Jumlah');
                                     $sheet->setCellValue('Q4', '=SUM(L4:P4)');
                                     $sheet->setCellValue('Q5', '=SUM(L5:P5)');
                                     $sheet->setCellValue('Q6', '=SUM(L6:P6)');
-                                    $sheet->setCellValue('Q7', '=SUM(Q4:Q6)');
+                                    $sheet->setCellValue('Q7', '=SUM(L7:L7)');
+                                    $sheet->setCellValue('Q8', '=SUM(L8:L8)');
+                                    $sheet->setCellValue('Q9', '=SUM(L9:L9)');
+                                    $sheet->setCellValue('Q10', '=SUM(L10:L10)');
+                                    $sheet->setCellValue('Q11', '=SUM(L11:L11)');
+                                    $sheet->setCellValue('Q12', '=SUM(L12:L12)');
+                                    $sheet->setCellValue('Q13', '=SUM(Q4:Q12)');
                                     //Marge left
                                     $sheet->mergeCells('F1:Q1');
-                                    $sheet->mergeCells('F7:G7');
-                                    $sheet->mergeCells('H2:I2');
+                                    $sheet->mergeCells('F13:G13');
                                     $sheet->mergeCells('H2:I2');
                                     $sheet->mergeCells('L2:Q2');
                                     //Marge down
-                                    $sheet->mergeCells('G2:G3');
                                     $sheet->mergeCells('F2:F3');
+                                    $sheet->mergeCells('G2:G3');
                                     $sheet->mergeCells('J2:J3');
                                     $sheet->mergeCells('K2:K3');
                                     //=========================
                                     $sheet->getStyle('F1')->getFont()->setBold(true);
-                                    $sheet->getStyle('F2:Q7')->applyFromArray($styleColumnCenter);
-                                    $sheet->getStyle('F2:Q7')->applyFromArray($styleBorder);
-                                    $sheet->getStyle('G4:G6')->applyFromArray($styleNumberLeft);
+                                    $sheet->getStyle('F2:Q13')->applyFromArray($styleColumnCenter);
+                                    $sheet->getStyle('F2:Q13')->applyFromArray($styleBorder);
+                                    $sheet->getStyle('G4:G12')->applyFromArray($styleNumberLeft);
                                     $sheet->getColumnDimension('F')->setAutoSize(true);
                                     $sheet->getColumnDimension('G')->setAutoSize(true);
                                     $sheet->getColumnDimension('H')->setWidth(25, 'pt');
@@ -1109,7 +1261,7 @@ class Generate extends BaseController
                                     $sheet->setCellValue('Q' . ($row + 2), "$p[kecamatan], " . format_indo(date('Y-m-d')));
                                     $sheet->setCellValue('Q' . ($row + 3), "Kepala $p[nama_sekolah]");
                                     $sheet->setCellValue('Q' . ($row + 6),  $p['nama_kepsek']);
-                                    $sheet->setCellValue('Q' . ($row + 7), 'NIP -');
+                                    $sheet->setCellValue('Q' . ($row + 7), "NIP $p[nip]");
                                     //Style
                                     $sheet->getStyle('Q' . ($row + 6))->getFont()->setBold(true);
                                     $sheet->getStyle('Q' . ($row + 6))->getFont()->setUnderline(true);
@@ -1218,7 +1370,7 @@ class Generate extends BaseController
                                     $sheet->setCellValue('L' . ($row + 2), "$p[kecamatan], " . format_indo(date('Y-m-d')));
                                     $sheet->setCellValue('L' . ($row + 3), "Kepala $p[nama_sekolah]");
                                     $sheet->setCellValue('L' . ($row + 6),  $p['nama_kepsek']);
-                                    $sheet->setCellValue('L' . ($row + 7), 'NIP -');
+                                    $sheet->setCellValue('L' . ($row + 7), "NIP $p[nip]");
                                     //Style
                                     $sheet->getStyle('L' . ($row + 6))->getFont()->setBold(true);
                                     $sheet->getStyle('L' . ($row + 6))->getFont()->setUnderline(true);
