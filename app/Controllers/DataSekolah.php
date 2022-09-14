@@ -75,10 +75,9 @@ class DataSekolah extends BaseController
                 ]
             ],
             'sekolah' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama Sekolah tidak boleh kosong.',
-                    'alpha_space' => 'Nama Sekolah harus huruf dan spasi.'
                 ]
             ],
             'kabupaten' => [
@@ -156,10 +155,9 @@ class DataSekolah extends BaseController
                 ]
             ],
             'sekolah' => [
-                'rules' => 'required|alpha_space',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama Sekolah tidak boleh kosong.',
-                    'alpha_space' => 'Nama Sekolah harus huruf dan spasi.'
                 ]
             ],
             'kabupaten' => [

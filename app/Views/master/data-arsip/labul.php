@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="card-header">
-                    <form action="<?= base_url('laporan-bulanan/filter') ?>" method="post">
+                    <form action="/laporan-bulanan/filter" method="post">
                         <div class="row">
                             <div class="col-md-6 mt-4">
                                 <select class="form-control" name="blnfilter">
@@ -78,71 +78,36 @@
                                                     <!-- data sekolah -->
                                                     <td><?= $r['sekolah']; ?></td>
                                                     <!-- data laporan bulanan -->
-                                                    <?php if (!empty($labul) && is_array($labul)) : ?>
-                                                        <?php foreach ($labul as $key => $l) { ?>
-                                                            <td><?php if ($l['bulan'] == '') { ?>
-                                                                    <center>
-                                                                        <span class="badge badge-danger"><i class="fas fa-times-circle"></i> bulan tidak tersedia</span>
-                                                                    </center>
-                                                                <?php } else { ?>
-                                                                    <center>
-                                                                        <?= $l['bulan']; ?>
-                                                                    </center>
-                                                                <?php } ?>
-                                                            </td>
-                                                            <td><?php if ($l['tahun'] == '') { ?>
-                                                                    <center>
-                                                                        <span class="badge badge-danger"><i class="fas fa-times-circle"></i> tahun tidak tersedia</span>
-                                                                    </center>
-                                                                <?php } else { ?>
-                                                                    <center>
-                                                                        <?= $l['tahun']; ?>
-                                                                    </center>
-                                                                <?php } ?>
-                                                            </td>
-                                                            <td> <?php if ($l['file_labul'] == '') { ?>
-                                                                    <center>
-                                                                        <span class="badge badge-danger"><i class="fas fa-times-circle"></i> file tidak tersedia</span>
-                                                                    </center>
-                                                                <?php } else { ?>
-                                                                    <center>
-                                                                        <a href="<?= base_url() ?>/media/arsip/<?= $l['file_labul']; ?>" target="blank"><button class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-download"></i> Download</button>
-                                                                    </center>
-                                                                <?php } ?>
-                                                            </td>
-                                                            <td> <?php if ($l['file_labul'] == '') { ?>
-                                                                    <center>
-                                                                        <span class="badge badge-danger"><i class="fas fa-times-circle"></i> belum selesai</span>
-                                                                    </center>
-                                                                <?php } else { ?>
-                                                                    <center>
-                                                                        <span class="badge badge-success"><i class="fas fa-check-circle"></i> selesai</span>
-                                                                    </center>
-                                                                <?php } ?>
-                                                            </td>
-                                                        <?php } ?>
-                                                    <?php else : ?>
-                                                        <td>
-                                                            <center>
-                                                                <span class="badge badge-danger"><i class="fas fa-times-circle"></i> bulan tidak tersedia</span>
-                                                            </center>
-                                                        </td>
-                                                        <td>
-                                                            <center>
-                                                                <span class="badge badge-danger"><i class="fas fa-times-circle"></i> tahun tidak tersedia</span>
-                                                            </center>
-                                                        </td>
-                                                        <td>
+                                                    <td>
+                                                        <center>
+                                                            <?= $r['bulan']; ?>
+                                                        </center>
+                                                    </td>
+                                                    <td>
+                                                        <center>
+                                                            <?= $r['tahun']; ?>
+                                                        </center>
+                                                    </td>
+                                                    <td> <?php if ($r['file_labul'] == '') { ?>
                                                             <center>
                                                                 <span class="badge badge-danger"><i class="fas fa-times-circle"></i> file tidak tersedia</span>
                                                             </center>
-                                                        </td>
-                                                        <td>
+                                                        <?php } else { ?>
+                                                            <center>
+                                                                <a href="<?= base_url() ?>/media/arsip/<?= $r['file_labul']; ?>" target="blank"><button class="btn btn-primary btn-xs btn-rounded"><i class="fa fa-download"></i> Download</button>
+                                                            </center>
+                                                        <?php } ?>
+                                                    </td>
+                                                    <td> <?php if ($r['file_labul'] == '') { ?>
                                                             <center>
                                                                 <span class="badge badge-danger"><i class="fas fa-times-circle"></i> belum selesai</span>
                                                             </center>
-                                                        </td>
-                                                    <?php endif ?>
+                                                        <?php } else { ?>
+                                                            <center>
+                                                                <span class="badge badge-success"><i class="fas fa-check-circle"></i> selesai</span>
+                                                            </center>
+                                                        <?php } ?>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

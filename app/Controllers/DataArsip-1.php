@@ -33,15 +33,25 @@ class DataArsip extends BaseController
         $tahun = $this->request->getPost('thnfilter');
         if ($bulan || $tahun == true) {
             $jenjang = session()->get('jenjang');
-            $datasekolah = $this->sekolahModel->join('mod_labul', 'mod_labul.id_sekolah = mod_sekolah.id', 'left')->where('mod_sekolah.jenjang', $jenjang)->where('mod_labul.bulan', $bulan)->where('mod_labul.tahun', $tahun)->findAll();
+            $datasekolah = $this->sekolahModel->where('jenjang', $jenjang)->findAll();
+            foreach ($datasekolah as $r) :
+                $npsn = $r['npsn'];
+            endforeach;
+            $datalabul = $this->arsipModel->where('jenjang =', $jenjang)->where('bulan =', $bulan)->where('tahun =', $tahun)->where('npsn =', $npsn)->findAll();
         } else {
             $jenjang = session()->get('jenjang');
-            $datasekolah = $this->sekolahModel->where('mod_sekolah.jenjang', $jenjang)->join('mod_labul', 'mod_labul.id_sekolah = mod_sekolah.id', 'left')->findAll();
+            $datasekolah = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
+            foreach ($datasekolah as $r) :
+                $npsn = $r['npsn'];
+            endforeach;
+            // var_dump($npsn);
+            $datalabul = $this->arsipModel->where('jenjang =', $jenjang)->findAll();
         }
         // dd($datasekolah);
         $data = array(
             'title' => 'Laporan Bulanan Sekolah',
             'sekolah' => $datasekolah,
+            'labul' => $datalabul,
             'isi' => 'master/data-arsip/labul'
         );
 
@@ -115,7 +125,7 @@ class DataArsip extends BaseController
         if (!empty($cek) && is_array($cek)) {
             if ($valid == $cek['validfile']) {
                 //jika data valid cocok
-                session()->setFlashdata('m', 'Maaf, Bulan ini sudah menginput arsip laporan bulanan, input kembali bulan depan, atau hapus file sebelumnya.');
+                session()->setFlashdata('m', 'Maaf, Bulan ini sudah menginput arsip laporan bulanan' . "\n" . ' Mohon input kembali bulan depan atau hapus/edit laporan sebelumnya.');
                 return redirect()->to(base_url('data-arsip/add'));
             } else {
                 $arsip   = $this->request->getFile('file');
@@ -173,12 +183,13 @@ class DataArsip extends BaseController
     }
     public function edit($id)
     {
+        $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Arsip Laporan Bulanan',
             'title' => 'Form Edit Arsip Laporan Bulanan',
             'isi' => 'master/data-arsip/edit',
             'validation' => \Config\Services::validation(),
-            'data' => $this->arsipModel->where('id', $id)->first(),
+            'data' => $this->arsipModel->where('id', $id)->where('id_sekolah', $ids)->first(),
         );
         return view('layout/wrapper', $data);
     }
