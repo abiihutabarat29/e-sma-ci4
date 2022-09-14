@@ -33,7 +33,6 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title"><?= $title ?></h4>
@@ -75,7 +74,15 @@
                             </div>
                             <div class="item-list">
                                 <div class="info-user ml-3">
-                                    <span class="text-muted">5. Jika data yang ter-generate tidak sesuai dengan inputan data maka <b>Contact Developer</b>.</span>
+                                    <span class="text-muted">5. <b>Generate Laporan Bulanan</b> hanya dapat dilakukan 3x dalam sebulan.</span>
+                                </div>
+                                <button class="btn btn-icon btn-success btn-round btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            </div>
+                            <div class="item-list">
+                                <div class="info-user ml-3">
+                                    <span class="text-muted">6. Jika data yang ter-generate tidak sesuai dengan inputan data maka <b>Contact Developer</b>.</span>
                                 </div>
                                 <button class="btn btn-icon btn-success btn-round btn-xs">
                                     <i class="fa fa-check"></i>

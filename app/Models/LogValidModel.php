@@ -11,7 +11,7 @@ class LogValidModel extends Model
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'id', 'username', 'nama', 'foto', 'timestamp',
+        'username', 'nama', 'foto', 'timestamp',
         'ip', 'useragent', 'status_log'
     ];
 }

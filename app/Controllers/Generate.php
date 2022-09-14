@@ -17,6 +17,7 @@ use App\Models\SaranaModel;
 use App\Models\SarprasModel;
 use App\Models\InventarisModel;
 use App\Models\KebutuhanModel;
+use App\Models\ValidGenerateModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use CodeIgniter\Config\Config;
@@ -38,6 +39,7 @@ class Generate extends BaseController
     protected $sarprasModel;
     protected $inventarisModel;
     protected $kebutuhanModel;
+    protected $validgenerateModel;
     public function __construct()
     {
         $this->profilModel = new ProfilModel();
@@ -55,6 +57,7 @@ class Generate extends BaseController
         $this->sarprasModel = new SarprasModel();
         $this->inventarisModel = new InventarisModel();
         $this->kebutuhanModel = new KebutuhanModel();
+        $this->validgenerateModel = new ValidGenerateModel();
     }
     public function index()
     {
@@ -78,6 +81,17 @@ class Generate extends BaseController
         $data_kebutuhan_guru = $this->kebutuhanModel->where('npsn =', $npsn)->first();
         $data_sarpras = $this->sarprasModel->where('npsn =', $npsn)->first();
         $data_inventaris = $this->inventarisModel->where('npsn =', $npsn)->first();
+        $data = $this->validgenerateModel->findAll();
+        $cek_npsn = $this->validgenerateModel->cek_npsn($npsn);
+        foreach ($data as $r) :
+            $tanggal = format_bulan($r['tanggal']);
+        endforeach;
+        $limit = 2;
+        if ($cek_npsn > $limit && $tanggal == format_bulan(date('Y-m-d'))) {
+            session()->setFlashdata('msg', 'Maaf Generate Laporan Bulanan melebihi limit . . .');
+            return redirect()->to(base_url('generate'));
+            return false;
+        }
         if ($data_profil > 0) {
             if ($data_bangunan > 0) {
                 if ($data_guru > 0) {
@@ -85,8 +99,8 @@ class Generate extends BaseController
                         if ($data_kebutuhan_guru > 0) {
                             if ($data_sarpras > 0) {
                                 if ($data_inventaris > 0) {
-                                    // Jika Data Tersedia
-                                    // Export Data Profil
+                                    // Jika Data Tersedia Export Data Profil
+                                    //===============================================================================
                                     // Fetch Data Profil
                                     $npsn = session()->get('npsn');
                                     $p = $this->profilModel->where('npsn =', $npsn)->first();
@@ -1421,6 +1435,24 @@ class Generate extends BaseController
                                     header('Content-Disposition: attachment;filename=Laporan Bulanan_' . $bulan . '_' . $tahun . '_' . $sekolah . '_' . $waktu . '.xlsx');
                                     header('Cache-Control: max-age=0');
                                     $writer->save('php://output');
+                                    //simpan data generate
+                                    $id_sekolah =  session()->get('id_sekolah');
+                                    $tanggal = date("Y-m-d");
+                                    $timestamp = date("Y-m-d H:i:s");
+                                    $npsn =  session()->get('npsn');
+                                    $nama_sekolah =  session()->get('nama_sekolah');
+                                    $jenjang =  session()->get('jenjang');
+                                    $userentry =  session()->get('nama');
+                                    $data = [
+                                        'id_sekolah'   => $id_sekolah,
+                                        'tanggal'      => $tanggal,
+                                        'timestamp'    => $timestamp,
+                                        'npsn'         => $npsn,
+                                        'nama_sekolah' => $nama_sekolah,
+                                        'jenjang'      => $jenjang,
+                                        'userentry'    => $userentry,
+                                    ];
+                                    $this->validgenerateModel->save($data);
                                     exit();
                                 } else {
                                     session()->setFlashdata('msg', 'Data Inventaris tidak tersedia. Mohon isi data terlebih dahulu');
