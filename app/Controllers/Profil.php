@@ -183,6 +183,15 @@ class Profil extends BaseController
                     'alpha_numeric_punct' => 'Nama Kepala Sekolah berisi karakter yang tidak didukung.'
                 ]
             ],
+            'nip' => [
+                'rules' => 'required|numeric|max_length[18]|is_unique[mod_profil.nip]',
+                'errors' => [
+                    'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
+                    'numeric' => 'NIP harus angka.',
+                    'max_length' => 'NIP maximal 18 digit.',
+                    'is_unique' => 'NIP sudah ada.'
+                ]
+            ],
             'email' => [
                 'rules' => 'required|valid_email|is_unique[mod_user.email]',
                 'errors' => [
@@ -198,18 +207,18 @@ class Profil extends BaseController
                     'valid_url' => 'Alamat website tidak valid.',
                 ]
             ],
-            'lg' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Longitude tidak boleh kosong.',
-                ]
-            ],
-            'lt' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Latidude tidak boleh kosong.',
-                ]
-            ],
+            // 'lg' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Longitude tidak boleh kosong.',
+            //     ]
+            // ],
+            // 'lt' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Latidude tidak boleh kosong.',
+            //     ]
+            // ],
         ])) {
             //     $validation = \Config\Services::validation();
             //     return redirect()->to('/profil-sekolah/add')->withInput()->with('validation', $validation);
@@ -251,13 +260,15 @@ class Profil extends BaseController
             'kodepos'             => $this->request->getPost('kdpos'),
             'telepon'             => $this->request->getPost('telp'),
             'nama_kepsek'         => $this->request->getPost('kepsek'),
+            'nip'                 => $this->request->getPost('nip'),
             'email'               => $this->request->getPost('email'),
             'jenjang'             => session()->get('jenjang'),
             'website'             => $this->request->getPost('web'),
             'namayys'             => $this->request->getPost('namayys'),
             'alamatyys'           => $this->request->getPost('alamatyys'),
-            'longitude'           => $this->request->getPost('lg'),
-            'latitude'            => $this->request->getPost('lt'),
+            // 'longitude'           => $this->request->getPost('lg'),
+            // 'latitude'            => $this->request->getPost('lt'),
+            'gmap'                => $this->request->getPost('gmap'),
             'profil'              => $fileName,
             'foto'                => $fileNameks,
             'userentry'           => session()->get('nama'),
@@ -284,6 +295,12 @@ class Profil extends BaseController
     }
     public function update($id)
     {
+        $nipLama = $this->profilModel->where(['id' => $id])->first();
+        if ($nipLama['nip'] == $this->request->getPost('nip')) {
+            $rule_nip = 'required|numeric|max_length[18]';
+        } else {
+            $rule_nip = 'required|numeric|max_length[18]|is_unique[mod_profil.nip]';
+        }
         $nssLama = $this->profilModel->where(['id' => $id])->first();
         if ($nssLama['nss'] == $this->request->getPost('nss')) {
             $rule_nss = 'required|numeric|max_length[12]';
@@ -411,6 +428,15 @@ class Profil extends BaseController
                     'alpha_numeric_punct' => 'Nama Kepala Sekolah berisi karakter yang tidak didukung.'
                 ]
             ],
+            'nip' => [
+                'rules' => $rule_nip,
+                'errors' => [
+                    'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
+                    'numeric' => 'NIP harus angka.',
+                    'max_length' => 'NIP maximal 18 digit.',
+                    'is_unique' => 'NIP sudah ada.'
+                ]
+            ],
             'email' => [
                 'rules' => 'required|valid_email|is_unique[mod_user.email]',
                 'errors' => [
@@ -426,18 +452,18 @@ class Profil extends BaseController
                     'valid_url' => 'Alamat website tidak valid.',
                 ]
             ],
-            'lg' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Longitude tidak boleh kosong.',
-                ]
-            ],
-            'lt' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Latidude tidak boleh kosong.',
-                ]
-            ],
+            // 'lg' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Longitude tidak boleh kosong.',
+            //     ]
+            // ],
+            // 'lt' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Latidude tidak boleh kosong.',
+            //     ]
+            // ],
         ])) {
             //     $validation = \Config\Services::validation();
             //     return redirect()->to('/profil-sekolah/add')->withInput()->with('validation', $validation);
@@ -497,13 +523,15 @@ class Profil extends BaseController
             'kodepos'             => $this->request->getPost('kdpos'),
             'telepon'             => $this->request->getPost('telp'),
             'nama_kepsek'         => $this->request->getPost('kepsek'),
+            'nip'                 => $this->request->getPost('nip'),
             'email'               => $this->request->getPost('email'),
             'jenjang'             => session()->get('jenjang'),
             'website'             => $this->request->getPost('web'),
             'namayys'             => $this->request->getPost('namayys'),
             'alamatyys'           => $this->request->getPost('alamatyys'),
-            'longitude'           => $this->request->getPost('lg'),
-            'latitude'            => $this->request->getPost('lt'),
+            // 'longitude'           => $this->request->getPost('lg'),
+            // 'latitude'            => $this->request->getPost('lt'),
+            'gmap'                => $this->request->getPost('gmap'),
             'profil'              => $fileName,
             'foto'                => $fileNameks,
             'userentry'           => session()->get('nama'),

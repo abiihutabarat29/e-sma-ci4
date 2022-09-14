@@ -76,7 +76,7 @@
                                 <h4 class="card-title">Lokasi Sekolah</h4>
                             </div>
                         </div>
-                        <div id="map" style='width: 100%; height: 250px;'></div>
+                        <iframe src="<?= $data['gmap']; ?>" width="381" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="col-md-8">

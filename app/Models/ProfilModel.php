@@ -14,8 +14,8 @@ class ProfilModel extends Model
         'id_sekolah', 'nama_sekolah', 'npsn', 'nss', 'nds',
         'nosiop', 'akreditas', 'thnberdiri', 'nosk',
         'tglsk', 'status', 'standar', 'waktub', 'kabupaten', 'kecamatan',
-        'alamat', 'kodepos', 'telepon', 'nama_kepsek', 'email', 'jenjang', 'website', 'namayys', 'alamatyys',
-        'longitude', 'latitude', 'profil', 'foto', 'userentry'
+        'alamat', 'kodepos', 'telepon', 'nama_kepsek', 'nip', 'email', 'jenjang', 'website', 'namayys', 'alamatyys',
+        'gmap', 'profil', 'foto', 'userentry'
     ];
 
     public function cek_data()
