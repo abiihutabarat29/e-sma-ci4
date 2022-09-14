@@ -30,11 +30,8 @@
                     </div>
                     <div class="card-body">
                         <ul class="nav nav-pills nav-primary" id="pills-tab" role="tablist">
-                            <li class="nav-item submenu">
-                                <a class="nav-link active" id="pills-panduan-tab" data-toggle="pill" href="#pills-panduan" role="tab" aria-controls="pills-panduan" aria-selected="false">Panduan Penginputan</a>
-                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-identitas-tab" data-toggle="pill" href="#pills-identitas" role="tab" aria-controls="pills-identitas" aria-selected="true">Identitas</a>
+                                <a class="nav-link active" id="pills-identitas-tab" data-toggle="pill" href="#pills-identitas" role="tab" aria-controls="pills-identitas" aria-selected="true">Identitas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profil</a>
@@ -53,58 +50,7 @@
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $data['id']; ?>">
                             <div class="tab-content mt-2 mb-3" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-panduan" role="tabpanel" aria-labelledby="pills-panduan-tab">
-                                    <div class="card-header">
-                                        <div class="d-flex align-items-center">
-                                            <h4 class="card-title">Mohon Baca Terlebih Dahulu</h4>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-list">
-                                            <div class="item-list">
-                                                <div class="info-user ml-3">
-                                                    <span class="text-muted">1. Isilah data profil sekolah dengan benar.</span>
-                                                </div>
-                                                <button class="btn btn-icon btn-success btn-round btn-xs">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                            </div>
-                                            <div class="item-list">
-                                                <div class="info-user ml-3">
-                                                    <span class="text-muted">2. Field yang memiliki tanda (<span class="text-danger">*</span>) artinya wajib diinput atau tidak boleh kosong.</span>
-                                                </div>
-                                                <button class="btn btn-icon btn-success btn-round btn-xs">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                            </div>
-                                            <div class="item-list">
-                                                <div class="info-user ml-3">
-                                                    <span class="text-muted">3. Nama Sekolah dan NPSN Sekolah otomatis.</span>
-                                                </div>
-                                                <button class="btn btn-icon btn-success btn-round btn-xs">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                            </div>
-                                            <div class="item-list">
-                                                <div class="info-user ml-3">
-                                                    <span class="text-muted">4. NSS wajib memiliki 12 karakter berupa angka.</span>
-                                                </div>
-                                                <button class="btn btn-icon btn-success btn-round btn-xs">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                            </div>
-                                            <div class="item-list">
-                                                <div class="info-user ml-3">
-                                                    <span class="text-muted">5. NDS wajib memiliki 8 karakter berupa angka.</span>
-                                                </div>
-                                                <button class="btn btn-icon btn-success btn-round btn-xs">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-identitas" role="tabpanel" aria-labelledby="pills-identitas-tab">
+                                <div class="tab-pane fade show active" id="pills-identitas" role="tabpanel" aria-labelledby="pills-identitas-tab">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-sm-6">

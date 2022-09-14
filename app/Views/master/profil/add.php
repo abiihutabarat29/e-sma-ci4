@@ -99,6 +99,14 @@
                                                 <i class="fa fa-check"></i>
                                             </button>
                                         </div>
+                                        <div class="item-list">
+                                            <div class="info-user ml-3">
+                                                <span class="text-muted">6. Link Google Maps diambil dari Google MAP.</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-round btn-xs">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

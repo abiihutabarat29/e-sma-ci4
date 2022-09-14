@@ -98,7 +98,7 @@ $routes->add('/data-inventaris/update/(:segment)', 'DataInventaris::update/$1');
 $routes->get('data-user', 'User::user');
 $routes->get('data-user/add', 'User::add');
 $routes->add('data-user/save', 'User::save');
-$routes->get('data-user/delete/(:num)', 'User::delete/$1');
+$routes->get('data-user/(:num)', 'User::delete/$1');
 $routes->get('data-user/edit/(:segment)', 'User::edit/$1');
 $routes->add('data-user/update/(:segment)', 'User::update/$1');
 $routes->add('data-user/activated/(:num)', 'User::activated/$1');
