@@ -86,9 +86,9 @@ class Generate extends BaseController
         foreach ($data as $r) :
             $tanggal = format_bulan($r['tanggal']);
         endforeach;
-        $limit = 2;
+        $limit = 0;
         if ($cek_npsn > $limit && $tanggal == format_bulan(date('Y-m-d'))) {
-            session()->setFlashdata('msg', 'Maaf Generate Laporan Bulanan melebihi limit . . .');
+            session()->setFlashdata('msg', 'Maaf Generate Laporan Bulanan hanya 1x dalam sebulan . . .');
             return redirect()->to(base_url('generate'));
             return false;
         }

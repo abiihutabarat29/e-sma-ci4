@@ -25,8 +25,7 @@
                     <div class="swal-login" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                     <div class="swal-logout" data-swal="<?= session()->getFlashdata('ml'); ?>"></div>
                     <div class="card-body">
-                        <h2>TESTING SECURITY BRUTE FORCE</h2>
-                        <!-- <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="150" height="150"> -->
+                        <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="150" height="150">
                         <form action="/auth/verify" method="post">
                             <?= csrf_field(); ?>
                             <div class="form-group mt-5 mb-4">
@@ -47,7 +46,7 @@
                 </div>
             </div>
         </div><br>
-        <!-- <center>
+        <center>
             <small class="text text-white"> Copyright © Cabang Dinas Kisaran
                 Dinas Pendidikan Pemerintah Provinsi Sumatera Utara</small>
         </center><br>
@@ -57,7 +56,7 @@
         </center>
         <center>
             <small class="text text-white"><b>Versi 1.0</b></small>
-        </center> -->
+        </center>
     </div>
 </div>
 <!-- [ auth-signin ] end -->

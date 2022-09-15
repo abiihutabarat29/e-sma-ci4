@@ -74,7 +74,7 @@
                             </div>
                             <div class="item-list">
                                 <div class="info-user ml-3">
-                                    <span class="text-muted">5. <b>Generate Laporan Bulanan</b> hanya dapat dilakukan 3x dalam sebulan.</span>
+                                    <span class="text-muted">5. <b>Generate Laporan Bulanan</b> hanya dapat dilakukan 1x dalam sebulan.</span>
                                 </div>
                                 <button class="btn btn-icon btn-success btn-round btn-xs">
                                     <i class="fa fa-check"></i>
