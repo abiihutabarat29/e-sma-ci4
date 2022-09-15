@@ -75,7 +75,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NSS tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NSS harus angka.',
-                    'max_length' => 'NSS maximal 12 digit.',
+                    'max_length' => 'NSS maksimal 12 digit.',
                     'is_unique' => 'NSS sudah terdaftar.'
                 ]
             ],
@@ -84,7 +84,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NDS tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NDS harus angka.',
-                    'max_length' => 'NDS maximal 8 digit.',
+                    'max_length' => 'NDS maksimal 8 digit.',
                     'is_unique' => 'NDS sudah terdaftar.'
                 ]
             ],
@@ -105,7 +105,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'Tahun Berdiri tidak boleh kosong.',
                     'numeric' => 'Tahun Berdiri harus angka.',
-                    'max_length' => 'Tahun Berdiri maximal 4 digit.',
+                    'max_length' => 'Tahun Berdiri maksimal 4 digit.',
                 ]
             ],
             'nosk' => [
@@ -159,20 +159,18 @@ class Profil extends BaseController
                 ]
             ],
             'kdpos' => [
-                'rules' => 'required|numeric|max_length[5]|min_length[5]',
+                'rules' => 'required|numeric|max_length[5]',
                 'errors' => [
                     'required' => 'Kode Pos harus di pilih.',
                     'max_length' => 'Kode Pos maksimal 5 digit.',
-                    'min_length' => 'Kode Pos minimal 5 digit.',
                     'numeric' => 'Kode Pos harus angka.',
                 ]
             ],
             'telp' => [
-                'rules' => 'required|max_length[12]|min_length[11]|regex_match[^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$]',
+                'rules' => 'required|max_length[12]|regex_match[^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$]',
                 'errors' => [
                     'required' => 'Nomor Handphone tidak boleh kosong.',
-                    'max_length' => 'Nomor Handphone maximal 12 digit.',
-                    'min_length' => 'Nomor Handphone manimal 11 digit.',
+                    'max_length' => 'Nomor Handphone maksimal 12 digit.',
                     'regex_match' => 'Penulisan Nomor Handphone harus benar'
                 ]
             ],
@@ -188,7 +186,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NIP harus angka.',
-                    'max_length' => 'NIP maximal 18 digit.',
+                    'max_length' => 'NIP maksimal 18 digit.',
                     'is_unique' => 'NIP sudah ada.'
                 ]
             ],
@@ -201,12 +199,18 @@ class Profil extends BaseController
                 ]
             ],
             'web' => [
-                'rules' => 'required|valid_url',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Alamat website tidak boleh kosong.',
-                    'valid_url' => 'Alamat website tidak valid.',
                 ]
             ],
+            // 'web' => [
+            //     'rules' => 'required|valid_url',
+            //     'errors' => [
+            //         'required' => 'Alamat website tidak boleh kosong.',
+            //         'valid_url' => 'Alamat website tidak valid.',
+            //     ]
+            // ],
             // 'lg' => [
             //     'rules' => 'required',
             //     'errors' => [
@@ -320,7 +324,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NSS tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NSS harus angka.',
-                    'max_length' => 'NSS maximal 12 digit.',
+                    'max_length' => 'NSS maksimal 12 digit.',
                     'is_unique' => 'NSS sudah terdaftar.'
                 ]
             ],
@@ -329,7 +333,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NDS tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NDS harus angka.',
-                    'max_length' => 'NDS maximal 8 digit.',
+                    'max_length' => 'NDS maksimal 8 digit.',
                     'is_unique' => 'NDS sudah terdaftar.'
                 ]
             ],
@@ -350,7 +354,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'Tahun Berdiri tidak boleh kosong.',
                     'numeric' => 'Tahun Berdiri harus angka.',
-                    'max_length' => 'Tahun Berdiri maximal 4 digit.',
+                    'max_length' => 'Tahun Berdiri maksimal 4 digit.',
                 ]
             ],
             'nosk' => [
@@ -404,20 +408,18 @@ class Profil extends BaseController
                 ]
             ],
             'kdpos' => [
-                'rules' => 'required|numeric|max_length[5]|min_length[5]',
+                'rules' => 'required|numeric|max_length[5]',
                 'errors' => [
                     'required' => 'Kode Pos harus di pilih.',
                     'max_length' => 'Kode Pos maksimal 5 digit.',
-                    'min_length' => 'Kode Pos minimal 5 digit.',
                     'numeric' => 'Kode Pos harus angka.',
                 ]
             ],
             'telp' => [
-                'rules' => 'required|max_length[12]|min_length[11]|regex_match[^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$]',
+                'rules' => 'required|max_length[12]|regex_match[^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$]',
                 'errors' => [
                     'required' => 'Nomor Handphone tidak boleh kosong.',
-                    'max_length' => 'Nomor Handphone maximal 12 digit.',
-                    'min_length' => 'Nomor Handphone manimal 11 digit.',
+                    'max_length' => 'Nomor Handphone maksimal 12 digit.',
                     'regex_match' => 'Penulisan Nomor Handphone harus benar'
                 ]
             ],
@@ -433,7 +435,7 @@ class Profil extends BaseController
                 'errors' => [
                     'required' => 'NIP tidak boleh kosong. Jika tidak ada isi angka 0',
                     'numeric' => 'NIP harus angka.',
-                    'max_length' => 'NIP maximal 18 digit.',
+                    'max_length' => 'NIP maksimal 18 digit.',
                     'is_unique' => 'NIP sudah ada.'
                 ]
             ],
@@ -446,12 +448,18 @@ class Profil extends BaseController
                 ]
             ],
             'web' => [
-                'rules' => 'required|valid_url',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Alamat website tidak boleh kosong.',
-                    'valid_url' => 'Alamat website tidak valid.',
                 ]
             ],
+            // 'web' => [
+            //     'rules' => 'required|valid_url',
+            //     'errors' => [
+            //         'required' => 'Alamat website tidak boleh kosong.',
+            //         'valid_url' => 'Alamat website tidak valid.',
+            //     ]
+            // ],
             // 'lg' => [
             //     'rules' => 'required',
             //     'errors' => [

@@ -77,6 +77,14 @@
                                         </div>
                                         <div class="item-list">
                                             <div class="info-user ml-3">
+                                                <span class="text-muted">2. Jika Field yang memiliki tanda (<span class="text-danger">*</span>) datanya tidak ada, isi dengan tanda (-).</span>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-round btn-xs">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="info-user ml-3">
                                                 <span class="text-muted">3. Nama Sekolah dan NPSN Sekolah otomatis.</span>
                                             </div>
                                             <button class="btn btn-icon btn-success btn-round btn-xs">
