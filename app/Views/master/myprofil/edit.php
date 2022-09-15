@@ -66,6 +66,14 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
+                                        <?php if (session()->get('level') == '3' || session()->get('level') == '4') { ?>
+                                            <div class="col-md-6 pr-0">
+                                                <div class="form-group">
+                                                    <label>Kepala Seksi</label>
+                                                    <input type="text" class="form-control" id="jenjang" name="jenjang" value="<?= $data['jenjang']; ?>" readonly>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-kontak" role="tabpanel" aria-labelledby="pills-kontak-tab">

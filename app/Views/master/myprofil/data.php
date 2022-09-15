@@ -64,33 +64,46 @@
                     <div class="card-body">
                         <div class="card-body">
                             <div class="card-list">
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <h6 class="text-uppercase fw-bold mb-1">Nama Sekolah</h6>
-                                        <span class="text-muted"><?= $data['nama_sekolah']; ?></span>
+                                <?php if (session()->get('level') == '1' || session()->get('level') == '2') { ?>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Nama Sekolah</h6>
+                                            <span class="text-muted"><?= $data['nama_sekolah']; ?></span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
                                     </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <h6 class="text-uppercase fw-bold mb-1">NPSN</h6>
-                                        <span class="text-muted"><?= $data['npsn']; ?></span>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">NPSN</h6>
+                                            <span class="text-muted"><?= $data['npsn']; ?></span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
                                     </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </div>
-                                <div class="item-list">
-                                    <div class="info-user ml-3">
-                                        <h6 class="text-uppercase fw-bold mb-1">Jenjang</h6>
-                                        <span class="text-muted"><?= $data['jenjang']; ?></span>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Jenjang</h6>
+                                            <span class="text-muted"><?= $data['jenjang']; ?></span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
                                     </div>
-                                    <button class="btn btn-icon btn-success btn-round btn-xs">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </div>
+                                <?php } ?>
+                                <?php if (session()->get('level') == '3' || session()->get('level') == '4') { ?>
+                                    <div class="item-list">
+                                        <div class="info-user ml-3">
+                                            <h6 class="text-uppercase fw-bold mb-1">Kepala Seksi</h6>
+                                            <span class="text-muted"><?= $data['jenjang']; ?></span>
+                                        </div>
+                                        <button class="btn btn-icon btn-success btn-round btn-xs">
+                                            <i class="fa fa-check"></i>
+                                        </button>
+                                    </div>
+                                <?php } ?>
                                 <div class="item-list">
                                     <div class="info-user ml-3">
                                         <h6 class="text-uppercase fw-bold mb-1">Email</h6>
