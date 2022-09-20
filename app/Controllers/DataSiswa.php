@@ -350,6 +350,12 @@ class DataSiswa extends BaseController
             } else {
                 $rule_nisn = 'required|numeric|max_length[10]|min_length[10]|is_unique[mod_siswa.nisn]';
             }
+            $emailLama = $this->siswaModel->where(['id' => $id])->first();
+            if ($emailLama['email'] == $this->request->getPost('email')) {
+                $rule_email = 'required|valid_email';
+            } else {
+                $rule_email = 'required|valid_email|is_unique[mod_siswa.email]';
+            }
             //Validasi input
             if (!$this->validate([
                 'nisn' => [
@@ -438,7 +444,7 @@ class DataSiswa extends BaseController
                     ]
                 ],
                 'email' => [
-                    'rules' => 'required|valid_email|is_unique[mod_siswa.email]',
+                    'rules' => $rule_email,
                     'errors' => [
                         'required' => 'Email tidak boleh kosong.',
                         'valid_email' => 'Email tidak valid.',

@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" type="image/ico">
     <!-- vendor css -->
     <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/login/css/style.css">
+    <!-- <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/atlantis.min.css" /> -->
 
 </head>
 
@@ -64,10 +65,13 @@
 <script src="<?= base_url(); ?>/template/assets/login/js/vendor-all.min.js"></script>
 <script src="<?= base_url(); ?>/template/assets/login/js/plugins/bootstrap.min.js"></script>
 <script src="<?= base_url(); ?>/template/assets/login/js/pcoded.min.js"></script>
+<!-- Bootstrap Notify -->
+<script src="<?= base_url(); ?>/template/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 <!-- Sweet Alert -->
 <script src="<?= base_url(); ?>/template/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 <script src="<?= base_url(); ?>/template/assets/js/plugin/sweetalert/sweetscript.js"></script>
-
+<!-- Atlantis JS -->
+<script src="<?= base_url(); ?>/template/assets/js/atlantis.min.js"></script>
 <script>
     window.setTimeout(function() {
         $(".form-text").fadeTo(500, 0).slideUp(500, function() {

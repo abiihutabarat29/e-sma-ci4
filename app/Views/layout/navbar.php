@@ -3,6 +3,9 @@
     <div class="container-fluid">
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
             <li class="nav-item dropdown hidden-caret">
+                <p class="text-white op-7 mt-3 mr-4"> <?= format_indo(date('Y-m-d')) ?> | <span id='jam'></span></p>
+            </li>
+            <li class="nav-item dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="avatar <?= session()->get('status') == 1 ? 'avatar-online' : 'avatar-offline' ?>">
                         <?php if (session()->get('foto') == null) { ?>
