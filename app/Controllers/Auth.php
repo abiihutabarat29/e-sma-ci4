@@ -48,7 +48,7 @@ class Auth extends BaseController
             ],
         ])) {
             // Jika Valid Form
-            // ======================
+            // =======================
             //Mencegah brute force
             $ip = $this->request->getIPAddress();
             $timestamp = date("Y-m-d ");
