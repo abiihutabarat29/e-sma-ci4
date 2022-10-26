@@ -54,10 +54,10 @@
         </center><br>
 
         <center>
-            <h10>E-Sekolah</h10>
+            <h10>e-sekolah</h10>
         </center>
         <center>
-            <h10>Versi 1.0</h10>
+            <h10>v.1.0</h10>
         </center>
     </div>
 </div>
