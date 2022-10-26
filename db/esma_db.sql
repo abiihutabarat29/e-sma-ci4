@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Sep 2022 pada 06.51
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.6
+-- Waktu pembuatan: 26 Okt 2022 pada 06.55
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci_esma`
+-- Database: `esma_db`
 --
 
 -- --------------------------------------------------------
@@ -509,7 +509,15 @@ CREATE TABLE `mod_log_valid` (
 
 INSERT INTO `mod_log_valid` (`id`, `username`, `nama`, `foto`, `timestamp`, `ip`, `useragent`, `status_log`, `created_at`, `updated_at`) VALUES
 (1, 'putra333', 'Putra', 'blank.png', '2022-09-11 16:09:07', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 1, '2022-09-11 23:09:07', '2022-09-11 23:09:07'),
-(2, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-09-11 16:29:38', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 1, '2022-09-11 23:29:38', '2022-09-11 23:29:38');
+(2, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-09-11 16:29:38', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36', 1, '2022-09-11 23:29:38', '2022-09-11 23:29:38'),
+(3, 'abiihtb29', 'Abii Hutabarat', '1661421861_67c02a8dde7f163cd55e.jpeg', '2022-10-25 16:21:25', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-25 23:21:25', '2022-10-25 23:21:25'),
+(4, 'putra333', 'Putra', 'blank.png', '2022-10-25 16:21:55', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-25 23:21:55', '2022-10-25 23:21:55'),
+(5, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-10-26 04:23:29', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:23:29', '2022-10-26 11:23:29'),
+(6, 'azmi2022', 'Azmi', '1661516305_f17fdd4b9fa50fba6c1d.jpeg', '2022-10-26 04:45:24', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:45:24', '2022-10-26 11:45:24'),
+(7, 'azhar2022', 'Azhar', '1661516521_080a5021fdff00969151.jpeg', '2022-10-26 04:45:49', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:45:49', '2022-10-26 11:45:49'),
+(8, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-10-26 04:46:58', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:46:58', '2022-10-26 11:46:58'),
+(9, 'andika22', 'Abii Hutabarat', '1662534676_ba0d36cb88cbf0ec9549.jpeg', '2022-10-26 04:51:10', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:51:10', '2022-10-26 11:51:10'),
+(10, 'putra333', 'Putra', 'blank.png', '2022-10-26 04:52:32', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, '2022-10-26 11:52:32', '2022-10-26 11:52:32');
 
 -- --------------------------------------------------------
 
@@ -755,16 +763,16 @@ CREATE TABLE `mod_profil` (
   `kodepos` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `telepon` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `nama_kepsek` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `nip` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `jenjang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `website` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `namayys` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `alamatyys` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `longitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `latitude` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `gmap` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `userentry` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `profil` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `foto` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `profil` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `foto` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -773,8 +781,8 @@ CREATE TABLE `mod_profil` (
 -- Dumping data untuk tabel `mod_profil`
 --
 
-INSERT INTO `mod_profil` (`id`, `id_sekolah`, `nama_sekolah`, `npsn`, `nss`, `nds`, `nosiop`, `akreditas`, `thnberdiri`, `nosk`, `tglsk`, `status`, `standar`, `waktub`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`, `telepon`, `nama_kepsek`, `email`, `jenjang`, `website`, `namayys`, `alamatyys`, `longitude`, `latitude`, `userentry`, `profil`, `foto`, `created_at`, `updated_at`) VALUES
-(6, '1', 'SMA Negeri  1  Kisaran', '10204064', '23233', '0', '4555', 'A', '2001', 'dfgdgg', '2022-08-11', 'Negeri', 'SSN', 'Pagi', '1209', 'Aek Songsongan', 'sdfsfsf.asdasd', '34535', '08224567876', 'Tommy S.Kom', 'abii@gmail.com', 'SMA', 'https://sma.com', '', '', '99.61981818096318', '2.9708987430050864', 'DWI AHMAD', '1660984541_33fa36c941a197112a09.png', '1661185340_f910ec6ad1b17dde579a.png', '2022-08-20 03:33:17', '2022-09-07 22:12:30');
+INSERT INTO `mod_profil` (`id`, `id_sekolah`, `nama_sekolah`, `npsn`, `nss`, `nds`, `nosiop`, `akreditas`, `thnberdiri`, `nosk`, `tglsk`, `status`, `standar`, `waktub`, `kabupaten`, `kecamatan`, `alamat`, `kodepos`, `telepon`, `nama_kepsek`, `nip`, `email`, `jenjang`, `website`, `namayys`, `alamatyys`, `gmap`, `userentry`, `profil`, `foto`, `created_at`, `updated_at`) VALUES
+(6, '1', 'SMA Negeri  1  Kisaran', '10204064', '23233', '0', '4555', 'A', '2001', 'dfgdgg', '2022-08-11', 'Negeri', 'SSN', 'Pagi', '1209', 'Aek Songsongan', 'sdfsfsf.asdasd', '34535', '08224567876', 'Tommy S.Kom', '1212121212121212', 'abii@gmail.com', 'SMA', 'https://sma.com', '', '', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.0264762411616!2d98.66742031438127!3d3.58139235134295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131d2c7472b07%3A0xabf9ef2e3dc0640b!2sSMA%20Negeri%201%20Medan!5e0!3m2!1sen!2sid!4v1666758701560!5m2!1sen!2sid', 'Abii Hutabarat', '1660984541_33fa36c941a197112a09.png', '1666759913_f2d6b2b000ddaa61467a.png', '2022-08-20 03:33:17', '2022-10-26 11:51:53');
 
 -- --------------------------------------------------------
 
@@ -1404,13 +1412,13 @@ ALTER TABLE `mod_labul`
 -- AUTO_INCREMENT untuk tabel `mod_log_invalid`
 --
 ALTER TABLE `mod_log_invalid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_log_valid`
 --
 ALTER TABLE `mod_log_valid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `mod_mapel`
