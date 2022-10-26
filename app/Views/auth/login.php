@@ -26,37 +26,38 @@
                     <div class="swal-login" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                     <div class="swal-logout" data-swal="<?= session()->getFlashdata('ml'); ?>"></div>
                     <div class="card-body">
-                        <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="150" height="150">
+                        <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="100">
+                        <h5 class="mt-2">SILAHKAN LOGIN</h5>
                         <form action="/auth/verify" method="post">
                             <?= csrf_field(); ?>
-                            <div class="form-group mt-5 mb-4">
+                            <div class="form-group mt-4 mb-4">
                                 <label class="floating-label" for="Username">Username</label>
-                                <input type="text" name="username" class="form-control" id="Username" value="<?= old('username'); ?>">
+                                <input type="text" name="username" class="form-control" id="Username" value="<?= old('username'); ?>" required>
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('username'); ?></small>
                             </div>
                             <div class="form-group mb-4">
                                 <label class="floating-label" for="Password">Password</label>
-                                <input type="password" name="password" class="form-control" id="Password" autocomplete="off">
+                                <input type="password" name="password" class="form-control" id="Password" autocomplete="off" required>
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('password'); ?></small>
                             </div>
-                            <button type="submit" class="btn btn-block btn-primary mb-4">Masuk</button>
+                            <button type="submit" class="btn btn-block btn-primary mb-4 rounded">Masuk</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div><br>
         <center>
-            <small class="text text-white"> Copyright © Cabang Dinas Kisaran
-                Dinas Pendidikan Pemerintah Provinsi Sumatera Utara</small>
+            <h10> Copyright © Cabang Dinas Kisaran
+                Dinas Pendidikan Pemerintah Provinsi Sumatera Utara</h10>
         </center><br>
 
         <center>
-            <small class="text text-white"><b>E-SEKOLAH</b></small>
+            <h10>E-Sekolah</h10>
         </center>
         <center>
-            <small class="text text-white"><b>Versi 1.0</b></small>
+            <h10>Versi 1.0</h10>
         </center>
     </div>
 </div>

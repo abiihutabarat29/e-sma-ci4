@@ -24003,7 +24003,7 @@ div.dtk-focus-alt table.dataTable tbody th.focus {
     overflow: hidden;
     min-width: 100%;
     min-height: 100vh;
-    background: #498dc6;
+    background: #f0f2f5;
 }
 
 @media (min-width: 1200px) {
