@@ -113,8 +113,9 @@
                                         <option selected disabled><?= (old('level')) ? old('level') : ".::Pilih Level::." ?></option>
                                         <option value="1">Admin SMA</option>
                                         <option value="2">Admin SMK</option>
-                                        <option value="3">Kasih SMA</option>
-                                        <option value="4">Kasih SMK</option>
+                                        <option value="3">Admin SMA Kabupaten</option>
+                                        <option value="4">Admin SMK Kabupaten</option>
+                                        <option value="5">Admin Provinsi</option>
                                     </select>
                                     <small class="form-text text-danger">
                                         <?= $validation->getError('level'); ?></small>

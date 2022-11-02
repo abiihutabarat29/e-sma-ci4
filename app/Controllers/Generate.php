@@ -69,7 +69,17 @@ class Generate extends BaseController
         );
         return view('layout/wrapper', $data);
     }
-    //Fungsi generate laporan bulanan
+    public function index2()
+    {
+        $data = array(
+            'titlebar' => 'Generate Laporan Bulanan',
+            'subtitlebar' => 'Fitur Generate Laporan Bulanan untuk meng-generate data sesuai inputan anda dalam aplikasi e-sekolah.',
+            'title' => 'Syarat & Ketentuan',
+            'isi' => 'master/generate-laporan/index',
+        );
+        return view('layout/wrapper', $data);
+    }
+    //Fungsi generate laporan bulanan SMA
     public function generate()
     {
         $npsn = session()->get('npsn');
@@ -1482,5 +1492,9 @@ class Generate extends BaseController
             session()->setFlashdata('msg', 'Data Profil tidak tersedia. Mohon isi data terlebih dahulu');
             return redirect()->to(base_url('generate'));
         }
+    }
+    //Fungsi generate laporan bulanan Cabang Dinas
+    public function generate2()
+    {
     }
 }

@@ -253,6 +253,41 @@
                             <p>Laporan Bulanan</p>
                         </a>
                     </li>
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'data-arsip-bulanan') ? 'active' : ""; ?>">
+                        <a data-toggle="collapse" href="#base">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Laporan Bulanan</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="base">
+                            <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="<?= base_url('generate-laporan') ?>">
+                                        <span class="sub-item">Generate Laporan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url('data-arsip-bulanan') ?>">
+                                        <span class="sub-item">Arsip Laporan</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                <?php } ?>
+                <?php if (session()->get('level') == '5' && session()->get('status') == '1') { ?>
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'sekolah-all') ? 'active' : ""; ?>">
+                        <a href="<?= base_url('sekolah-all') ?>">
+                            <i class="fas fa-school"></i>
+                            <p>Sekolah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'data-laporan-bulanan') ? 'active' : ""; ?>">
+                        <a href="<?= base_url('data-laporan-bulanan') ?>">
+                            <i class="fas fa-file"></i>
+                            <p>Laporan Bulanan</p>
+                        </a>
+                    </li>
                 <?php } ?>
                 <hr>
                 <li class="nav-item">

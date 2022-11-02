@@ -17,6 +17,7 @@ class Filters extends BaseConfig
 		'filterasmk' => \App\Filters\FilterAsmk::class,
 		'filterksma' => \App\Filters\FilterKsma::class,
 		'filterksmk' => \App\Filters\FilterKsmk::class,
+		'filteradmprov' => \App\Filters\FilterAdmProv::class,
 	];
 
 	// Always applied before every request
@@ -141,6 +142,8 @@ class Filters extends BaseConfig
 				'sekolah',
 				'laporan-bulanan',
 				'laporan-bulanan/filter',
+				'generate-laporan',
+				'generate-laporan/*',
 			]],
 			'filterksmk' => ['except' => [
 				'home', 'home/*',
@@ -149,6 +152,12 @@ class Filters extends BaseConfig
 				'sekolah',
 				'laporan-bulanan',
 				'laporan-bulanan/filter',
+			]],
+			'filteradmprov' => ['except' => [
+				'home', 'home/*',
+				'my-profil',
+				'my-profil/*',
+				'sekolah-all',
 			]],
 			'toolbar',
 			//'honeypot'

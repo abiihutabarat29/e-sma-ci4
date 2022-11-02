@@ -42,6 +42,19 @@ class DataSekolah extends BaseController
         );
         return view('layout/wrapper', $data);
     }
+    public function sekolahall()
+    {
+        $jenjang = session()->get('jenjang');
+        $datasekolah = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
+        $profilsekolah = $this->profilModel->where('jenjang =', $jenjang)->findAll();
+        $data = array(
+            'title' => 'Daftar Sekolah',
+            'sekolah' => $datasekolah,
+            'profil' => $profilsekolah,
+            'isi' => 'master/data-sekolah/sekolah'
+        );
+        return view('layout/wrapper', $data);
+    }
     public function add()
     {
         $datakab = $this->kabupatenModel->findAll();
