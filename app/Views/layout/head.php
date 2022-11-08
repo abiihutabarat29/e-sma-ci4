@@ -49,7 +49,7 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="blue">
                 <a href="<?= base_url('home'); ?>" class="logo">
-                    <img src="<?= base_url(); ?>/template/assets/img/sidebar-v1.png" alt="navbar brand" class="navbar-brand" width="180" />
+                    <img src="<?= base_url(); ?>/template/assets/img/sidebar-v3git.png" alt="navbar brand" class="navbar-brand" width="180" />
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
