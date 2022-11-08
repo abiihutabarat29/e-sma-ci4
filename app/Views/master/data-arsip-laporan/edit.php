@@ -12,7 +12,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('data-arsip') ?>"><?= $titlebar ?></a>
+                    <a href="<?= base_url('data-arsip-laporan') ?>"><?= $titlebar ?></a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -30,16 +30,17 @@
                             <div class="swal-valid" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                             <div class="card-title"><?= $title ?></div>
                         </div>
-                        <form action="<?= base_url('data-arsip/update/' . $data['id']); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('data-arsip-laporan/update/' . $data['id']); ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $data['id']; ?>">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-md-12">
-                                        <div class="form-group <?= ($validation->hasError('nmlabul')) ? 'has-error' : ''; ?>">
-                                            <input type="text" class="form-control" id="nmlabul" name="nmlabul" placeholder="Nama Labul" autocomplete="off" value="<?= (old('nmlabul')) ? old('nmlabul') : $data['nama_labul']; ?>" autofocus>
+                                        <div class="form-group <?= ($validation->hasError('judul')) ? 'has-error' : ''; ?>">
+                                            <label>Judul Laporan</label><span class="text-danger">*</span>
+                                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Laporan" autocomplete="off" value="<?= (old('judul')) ? old('judul') : $data['judul']; ?>" autofocus>
                                             <small class="form-text text-danger">
-                                                <?= $validation->getError('nmlabul'); ?></small>
+                                                <?= $validation->getError('judul'); ?></small>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -49,8 +50,8 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>File Sebelumnya</label><span class="text-danger">*</span>
-                                            <input type="text" class="form-control" value="<?= $data['file_labul'] ?>" readonly>
+                                            <label>File Sebelumnya</label>
+                                            <input type="text" class="form-control" value="<?= $data['file'] ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -103,8 +104,8 @@
                                 </div>
                             </div>
                             <div class="card-action">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                                <a href="<?= base_url('/data-arsip') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Update</button>
+                                <a href="<?= base_url('/data-arsip-laporan') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                             </div>
                         </form>
                     </div>
@@ -119,7 +120,7 @@
                             <h2>
                                 <center><i>Maaf, data ini tidak dapat ditampilkan . . .</i></center>
                             </h2>
-                            <a href="<?= base_url('data-arsip') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
+                            <a href="<?= base_url('data-arsip-laporan') ?>" class="btn btn-default ml-lg-1 btn-sm"><i class="fa fa-undo-alt"></i> Kembali</a>
                         </div>
                     </div>
                 </div>

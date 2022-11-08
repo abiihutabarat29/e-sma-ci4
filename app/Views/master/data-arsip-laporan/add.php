@@ -12,7 +12,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('data-arsip') ?>"><?= $titlebar ?></a>
+                    <a href="<?= base_url('data-arsip-laporan') ?>"><?= $titlebar ?></a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -29,16 +29,16 @@
                         <div class="swal-valid" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
                         <div class="card-title"><?= $title ?></div>
                     </div>
-                    <form action="<?= base_url('data-arsip/save') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('data-arsip-laporan/save') ?>" method="post" enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="col-md-12">
-                                    <div class="form-group <?= ($validation->hasError('nmlabul')) ? 'has-error' : ''; ?>">
-                                        <label>Nama Laporan</label><span class="text-danger">*</span>
-                                        <input type="text" class="form-control" id="nmlabul" name="nmlabul" placeholder="Nama Laporan" autocomplete="off" value="<?= old('nmlabul'); ?>" autofocus>
+                                    <div class="form-group <?= ($validation->hasError('judul')) ? 'has-error' : ''; ?>">
+                                        <label>Judul Laporan</label><span class="text-danger">*</span>
+                                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Laporan" autocomplete="off" value="<?= old('judul'); ?>" autofocus>
                                         <small class="form-text text-danger">
-                                            <?= $validation->getError('nmlabul'); ?></small>
+                                            <?= $validation->getError('judul'); ?></small>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="card-action">
                             <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Simpan</button>
-                            <a href="<?= base_url('/data-arsip') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
+                            <a href="<?= base_url('/data-arsip-laporan') ?>" class="btn btn-dark btn-sm"><i class="fas fa-undo-alt"></i> Kembali</a>
                         </div>
                     </form>
                 </div>

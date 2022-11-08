@@ -217,6 +217,13 @@ $routes->get('/sekolah-all', 'DataSekolah::sekolahall');
 //Routes Generate Laporan Bulanan Cabang Dinas
 $routes->get('/generate-laporan', 'Generate::index2');
 $routes->get('/generate-laporan/export', 'Generate::generate2');
+//Routes Data Arsip Laporan Cabdis
+$routes->get('/data-arsip-laporan', 'DataArsipLaporan::arsiplaporan');
+$routes->get('/data-arsip-laporan/add', 'DataArsipLaporan::add');
+$routes->add('/data-arsip-laporan/save', 'DataArsipLaporan::save');
+$routes->delete('/data-arsip-laporan/(:num)', 'DataArsipLaporan::delete/$1');
+$routes->get('/data-arsip-laporan/edit/(:segment)', 'DataArsipLaporan::edit/$1');
+$routes->add('/data-arsip-laporan/update/(:segment)', 'DataArsipLaporan::update/$1');
 //Routes Login
 $routes->get('/', 'Auth::index');
 $routes->add('/auth/verify', 'Auth::cek');

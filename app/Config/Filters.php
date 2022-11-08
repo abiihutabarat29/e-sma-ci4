@@ -144,6 +144,8 @@ class Filters extends BaseConfig
 				'laporan-bulanan/filter',
 				'generate-laporan',
 				'generate-laporan/*',
+				'data-arsip-laporan',
+				'data-arsip-laporan/*',
 			]],
 			'filterksmk' => ['except' => [
 				'home', 'home/*',

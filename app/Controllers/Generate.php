@@ -1289,10 +1289,10 @@ class Generate extends BaseController
                                     //Style
                                     $sheet->getStyle('Q' . ($row + 6))->getFont()->setBold(true);
                                     $sheet->getStyle('Q' . ($row + 6))->getFont()->setUnderline(true);
-                                    $sheet->mergeCells('Q' . ($row + 2) . ':S' . ($row + 2));
-                                    $sheet->mergeCells('Q' . ($row + 3) . ':S' . ($row + 3));
-                                    $sheet->mergeCells('Q' . ($row + 6) . ':S' . ($row + 6));
-                                    $sheet->mergeCells('Q' . ($row + 7) . ':S' . ($row + 7));
+                                    $sheet->mergeCells('Q' . ($row + 2) . ':T' . ($row + 2));
+                                    $sheet->mergeCells('Q' . ($row + 3) . ':T' . ($row + 3));
+                                    $sheet->mergeCells('Q' . ($row + 6) . ':T' . ($row + 6));
+                                    $sheet->mergeCells('Q' . ($row + 7) . ':T' . ($row + 7));
                                     $sheet->mergeCells('A1:S1');
                                     $sheet->mergeCells('A2:A3');
                                     $sheet->mergeCells('B2:B3');

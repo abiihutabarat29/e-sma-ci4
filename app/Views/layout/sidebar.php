@@ -253,7 +253,7 @@
                             <p>Laporan Bulanan</p>
                         </a>
                     </li>
-                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'data-arsip-bulanan') ? 'active' : ""; ?>">
+                    <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'data-arsip-laporan') ? 'active' : ""; ?>">
                         <a data-toggle="collapse" href="#base">
                             <i class="fas fa-layer-group"></i>
                             <p>Laporan Bulanan</p>
@@ -267,7 +267,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url('data-arsip-bulanan') ?>">
+                                    <a href="<?= base_url('data-arsip-laporan') ?>">
                                         <span class="sub-item">Arsip Laporan</span>
                                     </a>
                                 </li>
