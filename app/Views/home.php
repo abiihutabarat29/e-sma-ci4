@@ -222,9 +222,11 @@
             </div>
         </div>
     </div>
-    <figure class="highcharts-figure">
-        <div id="container"></div>
-    </figure>
+    <?php if (session()->get('level') == '3') { ?>
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+        </figure>
+    <?php } ?>
 </div>
 </div>
 <!-- Highcharts -->
@@ -246,87 +248,7 @@
         },
         xAxis: {
             categories: [
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
-                'SMA Negeri 1 Kisaran Asahan',
+                'Sekolah'
             ],
             crosshair: true
         },
@@ -336,16 +258,22 @@
                 text: ''
             }
         },
-        series: [{
-            name: 'Sekolah',
-            // colorByPoint: true,
-            data: [13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
-                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 12.16,
-            ]
-        }]
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [<?= $siswasmabar ?>]
+                },
+            <?php } ?>
+        ]
     });
 </script>

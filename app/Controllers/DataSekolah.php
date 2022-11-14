@@ -51,7 +51,7 @@ class DataSekolah extends BaseController
             'title' => 'Daftar Sekolah',
             'sekolah' => $datasekolah,
             'profil' => $profilsekolah,
-            'isi' => 'master/data-sekolah/sekolah'
+            'isi' => 'master/data-sekolah/sekolah-all'
         );
         return view('layout/wrapper', $data);
     }

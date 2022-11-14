@@ -37,37 +37,44 @@ class Home extends BaseController
 	{
 		$npsn = session()->get('npsn');
 		$jenjang = session()->get('jenjang');
-		$data = array(
-			'title'        => 'Home',
-			'isi'          => 'home',
-			'sekolahv'     => $this->profilModel->countAllResults(),
-			'sekolah'      => $this->sekolahModel->countAllResults(),
-			'account'      => $this->userModel->countAllResults(),
-			'labul'        => $this->arsipModel->countAllResults(),
-			'smasiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
-			'smaguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
-			'smapegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
-			'smaalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
-			'smksiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
-			'smkguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
-			'smkpegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
-			'smkalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
-			'siswasma'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
-			'gurusma'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
-			'pegawaisma'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
-			'alumnisma'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
-			'siswasmk'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
-			'gurusmk'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
-			'pegawaismk'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
-			'alumnismk'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
-			'siswatotal'   => $this->siswaModel->countAllResults(),
-			'gurutotal'    => $this->guruModel->countAllResults(),
-			'pegawaitotal' => $this->pegawaiModel->countAllResults(),
-			'alumnitotal'  => $this->alumniModel->countAllResults(),
-			// Highcharts data
-
-		);
-		return view('layout/wrapper', $data);
+		$sekolahbar = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
+		foreach ($sekolahbar as $v) {
+			$npsn = $v['npsn'];
+			$jumlah = $this->siswaModel->where('jenjang =', $jenjang)->where('npsn =', $npsn)->countAllResults();
+			$data = array(
+				'title'        => 'Home',
+				'isi'          => 'home',
+				'sekolahv'     => $this->profilModel->countAllResults(),
+				'sekolah'      => $this->sekolahModel->countAllResults(),
+				'account'      => $this->userModel->countAllResults(),
+				'labul'        => $this->arsipModel->countAllResults(),
+				'smasiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
+				'smaguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
+				'smapegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
+				'smaalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
+				'smksiswa'     => $this->siswaModel->where('npsn', $npsn)->countAllResults(),
+				'smkguru'      => $this->guruModel->where('npsn', $npsn)->countAllResults(),
+				'smkpegawai'   => $this->pegawaiModel->where('npsn', $npsn)->countAllResults(),
+				'smkalumni'    => $this->alumniModel->where('npsn', $npsn)->countAllResults(),
+				//Kasih SMA
+				'siswasma'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
+				'gurusma'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
+				'pegawaisma'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
+				'alumnisma'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
+				'siswasmk'     => $this->siswaModel->where('jenjang', $jenjang)->countAllResults(),
+				'gurusmk'      => $this->guruModel->where('jenjang', $jenjang)->countAllResults(),
+				'pegawaismk'   => $this->pegawaiModel->where('jenjang', $jenjang)->countAllResults(),
+				'alumnismk'    => $this->alumniModel->where('jenjang', $jenjang)->countAllResults(),
+				'siswatotal'   => $this->siswaModel->countAllResults(),
+				'gurutotal'    => $this->guruModel->countAllResults(),
+				'pegawaitotal' => $this->pegawaiModel->countAllResults(),
+				'alumnitotal'  => $this->alumniModel->countAllResults(),
+				// Highcharts data
+				'sekolahbar'   => $sekolahbar,
+				'siswasmabar'  => $jumlah,
+			);
+			return view('layout/wrapper', $data);
+		}
 	}
 
 	// public function print($id)

@@ -250,7 +250,7 @@
                     <li class="nav-item <?= ($request->uri->getSegment(1) == 'laporan-bulanan') ? 'active' : ""; ?>">
                         <a href="<?= base_url('laporan-bulanan') ?>">
                             <i class="fas fa-file"></i>
-                            <p>Laporan Bulanan</p>
+                            <p>Laporan Bulanan Sekolah</p>
                         </a>
                     </li>
                     <li class="nav-item <?= ($request->uri->getSegment(1) == 'generate-laporan' or $request->uri->getSegment(1) == 'data-arsip-laporan') ? 'active' : ""; ?>">
