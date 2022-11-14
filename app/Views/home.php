@@ -222,5 +222,130 @@
             </div>
         </div>
     </div>
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+    </figure>
 </div>
 </div>
+<!-- Highcharts -->
+<link rel="stylesheet" href="<?= base_url(); ?>/template/assets/highcharts/highcharts.css" />
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script type="text/javascript">
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Siswa Cadis Kisaran Provinsi Sumut'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+                'SMA Negeri 1 Kisaran Asahan',
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        series: [{
+            name: 'Sekolah',
+            // colorByPoint: true,
+            data: [13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
+                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
+                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
+                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
+                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 13.93, 13.63, 13.73, 13.67, 14.37, 14.89, 14.56,
+                14.32, 14.13, 13.93, 13.21, 12.16, 12.16, 12.16, 12.16, 12.16, 12.16,
+            ]
+        }]
+    });
+</script>

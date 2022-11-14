@@ -64,6 +64,8 @@ class Home extends BaseController
 			'gurutotal'    => $this->guruModel->countAllResults(),
 			'pegawaitotal' => $this->pegawaiModel->countAllResults(),
 			'alumnitotal'  => $this->alumniModel->countAllResults(),
+			// Highcharts data
+
 		);
 		return view('layout/wrapper', $data);
 	}

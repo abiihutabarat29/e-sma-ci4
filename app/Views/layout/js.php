@@ -29,6 +29,28 @@
 <script src="<?= base_url(); ?>/vendor/select2/dist/js/select2.min.js"></script>
 <!-- Select Picker -->
 <script src="<?= base_url(); ?>/vendor/selectpicker/js/bootstrap-select.min.js"></script>
+<!-- Fonts and icons -->
+<script src="<?= base_url(); ?>/template/assets/js/plugin/webfont/webfont.min.js"></script>
+<script>
+    WebFont.load({
+        google: {
+            families: ["Lato:300,400,700,900"]
+        },
+        custom: {
+            families: [
+                "Flaticon",
+                "Font Awesome 5 Solid",
+                "Font Awesome 5 Regular",
+                "Font Awesome 5 Brands",
+                "simple-line-icons",
+            ],
+            urls: ["<?= base_url(); ?>/template/assets/css/fonts.min.css"],
+        },
+        active: function() {
+            sessionStorage.fonts = true;
+        },
+    });
+</script>
 <script>
     (function($) {
         "use strict"
