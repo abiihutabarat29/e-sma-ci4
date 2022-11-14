@@ -38,7 +38,7 @@ class SiswaKeluar extends BaseController
         $datasiswa = $this->siswaModel->where('npsn =', $npsn)->findAll();
         $data = array(
             'titlebar' => 'Mutasi Siswa Keluar',
-            'title' => 'Form Tambah Mutasi Siswa Keluar',
+            'title' => 'Tambah Mutasi Siswa Keluar',
             'isi' => 'master/data-siswa-keluar/add',
             'siswa' => $datasiswa,
             'tahun' => $tahun,

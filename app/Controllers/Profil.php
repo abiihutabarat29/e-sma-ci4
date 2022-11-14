@@ -58,7 +58,7 @@ class Profil extends BaseController
         $kab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Profil Sekolah',
-            'title' => 'Form Profil Sekolah',
+            'title' => 'Profil Sekolah',
             'isi' => 'master/profil/add',
             'validation' => \Config\Services::validation(),
             'kecamatan' => $kec,
@@ -288,7 +288,7 @@ class Profil extends BaseController
         $kab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Profil Sekolah',
-            'title' => 'Form Edit Data Sekolah',
+            'title' => 'Edit Data Sekolah',
             'isi' => 'master/profil/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->profilModel->where('id', $id)->where('id_sekolah', $ids)->first(),
@@ -707,7 +707,7 @@ class Profil extends BaseController
         $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Bangunan Sekolah',
-            'title' => 'Form Edit Bangunan Sekolah',
+            'title' => 'Edit Bangunan Sekolah',
             'isi' => 'master/profil/editbangunan',
             'validation' => \Config\Services::validation(),
             'data' => $this->bangunanModel->where('id', $id)->where('id_sekolah', $ids)->first(),

@@ -32,7 +32,7 @@ class User extends BaseController
         $sekolah = $this->sekolahModel->findAll();
         $data = array(
             'titlebar' => 'Data User',
-            'title' => 'Form Tambah Data User',
+            'title' => 'Tambah Data User',
             'isi' => 'master/user/add',
             'sekolah' => $sekolah,
             'validation' => \Config\Services::validation()
@@ -151,7 +151,7 @@ class User extends BaseController
         $sekolah = $this->sekolahModel->findAll();
         $data = array(
             'titlebar' => 'Data User',
-            'title' => 'Form Edit User',
+            'title' => 'Edit User',
             'isi' => 'master/user/edit',
             'validation' => \Config\Services::validation(),
             'sekolah' => $sekolah,

@@ -45,7 +45,7 @@ class SiswaMasuk extends BaseController
         $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Mutasi Siswa Masuk',
-            'title' => 'Form Tambah Mutasi Siswa Masuk',
+            'title' => 'Tambah Mutasi Siswa Masuk',
             'isi' => 'master/data-siswa-masuk/add',
             'tahun' => $tahun,
             'validation' => \Config\Services::validation()

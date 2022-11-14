@@ -27,7 +27,7 @@ class DataProgram extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Program Keahlian',
-            'title' => 'Form Tambah Data Program Keahlian',
+            'title' => 'Tambah Data Program Keahlian',
             'isi' => 'master/data-program/add',
             'validation' => \Config\Services::validation()
         );
@@ -67,7 +67,7 @@ class DataProgram extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Program Keahlian',
-            'title' => 'Form Edit Data Program Keahlian',
+            'title' => 'Edit Data Program Keahlian',
             'isi' => 'master/data-program/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->programModel->where('id', $id)->first(),

@@ -27,7 +27,7 @@ class DataBidang extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Bidang Keahlian',
-            'title' => 'Form Tambah Data Bidang Keahlian',
+            'title' => 'Tambah Data Bidang Keahlian',
             'isi' => 'master/data-bidang/add',
             'validation' => \Config\Services::validation()
         );
@@ -67,7 +67,7 @@ class DataBidang extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Bidang Keahlian',
-            'title' => 'Form Edit Data Bidang Keahlian',
+            'title' => 'Edit Data Bidang Keahlian',
             'isi' => 'master/data-bidang/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->bidangModel->where('id', $id)->first(),

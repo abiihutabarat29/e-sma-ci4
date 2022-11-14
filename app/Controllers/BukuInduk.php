@@ -38,7 +38,7 @@ class BukuInduk extends BaseController
         $datasiswa = $this->siswaModel->where('npsn =', $npsn)->findAll();
         $data = array(
             'titlebar' => 'Buku Induk Siswa',
-            'title' => 'Form Tambah Buku Induk Siswa',
+            'title' => 'Tambah Buku Induk Siswa',
             'isi' => 'master/buku-induk/add',
             'siswa' => $datasiswa,
             'tahun' => $tahun,

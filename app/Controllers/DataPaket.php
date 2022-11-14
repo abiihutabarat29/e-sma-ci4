@@ -27,7 +27,7 @@ class DataPaket extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Paket Keahlian',
-            'title' => 'Form Tambah Data Paket Keahlian',
+            'title' => 'Tambah Data Paket Keahlian',
             'isi' => 'master/data-paket/add',
             'validation' => \Config\Services::validation()
         );
@@ -77,7 +77,7 @@ class DataPaket extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Paket Keahlian',
-            'title' => 'Form Edit Data Paket Keahlian',
+            'title' => 'Edit Data Paket Keahlian',
             'isi' => 'master/data-paket/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->paketModel->where('id', $id)->first(),

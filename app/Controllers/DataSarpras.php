@@ -32,7 +32,7 @@ class DataSarpras extends BaseController
         $datasarana = $this->saranaModel->findAll();
         $data = array(
             'titlebar' => 'Data Sarpras',
-            'title' => 'Form Tambah Data Sarpras',
+            'title' => 'Tambah Data Sarpras',
             'isi' => 'master/data-sarpras/add',
             'sarana' => $datasarana,
             'validation' => \Config\Services::validation()
@@ -104,7 +104,7 @@ class DataSarpras extends BaseController
         $datasarana = $this->saranaModel->findAll();
         $data = array(
             'titlebar' => 'Data Sarpras',
-            'title' => 'Form Edit Data Sarpras',
+            'title' => 'Edit Data Sarpras',
             'isi' => 'master/data-sarpras/edit',
             'validation' => \Config\Services::validation(),
             'sarana' => $datasarana,

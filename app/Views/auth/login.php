@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <img src="<?= base_url(); ?>/template/assets/login/images/logo-sekolah.svg" alt="" class="img-fluid" width="100">
                         <h5 class="mt-2">SILAHKAN LOGIN</h5>
-                        <form action="/auth/verify" method="post">
+                        <form action="<?= base_url('auth/verify') ?>" method="post">
                             <?= csrf_field(); ?>
                             <div class="form-group mt-4 mb-4">
                                 <label class="floating-label" for="Username">Username</label>
@@ -42,7 +42,7 @@
                                 <small class="form-text text-danger">
                                     <?= $validation->getError('password'); ?></small>
                             </div>
-                            <button type="submit" class="btn btn-block btn-primary mb-4 rounded">Masuk</button>
+                            <button type="submit" class="btn btn-block btn-primary mb-4 rounded">LOGIN</button>
                         </form>
                     </div>
                 </div>
@@ -51,13 +51,6 @@
         <center>
             <h10> Copyright © Cabang Dinas Kisaran
                 Dinas Pendidikan Pemerintah Provinsi Sumatera Utara</h10>
-        </center><br>
-
-        <center>
-            <h10>e-sekolah</h10>
-        </center>
-        <center>
-            <h10>v.1.0</h10>
         </center>
     </div>
 </div>

@@ -27,7 +27,7 @@ class DataKabupaten extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Kabupaten',
-            'title' => 'Form Tambah Data Kabupaten',
+            'title' => 'Tambah Data Kabupaten',
             'isi' => 'master/data-kabupaten/add',
             'validation' => \Config\Services::validation()
         );
@@ -78,7 +78,7 @@ class DataKabupaten extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Kabupaten',
-            'title' => 'Form Edit Data Kabupaten',
+            'title' => 'Edit Data Kabupaten',
             'isi' => 'master/data-kabupaten/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->kabupatenModel->where('id', $id)->first(),

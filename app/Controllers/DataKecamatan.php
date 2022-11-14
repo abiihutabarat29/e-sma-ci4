@@ -30,7 +30,7 @@ class DataKecamatan extends BaseController
         $datakab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Data Kecamatan',
-            'title' => 'Form Tambah Data Kecamatan',
+            'title' => 'Tambah Data Kecamatan',
             'isi' => 'master/data-kecamatan/add',
             'kab' => $datakab,
             'validation' => \Config\Services::validation()
@@ -90,7 +90,7 @@ class DataKecamatan extends BaseController
         $datakab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Data Kecamatan',
-            'title' => 'Form Edit Data Kecamatan',
+            'title' => 'Edit Data Kecamatan',
             'isi' => 'master/data-kecamatan/edit',
             'kab' => $datakab,
             'validation' => \Config\Services::validation(),

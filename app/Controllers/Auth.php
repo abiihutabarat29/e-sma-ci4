@@ -22,7 +22,7 @@ class Auth extends BaseController
     public function index()
     {
         $data = array(
-            'title' => 'Login | Administrator',
+            'title' => 'Login | e-sekolah',
             'validation' => \Config\Services::validation()
         );
         return view('auth/login', $data);

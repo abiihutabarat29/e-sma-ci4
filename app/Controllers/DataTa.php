@@ -27,7 +27,7 @@ class DataTa extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Tahun Akademik',
-            'title' => 'Form Tambah Data Tahun Akademik',
+            'title' => 'Tambah Data Tahun Akademik',
             'isi' => 'master/data-ta/add',
             'validation' => \Config\Services::validation()
         );
@@ -67,7 +67,7 @@ class DataTa extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Tahun Akademik',
-            'title' => 'Form Edit Data Tahun Akademik',
+            'title' => 'Edit Data Tahun Akademik',
             'isi' => 'master/data-ta/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->taModel->where('id', $id)->first(),

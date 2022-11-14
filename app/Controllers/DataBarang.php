@@ -27,7 +27,7 @@ class DataBarang extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Inventaris',
-            'title' => 'Form Tambah Data Inventaris',
+            'title' => 'Tambah Data Inventaris',
             'isi' => 'master/data-barang/add',
             'validation' => \Config\Services::validation()
         );
@@ -67,7 +67,7 @@ class DataBarang extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Inventaris',
-            'title' => 'Form Edit Data Inventaris',
+            'title' => 'Edit Data Inventaris',
             'isi' => 'master/data-barang/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->barangModel->where('id', $id)->first(),

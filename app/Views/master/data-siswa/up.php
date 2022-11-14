@@ -1,31 +1,20 @@
 <?php if (session()->get('status') == 1) : ?>
-    <div class="page-inner">
-        <div class="page-header">
-            <h4 class="page-title"><?= $title ?></h4>
-            <ul class="breadcrumbs">
-                <li class="nav-home">
-                    <a href="<?= base_url('home') ?>">
-                        <i class="flaticon-home"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title">
-                            <td><?= $title ?></td>
-                        </h4>
-                        <a href="<?= base_url('data-siswa/add') ?>" class="btn btn-primary btn-round ml-auto btn-sm">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+    <div class="panel-header bg-primary-gradient">
+        <div class="page-inner py-5">
+            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                <div class="page-header">
+                    <h4 class="page-title text-white"><?= $title ?></h4>
                 </div>
-                <form class="formnaikkelas" action="<?= base_url('data-siswa/up') ?>" method="post">
-                    <?= csrf_field(); ?>
-                    <div class="card-body">
+            </div>
+        </div>
+    </div>
+    <div class="page-inner mt--5">
+        <div class="row mt--2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
+                    <form class="formnaikkelas" action="<?= base_url('data-siswa/up') ?>" method="post">
+                        <?= csrf_field(); ?>
                         <div class="card-header">
                             <div class="row">
                                 <div class="col-md-4 mt-2">
@@ -98,8 +87,8 @@
                                 <small class="form-text text-danger errorSiswa"></small>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

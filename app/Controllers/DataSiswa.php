@@ -41,7 +41,7 @@ class DataSiswa extends BaseController
         $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Data Siswa',
-            'title' => 'Form Tambah Data Siswa',
+            'title' => 'Tambah Data Siswa',
             'isi' => 'master/data-siswa/add',
             'tahun' => $tahun,
             'validation' => \Config\Services::validation()
@@ -333,7 +333,7 @@ class DataSiswa extends BaseController
         $tahun = $this->taModel->findAll();
         $data = array(
             'titlebar' => 'Data Siswa',
-            'title' => 'Form Edit Data Siswa',
+            'title' => 'Edit Data Siswa',
             'isi' => 'master/data-siswa/edit',
             'tahun' => $tahun,
             'validation' => \Config\Services::validation(),

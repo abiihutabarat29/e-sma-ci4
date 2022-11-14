@@ -1,78 +1,71 @@
-<div class="page-inner">
-    <div class="page-header">
-        <h4 class="page-title"><?= $title ?></h4>
-        <ul class="breadcrumbs">
-            <li class="nav-home">
-                <a href="<?= base_url('home') ?>">
-                    <i class="flaticon-home"></i>
-                </a>
-            </li>
-            <li class="separator">
-                <i class="flaticon-right-arrow"></i>
-            </li>
-        </ul>
+<div class="panel-header bg-primary-gradient">
+    <div class="page-inner py-5">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+            <div class="page-header">
+                <h4 class="page-title text-white"><?= $title ?></h4>
+            </div>
+        </div>
     </div>
-    <div class="col-md-12">
-        <div class="card">
-            <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
-            <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <h4 class="card-title">
-                        <td><?= $title ?></td>
-                    </h4>
-                    <a href="<?= base_url('data-user/add') ?>" class="btn btn-primary btn-round ml-auto btn-sm">
-                        <i class="fa fa-plus"></i>
+</div>
+<div class="page-inner mt--5">
+    <div class="row mt--2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="swal" data-swal="<?= session()->getFlashdata('m'); ?>"></div>
+                <div class="card-header">
+                    <a href="<?= base_url('data-user/add') ?>" class="badge badge-primary btn-sm">
+                        <i class="fa fa-plus-circle"></i>&nbsp;Tambah
                     </a>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="add-row" class="display table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>NPSN</th>
-                                <th>Nama Sekolah</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Username</th>
-                                <th>Foto</th>
-                                <th style="width: 10%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1;
-                            foreach ($datauser as $key => $r) : ?>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="add-row" class="display table table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td><?= $i++; ?></td>
-                                    <td><?= $r['npsn']; ?></td>
-                                    <td><?= $r['nama_sekolah']; ?></td>
-                                    <td><?= $r['nik']; ?></td>
-                                    <td><?= $r['nama']; ?></td>
-                                    <td><?= $r['username']; ?></td>
-                                    <td>
-                                        <?php if ($r['foto'] == null) { ?>
-                                            <img src="<?= base_url('/media/fotouser/' . 'blank.png') ?>" width="50px">
-                                        <?php } else { ?>
-                                            <img src="<?= base_url('/media/fotouser/' . $r['foto']) ?>" width="50px">
-                                        <?php } ?>
-                                    <td>
-                                        <div class="form-button-action">
-                                            <a href="#" class="btn btn-link  btn-lg <?= $r['status'] == 1 ? 'btn-success' : 'btn-danger' ?> " title="Klik untuk Mengaktifkan atau Menonaktifkan" data-toggle='modal' data-target='#activateModal<?= $r['id'] ?>'>
-                                                <?= $r['status'] == 1 ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'; ?>
-                                            </a>
-                                            <a href="data-user/edit/<?= $r['id']; ?>" class="btn btn-link btn-primary btn-lg">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-link btn-lg btn-danger" title="Hapus Data" data-toggle='modal' data-target='#activateModalDelete<?= $r['id'] ?>'>
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+                                    <th style="width: 5%">No</th>
+                                    <th>NPSN</th>
+                                    <th>Nama Sekolah</th>
+                                    <th>NIK</th>
+                                    <th>Nama</th>
+                                    <th>Username</th>
+                                    <th>Foto</th>
+                                    <th style="width: 10%">Action</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1;
+                                foreach ($datauser as $key => $r) : ?>
+                                    <tr>
+                                        <td><?= $i++; ?></td>
+                                        <td><?= $r['npsn']; ?></td>
+                                        <td><?= $r['nama_sekolah']; ?></td>
+                                        <td><?= $r['nik']; ?></td>
+                                        <td><?= $r['nama']; ?></td>
+                                        <td><?= $r['username']; ?></td>
+                                        <td>
+                                            <?php if ($r['foto'] == null) { ?>
+                                                <img src="<?= base_url('/media/fotouser/' . 'blank.png') ?>" width="50px" class="img rounded">
+                                            <?php } else { ?>
+                                                <img src="<?= base_url('/media/fotouser/' . $r['foto']) ?>" width="50px" class="img rounded">
+                                            <?php } ?>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a href="#" class="btn btn-xs mr-2 <?= $r['status'] == 1 ? 'btn-success' : 'btn-danger' ?> " title="Klik untuk Mengaktifkan atau Menonaktifkan" data-toggle='modal' data-target='#activateModal<?= $r['id'] ?>'>
+                                                    <?= $r['status'] == 1 ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'; ?>
+                                                </a>
+                                                <a href="<?= base_url('data-user/edit/' . $r['id']) ?>" title="Edit" class="btn btn-warning btn-xs mr-2">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-xs" title="Delete" data-toggle='modal' data-target='#activateModalDelete<?= $r['id'] ?>'>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

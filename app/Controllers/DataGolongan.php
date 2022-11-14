@@ -27,7 +27,7 @@ class DataGolongan extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Golongan',
-            'title' => 'Form Tambah Data Golongan',
+            'title' => 'Tambah Data Golongan',
             'isi' => 'master/data-golongan/add',
             'validation' => \Config\Services::validation()
         );
@@ -66,7 +66,7 @@ class DataGolongan extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Golongan',
-            'title' => 'Form Edit Data Golongan',
+            'title' => 'Edit Data Golongan',
             'isi' => 'master/data-golongan/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->golonganModel->where('id', $id)->first(),

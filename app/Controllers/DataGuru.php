@@ -46,7 +46,7 @@ class DataGuru extends BaseController
         $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Guru',
-            'title' => 'Form Tambah Data Guru',
+            'title' => 'Tambah Data Guru',
             'isi' => 'master/data-guru/add',
             'mapel' => $mapel,
             'golongan' => $datagol,
@@ -572,7 +572,7 @@ class DataGuru extends BaseController
         $mapel = $this->mapelModel->where('jenjang =', $jenjang)->findAll();
         $data = array(
             'titlebar' => 'Data Guru',
-            'title' => 'Form Edit Data Guru',
+            'title' => 'Edit Data Guru',
             'isi' => 'master/data-guru/edit',
             'validation' => \Config\Services::validation(),
             'mapel' => $mapel,

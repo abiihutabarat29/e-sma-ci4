@@ -27,7 +27,7 @@ class DataMapel extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Mata Pelajaran',
-            'title' => 'Form Tambah Data Mata Pelajaran',
+            'title' => 'Tambah Data Mata Pelajaran',
             'isi' => 'master/data-mapel/add',
             'validation' => \Config\Services::validation()
         );
@@ -74,7 +74,7 @@ class DataMapel extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Mata Pelajaran',
-            'title' => 'Form Edit Data Mata Pelajaran',
+            'title' => 'Edit Data Mata Pelajaran',
             'isi' => 'master/data-mapel/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->mapelModel->where('id', $id)->first(),

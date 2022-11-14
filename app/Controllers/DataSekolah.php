@@ -60,7 +60,7 @@ class DataSekolah extends BaseController
         $datakab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Data Sekolah',
-            'title' => 'Form Tambah Data Sekolah',
+            'title' => 'Tambah Data Sekolah',
             'isi' => 'master/data-sekolah/add',
             'kab' => $datakab,
             'validation' => \Config\Services::validation()
@@ -133,7 +133,7 @@ class DataSekolah extends BaseController
         $datakab = $this->kabupatenModel->findAll();
         $data = array(
             'titlebar' => 'Data Sekolah',
-            'title' => 'Form Edit Data Sekolah',
+            'title' => 'Edit Data Sekolah',
             'isi' => 'master/data-sekolah/edit',
             'validation' => \Config\Services::validation(),
             'kab' => $datakab,

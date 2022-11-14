@@ -27,7 +27,7 @@ class DataSarana extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Sarana',
-            'title' => 'Form Tambah Data Sarana',
+            'title' => 'Tambah Data Sarana',
             'isi' => 'master/data-sarana/add',
             'validation' => \Config\Services::validation()
         );
@@ -67,7 +67,7 @@ class DataSarana extends BaseController
     {
         $data = array(
             'titlebar' => 'Data Sarana',
-            'title' => 'Form Edit Data Sarana',
+            'title' => 'Edit Data Sarana',
             'isi' => 'master/data-sarana/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->saranaModel->where('id', $id)->first(),

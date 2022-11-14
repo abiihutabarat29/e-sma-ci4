@@ -42,7 +42,7 @@ class DataKebutuhan extends BaseController
         $mapel = $this->mapelModel->where('jenjang =', $jenjang)->findAll();
         $data = array(
             'titlebar' => 'Data Kebutuhan Guru',
-            'title' => 'Form Tambah Data Kebutuhan Guru',
+            'title' => 'Tambah Data Kebutuhan Guru',
             'isi' => 'master/data-kebutuhan-guru/add',
             'mapel' => $mapel,
             'validation' => \Config\Services::validation()
@@ -131,7 +131,7 @@ class DataKebutuhan extends BaseController
         $mapel = $this->mapelModel->where('jenjang =', $jenjang)->findAll();
         $data = array(
             'titlebar' => 'Data Kebutuhan Guru',
-            'title' => 'Form Edit Data Kebutuhan Guru',
+            'title' => 'Edit Data Kebutuhan Guru',
             'isi' => 'master/data-kebutuhan-guru/edit',
             'validation' => \Config\Services::validation(),
             'mapel' => $mapel,

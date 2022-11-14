@@ -31,7 +31,7 @@ class DataInventaris extends BaseController
         $data = $this->barangModel->findAll();
         $data = array(
             'titlebar' => 'Data Inventaris',
-            'title' => 'Form Tambah Data Inventaris',
+            'title' => 'Tambah Data Inventaris',
             'isi' => 'master/data-inventaris/add',
             'inventaris' => $data,
             'validation' => \Config\Services::validation()
@@ -111,7 +111,7 @@ class DataInventaris extends BaseController
         $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Data Inventaris',
-            'title' => 'Form Edit Data Inventaris',
+            'title' => 'Edit Data Inventaris',
             'isi' => 'master/data-inventaris/edit',
             'inventaris' => $data,
             'validation' => \Config\Services::validation(),

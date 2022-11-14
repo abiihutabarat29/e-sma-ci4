@@ -54,7 +54,7 @@ class DataArsip extends BaseController
     {
         $data = array(
             'titlebar' => 'Arsip Laporan Bulanan',
-            'title' => 'Form Tambah Arsip Laporan Bulanan',
+            'title' => 'Tambah Arsip',
             'isi' => 'master/data-arsip/add',
             'validation' => \Config\Services::validation()
         );
@@ -151,7 +151,7 @@ class DataArsip extends BaseController
         $ids = session()->get('id_sekolah');
         $data = array(
             'titlebar' => 'Arsip Laporan Bulanan',
-            'title' => 'Form Edit Arsip Laporan Bulanan',
+            'title' => 'Edit Arsip',
             'isi' => 'master/data-arsip/edit',
             'validation' => \Config\Services::validation(),
             'data' => $this->arsipModel->where('id', $id)->where('id_sekolah', $ids)->first(),

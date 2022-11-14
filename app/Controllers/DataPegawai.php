@@ -42,7 +42,7 @@ class DataPegawai extends BaseController
         $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Pegawai',
-            'title' => 'Form Tambah Data Pegawai',
+            'title' => 'Tambah Data Pegawai',
             'isi' => 'master/data-pegawai/add',
             'golongan' => $datagol,
             'validation' => \Config\Services::validation()
@@ -420,7 +420,7 @@ class DataPegawai extends BaseController
         $datagol = $this->golonganModel->findAll();
         $data = array(
             'titlebar' => 'Data Pegawai',
-            'title' => 'Form Edit Data Pegawai',
+            'title' => 'Edit Data Pegawai',
             'isi' => 'master/data-pegawai/edit',
             'golongan' => $datagol,
             'validation' => \Config\Services::validation(),
