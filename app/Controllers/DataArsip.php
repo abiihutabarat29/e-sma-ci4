@@ -50,6 +50,27 @@ class DataArsip extends BaseController
 
         return view('layout/wrapper', $data);
     }
+    public function datalabul()
+    {
+        $bulan = $this->request->getPost('blnfilter');
+        $tahun = $this->request->getPost('thnfilter');
+        if ($bulan || $tahun == true) {
+            $jenjang = session()->get('jenjang');
+            $datasekolah = $this->sekolahModel->where('jenjang', $jenjang)->findAll();
+            $datalabul = $this->arsipModel->where('jenjang =', $jenjang)->where('bulan =', $bulan)->where('tahun =', $tahun)->findAll();
+        } else {
+            $jenjang = session()->get('jenjang');
+            $datasekolah = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
+            $bulan_ini = format_bulan(date('Y-m-d'));
+            $datalabul = $this->arsipModel->where('jenjang =', $jenjang)->where('bulan =', $bulan_ini)->findAll();
+        }
+        $data = array(
+            'title' => 'Laporan Bulanan Cabdis',
+            'isi' => 'master/data-arsip/datalabul'
+        );
+
+        return view('layout/wrapper', $data);
+    }
     public function add()
     {
         $data = array(
@@ -96,7 +117,7 @@ class DataArsip extends BaseController
                 $arsip   = $this->request->getFile('file');
                 $fileName = $arsip->getRandomName();
                 //move file
-                $arsip->move(ROOTPATH . 'public/media/arsip/', $fileName);
+                $arsip->move(ROOTPATH . '../public_html/media/arsip/', $fileName);
                 $data = [
                     'nama_labul'          => $this->request->getPost('nmlabul'),
                     'bulan'               => $this->request->getPost('bulan'),
@@ -117,7 +138,7 @@ class DataArsip extends BaseController
             $arsip   = $this->request->getFile('file');
             $fileName = $arsip->getRandomName();
             //move file
-            $arsip->move(ROOTPATH . 'public/media/arsip/', $fileName);
+            $arsip->move(ROOTPATH . '../public_html/media/arsip/', $fileName);
             $data = [
                 'nama_labul'          => $this->request->getPost('nmlabul'),
                 'bulan'               => $this->request->getPost('bulan'),
@@ -139,8 +160,8 @@ class DataArsip extends BaseController
     {
         $data = $this->arsipModel->find($id);
         $file = $data['file_labul'];
-        if (file_exists(ROOTPATH . 'public/media/arsip/' . $file)) {
-            unlink(ROOTPATH . 'public/media/arsip/' . $file);
+        if (file_exists(ROOTPATH . '../public_html/media/arsip/' . $file)) {
+            unlink(ROOTPATH . '../public_html/media/arsip/' . $file);
         }
         $this->arsipModel->delete($id);
         session()->setFlashdata('m', 'Dihapus');
@@ -187,11 +208,11 @@ class DataArsip extends BaseController
         } else {
             $fileName = $file->getRandomName();
             //move foto
-            $file->move(ROOTPATH . 'public/media/arsip/', $fileName);
+            $file->move(ROOTPATH . '../public_html/media/arsip/', $fileName);
             $r = $this->arsipModel->find($id);
             $replace = $r['file_labul'];
-            if (file_exists(ROOTPATH . 'public/media/arsip/' . $replace)) {
-                unlink(ROOTPATH . 'public/media/arsip/' . $replace);
+            if (file_exists(ROOTPATH . '../public_html/media/arsip/' . $replace)) {
+                unlink(ROOTPATH . '../public_html/media/arsip/' . $replace);
             }
         }
         $data = [
@@ -214,19 +235,6 @@ class DataArsip extends BaseController
         $data = array(
             'title' => 'Arsip Laporan Bulanan',
             'arsip' => $filterarsip,
-            'isi' => 'master/data-arsip/data'
-        );
-
-        return view('layout/wrapper', $data);
-    }
-    //Arsip Cabdis
-    public function arsiplaporan()
-    {
-        $npsn = session()->get('npsn');
-        $dataarsip = $this->arsipModel->where('npsn =', $npsn)->findAll();
-        $data = array(
-            'title' => 'Arsip Laporan Bulanan',
-            'data' => $dataarsip,
             'isi' => 'master/data-arsip/data'
         );
 

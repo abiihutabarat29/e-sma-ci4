@@ -160,6 +160,8 @@ class Filters extends BaseConfig
 				'my-profil',
 				'my-profil/*',
 				'sekolah-all',
+				'data-laporan-bulanan',
+				'data-laporan-bulanan/filter',
 			]],
 			'toolbar',
 			//'honeypot'

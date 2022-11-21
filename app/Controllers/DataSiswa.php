@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\SiswaModel;
-use App\Models\taModel;
+use App\Models\TaModel;
 use CodeIgniter\Config\Config;
 
 class DataSiswa extends BaseController

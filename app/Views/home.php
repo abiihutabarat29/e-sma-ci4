@@ -224,7 +224,36 @@
     </div>
     <?php if (session()->get('level') == '3') { ?>
         <figure class="highcharts-figure">
-            <div id="container"></div>
+            <div id="container-siswa"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-guru"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-pegawai"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-alumni"></div>
+        </figure>
+    <?php } ?>
+    <?php if (session()->get('level') == '5') { ?>
+        <figure class="highcharts-figure">
+            <div id="container-siswa-sumut"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-guru-sumut"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-pegawai-sumut"></div>
+        </figure>
+        <hr>
+        <figure class="highcharts-figure">
+            <div id="container-alumni-sumut"></div>
         </figure>
     <?php } ?>
 </div>
@@ -236,12 +265,12 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script type="text/javascript">
-    Highcharts.chart('container', {
+    Highcharts.chart('container-siswa', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Jumlah Siswa Cadis Kisaran Provinsi Sumut'
+            text: 'Jumlah Siswa Cabdis Kisaran Provinsi Sumut'
         },
         subtitle: {
             text: ''
@@ -271,7 +300,289 @@
             ?> {
                     name: '<?= $nmsekolah ?>',
                     // colorByPoint: true,
-                    data: [<?= $siswasmabar ?>]
+                    data: [200]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-guru', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Guru Cabdis Kisaran Provinsi Sumut'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [150]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-pegawai', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Pegawai Cabdis Kisaran Provinsi Sumut'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [110]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-alumni', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Alumni Cabdis Kisaran Provinsi Sumut'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [240]
+                },
+            <?php } ?>
+        ]
+    });
+</script>
+<script type="text/javascript">
+    Highcharts.chart('container-siswa-sumut', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Siswa Provinsi Sumatera Utara'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [200]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-guru-sumut', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Guru Provinsi Sumatera Utara'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [150]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-pegawai-sumut', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Pegawai Provinsi Sumatera Utara'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [110]
+                },
+            <?php } ?>
+        ]
+    });
+    Highcharts.chart('container-alumni-sumut', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Jumlah Alumni Provinsi Sumatera Utara'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'Sekolah'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                useHTML: true,
+                text: ''
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            <?php
+            foreach ($sekolahbar as $key => $r) {
+                $nmsekolah = $r['sekolah'];
+            ?> {
+                    name: '<?= $nmsekolah ?>',
+                    // colorByPoint: true,
+                    data: [240]
                 },
             <?php } ?>
         ]

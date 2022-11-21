@@ -214,6 +214,8 @@ $routes->get('/generate', 'Generate::index');
 $routes->get('/generate/export', 'Generate::generate');
 //Routes Provinsi
 $routes->get('/sekolah-all', 'DataSekolah::sekolahall');
+$routes->get('/data-laporan-bulanan', 'DataArsip::datalabul');
+$routes->post('/data-laporan-bulanan/filter', 'DataArsip::datalabul');
 //Routes Generate Laporan Bulanan Cabang Dinas
 $routes->get('/generate-laporan', 'Generate::index2');
 $routes->get('/generate-laporan/export', 'Generate::generate2');
