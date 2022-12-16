@@ -20,6 +20,6 @@ class SiswaModel extends Model
     public function AllSiswa()
     {
         $jenjang = session()->get('jenjang');
-        return $this->db->table('mod_siswa')->where('jenjang =', $jenjang)->get();
+        return $this->db->table('mod_siswa')->where('jenjang =', $jenjang)->get()->getResultArray();
     }
 }
