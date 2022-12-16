@@ -264,6 +264,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<!-- Script data sekolah -->
 <script type="text/javascript">
     Highcharts.chart('container-siswa', {
         chart: {
@@ -295,12 +296,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $siswa = $db->table('mod_siswa')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [200]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $siswa ?>],
                 },
             <?php } ?>
         ]
@@ -335,12 +338,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $guru = $db->table('mod_guru')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [150]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $guru ?>],
                 },
             <?php } ?>
         ]
@@ -375,12 +380,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $pegawai = $db->table('mod_pegawai')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [110]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $pegawai ?>],
                 },
             <?php } ?>
         ]
@@ -415,12 +422,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $alumni = $db->table('mod_buku_induk')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [240]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $alumni ?>],
                 },
             <?php } ?>
         ]
@@ -457,12 +466,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $siswa = $db->table('mod_siswa')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [200]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $siswa ?>],
                 },
             <?php } ?>
         ]
@@ -497,12 +508,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $guru = $db->table('mod_guru')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [150]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $guru ?>],
                 },
             <?php } ?>
         ]
@@ -537,12 +550,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $pegawai = $db->table('mod_pegawai')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [110]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $pegawai ?>],
                 },
             <?php } ?>
         ]
@@ -577,12 +592,14 @@
         },
         series: [
             <?php
-            foreach ($sekolahbar as $key => $r) {
-                $nmsekolah = $r['sekolah'];
+            foreach ($sekolahdata as $key => $s) {
+                //query
+                $db = \Config\Database::connect();
+                $alumni = $db->table('mod_buku_induk')->where('id_sekolah =', $s['id'])->countAllResults();
+                $sekolah = $s['sekolah'];
             ?> {
-                    name: '<?= $nmsekolah ?>',
-                    // colorByPoint: true,
-                    data: [240]
+                    name: '<?php echo $sekolah ?>',
+                    data: [<?php echo $alumni ?>],
                 },
             <?php } ?>
         ]

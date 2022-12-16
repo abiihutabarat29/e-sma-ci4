@@ -37,7 +37,6 @@ class Home extends BaseController
 	{
 		$npsn = session()->get('npsn');
 		$jenjang = session()->get('jenjang');
-		$sekolahbar = $this->sekolahModel->where('jenjang =', $jenjang)->findAll();
 		$data = array(
 			'title'        => 'Home',
 			'isi'          => 'home',
@@ -67,7 +66,8 @@ class Home extends BaseController
 			'pegawaitotal' => $this->pegawaiModel->countAllResults(),
 			'alumnitotal'  => $this->alumniModel->countAllResults(),
 			// Highcharts data
-			'sekolahbar'   => $sekolahbar,
+			'sekolahdata'  => $this->sekolahModel->AllSekolah(),
+			'siswadata'    => $this->siswaModel->AllSiswa(),
 		);
 		return view('layout/wrapper', $data);
 	}

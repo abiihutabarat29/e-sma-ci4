@@ -16,4 +16,10 @@ class SiswaModel extends Model
         'kelas', 'pkeahlian', 'jurusan', 'status', 'nohp', 'email', 'program_pip',
         'tahun_msk', 'asal_sekolah', 'no_surat', 'sts_mutasi', 'keterangan', 'sts_vaksin', 'npsn', 'nama_sekolah', 'jenjang', 'userentry'
     ];
+
+    public function AllSiswa()
+    {
+        $jenjang = session()->get('jenjang');
+        return $this->db->table('mod_siswa')->where('jenjang =', $jenjang)->get();
+    }
 }
