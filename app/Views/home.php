@@ -1,10 +1,11 @@
-<div class="panel-header bg-primary-gradient">
+<div class="panel-header bg-primary-gradient bubble-shadow">
     <div class="page-inner py-5">
-        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+        <div class="row align-items-center justify-content-center text-center">
             <div>
-                <h2 class="text-white pb-2 fw-bold">Dashboard <?= session()->get('nama_sekolah'); ?>
+                <img src="<?= base_url("template/assets/login/images/logo-sekolah.svg") ?>" class="mb-0" alt="" width="70px">
+                <h2 class="text-white pb-2 fw-bold mb-0"><?= session()->get('nama_sekolah'); ?>
                 </h2>
-                <h5 class="text-white op-7 mb-2">Aplikasi E-Sekolah - ELektronik Manajemen Data Sekolah</h5>
+                <h5 class="text-white op-7 mb-0">Aplikasi E-Sekolah - ELektronik Manajemen Data Sekolah</h5>
             </div>
         </div>
     </div>
